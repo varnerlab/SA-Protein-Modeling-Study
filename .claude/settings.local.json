@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git clone:*)",
+      "Bash(cp -R /tmp/sa-study-repo/code/* /Users/jdv27/Desktop/julia_work/SA-Protein-Modeling-Study/code/ 2>&1)",
+      "Bash(ls /tmp/sa-study-repo/paper/*.tex /tmp/sa-study-repo/paper/*.sty /tmp/sa-study-repo/paper/*.bib /tmp/sa-study-repo/paper/*.bst 2>/dev/null)",
+      "Bash(ls /tmp/sa-study-repo/paper/*.tex /tmp/sa-study-repo/paper/*.sty /tmp/sa-study-repo/paper/*.bib 2>/dev/null)",
+      "WebSearch",
+      "WebFetch(domain:www.ebi.ac.uk)",
+      "Bash(cd /Users/jdv27/Desktop/julia_work/SA-Protein-Modeling-Study/code && julia --project=. -e 'using Pkg; Pkg.instantiate\\(\\)' 2>&1 | tail -5)",
+      "Bash(cd /Users/jdv27/Desktop/julia_work/SA-Protein-Modeling-Study/code/pfam-families && julia --project=../. run_pfam_families.jl 2>&1)",
+      "Bash(mv /Users/jdv27/Desktop/julia_work/SA-Protein-Modeling-Study/code/data/PF0* /Users/jdv27/Desktop/julia_work/SA-Protein-Modeling-Study/code/pfam-families/data/ && mv /Users/jdv27/Desktop/julia_work/SA-Protein-Modeling-Study/code/data/pfam_*.csv /Users/jdv27/Desktop/julia_work/SA-Protein-Modeling-Study/code/pfam-families/data/)",
+      "Bash(chmod +x /Users/jdv27/Desktop/julia_work/SA-Protein-Modeling-Study/paper/Build.sh)"
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+% experiments.tex -- Experiments
+
+We applied stochastic attention to protein sequence generation across seven Pfam families and conducted a systematic scaling study to characterize performance as a function of family size. All experiments used the unadjusted Langevin algorithm (ULA) with step size $\alpha=0.01$. For each family and condition, we ran 30 independent chains of $T=5{,}000$ iterations, initialized near randomly chosen stored patterns with Gaussian perturbation ($\sigma_{\mathrm{init}}=0.01$). After discarding $2{,}000$ burn-in iterations and thinning every 100 steps, we retained 5 evenly spaced samples per chain for a total of $S=150$ generated sequences per condition. MALA chains were run in parallel with identical parameters to provide acceptance-rate diagnostics. Throughout, we used PCA dimensionality reduction retaining 95\% of the variance in the one-hot encoded alignment, followed by unit-norm projection to form the memory matrix $\hat{\mathbf{X}}$.
+
+The inverse temperature was set automatically for each family via the entropy inflection criterion (Section~\ref{sec:beta-star}). We identified $\beta^*$ from the attention entropy curve and operated in two regimes: a \emph{generation} regime at $\beta_{\mathrm{gen}} \approx 2\beta^*$, where the sampler explores broadly while respecting family statistics, and a \emph{retrieval} regime at $\beta_{\mathrm{ret}} \approx 20\beta^*$, where samples remain close to stored patterns. Three simple baselines were evaluated under identical conditions: bootstrap replay (uniform resampling of stored patterns), Gaussian perturbation (stored pattern plus isotropic noise matched to the SA noise scale), and random convex combination (Dirichlet-weighted average of all stored patterns).
+
+We evaluated generated sequences using five metrics. \emph{Novelty} measured departure from stored patterns as $1 - \max_k \cos(\hat{\boldsymbol{\xi}}, \mathbf{m}_k)$ in PCA space. \emph{Diversity} was the mean pairwise cosine distance among generated samples. \emph{Sequence identity} was the maximum fraction of matching residues between a generated sequence and any stored sequence, computed after argmax decoding from PCA space back to amino acid sequences. \emph{KL divergence} of amino acid composition quantified how well generated sequences preserved the family's residue frequency distribution. \emph{Valid residue fraction} confirmed that all decoded positions were standard amino acids.
+
+\paragraph{Multiple Pfam families.}
+We selected seven families spanning a range of sizes, sequence lengths, and conservation levels (Table~\ref{tab:families}): RRM (PF00076, $K{=}68$, $L{=}71$), SH3 (PF00018, $K{=}55$, $L{=}48$), WW (PF00397, $K{=}420$, $L{=}31$), Kunitz (PF00014, $K{=}99$, $L{=}53$), zinc finger C2H2 (PF00096, $K{=}151$, $L{=}23$), PDZ (PF00595, $K{=}44$, $L{=}83$), and protein kinase (PF00069, $K{=}37$, $L{=}262$). Seed alignments were downloaded from InterPro~\cite{mistryPfamProteinFamilies2021} and cleaned by removing columns with $>50\%$ gaps and sequences with $>30\%$ gaps. The resulting PCA dimensions ranged from $d{=}34$ (Pkinase) to $d{=}186$ (WW).
+
+\begin{table}[t]
+\centering
+\caption{Properties of the seven Pfam families used in this study. $K$: number of seed sequences after cleaning. $L$: alignment length (columns retained). $d$: PCA dimension (95\% variance). $\bar{H}_{\mathrm{col}}$: mean per-column Shannon entropy (nats). $K_{\mathrm{eff}}$: effective number of sequences at 80\% identity threshold. $\beta^*$: empirical entropy inflection point. $\beta^*/\!\sqrt{d}$: ratio to the random-pattern prediction.}
+\label{tab:families}
+\small
+\begin{tabular}{@{}lrrrrrrrr@{}}
+\toprule
+Family & Pfam ID & $K$ & $L$ & $d$ & $\bar{H}_{\mathrm{col}}$ & $K_{\mathrm{eff}}$ & $\beta^*$ & $\beta^*/\!\sqrt{d}$ \\
+\midrule
+RRM     & PF00076 &  68 &  71 &  59 & 1.92 &  68 & 3.85 & 0.50 \\
+SH3     & PF00018 &  55 &  48 &  46 & 1.68 &  55 & 3.85 & 0.57 \\
+WW      & PF00397 & 420 &  31 & 186 & 1.74 & 419 & 5.45 & 0.40 \\
+Kunitz  & PF00014 &  99 &  53 &  80 & 1.61 &  99 & 3.85 & 0.43 \\
+zf-C2H2 & PF00096 & 151 &  23 & 106 & 1.91 & 151 & 4.58 & 0.44 \\
+PDZ     & PF00595 &  44 &  83 &  37 & 1.88 &  43 & 3.23 & 0.53 \\
+Pkinase & PF00069 &  37 & 262 &  34 & 1.72 &  37 & 3.23 & 0.55 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Scaling study.}
+To characterize how generation quality degrades with decreasing family size, we fixed the WW domain (the largest family, $K{=}420$) and subsampled to $K \in \{20, 50, 100, 200, 400\}$. At each value of $K$, we drew five independent random subsets, rebuilt the memory matrix from scratch (re-computing PCA and $\beta^*$), ran stochastic attention and all baselines, and recorded metrics. This design isolates the effect of family size from family identity, and the five repeats provide error estimates.
