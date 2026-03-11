@@ -4,8 +4,7 @@
 
 **Working title:** Training-Free Generation of Protein Sequences from Small Family Alignments via Stochastic Attention
 
-**One-sentence pitch:** Attention-based memory retrieval, viewed as an energy landscape, provides an exact score function for generating biologically valid protein sequences from as few as 50 family members, without training.
-
+**One-sentence pitch:** Attention-based memory retrieval, viewed as an energy landscape, provides an exact score function for generating biologically val1
 ---
 
 ## 1. Introduction / Significance Statement

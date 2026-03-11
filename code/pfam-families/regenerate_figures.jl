@@ -113,10 +113,10 @@ df = DataFrame(rows)
 CSV.write(joinpath(PFAM_DATA_DIR, "pfam_results_with_se.csv"), df)
 
 # ══════════════════════════════════════════════════════════════════════════════
-# PNAS-quality figures
+# PNAS-quality composite figure: 3-panel (KL, Novelty, SeqID)
 # ══════════════════════════════════════════════════════════════════════════════
 
-@info "Generating PNAS-quality figures …"
+@info "Generating PNAS-quality composite figure …"
 
 family_names = [f.name for f in FAMILIES]
 method_order = ["SA generation", "SA retrieval", "Bootstrap"]
@@ -127,148 +127,80 @@ method_colors = Dict(
     "Bootstrap"     => RGB(0.50, 0.50, 0.50),   # gray
 )
 
-pnas_defaults = (
+panel_defaults = (
     fontfamily   = "Helvetica",
-    guidefontsize  = 11,
-    tickfontsize   = 9,
-    legendfontsize = 8,
-    titlefontsize  = 12,
+    guidefontsize  = 10,
+    tickfontsize   = 8,
+    legendfontsize = 7,
+    titlefontsize  = 11,
     grid           = :y,
     gridalpha      = 0.15,
     framestyle     = :box,
     foreground_color_border = :gray40,
-    size           = (600, 380),
-    dpi            = 300,
-    margin         = 4Plots.mm,
-    bottom_margin  = 6Plots.mm,
-    left_margin    = 5Plots.mm,
+    margin         = 3Plots.mm,
+    bottom_margin  = 5Plots.mm,
+    left_margin    = 4Plots.mm,
 )
 
 n_methods = length(method_order)
 bar_width = 0.25
 offsets = [-(n_methods-1)/2 * bar_width + (i-1) * bar_width for i in 1:n_methods]
 
-# ── Cross-family KL ──────────────────────────────────────────────────────────
+# helper: build a grouped bar panel from df
+function make_bar_panel(df, family_names, method_order, method_colors, offsets, bar_width;
+                        val_col::Symbol, err_col::Symbol, ylabel::String, title::String,
+                        legend=:none, ylims=(0, Inf), panel_defaults...)
+    p = plot(; xlabel="", ylabel=ylabel, title=title, legend=legend, ylims=ylims, panel_defaults...)
+    for (mi, m) in enumerate(method_order)
+        sub = filter(r -> r.Method == m, df)
+        vals = Float64[]
+        errs = Float64[]
+        for fam_name in family_names
+            row = filter(r -> r.Family == fam_name, sub)
+            if nrow(row) > 0
+                push!(vals, getproperty(row, val_col)[1])
+                push!(errs, getproperty(row, err_col)[1])
+            else
+                push!(vals, NaN)
+                push!(errs, 0.0)
+            end
+        end
+        x_pos = collect(1:length(family_names)) .+ offsets[mi]
+        bar!(p, x_pos, vals; bar_width=bar_width, yerror=errs,
+             label=m, color=method_colors[m], alpha=0.85, lw=0.5, linecolor=:gray30)
+    end
+    plot!(p, xticks=(1:length(family_names), family_names), xrotation=0)
+    return p
+end
 
-p_kl = plot(;
-    xlabel = "",
-    ylabel = "KL divergence (AA composition)",
-    title  = "Amino acid composition fidelity across families",
-    legend = :topright,
-    ylims  = (0, Inf),
-    pnas_defaults...
+p_kl = make_bar_panel(df, family_names, method_order, method_colors, offsets, bar_width;
+    val_col=:KL_mean, err_col=:KL_se,
+    ylabel="KL divergence", title="(A)  AA composition fidelity",
+    legend=:topright, panel_defaults...)
+
+p_nov = make_bar_panel(df, family_names, method_order, method_colors, offsets, bar_width;
+    val_col=:Nov_mean, err_col=:Nov_se,
+    ylabel="Novelty (1 − max seq. identity)", title="(B)  Sample novelty",
+    legend=:none, panel_defaults...)
+
+p_sid = make_bar_panel(df, family_names, method_order, method_colors, offsets, bar_width;
+    val_col=:SID_mean, err_col=:SID_se,
+    ylabel="Nearest sequence identity", title="(C)  Sequence identity",
+    legend=:none, ylims=(0, 1.05), panel_defaults...)
+
+# composite: 3 rows × 1 column
+p_composite = plot(p_kl, p_nov, p_sid;
+    layout = (3, 1),
+    size   = (700, 900),
+    dpi    = 300,
 )
 
-for (mi, m) in enumerate(method_order)
-    sub = filter(r -> r.Method == m, df)
-    kl_vals = Float64[]
-    kl_errs = Float64[]
-    for fam_name in family_names
-        row = filter(r -> r.Family == fam_name, sub)
-        if nrow(row) > 0
-            push!(kl_vals, row.KL_mean[1])
-            push!(kl_errs, row.KL_se[1])
-        else
-            push!(kl_vals, NaN)
-            push!(kl_errs, 0.0)
-        end
-    end
+savefig(p_composite, joinpath(PFAM_FIG_DIR, "cross_family_composite.pdf"))
+@info "  Saved cross_family_composite.pdf"
 
-    x_pos = collect(1:length(family_names)) .+ offsets[mi]
-    bar!(p_kl, x_pos, kl_vals;
-         bar_width = bar_width,
-         yerror    = kl_errs,
-         label     = m,
-         color     = method_colors[m],
-         alpha     = 0.85,
-         lw        = 0.5,
-         linecolor = :gray30,
-    )
-end
-plot!(p_kl, xticks=(1:length(family_names), family_names), xrotation=0)
-savefig(p_kl, joinpath(PFAM_FIG_DIR, "cross_family_kl.pdf"))
-@info "  Saved cross_family_kl.pdf"
-
-# ── Cross-family Novelty ─────────────────────────────────────────────────────
-
-p_nov = plot(;
-    xlabel = "",
-    ylabel = "Novelty (1 − max seq. identity)",
-    title  = "Sample novelty across families",
-    legend = :topleft,
-    ylims  = (0, Inf),
-    pnas_defaults...
-)
-
-for (mi, m) in enumerate(method_order)
-    sub = filter(r -> r.Method == m, df)
-    nov_vals = Float64[]
-    nov_errs = Float64[]
-    for fam_name in family_names
-        row = filter(r -> r.Family == fam_name, sub)
-        if nrow(row) > 0
-            push!(nov_vals, row.Nov_mean[1])
-            push!(nov_errs, row.Nov_se[1])
-        else
-            push!(nov_vals, NaN)
-            push!(nov_errs, 0.0)
-        end
-    end
-
-    x_pos = collect(1:length(family_names)) .+ offsets[mi]
-    bar!(p_nov, x_pos, nov_vals;
-         bar_width = bar_width,
-         yerror    = nov_errs,
-         label     = m,
-         color     = method_colors[m],
-         alpha     = 0.85,
-         lw        = 0.5,
-         linecolor = :gray30,
-    )
-end
-plot!(p_nov, xticks=(1:length(family_names), family_names), xrotation=0)
+# also save individual panels for flexibility
+savefig(p_kl,  joinpath(PFAM_FIG_DIR, "cross_family_kl.pdf"))
 savefig(p_nov, joinpath(PFAM_FIG_DIR, "cross_family_novelty.pdf"))
-@info "  Saved cross_family_novelty.pdf"
-
-# ── Cross-family SeqID ───────────────────────────────────────────────────────
-
-p_sid = plot(;
-    xlabel = "",
-    ylabel = "Nearest sequence identity",
-    title  = "Sequence identity to nearest stored pattern",
-    legend = :topright,
-    ylims  = (0, 1.05),
-    pnas_defaults...
-)
-
-for (mi, m) in enumerate(method_order)
-    sub = filter(r -> r.Method == m, df)
-    sid_vals = Float64[]
-    sid_errs = Float64[]
-    for fam_name in family_names
-        row = filter(r -> r.Family == fam_name, sub)
-        if nrow(row) > 0
-            push!(sid_vals, row.SID_mean[1])
-            push!(sid_errs, row.SID_se[1])
-        else
-            push!(sid_vals, NaN)
-            push!(sid_errs, 0.0)
-        end
-    end
-
-    x_pos = collect(1:length(family_names)) .+ offsets[mi]
-    bar!(p_sid, x_pos, sid_vals;
-         bar_width = bar_width,
-         yerror    = sid_errs,
-         label     = m,
-         color     = method_colors[m],
-         alpha     = 0.85,
-         lw        = 0.5,
-         linecolor = :gray30,
-    )
-end
-plot!(p_sid, xticks=(1:length(family_names), family_names), xrotation=0)
 savefig(p_sid, joinpath(PFAM_FIG_DIR, "cross_family_seqid.pdf"))
-@info "  Saved cross_family_seqid.pdf"
 
 @info "Done."

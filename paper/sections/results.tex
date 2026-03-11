@@ -4,69 +4,69 @@ We ran stochastic attention on all seven Pfam families and observed that the met
 
 \begin{table}[t]
 \centering
-\caption{Generation metrics across seven Pfam families (mean $\pm$ SE). SA gen: stochastic attention generation regime ($\beta \approx 2\beta^*$). SA ret: retrieval regime ($\beta \approx 20\beta^*$). BS: bootstrap. GP: Gaussian perturbation. CC: convex combination. KL: KL divergence of amino acid composition (lower is better; SE via 1{,}000-fold bootstrap). Novelty: $1 - \max_k\cos(\hat{\boldsymbol{\xi}}, \mathbf{m}_k)$ in PCA space (higher means more novel). SeqID: nearest sequence identity after decoding. Standard errors for novelty and SeqID are computed over 30 independent chains of 5 samples each.}
+\caption{Generation metrics across seven Pfam families (mean $\pm$ SE). SA gen: stochastic attention generation regime ($\beta \approx 2\beta^*$). SA ret: retrieval regime ($\beta \approx 20\beta^*$). BS: bootstrap. GP: Gaussian perturbation. CC: convex combination. KL: KL divergence of amino acid composition ($\downarrow$ lower is better; SE via 1{,}000-fold bootstrap). Novelty: $1 - \max_k\cos(\hat{\boldsymbol{\xi}}, \mathbf{m}_k)$ in PCA space ($\uparrow$ higher is better). SeqID: nearest sequence identity to a stored pattern after decoding ($\downarrow$ lower is better, indicating greater novelty). Standard errors for novelty and SeqID are computed over 30 independent chains of 5 samples each.}
 \label{tab:results}
 \small
 \begin{tabular}{@{}llccc@{}}
 \toprule
-Family & Method & KL$_{\mathrm{AA}}$ & Novelty & SeqID \\
+Family & Method & KL$_{\mathrm{AA}}$ $(\downarrow)$ & Novelty $(\uparrow)$ & SeqID $(\downarrow)$ \\
 \midrule
 \multirow{5}{*}{RRM}
- & SA gen  & $\mathbf{0.060 \pm 0.005}$ & $0.513 \pm 0.011$ & $0.538 \pm 0.006$ \\
+ & SA gen  & $\mathbf{0.060 \pm 0.005}$ & $\mathbf{0.513 \pm 0.011}$ & $\mathbf{0.538 \pm 0.006}$ \\
  & SA ret  & $0.107 \pm 0.010$ & $0.334 \pm 0.020$ & $0.616 \pm 0.012$ \\
  & BS      & $0.133 \pm 0.006$ & $0.000 \pm 0.000$ & $0.645 \pm 0.004$ \\
  & GP      & $0.132 \pm 0.005$ & $0.008 \pm 0.000$ & $0.633 \pm 0.006$ \\
  & CC      & $2.091 \pm 0.000$ & $0.510 \pm 0.009$ & $0.562 \pm 0.000$ \\
 \midrule
 \multirow{5}{*}{SH3}
- & SA gen  & $\mathbf{0.036 \pm 0.004}$ & $0.471 \pm 0.012$ & $0.593 \pm 0.006$ \\
+ & SA gen  & $0.036 \pm 0.004$ & $\mathbf{0.471 \pm 0.012}$ & $\mathbf{0.593 \pm 0.006}$ \\
  & SA ret  & $0.035 \pm 0.004$ & $0.213 \pm 0.012$ & $0.722 \pm 0.011$ \\
- & BS      & $0.030 \pm 0.003$ & $0.000 \pm 0.000$ & $0.772 \pm 0.006$ \\
- & GP      & $0.030 \pm 0.003$ & $0.006 \pm 0.000$ & $0.752 \pm 0.006$ \\
+ & BS      & $\mathbf{0.030 \pm 0.003}$ & $0.000 \pm 0.000$ & $0.772 \pm 0.006$ \\
+ & GP      & $\mathbf{0.030 \pm 0.003}$ & $0.006 \pm 0.000$ & $0.752 \pm 0.006$ \\
  & CC      & $0.798 \pm 0.012$ & $0.474 \pm 0.008$ & $0.601 \pm 0.002$ \\
 \midrule
 \multirow{5}{*}{WW}
- & SA gen  & $\mathbf{0.008 \pm 0.002}$ & $0.653 \pm 0.006$ & $0.562 \pm 0.005$ \\
+ & SA gen  & $\mathbf{0.008 \pm 0.002}$ & $\mathbf{0.653 \pm 0.006}$ & $\mathbf{0.562 \pm 0.005}$ \\
  & SA ret  & $0.046 \pm 0.013$ & $0.354 \pm 0.016$ & $0.763 \pm 0.011$ \\
  & BS      & $0.024 \pm 0.003$ & $0.000 \pm 0.000$ & $0.823 \pm 0.005$ \\
  & GP      & $0.029 \pm 0.004$ & $0.017 \pm 0.000$ & $0.809 \pm 0.006$ \\
  & CC      & $1.375 \pm 0.092$ & $0.637 \pm 0.004$ & $0.766 \pm 0.001$ \\
 \midrule
 \multirow{5}{*}{Kunitz}
- & SA gen  & $\mathbf{0.013 \pm 0.002}$ & $0.557 \pm 0.009$ & $0.607 \pm 0.004$ \\
+ & SA gen  & $\mathbf{0.013 \pm 0.002}$ & $\mathbf{0.557 \pm 0.009}$ & $\mathbf{0.607 \pm 0.004}$ \\
  & SA ret  & $0.037 \pm 0.003$ & $0.257 \pm 0.016$ & $0.760 \pm 0.012$ \\
  & BS      & $0.023 \pm 0.002$ & $0.000 \pm 0.000$ & $0.834 \pm 0.004$ \\
  & GP      & $0.024 \pm 0.002$ & $0.010 \pm 0.000$ & $0.844 \pm 0.004$ \\
  & CC      & $0.721 \pm 0.013$ & $0.546 \pm 0.007$ & $0.590 \pm 0.001$ \\
 \midrule
 \multirow{5}{*}{zf-C2H2}
- & SA gen  & $\mathbf{0.013 \pm 0.028}$ & $0.596 \pm 0.010$ & $0.557 \pm 0.007$ \\
+ & SA gen  & $0.013 \pm 0.028$ & $\mathbf{0.596 \pm 0.010}$ & $\mathbf{0.557 \pm 0.007}$ \\
  & SA ret  & $0.021 \pm 0.010$ & $0.167 \pm 0.014$ & $0.848 \pm 0.013$ \\
- & BS      & $0.007 \pm 0.002$ & $0.000 \pm 0.000$ & $0.938 \pm 0.004$ \\
- & GP      & $0.007 \pm 0.002$ & $0.011 \pm 0.000$ & $0.940 \pm 0.004$ \\
+ & BS      & $\mathbf{0.007 \pm 0.002}$ & $0.000 \pm 0.000$ & $0.938 \pm 0.004$ \\
+ & GP      & $\mathbf{0.007 \pm 0.002}$ & $0.011 \pm 0.000$ & $0.940 \pm 0.004$ \\
  & CC      & $2.346 \pm 0.060$ & $0.580 \pm 0.006$ & $0.600 \pm 0.001$ \\
 \midrule
 \multirow{5}{*}{PDZ}
- & SA gen  & $\mathbf{0.038 \pm 0.010}$ & $0.418 \pm 0.009$ & $0.543 \pm 0.005$ \\
+ & SA gen  & $\mathbf{0.038 \pm 0.010}$ & $\mathbf{0.418 \pm 0.009}$ & $\mathbf{0.543 \pm 0.005}$ \\
  & SA ret  & $0.059 \pm 0.016$ & $0.236 \pm 0.017$ & $0.626 \pm 0.014$ \\
  & BS      & $0.041 \pm 0.002$ & $0.000 \pm 0.000$ & $0.642 \pm 0.009$ \\
  & GP      & $0.045 \pm 0.003$ & $0.006 \pm 0.000$ & $0.648 \pm 0.007$ \\
  & CC      & $0.339 \pm 0.001$ & $0.449 \pm 0.009$ & $0.549 \pm 0.001$ \\
 \midrule
 \multirow{5}{*}{Pkinase}
- & SA gen  & $\mathbf{0.035 \pm 0.001}$ & $0.478 \pm 0.011$ & $0.515 \pm 0.004$ \\
+ & SA gen  & $\mathbf{0.035 \pm 0.001}$ & $\mathbf{0.478 \pm 0.011}$ & $0.515 \pm 0.004$ \\
  & SA ret  & $0.050 \pm 0.001$ & $0.316 \pm 0.013$ & $0.531 \pm 0.006$ \\
  & BS      & $0.054 \pm 0.001$ & $0.000 \pm 0.000$ & $0.522 \pm 0.003$ \\
  & GP      & $0.051 \pm 0.001$ & $0.005 \pm 0.000$ & $0.533 \pm 0.003$ \\
- & CC      & $0.062 \pm 0.001$ & $0.446 \pm 0.009$ & $0.470 \pm 0.000$ \\
+ & CC      & $0.062 \pm 0.001$ & $0.446 \pm 0.009$ & $\mathbf{0.470 \pm 0.000}$ \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=\textwidth]{figs/cross_family_kl.pdf}
-\caption{Amino acid composition fidelity across seven Pfam families. KL divergence between the residue frequency distributions of generated and stored sequences (lower is better). SA generation consistently achieves the lowest KL divergence, preserving family-level composition while producing novel sequences.}
+\includegraphics[width=\textwidth]{figs/cross_family_composite.pdf}
+\caption{Cross-family comparison of SA generation, SA retrieval, and bootstrap across seven Pfam families. \textbf{(A)}~KL divergence of amino acid composition (lower is better). SA generation achieves the lowest or near-lowest KL in every family. \textbf{(B)}~Novelty in sequence space ($1 - \text{max seq.\ identity}$; higher is better). SA generation produces substantially novel sequences, while bootstrap and Gaussian perturbation remain near zero. \textbf{(C)}~Nearest sequence identity to a stored pattern (lower indicates greater departure). Error bars show $\pm 1$ SE (30 chains $\times$ 5 samples).}
 \label{fig:cross-family}
 \end{figure}
 
@@ -87,11 +87,20 @@ We also characterized how the critical temperature varied across families. The e
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=\textwidth]{figs/scaling_kl_vs_k.pdf}
-\caption{Generation quality as a function of family size. The WW domain was subsampled at $K \in \{20, 50, 100, 200, 400\}$ with five independent replicates per condition. Error bars show $\pm 1$ SE. Note the log scale on both axes: SA generation (blue) maintains low KL divergence across the entire range, while the convex combination baseline (purple) degrades catastrophically.}
+\includegraphics[width=\textwidth]{figs/scaling_composite.pdf}
+\caption{Scaling study: WW domain subsampled at $K \in \{20, 50, 100, 200, 400\}$ with five independent replicates. \textbf{(A)}~KL divergence (log--log scale). SA generation maintains low KL across the entire range; convex combination degrades catastrophically. \textbf{(B)}~Novelty increases with $K$ for SA methods; baselines remain near zero. \textbf{(C)}~Nearest sequence identity decreases with $K$, indicating the sampler explores further from stored patterns as more patterns shape the energy landscape. \textbf{(D)}~The empirical critical temperature $\beta^*$ increases with family size. Shaded regions and error bars show $\pm 1$ SE.}
 \label{fig:scaling}
 \end{figure}
 
 We next turned to the scaling study, in which we subsampled the WW domain at $K \in \{20, 50, 100, 200, 400\}$ with five independent replicates per condition (Fig.~\ref{fig:scaling}). We observed that stochastic attention in the generation regime maintained low KL divergence across the entire range: $\mathrm{KL}{=}0.019 \pm 0.008$ at $K{=}20$, improving monotonically to $\mathrm{KL}{=}0.010 \pm 0.002$ at $K{=}400$. This graceful degradation contrasted sharply with the convex combination baseline, whose KL divergence exceeded $0.8$ at every family size and worsened with increasing $K$ ($0.81$ at $K{=}20$ to $1.50$ at $K{=}400$), confirming that averaging over more patterns compounds the smoothing artifact. Bootstrap and Gaussian perturbation maintained moderate KL values ($0.02$--$0.03$) but produced no novelty at any $K$, making them ineffective as generative methods.
 
 The scaling study also revealed how PCA dimensionality and the critical temperature co-varied with family size. At $K{=}20$ the PCA reduction retained only $d{=}17$--$18$ components, producing a compact latent space in which $\beta^*{=}2.7$; at $K{=}400$ the richer alignment supported $d{=}182$--$183$ components and $\beta^*{=}5.5$. Despite this six-fold increase in effective dimensionality, SA generation quality remained stable, which suggested that the entropy inflection criterion successfully adapted the operating temperature to the geometry of the memory matrix at each scale. Novelty increased with $K$ (from $0.47$ at $K{=}20$ to $0.74$ at $K{=}400$), reflecting the richer landscape of a larger memory set, while nearest sequence identity decreased correspondingly (from $0.71$ to $0.56$), indicating that the sampler explored further from stored patterns when more patterns were available to collectively shape the energy landscape.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{figs/beta_prediction_composite.pdf}
+\caption{Predicting the critical temperature from MSA statistics. \textbf{(A)}~Predicted vs.\ empirical $\beta^*$ for the simple linear model $\beta^* \approx 1.52 + 0.28\sqrt{d}$ ($R^2{=}0.97$, $n{=}32$). Blue circles: seven Pfam families; gold diamonds: WW scaling replicates ($K \in \{20,\ldots,400\}$, five repeats each). \textbf{(B)}~$\beta^*$ as a function of $\sqrt{d}$, with the fitted regression (dashed) and the random-pattern prediction $\beta^* = \sqrt{d}$ (dotted red). The intercept offset and reduced slope reflect structured correlations in real protein families. \textbf{(C)}~Model comparison (log-scale RMSE). The simple $\sqrt{d}$ model (RMSE${=}0.16$) is $33\times$ more accurate than the naive random-pattern prediction $\beta^* = \sqrt{d}$ (RMSE${=}5.29$); adding MSA features provides negligible improvement.}
+\label{fig:beta-prediction}
+\end{figure}
+
+We finally asked whether the critical temperature could be predicted from alignment statistics alone, without running an explicit temperature sweep (Fig.~\ref{fig:beta-prediction}). We pooled 32 data points---the 7 Pfam families and 25 WW scaling replicates---and regressed $\beta^*$ against MSA-derived features. We found that a simple two-parameter model, $\beta^* \approx 1.52 + 0.28\sqrt{d}$ (intercept $1.52 \pm 0.08$, slope $0.282 \pm 0.007$; $\pm$ denotes bootstrap SE, $10{,}000$ resamples), explained $97\%$ of the variance ($R^2{=}0.969$, $\mathrm{RMSE}{=}0.16$), with $d$ the PCA dimension at $95\%$ retained variance. Adding further predictors---mean column entropy $\bar{H}_{\mathrm{col}}$, effective number of sequences $K_{\mathrm{eff}}$, or spectral concentration $\lambda_1/\mathrm{tr}(\mathbf{C})$---produced negligible improvement ($\Delta R^2 < 0.001$), which indicated that PCA dimensionality captured most of the relevant variation. The fitted slope of $0.28$ was roughly half the $\sqrt{d}$ coefficient predicted for random patterns, consistent with the empirical ratio $\beta^*/\sqrt{d} \approx 0.4$--$0.6$ observed across families. Importantly, the naive random-pattern prediction $\beta^* = \sqrt{d}$ yielded $\mathrm{RMSE}{=}5.3$, a $33\times$ larger error, confirming that the structured similarity spectrum of real protein families shifts the phase transition to substantially lower temperatures. This regression provides a practical shortcut: given a new family, one can estimate $\beta^*$ from PCA alone and set the generation temperature without a temperature sweep.

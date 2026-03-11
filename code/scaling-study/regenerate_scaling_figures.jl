@@ -79,114 +79,92 @@ pnas_defaults = (
 )
 
 # ══════════════════════════════════════════════════════════════════════════════
-# Fig 3a — KL divergence vs K  (LOG y-axis so CC doesn't crush everything)
+# Build individual panels, then compose into a 2×2 figure
 # ══════════════════════════════════════════════════════════════════════════════
 
 K_ticks = ([20, 50, 100, 200, 400], ["20", "50", "100", "200", "400"])
 
-p_kl = plot(;
-    xlabel = "Family size (K)",
-    ylabel = "KL divergence",
-    title  = "Amino acid composition fidelity",
-    xscale = :log10,
-    yscale = :log10,
-    xticks = K_ticks,
-    yticks = ([0.01, 0.1, 1.0], ["0.01", "0.1", "1.0"]),
-    legend = :topright,
-    pnas_defaults...
+panel_defaults = (
+    fontfamily   = "Helvetica",
+    guidefontsize  = 10,
+    tickfontsize   = 8,
+    legendfontsize = 7,
+    titlefontsize  = 11,
+    grid           = :y,
+    gridalpha      = 0.15,
+    framestyle     = :box,
+    foreground_color_border = :gray40,
+    margin         = 3Plots.mm,
+    bottom_margin  = 5Plots.mm,
+    left_margin    = 4Plots.mm,
 )
 
-for m in method_order
-    sub = sort(filter(r -> r.Method == m, agg), :K)
-    isempty(sub) && continue
-    # on log scale, use explicit error bars not ribbon (ribbon can go negative)
-    plot!(p_kl, sub.K, sub.KL_mean,
-          label       = method_labels[m],
-          lw          = PNAS_LW,
-          color       = method_colors[m],
-          markershape = method_markers[m],
-          markersize  = PNAS_MS,
-          markercolor = method_colors[m],
-          yerror      = sub.KL_se,
+# helper for line+ribbon panels
+function scaling_panel(agg, method_order, method_labels, method_colors, method_markers;
+                       val_col::Symbol, se_col::Symbol,
+                       ylabel::String, title::String,
+                       use_log_y::Bool=false, legend=:none,
+                       ylims=:auto, use_yerror::Bool=false)
+    kw = Dict{Symbol,Any}(
+        :xlabel => "Family size (K)",
+        :ylabel => ylabel,
+        :title  => title,
+        :xscale => :log10,
+        :xticks => K_ticks,
+        :legend => legend,
     )
+    if use_log_y
+        kw[:yscale] = :log10
+        kw[:yticks] = ([0.01, 0.1, 1.0], ["0.01", "0.1", "1.0"])
+    end
+    ylims != :auto && (kw[:ylims] = ylims)
+
+    p = plot(; panel_defaults..., kw...)
+    for m in method_order
+        sub = sort(filter(r -> r.Method == m, agg), :K)
+        isempty(sub) && continue
+        if use_yerror
+            plot!(p, sub.K, getproperty(sub, val_col);
+                  label=method_labels[m], lw=PNAS_LW, color=method_colors[m],
+                  markershape=method_markers[m], markersize=PNAS_MS,
+                  markercolor=method_colors[m],
+                  yerror=getproperty(sub, se_col))
+        else
+            plot!(p, sub.K, getproperty(sub, val_col);
+                  ribbon=getproperty(sub, se_col), fillalpha=PNAS_ALPHA,
+                  label=method_labels[m], lw=PNAS_LW, color=method_colors[m],
+                  markershape=method_markers[m], markersize=PNAS_MS,
+                  markercolor=method_colors[m])
+        end
+    end
+    return p
 end
-savefig(p_kl, joinpath(SCALE_FIG_DIR, "scaling_kl_vs_k.pdf"))
-@info "  Saved scaling_kl_vs_k.pdf"
 
-# ══════════════════════════════════════════════════════════════════════════════
-# Fig 3b — Novelty vs K
-# ══════════════════════════════════════════════════════════════════════════════
+# (A) KL — log-log
+p_kl = scaling_panel(agg, method_order, method_labels, method_colors, method_markers;
+    val_col=:KL_mean, se_col=:KL_se,
+    ylabel="KL divergence", title="(A)  AA composition fidelity",
+    use_log_y=true, use_yerror=true, legend=:topright)
 
-p_nov = plot(;
-    xlabel = "Family size (K)",
-    ylabel = "Novelty (1 − max cosine sim.)",
-    title  = "Sample novelty",
-    xscale = :log10,
-    xticks = K_ticks,
-    legend = :right,
-    ylims  = (-0.05, 0.85),
-    pnas_defaults...
-)
+# (B) Novelty
+p_nov = scaling_panel(agg, method_order, method_labels, method_colors, method_markers;
+    val_col=:Nov_mean, se_col=:Nov_se,
+    ylabel="Novelty", title="(B)  Sample novelty",
+    ylims=(-0.05, 0.85))
 
-for m in method_order
-    sub = sort(filter(r -> r.Method == m, agg), :K)
-    isempty(sub) && continue
-    plot!(p_nov, sub.K, sub.Nov_mean,
-          ribbon      = sub.Nov_se,
-          fillalpha   = PNAS_ALPHA,
-          label       = method_labels[m],
-          lw          = PNAS_LW,
-          color       = method_colors[m],
-          markershape = method_markers[m],
-          markersize  = PNAS_MS,
-          markercolor = method_colors[m],
-    )
-end
-savefig(p_nov, joinpath(SCALE_FIG_DIR, "scaling_novelty_vs_k.pdf"))
-@info "  Saved scaling_novelty_vs_k.pdf"
+# (C) SeqID
+p_sid = scaling_panel(agg, method_order, method_labels, method_colors, method_markers;
+    val_col=:SID_mean, se_col=:SID_se,
+    ylabel="Nearest seq. identity", title="(C)  Sequence identity")
 
-# ══════════════════════════════════════════════════════════════════════════════
-# Fig 3c — Sequence identity vs K
-# ══════════════════════════════════════════════════════════════════════════════
-
-p_sid = plot(;
-    xlabel = "Family size (K)",
-    ylabel = "Nearest sequence identity",
-    title  = "Sequence identity to nearest stored pattern",
-    xscale = :log10,
-    xticks = K_ticks,
-    legend = :right,
-    pnas_defaults...
-)
-
-for m in method_order
-    sub = sort(filter(r -> r.Method == m, agg), :K)
-    isempty(sub) && continue
-    plot!(p_sid, sub.K, sub.SID_mean,
-          ribbon      = sub.SID_se,
-          fillalpha   = PNAS_ALPHA,
-          label       = method_labels[m],
-          lw          = PNAS_LW,
-          color       = method_colors[m],
-          markershape = method_markers[m],
-          markersize  = PNAS_MS,
-          markercolor = method_colors[m],
-    )
-end
-savefig(p_sid, joinpath(SCALE_FIG_DIR, "scaling_seqid_vs_k.pdf"))
-@info "  Saved scaling_seqid_vs_k.pdf"
-
-# ══════════════════════════════════════════════════════════════════════════════
-# Fig 3d — β* vs K
-# ══════════════════════════════════════════════════════════════════════════════
-
+# (D) β* vs K — single method
 sa_gen_agg = sort(filter(r -> r.Method == "SA (generation)", agg), :K)
 p_beta = plot(sa_gen_agg.K, sa_gen_agg.β_star_mean;
     ribbon      = sa_gen_agg.β_star_se,
     fillalpha   = PNAS_ALPHA,
     xlabel      = "Family size (K)",
     ylabel      = "β*",
-    title       = "Critical temperature",
+    title       = "(D)  Critical temperature",
     xscale      = :log10,
     xticks      = K_ticks,
     lw          = PNAS_LW,
@@ -196,11 +174,22 @@ p_beta = plot(sa_gen_agg.K, sa_gen_agg.β_star_mean;
     markercolor = method_colors["SA (generation)"],
     label       = "β* (empirical)",
     legend      = :topleft,
-    pnas_defaults...
+    panel_defaults...
 )
-# reference line: √d prediction for comparison
-d_vals = sort(filter(r -> r.Method == "SA (generation)", agg), :K)
-savefig(p_beta, joinpath(SCALE_FIG_DIR, "scaling_beta_star_vs_k.pdf"))
-@info "  Saved scaling_beta_star_vs_k.pdf"
 
-@info "Done — all scaling figures regenerated (PNAS quality, SE error bands, log KL axis)."
+# ── Composite: 2×2 ───────────────────────────────────────────────────────────
+p_composite = plot(p_kl, p_nov, p_sid, p_beta;
+    layout = (2, 2),
+    size   = (900, 700),
+    dpi    = 300,
+)
+savefig(p_composite, joinpath(SCALE_FIG_DIR, "scaling_composite.pdf"))
+@info "  Saved scaling_composite.pdf"
+
+# also save individual panels for flexibility
+savefig(p_kl,   joinpath(SCALE_FIG_DIR, "scaling_kl_vs_k.pdf"))
+savefig(p_nov,  joinpath(SCALE_FIG_DIR, "scaling_novelty_vs_k.pdf"))
+savefig(p_sid,  joinpath(SCALE_FIG_DIR, "scaling_seqid_vs_k.pdf"))
+savefig(p_beta, joinpath(SCALE_FIG_DIR, "scaling_beta_star_vs_k.pdf"))
+
+@info "Done — all scaling figures regenerated (PNAS quality, SE, composite + individual)."

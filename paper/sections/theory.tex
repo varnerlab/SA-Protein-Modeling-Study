@@ -34,7 +34,7 @@ For random memories on $\mathbb{S}^{d-1}$, the similarities have variance $\math
 \begin{equation}\label{eq:beta-prediction}
     \beta^* \approx f\!\bigl(\bar{H}_{\mathrm{col}},\; K_{\mathrm{eff}},\; \lambda_1/\mathrm{tr}(\mathbf{C})\bigr),
 \end{equation}
-where $\bar{H}_{\mathrm{col}}$ is the mean per-column entropy, $\lambda_1$ is the leading eigenvalue of the sequence covariance $\mathbf{C}$, and the functional form $f$ is to be determined empirically across families.
+where $\bar{H}_{\mathrm{col}}$ is the mean per-column entropy, $\lambda_1$ is the leading eigenvalue of the sequence covariance $\mathbf{C}$, and the functional form $f$ is determined empirically across families. As we show in Section~5, a simple linear model $\beta^* \approx 1.52\,(\pm 0.08) + 0.28\,(\pm 0.01)\sqrt{d}$ captures $97\%$ of the variance across seven protein families and a range of family sizes ($K = 20$--$420$).
 
 \subsection{Regularity and Convergence}\label{sec:convergence}
 The modern Hopfield energy has Lipschitz-continuous gradient with constant $L = 1 + \beta\sigma_{\max}^2/2$, where $\sigma_{\max} = \|\mathbf{X}\|_{\mathrm{op}}$, and satisfies the dissipativity condition $\langle \nabla E(\boldsymbol{\xi}), \boldsymbol{\xi} \rangle \geq \|\boldsymbol{\xi}\|^2/2 - M^2/2$ with $M = \max_k \|\mathbf{m}_k\|$~\cite{alswaidanVarnerStochasticAttention2025}. When $\beta\sigma_{\max}^2 < 2$, the energy is strictly convex and ULA iterates converge to $p_\beta$ in Wasserstein-2 distance at a geometric rate~\cite{dalalyanTheoreticalGuaranteesApproximate2017,durmusNonasymptoticAnalysisUnadjusted2017}.
