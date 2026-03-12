@@ -10,7 +10,8 @@
       "Bash(cd /Users/jdv27/Desktop/julia_work/SA-Protein-Modeling-Study/code && julia --project=. -e 'using Pkg; Pkg.instantiate\\(\\)' 2>&1 | tail -5)",
       "Bash(cd /Users/jdv27/Desktop/julia_work/SA-Protein-Modeling-Study/code/pfam-families && julia --project=../. run_pfam_families.jl 2>&1)",
       "Bash(mv /Users/jdv27/Desktop/julia_work/SA-Protein-Modeling-Study/code/data/PF0* /Users/jdv27/Desktop/julia_work/SA-Protein-Modeling-Study/code/pfam-families/data/ && mv /Users/jdv27/Desktop/julia_work/SA-Protein-Modeling-Study/code/data/pfam_*.csv /Users/jdv27/Desktop/julia_work/SA-Protein-Modeling-Study/code/pfam-families/data/)",
-      "Bash(chmod +x /Users/jdv27/Desktop/julia_work/SA-Protein-Modeling-Study/paper/Build.sh)"
+      "Bash(chmod +x /Users/jdv27/Desktop/julia_work/SA-Protein-Modeling-Study/paper/Build.sh)",
+      "Bash(sleep 45 && ps -p 8470 -o pid,rss,vsz,command | head -3 && echo \"---\" && tail -5 /tmp/msat_run.log 2>&1)"
     ]
   }
 }

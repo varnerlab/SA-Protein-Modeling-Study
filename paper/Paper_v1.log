@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  11 MAR 2026 19:48
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  12 MAR 2026 10:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -645,20 +645,22 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 
-(./sections/introduction.tex) (./sections/relatedwork.tex
+(./sections/introduction.tex)
 
 [1
 
 
 {/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/loc
 al/texlive/2025/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/texlive/2025
-/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}])
-(./sections/theory.tex
+/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}]
+(./sections/relatedwork.tex) (./sections/theory.tex
 
-[2]) (./sections/experiments.tex
+[2])
 
-[3]) (./sections/results.tex
-<figs/cross_family_composite.pdf, id=151, 702.625pt x 903.375pt>
+[3] (./sections/experiments.tex
+
+[4]) (./sections/results.tex
+<figs/cross_family_composite.pdf, id=168, 702.625pt x 903.375pt>
 File: figs/cross_family_composite.pdf Graphic file (type pdf)
 <use figs/cross_family_composite.pdf>
 Package pdftex.def Info: figs/cross_family_composite.pdf  used on input line 68
@@ -666,57 +668,77 @@ Package pdftex.def Info: figs/cross_family_composite.pdf  used on input line 68
 (pdftex.def)             Requested size: 397.48499pt x 511.06949pt.
 
 
-[4]
-<figs/aa_freq_example.pdf, id=167, 702.625pt x 501.875pt>
+[5]
+<figs/aa_freq_example.pdf, id=181, 702.625pt x 501.875pt>
 File: figs/aa_freq_example.pdf Graphic file (type pdf)
 <use figs/aa_freq_example.pdf>
 Package pdftex.def Info: figs/aa_freq_example.pdf  used on input line 79.
 (pdftex.def)             Requested size: 357.73405pt x 255.53166pt.
-<figs/scaling_composite.pdf, id=169, 903.375pt x 702.625pt>
+<figs/scaling_composite.pdf, id=183, 903.375pt x 702.625pt>
 File: figs/scaling_composite.pdf Graphic file (type pdf)
 <use figs/scaling_composite.pdf>
 Package pdftex.def Info: figs/scaling_composite.pdf  used on input line 90.
 (pdftex.def)             Requested size: 397.48499pt x 309.15594pt.
-<figs/beta_prediction_composite.pdf, id=171, 1104.125pt x 381.425pt>
+<figs/beta_prediction_composite.pdf, id=185, 1104.125pt x 381.425pt>
 File: figs/beta_prediction_composite.pdf Graphic file (type pdf)
 <use figs/beta_prediction_composite.pdf>
 Package pdftex.def Info: figs/beta_prediction_composite.pdf  used on input line
  101.
 (pdftex.def)             Requested size: 397.48499pt x 137.31288pt.
-)
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[5] (./sections/discussion.tex) (./Paper_v1.bbl
+[6]
+<figs/baseline_comparison_composite.pdf, id=194, 803.0pt x 1003.75pt>
+File: figs/baseline_comparison_composite.pdf Graphic file (type pdf)
+<use figs/baseline_comparison_composite.pdf>
+Package pdftex.def Info: figs/baseline_comparison_composite.pdf  used on input 
+line 110.
+(pdftex.def)             Requested size: 397.48499pt x 496.86545pt.
+<figs/structure_validation_composite.pdf, id=196, 1003.75pt x 351.3125pt>
+File: figs/structure_validation_composite.pdf Graphic file (type pdf)
+<use figs/structure_validation_composite.pdf>
+Package pdftex.def Info: figs/structure_validation_composite.pdf  used on input
+ line 121.
+(pdftex.def)             Requested size: 397.48499pt x 139.12338pt.
+) (./sections/discussion.tex
 
-[6])
-
-[7] (./sections/appendix.tex)
+[7]) (./Paper_v1.bbl
 
 [8]
 
-[9 <./figs/cross_family_composite.pdf>]
+[9])
 
-[10 <./figs/aa_freq_example.pdf>]
+[10] (./sections/appendix.tex)
 
-[11 <./figs/scaling_composite.pdf> <./figs/beta_prediction_composite.pdf>]
-(./Paper_v1.aux)
+[11]
+
+[12 <./figs/cross_family_composite.pdf>]
+
+[13 <./figs/aa_freq_example.pdf>]
+
+[14 <./figs/scaling_composite.pdf> <./figs/beta_prediction_composite.pdf>]
+
+[15 <./figs/baseline_comparison_composite.pdf>]
+
+[16 <./figs/structure_validation_composite.pdf>] (./Paper_v1.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
 Package rerunfilecheck Info: File `Paper_v1.out' has not changed.
-(rerunfilecheck)             Checksum: 1B003BC4C727266F6BCA989F47BDE8F8;1355.
+(rerunfilecheck)             Checksum: 2CDA394209528ADFAC8A0DF130A306B7;1355.
  ) 
 Here is how much of TeX's memory you used:
- 15842 strings out of 473190
- 252676 string characters out of 5715801
- 712757 words of memory out of 5000000
- 38559 multiletter control sequences out of 15000+600000
- 600803 words of font info for 224 fonts, out of 8000000 for 9000
+ 15915 strings out of 473190
+ 253991 string characters out of 5715801
+ 719578 words of memory out of 5000000
+ 38578 multiletter control sequences out of 15000+600000
+ 602532 words of font info for 248 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,11n,79p,1664b,592s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,11n,79p,1681b,598s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb><
 /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></u
@@ -738,10 +760,10 @@ xmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/202
 texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2025/texmf-dist
 /fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/typ
 e1/urw/times/utmri8a.pfb>
-Output written on Paper_v1.pdf (11 pages, 365017 bytes).
+Output written on Paper_v1.pdf (16 pages, 440645 bytes).
 PDF statistics:
- 358 PDF objects out of 1000 (max. 8388607)
- 264 compressed objects within 3 object streams
- 67 named destinations out of 1000 (max. 500000)
- 38493 words of extra memory for PDF output out of 42996 (max. 10000000)
+ 417 PDF objects out of 1000 (max. 8388607)
+ 309 compressed objects within 4 object streams
+ 85 named destinations out of 1000 (max. 500000)
+ 38503 words of extra memory for PDF output out of 42996 (max. 10000000)
 
