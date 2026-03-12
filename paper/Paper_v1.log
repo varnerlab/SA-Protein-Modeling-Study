@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  12 MAR 2026 10:23
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  12 MAR 2026 11:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -691,23 +691,26 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 [6]
-<figs/baseline_comparison_composite.pdf, id=194, 803.0pt x 1003.75pt>
+<figs/baseline_comparison_composite.pdf, id=194, 803.0pt x 1053.9375pt>
 File: figs/baseline_comparison_composite.pdf Graphic file (type pdf)
 <use figs/baseline_comparison_composite.pdf>
 Package pdftex.def Info: figs/baseline_comparison_composite.pdf  used on input 
 line 110.
-(pdftex.def)             Requested size: 397.48499pt x 496.86545pt.
-<figs/structure_validation_composite.pdf, id=196, 1003.75pt x 351.3125pt>
+(pdftex.def)             Requested size: 397.48499pt x 521.70872pt.
+<figs/structure_validation_composite.pdf, id=196, 1104.125pt x 421.575pt>
 File: figs/structure_validation_composite.pdf Graphic file (type pdf)
 <use figs/structure_validation_composite.pdf>
 Package pdftex.def Info: figs/structure_validation_composite.pdf  used on input
  line 121.
-(pdftex.def)             Requested size: 397.48499pt x 139.12338pt.
-) (./sections/discussion.tex
+(pdftex.def)             Requested size: 397.48499pt x 151.76688pt.
+)
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[7]) (./Paper_v1.bbl
 
-[8]
+
+[7] (./sections/discussion.tex
+
+[8]) (./Paper_v1.bbl
 
 [9])
 
@@ -732,13 +735,13 @@ Package rerunfilecheck Info: File `Paper_v1.out' has not changed.
 (rerunfilecheck)             Checksum: 2CDA394209528ADFAC8A0DF130A306B7;1355.
  ) 
 Here is how much of TeX's memory you used:
- 15915 strings out of 473190
- 253991 string characters out of 5715801
- 719578 words of memory out of 5000000
+ 15912 strings out of 473190
+ 253967 string characters out of 5715801
+ 716273 words of memory out of 5000000
  38578 multiletter control sequences out of 15000+600000
- 602532 words of font info for 248 fonts, out of 8000000 for 9000
+ 602500 words of font info for 246 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,11n,79p,1681b,598s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,11n,79p,1681b,588s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb><
 /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></u
@@ -760,7 +763,7 @@ xmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/202
 texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2025/texmf-dist
 /fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/typ
 e1/urw/times/utmri8a.pfb>
-Output written on Paper_v1.pdf (16 pages, 440645 bytes).
+Output written on Paper_v1.pdf (16 pages, 455574 bytes).
 PDF statistics:
  417 PDF objects out of 1000 (max. 8388607)
  309 compressed objects within 4 object streams
