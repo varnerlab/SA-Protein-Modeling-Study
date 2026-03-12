@@ -1,10 +1,19 @@
-% appendix.tex -- Appendix
+% appendix.tex -- SI Appendix
 
-\section{Analysis of the Critical Temperature}\label{app:beta-star-analysis}
+\subsection{Amino Acid Composition Profiles}\label{si:aa-freq}
 
-This appendix develops the analytical framework behind the empirical relationship $\beta^* \approx 1.57 + 0.28\sqrt{d}$ reported in Section~3, proceeding from exact results on the similarity variance through a Gaussian mean-field prediction to a diagnosis of why the mean-field coefficient overshoots and how stored-pattern self-similarity resolves the discrepancy.
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.9\textwidth]{figs/aa_freq_example.pdf}
+\caption{Per-position amino acid frequency profiles for the RRM family (PF00076). \textbf{Top:} stored seed sequences ($K{=}68$). \textbf{Bottom:} SA-generated sequences ($S{=}150$, retrieval regime). The generated ensemble reproduces the position-specific conservation pattern of the family, including strongly conserved positions and variable regions.}
+\label{fig:aa-freq}
+\end{figure}
 
-\subsection{Similarity Variance and the Gaussian Inflection Baseline}\label{app:concentration}\label{app:tau-star}
+\subsection{Analysis of the Critical Temperature}\label{app:beta-star-analysis}
+
+This section develops the analytical framework behind the empirical relationship $\beta^* \approx 1.57 + 0.28\sqrt{d}$ reported in Section~3, proceeding from exact results on the similarity variance through a Gaussian mean-field prediction to a diagnosis of why the mean-field coefficient overshoots and how stored-pattern self-similarity resolves the discrepancy.
+
+\subsubsection{Similarity Variance and the Gaussian Inflection Baseline}\label{app:concentration}\label{app:tau-star}
 
 After one-hot encoding and PCA projection to $d$ dimensions, the stored patterns $\mathbf{m}_k$ are normalized to lie on $\mathbb{S}^{d-1}$. For a random query $\boldsymbol{\xi}$ drawn uniformly from $\mathbb{S}^{d-1}$, each similarity $e_k = \mathbf{m}_k^\top\boldsymbol{\xi}$ has mean zero and variance $1/d$, regardless of the structure of $\mathbf{m}_k$. This follows from the rotational invariance of the uniform distribution on $\mathbb{S}^{d-1}$: for any fixed unit vector $\mathbf{m}$,
 \begin{equation}
@@ -14,7 +23,7 @@ We verified this numerically for all seven protein families using 1{,}000 random
 
 In these units the softmax entropy $H(\tau) = -\sum_k p_k \log p_k$ with $p_k \propto \exp(\tau z_k)$ undergoes a transition from $H = \log K$ (uniform, $\tau = 0$) to $H \to 0$ ($\tau \to \infty$). We define the \emph{dimensionless inflection} $\tau^*$ as the $\tau$ that maximizes $|d^2H/d(\log\tau)^2|$ and compute it numerically by averaging over 500 Gaussian realizations for each $K \in \{10, 20, \ldots, 1000\}$. The result (Fig.~\ref{fig:analytical-beta}A) is that $\tau^*$ is nearly constant at $\approx 1.6$ for $K \geq 30$, with only weak logarithmic growth. Translating back to physical units, the Gaussian prediction for the entropy inflection is $\beta^* = \tau^*/\sigma = \tau^*\sqrt{d} \approx 1.6\sqrt{d}$, which has the correct $\sqrt{d}$ scaling and achieves a Pearson correlation of $r = 0.98$ with the empirical values across all families and subsamples.
 
-\subsection{Discrepancy and the Role of Stored-Pattern Probes}\label{app:comparison}\label{app:stored-probes}
+\subsubsection{Discrepancy and the Role of Stored-Pattern Probes}\label{app:comparison}\label{app:stored-probes}
 
 Despite the strong correlation, the Gaussian prediction systematically overpredicts $\beta^*$ by a factor of $\approx 4$ ($R^2 = -180$), making it useless as an absolute predictor. The fitted relationship
 \begin{equation}

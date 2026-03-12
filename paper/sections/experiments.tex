@@ -9,26 +9,6 @@ We evaluated generated sequences using five metrics. \emph{Novelty} measured dep
 \paragraph{Protein families and scaling study.}
 We selected seven families spanning a range of sizes, sequence lengths, and conservation levels (Table~\ref{tab:families}): RRM (PF00076, $K{=}68$, $L{=}71$), SH3 (PF00018, $K{=}55$, $L{=}48$), WW (PF00397, $K{=}420$, $L{=}31$), Kunitz (PF00014, $K{=}99$, $L{=}53$), zinc finger C2H2 (PF00096, $K{=}151$, $L{=}23$), PDZ (PF00595, $K{=}44$, $L{=}83$), and protein kinase (PF00069, $K{=}37$, $L{=}262$). Seed alignments were downloaded from InterPro~\cite{mistryPfamProteinFamilies2021} and cleaned by removing columns with $>50\%$ gaps and sequences with $>30\%$ gaps. The resulting PCA dimensions ranged from $d{=}34$ (Pkinase) to $d{=}186$ (WW). To characterize how generation quality degrades with decreasing family size, we also conducted a scaling study in which we fixed the WW domain (the largest family, $K{=}420$) and subsampled to $K \in \{20, 50, 100, 200, 400\}$. At each value of $K$ we drew five independent random subsets, rebuilt the memory matrix from scratch (re-computing PCA and $\beta^*$), ran stochastic attention and all baselines, and recorded metrics; this design isolates the effect of family size from family identity, and the five repeats provide error estimates.
 
-\begin{table}[t]
-\centering
-\caption{Properties of the seven Pfam families used in this study. $K$: number of seed sequences after cleaning. $L$: alignment length (columns retained). $d$: PCA dimension (95\% variance). $\bar{H}_{\mathrm{col}}$: mean per-column Shannon entropy (nats). $K_{\mathrm{eff}}$: effective number of sequences at 80\% identity threshold. $\beta^*$: empirical entropy inflection point. $\beta^*/\!\sqrt{d}$: ratio to the random-pattern prediction.}
-\label{tab:families}
-\small
-\begin{tabular}{@{}lrrrrrrrr@{}}
-\toprule
-Family & Pfam ID & $K$ & $L$ & $d$ & $\bar{H}_{\mathrm{col}}$ & $K_{\mathrm{eff}}$ & $\beta^*$ & $\beta^*/\!\sqrt{d}$ \\
-\midrule
-RRM     & PF00076 &  68 &  71 &  59 & 1.92 &  68 & 3.85 & 0.50 \\
-SH3     & PF00018 &  55 &  48 &  46 & 1.68 &  55 & 3.85 & 0.57 \\
-WW      & PF00397 & 420 &  31 & 186 & 1.74 & 419 & 5.45 & 0.40 \\
-Kunitz  & PF00014 &  99 &  53 &  80 & 1.61 &  99 & 3.85 & 0.43 \\
-zf-C2H2 & PF00096 & 151 &  23 & 106 & 1.91 & 151 & 4.58 & 0.44 \\
-PDZ     & PF00595 &  44 &  83 &  37 & 1.88 &  43 & 3.23 & 0.53 \\
-Pkinase & PF00069 &  37 & 262 &  34 & 1.72 &  37 & 3.23 & 0.55 \\
-\bottomrule
-\end{tabular}
-\end{table}
-
 \paragraph{Learned baselines.}
 To contextualize SA against methods that require pretraining on large external corpora, we compared three established generative approaches for protein sequences. (i)~\emph{Profile HMM emit}: we built a profile HMM from each family's seed alignment using HMMER3~\cite{hmmer3} (\texttt{hmmbuild --amino}) and emitted $S{=}150$ sequences with \texttt{hmmemit -N 150 --seed 42}. Emitted sequences were filtered to standard amino acids and truncated or padded to the alignment length~$L$. (ii)~\emph{EvoDiff}: we used the MSA-conditioned order-agnostic discrete diffusion model (MSA\_OA\_DM\_RANDSUB)~\cite{alamdariProteinGeneration2023}, which was pretrained on UniRef50 MSAs. Generation used the default denoising schedule with MaxHamming subsampling of the conditioning MSA (depth~$\leq 64$). (iii)~\emph{MSA Transformer}: we used the 100M-parameter MSA Transformer~\cite{raoMSATransformer2021} (esm\_msa1b\_t12\_100M\_UR50S) for generation via iterative Gibbs-like masked language model sampling: a fully masked query row was appended to the family MSA (depth~$\leq 128$), and 50 rounds of masking 15\% of positions and resampling from the softmax were performed. For each baseline, the same 150-sequence budget and the same evaluation metrics (KL, novelty, sequence identity) were applied. EvoDiff was run on CPU; for the Pkinase family ($L{=}262$), a single sequence required ${\sim}7$ minutes, yielding an estimated ${\sim}18$ hours for 150 sequences (compared to seconds for SA), so this family was excluded from the EvoDiff comparison.
 

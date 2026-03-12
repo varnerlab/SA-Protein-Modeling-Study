@@ -23,7 +23,8 @@
       "Bash(julia analytical_beta_star.jl 2>&1)",
       "Bash(cd /Users/jdv27/Desktop/julia_work/SA-Protein-Modeling-Study/paper && pdflatex -interaction=nonstopmode Paper_v1.tex 2>&1 | tail -30)",
       "Bash(pdflatex -interaction=nonstopmode Paper_v1.tex 2>&1 | grep -i \"undefined\\\\|error\" | head -10)",
-      "Bash(pdflatex -interaction=nonstopmode Paper_v1.tex 2>&1 | grep -i \"error\" | head -5)"
+      "Bash(pdflatex -interaction=nonstopmode Paper_v1.tex 2>&1 | grep -i \"error\" | head -5)",
+      "Bash(pdflatex -interaction=nonstopmode Paper_v1.tex 2>&1 | grep -i \"error\\\\|undefined\\\\|multiply\" | head -10)"
     ]
   }
 }
