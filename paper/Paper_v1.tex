@@ -48,29 +48,26 @@
 \maketitle
 
 \begin{abstract}
-Generating novel protein sequences that respect the statistical constraints of a family typically requires training deep generative models on thousands to millions of examples. Yet most protein families are small: the median Pfam family has fewer than 100 members, a regime where learned models overfit or collapse. We propose \emph{stochastic attention}, a training-free sampler that treats the modern Hopfield energy over a set of stored protein sequences as a Boltzmann distribution and draws samples via Langevin dynamics. The score function is given in closed form by the residual of a single softmax attention operation, eliminating the need for a trained score network, external pretraining data, or GPU resources. Each iteration costs $\mathcal{O}(dK)$ --- two matrix-vector products. Across seven Pfam families ($K{=}37$--$420$ sequences, $L{=}23$--$262$ residues), stochastic attention generates sequences with low amino acid composition divergence (KL${}<0.06$), substantial novelty ($0.42$--$0.65$), and structural plausibility confirmed by ESMFold and AlphaFold2 (mean pLDDT up to $95$). Strikingly, generated sequences achieve significantly \emph{higher} TM-scores to canonical family folds than natural family members in five of seven families ($p < 0.001$). Head-to-head comparison with profile HMMs, EvoDiff, and the MSA Transformer reveals a critical distinction: learned baselines produce sequences that drift far from the family (as low as $11\%$ sequence identity), while stochastic attention maintains $51$--$61\%$ identity --- staying within the functional envelope while remaining genuinely novel. Stochastic attention achieves this in seconds on a laptop, compared to hours of GPU or CPU time for pretrained alternatives, and scales stably down to $K{=}20$ sequences. The critical temperature governing the generation--retrieval transition is predicted from PCA dimensionality alone ($R^2{=}0.97$), enabling fully automatic operation from a seed alignment.
+Generating novel protein sequences that respect the statistical constraints of a family typically requires training deep generative models on thousands to millions of examples. Yet most protein families are small: the median Pfam family has fewer than 100 members, a regime where learned models overfit or collapse. We propose \emph{stochastic attention} (SA), a training-free sampler that treats the modern Hopfield energy over a set of stored protein sequences as a Boltzmann distribution and draws samples via Langevin dynamics. The score function is given in closed form by the residual of a single softmax attention operation, eliminating the need for a trained score network, external pretraining data, or graphics processing unit (GPU) resources. Each iteration costs $\mathcal{O}(dK)$, where $d$ is the sequence representation dimension and $K$ is the number of stored family members --- two matrix-vector products. Across seven Pfam families ($K{=}37$--$420$ sequences, $L{=}23$--$262$ residues), SA generates sequences with low amino acid Kullback--Leibler (KL) composition divergence (KL${}<0.06$), substantial novelty ($0.42$--$0.65$), and structural plausibility confirmed by ESMFold and AlphaFold2 (mean predicted local distance difference test [pLDDT] up to $95$). Strikingly, generated sequences achieve significantly \emph{higher} template modeling scores (TM-scores) to canonical family folds than natural family members in five of seven families ($p < 0.001$). Head-to-head comparison with profile hidden Markov models (HMMs), EvoDiff, and the multiple sequence alignment (MSA) Transformer reveals a critical distinction: learned baselines produce sequences that drift far from the family (as low as $11\%$ sequence identity), while SA maintains $51$--$61\%$ identity --- staying within the functional envelope while remaining genuinely novel. Stochastic attention achieves this in seconds on a laptop, compared to hours of GPU or CPU time for pretrained alternatives, and scales stably down to $K{=}20$ sequences. The critical inverse temperature $\beta^*$ governing the generation--retrieval transition is predicted from principal component analysis (PCA) dimensionality alone ($R^2{=}0.97$), enabling fully automatic operation from a seed alignment.
 \end{abstract}
 
-\begin{figure}[!t]
-\small
-\noindent\textbf{Significance Statement.}
-Most protein families have fewer than 100 known members, too few to train a deep generative model. We show that a single attention operation over a family alignment defines an energy landscape whose Boltzmann distribution can be sampled exactly via Langevin dynamics, with no training, no GPU, and no external data. The resulting method, stochastic attention, generates novel protein sequences that preserve family-level amino acid statistics and fold into the correct three-dimensional structure across seven diverse Pfam families. A simple linear relationship between PCA dimensionality and the critical sampling temperature enables fully automatic operation from a seed alignment, opening training-free sequence generation to the vast majority of protein families that are too small for conventional deep learning.
-\end{figure}
+\bigskip
+\noindent\fbox{\parbox{\textwidth}{\small\textbf{Significance Statement.}
+Most protein families have fewer than 100 known members, too few to train a deep generative model. We show that a single attention operation over a family alignment defines an energy landscape whose Boltzmann distribution can be sampled exactly via Langevin dynamics, with no training, no GPU, and no external data. The resulting method, stochastic attention, generates novel protein sequences that preserve family-level amino acid statistics and fold into the correct three-dimensional structure across seven diverse protein families. A simple linear relationship between the dimensionality of the sequence representation and the critical sampling temperature enables fully automatic operation from a seed alignment, opening training-free sequence generation to the vast majority of protein families that are too small for conventional deep learning.}}
+\bigskip
 
 \section{Introduction}
 \input{sections/introduction.tex}
 
-\section{Theory}
-\input{sections/theory.tex}
-
-\section{Experiments}
-\input{sections/experiments.tex}
-
 \section{Results}
 \input{sections/results.tex}
 
-\section{Discussion and Conclusion}
+\section{Discussion}
 \input{sections/discussion.tex}
+
+\section{Materials and Methods}
+\input{sections/theory.tex}
+\input{sections/experiments.tex}
 
 \section*{Acknowledgments}
 We thank the Pfam/InterPro consortium for maintaining publicly available seed alignments. Structure predictions were performed using ESMFold and AlphaFold2 (via ColabFold). Computations were performed on resources at Cornell University.
@@ -222,10 +219,8 @@ Family & Method & KL$_{\mathrm{AA}}$ $(\downarrow)$ & Novelty $(\uparrow)$ & Seq
 \renewcommand{\thetable}{S\arabic{table}}
 \setcounter{section}{0}
 \renewcommand{\thesection}{S\arabic{section}}
-\renewcommand{\thesubsection}{S\arabic{section}.\arabic{subsection}}
 
 \section*{SI Appendix}
-\addtocounter{section}{1} % set section counter to 1 so subsections number as S1.x
 \input{sections/appendix.tex}
 
 \end{document}

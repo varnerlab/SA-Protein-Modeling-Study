@@ -36,7 +36,12 @@
       "Bash(conda run:*)",
       "Bash(ls /Users/jdv27/Desktop/julia_work/SA-Protein-Modeling-Study/code/structure-validation/data/*/reference/*.pdb 2>/dev/null)",
       "Bash(cd /Users/jdv27/Desktop/julia_work/SA-Protein-Modeling-Study/code/structure-validation/colabfold_output/PF00397/sa_generation && ls *rank_001*.pdb | head -5 && echo \"---\" && ls *rank_001*.pdb | wc -l)",
-      "Bash(kill 4456 41896)"
+      "Bash(kill 4456 41896)",
+      "Bash(DEST=/Users/jdv27/Desktop/julia_work/SA-Protein-Modeling-Study/code/structure-validation/colabfold_output)",
+      "Bash(mkdir -p \"$DEST/PF00096/sa_generation\" \"$DEST/PF00096/stored\")",
+      "Bash(cp /tmp/backup2/colabfold_output/PF00096/sa_generation/*_unrelaxed_rank_001*.pdb \"$DEST/PF00096/sa_generation/\")",
+      "Read(//Users/jdv27/Desktop/julia_work/SA-Protein-Modeling-Study/$DEST/PF00096/sa_generation/**)",
+      "Bash(echo \"$DEST\")"
     ]
   }
 }

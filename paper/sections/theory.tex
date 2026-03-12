@@ -30,7 +30,7 @@ The attention entropy $H(\beta) = -\sum_k p_k \log p_k$, where $p_k = \operatorn
 \end{equation}
 where $e_k = \mathbf{m}_k^\top\boldsymbol{\xi}$ are the query-memory similarities. The maximum rate of entropy loss occurs at the inflection point $\beta^*$ satisfying $d^2H/d\beta^2 = 0$, which marks the boundary between the generation and retrieval regimes. The form of $\beta^*$ is constrained by the geometry of the stored patterns. Because the memory columns lie on the unit sphere $\mathbb{S}^{d-1}$, concentration of measure dictates that the similarity variance is $\mathrm{Var}(e_k) = 1/d$ exactly for any query drawn uniformly from $\mathbb{S}^{d-1}$ (Appendix~\ref{app:concentration}). The characteristic similarity scale is therefore $\sigma = 1/\sqrt{d}$, and since $\beta$ enters the softmax as $\beta e_k$, the inflection must occur when $\beta\sigma = \mathcal{O}(1)$, giving $\beta^* \sim \sqrt{d}$. A separate calculation shows that the softmax entropy over $K$ i.i.d.\ Gaussian scores undergoes its inflection at a dimensionless temperature $\tau^* \approx 1.6$ that is nearly independent of $K$ for $K \geq 30$ (Appendix~\ref{app:tau-star}), providing a universal baseline for the transition.
 
-Empirically, we find a simple linear relationship across seven Pfam families and WW-domain subsamples spanning $K = 20$--$420$ and $d = 18$--$186$ (Section~5):
+Empirically, we find a simple linear relationship across seven Pfam families and WW-domain subsamples spanning $K = 20$--$420$ and $d = 18$--$186$ (Results):
 \begin{equation}\label{eq:beta-prediction}
     \beta^* \approx 1.57 + 0.28\sqrt{d},
 \end{equation}

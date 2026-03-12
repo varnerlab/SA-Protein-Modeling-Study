@@ -1,4 +1,4 @@
-\begin{thebibliography}{37}
+\begin{thebibliography}{35}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -37,108 +37,6 @@ Po-Ssu Huang, Scott~E. Boyken, and David Baker.
 \newblock The coming of age of de novo protein design.
 \newblock \emph{Nature}, 537\penalty0 (7620):\penalty0 320--327, 2016.
 \newblock \doi{10.1038/nature19946}.
-
-\bibitem[Dauparas et~al.(2022)Dauparas, Anishchenko, Bennett, Bai, Ragotte,
-  Milles, Wicky, Courbet, de~Haas, Bethel, et~al.]{dauparasProteinMPNN2022}
-Justas Dauparas, Ivan Anishchenko, Nathaniel Bennett, Hua Bai, Robert~J.
-  Ragotte, Lukas~F. Milles, Basile~I.M. Wicky, Alexis Courbet, Rob~J. de~Haas,
-  Neville Bethel, et~al.
-\newblock Robust deep learning--based protein sequence design using
-  {ProteinMPNN}.
-\newblock \emph{Science}, 378\penalty0 (6615):\penalty0 49--56, 2022.
-\newblock \doi{10.1126/science.add2187}.
-
-\bibitem[Watson et~al.(2023)Watson, Juergens, Bennett, Trippe, Yim, Eisenach,
-  Ahern, Borst, Ragotte, Milles, et~al.]{watsonRFdiffusion2023}
-Joseph~L. Watson, David Juergens, Nathaniel~R. Bennett, Brian~L. Trippe, Jason
-  Yim, Helen~E. Eisenach, Woody Ahern, Andrew~J. Borst, Robert~J. Ragotte,
-  Lukas~F. Milles, et~al.
-\newblock De novo design of protein structure and function with {RFdiffusion}.
-\newblock \emph{Nature}, 620\penalty0 (7976):\penalty0 1089--1100, 2023.
-\newblock \doi{10.1038/s41586-023-06415-8}.
-
-\bibitem[Madani et~al.(2023)Madani, Krause, Greene, Subramanian, Mohr, Holton,
-  Olmos, Xiong, Sun, Socher, Fraser, and
-  Naik]{madaniProGenLanguageModeling2023}
-Ali Madani, Ben Krause, Eric~R. Greene, Subu Subramanian, Benjamin~P. Mohr,
-  James~M. Holton, Jose~Luis Olmos, Caiming Xiong, Zhi~Zhong Sun, Richard
-  Socher, James~S. Fraser, and Nikhil Naik.
-\newblock Large language models generate functional protein sequences across
-  diverse families.
-\newblock \emph{Nature Biotechnology}, 41:\penalty0 1099--1106, 2023.
-\newblock \doi{10.1038/s41587-022-01618-2}.
-
-\bibitem[Ferruz et~al.(2022)Ferruz, Schmidt, and
-  H{\"o}cker]{ferruzProtGPT2DeepUnsupervised2022}
-Noelia Ferruz, Steffen Schmidt, and Birte H{\"o}cker.
-\newblock {ProtGPT2} is a deep unsupervised language model for protein design.
-\newblock \emph{Nature Communications}, 13:\penalty0 4348, 2022.
-\newblock \doi{10.1038/s41467-022-32007-7}.
-
-\bibitem[Rao et~al.(2021)Rao, Liu, Verkuil, Meier, Canny, Abbeel, Sercu, and
-  Rives]{raoMSATransformer2021}
-Roshan Rao, Jason Liu, Robert Verkuil, Joshua Meier, John~F. Canny, Pieter
-  Abbeel, Tom Sercu, and Alexander Rives.
-\newblock {MSA} transformer.
-\newblock In \emph{Proceedings of the 38th International Conference on Machine
-  Learning (ICML)}, pages 8844--8856, 2021.
-
-\bibitem[Alamdari et~al.(2023)Alamdari, Thakur, van~den Berg, Lu, Fusi,
-  Trember, and Wang]{alamdariProteinGeneration2023}
-Sarah Alamdari, Nitya Thakur, Rianne van~den Berg, Alex~X. Lu, Nicolo Fusi,
-  Ava~P. Trember, and Kevin~K. Wang.
-\newblock Protein generation with evolutionary diffusion: Sequence is all you
-  need.
-\newblock \emph{bioRxiv}, 2023.
-\newblock \doi{10.1101/2023.09.11.556673}.
-
-\bibitem[Mistry et~al.(2021)Mistry, Chuguransky, Williams, Qureshi, Salazar,
-  Sonnhammer, Tosatto, Paladin, Raj, Richardson, Finn, and
-  Bateman]{mistryPfamProteinFamilies2021}
-Jaina Mistry, Sara Chuguransky, Lowri Williams, Matloob Qureshi, Gustavo~A
-  Salazar, Erik L~L Sonnhammer, Silvio C~E Tosatto, Lisanna Paladin, Shriya
-  Raj, Lorna~J Richardson, Robert~D Finn, and Alex Bateman.
-\newblock Pfam: The protein families database in 2021.
-\newblock \emph{Nucleic Acids Research}, 49\penalty0 (D1):\penalty0 D99--D106,
-  2021.
-\newblock \doi{10.1093/nar/gkaa913}.
-
-\bibitem[Wu et~al.(2019)Wu, Kan, Lewis, Wittmann, and
-  Arnold]{wuMachineLearningAidedProtein2019}
-Zachary Wu, S.~B.~Jennifer Kan, Russell~D. Lewis, Bruce~J. Wittmann, and
-  Frances~H. Arnold.
-\newblock Machine-learning-guided directed evolution for protein engineering.
-\newblock \emph{Nature Methods}, 16:\penalty0 687--694, 2019.
-\newblock \doi{10.1038/s41592-019-0496-6}.
-
-\bibitem[Ramsauer et~al.(2021)Ramsauer, Sch{\"a}fl, Lehner, Seidl, Widrich,
-  Adler, Gruber, Holzleitner, Pavlovi{\'c}, Sandve, Greiff, Kreil, Kopp,
-  Klambauer, Brandstetter, and Hochreiter]{ramsauerHopfieldNetworksAll2021}
-Hubert Ramsauer, Bernhard Sch{\"a}fl, Johannes Lehner, Philipp Seidl, Michael
-  Widrich, Thomas Adler, Lukas Gruber, Markus Holzleitner, Milena Pavlovi{\'c},
-  Geir~Kjetil Sandve, Victor Greiff, David Kreil, Michael Kopp, G{\"u}nter
-  Klambauer, Johannes Brandstetter, and Sepp Hochreiter.
-\newblock Hopfield networks is all you need.
-\newblock In \emph{International Conference on Learning Representations
-  (ICLR)}, 2021.
-
-\bibitem[Lin et~al.(2023)Lin, Akin, Rao, Hie, Zhu, Lu, Smestad, Costa,
-  Fazel-Zarandi, Sercu, Candido, and Rives]{linEvolutionaryScaleModeling2023}
-Zeming Lin, Halil Akin, Roshan Rao, Brian Hie, Zhongkai Zhu, Wenting Lu, Nikita
-  Smestad, Allan Costa, Maryam Fazel-Zarandi, Tom Sercu, Sal Candido, and
-  Alexander Rives.
-\newblock Evolutionary-scale prediction of atomic-level protein structure with
-  a language model.
-\newblock \emph{Science}, 379\penalty0 (6637):\penalty0 1123--1130, 2023.
-\newblock \doi{10.1126/science.ade2574}.
-
-\bibitem[Zhang and Skolnick(2005)]{zhangTMalign2005}
-Yang Zhang and Jeffrey Skolnick.
-\newblock {TM-align}: a protein structure alignment algorithm based on the
-  {TM-score}.
-\newblock \emph{Nucleic Acids Research}, 33\penalty0 (7):\penalty0 2302--2309,
-  2005.
-\newblock \doi{10.1093/nar/gki524}.
 
 \bibitem[Potter et~al.(2018)Potter, Luciani, Eddy, Park, Lopez, and
   Finn]{hmmer3}
@@ -191,6 +89,41 @@ Adam~J. Riesselman, John~B. Ingraham, and Debora~S. Marks.
 \newblock \emph{Nature Methods}, 15:\penalty0 816--822, 2018.
 \newblock \doi{10.1038/s41592-018-0138-4}.
 
+\bibitem[Ferruz et~al.(2022)Ferruz, Schmidt, and
+  H{\"o}cker]{ferruzProtGPT2DeepUnsupervised2022}
+Noelia Ferruz, Steffen Schmidt, and Birte H{\"o}cker.
+\newblock {ProtGPT2} is a deep unsupervised language model for protein design.
+\newblock \emph{Nature Communications}, 13:\penalty0 4348, 2022.
+\newblock \doi{10.1038/s41467-022-32007-7}.
+
+\bibitem[Madani et~al.(2023)Madani, Krause, Greene, Subramanian, Mohr, Holton,
+  Olmos, Xiong, Sun, Socher, Fraser, and
+  Naik]{madaniProGenLanguageModeling2023}
+Ali Madani, Ben Krause, Eric~R. Greene, Subu Subramanian, Benjamin~P. Mohr,
+  James~M. Holton, Jose~Luis Olmos, Caiming Xiong, Zhi~Zhong Sun, Richard
+  Socher, James~S. Fraser, and Nikhil Naik.
+\newblock Large language models generate functional protein sequences across
+  diverse families.
+\newblock \emph{Nature Biotechnology}, 41:\penalty0 1099--1106, 2023.
+\newblock \doi{10.1038/s41587-022-01618-2}.
+
+\bibitem[Rao et~al.(2021)Rao, Liu, Verkuil, Meier, Canny, Abbeel, Sercu, and
+  Rives]{raoMSATransformer2021}
+Roshan Rao, Jason Liu, Robert Verkuil, Joshua Meier, John~F. Canny, Pieter
+  Abbeel, Tom Sercu, and Alexander Rives.
+\newblock {MSA} transformer.
+\newblock In \emph{Proceedings of the 38th International Conference on Machine
+  Learning (ICML)}, pages 8844--8856, 2021.
+
+\bibitem[Alamdari et~al.(2023)Alamdari, Thakur, van~den Berg, Lu, Fusi,
+  Trember, and Wang]{alamdariProteinGeneration2023}
+Sarah Alamdari, Nitya Thakur, Rianne van~den Berg, Alex~X. Lu, Nicolo Fusi,
+  Ava~P. Trember, and Kevin~K. Wang.
+\newblock Protein generation with evolutionary diffusion: Sequence is all you
+  need.
+\newblock \emph{bioRxiv}, 2023.
+\newblock \doi{10.1101/2023.09.11.556673}.
+
 \bibitem[Notin et~al.(2022)Notin, Dias, Frazer, Marchena-Hurtado, Gomez, Marks,
   and Gal]{notinTranception2022}
 Pascal Notin, Mafalda Dias, Jonathan Frazer, Javier Marchena-Hurtado, Aidan~N.
@@ -200,33 +133,24 @@ Pascal Notin, Mafalda Dias, Jonathan Frazer, Javier Marchena-Hurtado, Aidan~N.
 \newblock In \emph{Proceedings of the 39th International Conference on Machine
   Learning (ICML)}, pages 16990--17017, 2022.
 
-\bibitem[Leaver-Fay et~al.(2011)Leaver-Fay, Tyka, Lewis, Lange, Thompson,
-  Jacak, Kaufman, Renfrew, Smith, Sheffler,
-  et~al.]{leaverfayRosetta3ObjectOriented2011}
-Andrew Leaver-Fay, Michael Tyka, Steven~M. Lewis, Oliver~F. Lange, James
-  Thompson, Ron Jacak, Kristian Kaufman, P.~Douglas Renfrew, Colin~A. Smith,
-  Will Sheffler, et~al.
-\newblock {ROSETTA3}: An object-oriented software suite for the simulation and
-  design of macromolecules.
-\newblock \emph{Methods in Enzymology}, 487:\penalty0 545--574, 2011.
-\newblock \doi{10.1016/B978-0-12-381270-4.00019-6}.
+\bibitem[Dauparas et~al.(2022)Dauparas, Anishchenko, Bennett, Bai, Ragotte,
+  Milles, Wicky, Courbet, de~Haas, Bethel, et~al.]{dauparasProteinMPNN2022}
+Justas Dauparas, Ivan Anishchenko, Nathaniel Bennett, Hua Bai, Robert~J.
+  Ragotte, Lukas~F. Milles, Basile~I.M. Wicky, Alexis Courbet, Rob~J. de~Haas,
+  Neville Bethel, et~al.
+\newblock Robust deep learning--based protein sequence design using
+  {ProteinMPNN}.
+\newblock \emph{Science}, 378\penalty0 (6615):\penalty0 49--56, 2022.
+\newblock \doi{10.1126/science.add2187}.
 
-\bibitem[Ingraham et~al.(2019)Ingraham, Garg, Barzilay, and
-  Jaakkola]{ingrahamGenerativeModelsGraph2019}
-John Ingraham, Vikas~K. Garg, Regina Barzilay, and Tommi Jaakkola.
-\newblock Generative models for graph-based protein design.
-\newblock In \emph{Advances in Neural Information Processing Systems},
-  volume~32, 2019.
-
-\bibitem[Anishchenko et~al.(2021)Anishchenko, Pellock, Chidyausiku, Ramelot,
-  Ovchinnikov, Hao, Bafna, Norn, Kang, Bera,
-  et~al.]{anishchenkoDenovoHallucination2021}
-Ivan Anishchenko, Samuel~J. Pellock, Tamuka~M. Chidyausiku, Theresa~A. Ramelot,
-  Sergey Ovchinnikov, Jingzhou Hao, Khushboo Bafna, Christoffer Norn, Alex
-  Kang, Asim~K. Bera, et~al.
-\newblock De novo protein design by deep network hallucination.
-\newblock \emph{Nature}, 600\penalty0 (7889):\penalty0 547--552, 2021.
-\newblock \doi{10.1038/s41586-021-04184-w}.
+\bibitem[Watson et~al.(2023)Watson, Juergens, Bennett, Trippe, Yim, Eisenach,
+  Ahern, Borst, Ragotte, Milles, et~al.]{watsonRFdiffusion2023}
+Joseph~L. Watson, David Juergens, Nathaniel~R. Bennett, Brian~L. Trippe, Jason
+  Yim, Helen~E. Eisenach, Woody Ahern, Andrew~J. Borst, Robert~J. Ragotte,
+  Lukas~F. Milles, et~al.
+\newblock De novo design of protein structure and function with {RFdiffusion}.
+\newblock \emph{Nature}, 620\penalty0 (7976):\penalty0 1089--1100, 2023.
+\newblock \doi{10.1038/s41586-023-06415-8}.
 
 \bibitem[Hsu et~al.(2022)Hsu, Verkuil, Liu, Lin, Hie, Sercu, Lerer, and
   Rives]{hsuInverseFolding2022}
@@ -236,25 +160,48 @@ Chloe Hsu, Robert Verkuil, Jason Liu, Zeming Lin, Brian Hie, Tom Sercu, Adam
 \newblock In \emph{Proceedings of the 39th International Conference on Machine
   Learning (ICML)}, pages 8946--8970, 2022.
 
+\bibitem[Ingraham et~al.(2019)Ingraham, Garg, Barzilay, and
+  Jaakkola]{ingrahamGenerativeModelsGraph2019}
+John Ingraham, Vikas~K. Garg, Regina Barzilay, and Tommi Jaakkola.
+\newblock Generative models for graph-based protein design.
+\newblock In \emph{Advances in Neural Information Processing Systems},
+  volume~32, 2019.
+
+\bibitem[Mistry et~al.(2021)Mistry, Chuguransky, Williams, Qureshi, Salazar,
+  Sonnhammer, Tosatto, Paladin, Raj, Richardson, Finn, and
+  Bateman]{mistryPfamProteinFamilies2021}
+Jaina Mistry, Sara Chuguransky, Lowri Williams, Matloob Qureshi, Gustavo~A
+  Salazar, Erik L~L Sonnhammer, Silvio C~E Tosatto, Lisanna Paladin, Shriya
+  Raj, Lorna~J Richardson, Robert~D Finn, and Alex Bateman.
+\newblock Pfam: The protein families database in 2021.
+\newblock \emph{Nucleic Acids Research}, 49\penalty0 (D1):\penalty0 D99--D106,
+  2021.
+\newblock \doi{10.1093/nar/gkaa913}.
+
+\bibitem[Wu et~al.(2019)Wu, Kan, Lewis, Wittmann, and
+  Arnold]{wuMachineLearningAidedProtein2019}
+Zachary Wu, S.~B.~Jennifer Kan, Russell~D. Lewis, Bruce~J. Wittmann, and
+  Frances~H. Arnold.
+\newblock Machine-learning-guided directed evolution for protein engineering.
+\newblock \emph{Nature Methods}, 16:\penalty0 687--694, 2019.
+\newblock \doi{10.1038/s41592-019-0496-6}.
+
+\bibitem[Ramsauer et~al.(2021)Ramsauer, Sch{\"a}fl, Lehner, Seidl, Widrich,
+  Adler, Gruber, Holzleitner, Pavlovi{\'c}, Sandve, Greiff, Kreil, Kopp,
+  Klambauer, Brandstetter, and Hochreiter]{ramsauerHopfieldNetworksAll2021}
+Hubert Ramsauer, Bernhard Sch{\"a}fl, Johannes Lehner, Philipp Seidl, Michael
+  Widrich, Thomas Adler, Lukas Gruber, Markus Holzleitner, Milena Pavlovi{\'c},
+  Geir~Kjetil Sandve, Victor Greiff, David Kreil, Michael Kopp, G{\"u}nter
+  Klambauer, Johannes Brandstetter, and Sepp Hochreiter.
+\newblock Hopfield networks is all you need.
+\newblock In \emph{International Conference on Learning Representations
+  (ICLR)}, 2021.
+
 \bibitem[Krotov and Hopfield(2016)]{krotovDenseAssociativeMemory2016}
 Dmitry Krotov and John~J. Hopfield.
 \newblock Dense associative memory for pattern recognition.
 \newblock In \emph{Advances in Neural Information Processing Systems},
   volume~29, 2016.
-
-\bibitem[Hoover et~al.(2024)Hoover, Liang, Pham, Panda, Strobelt, Chau, Zaki,
-  and Krotov]{hooverEnergyTransformer2024}
-Benjamin Hoover, Yuchen Liang, Bao Pham, Rameswar Panda, Hendrik Strobelt,
-  Duen~Horng Chau, Mohammed~J. Zaki, and Dmitry Krotov.
-\newblock Energy transformer.
-\newblock In \emph{Advances in Neural Information Processing Systems},
-  volume~36, 2024.
-
-\bibitem[Alswaidan and Varner(2025)]{alswaidanVarnerStochasticAttention2025}
-Abdulrahman Alswaidan and Jeffrey~D. Varner.
-\newblock Stochastic attention via {Langevin} dynamics on the modern {Hopfield}
-  energy.
-\newblock \emph{arXiv preprint arXiv:XXXX.XXXXX}, 2025.
 
 \bibitem[Song and Ermon(2019)]{songGenerativeModelingEstimating2019}
 Yang Song and Stefano Ermon.
@@ -278,6 +225,14 @@ Jonathan Ho, Ajay Jain, and Pieter Abbeel.
 \newblock In \emph{Advances in Neural Information Processing Systems},
   volume~33, pages 6840--6851, 2020.
 
+\bibitem[Hoover et~al.(2024)Hoover, Liang, Pham, Panda, Strobelt, Chau, Zaki,
+  and Krotov]{hooverEnergyTransformer2024}
+Benjamin Hoover, Yuchen Liang, Bao Pham, Rameswar Panda, Hendrik Strobelt,
+  Duen~Horng Chau, Mohammed~J. Zaki, and Dmitry Krotov.
+\newblock Energy transformer.
+\newblock In \emph{Advances in Neural Information Processing Systems},
+  volume~36, 2024.
+
 \bibitem[Durmus and Moulines(2017)]{durmusNonasymptoticAnalysisUnadjusted2017}
 Alain Durmus and {\'E}ric Moulines.
 \newblock Nonasymptotic convergence analysis for the unadjusted {Langevin}
@@ -293,6 +248,30 @@ Arnak~S. Dalalyan.
 \newblock \emph{Journal of the Royal Statistical Society: Series B},
   79\penalty0 (3):\penalty0 651--676, 2017.
 \newblock \doi{10.1111/rssb.12183}.
+
+\bibitem[Alswaidan and Varner(2025)]{alswaidanVarnerStochasticAttention2025}
+Abdulrahman Alswaidan and Jeffrey~D. Varner.
+\newblock Stochastic attention via {Langevin} dynamics on the modern {Hopfield}
+  energy.
+\newblock \emph{arXiv preprint arXiv:XXXX.XXXXX}, 2025.
+
+\bibitem[Lin et~al.(2023)Lin, Akin, Rao, Hie, Zhu, Lu, Smestad, Costa,
+  Fazel-Zarandi, Sercu, Candido, and Rives]{linEvolutionaryScaleModeling2023}
+Zeming Lin, Halil Akin, Roshan Rao, Brian Hie, Zhongkai Zhu, Wenting Lu, Nikita
+  Smestad, Allan Costa, Maryam Fazel-Zarandi, Tom Sercu, Sal Candido, and
+  Alexander Rives.
+\newblock Evolutionary-scale prediction of atomic-level protein structure with
+  a language model.
+\newblock \emph{Science}, 379\penalty0 (6637):\penalty0 1123--1130, 2023.
+\newblock \doi{10.1126/science.ade2574}.
+
+\bibitem[Zhang and Skolnick(2005)]{zhangTMalign2005}
+Yang Zhang and Jeffrey Skolnick.
+\newblock {TM-align}: a protein structure alignment algorithm based on the
+  {TM-score}.
+\newblock \emph{Nucleic Acids Research}, 33\penalty0 (7):\penalty0 2302--2309,
+  2005.
+\newblock \doi{10.1093/nar/gki524}.
 
 \bibitem[Roberts and Tweedie(1996)]{robertsTweedieExponentialConvergence1996}
 Gareth~O. Roberts and Richard~L. Tweedie.
