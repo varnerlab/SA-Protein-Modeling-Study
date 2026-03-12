@@ -1,4 +1,4 @@
-\begin{thebibliography}{26}
+\begin{thebibliography}{27}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -217,5 +217,13 @@ Anton Bovier, Michael Eckhoff, V{\'e}ronique Gayrard, and Markus Klein.
 \newblock \emph{Journal of the European Mathematical Society}, 6\penalty0
   (4):\penalty0 399--424, 2004.
 \newblock \doi{10.4171/JEMS/14}.
+
+\bibitem[Zhang and Skolnick(2005)]{zhangTMalign2005}
+Yang Zhang and Jeffrey Skolnick.
+\newblock {TM-align}: a protein structure alignment algorithm based on the
+  {TM-score}.
+\newblock \emph{Nucleic Acids Research}, 33\penalty0 (7):\penalty0 2302--2309,
+  2005.
+\newblock \doi{10.1093/nar/gki524}.
 
 \end{thebibliography}
