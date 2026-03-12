@@ -2,6 +2,8 @@
 
 \subsection{Amino Acid Composition Profiles}\label{si:aa-freq}
 
+To illustrate how stochastic attention preserves position-specific residue preferences, Fig.~\ref{fig:aa-freq} compares the per-position amino acid frequency profiles of the stored seed sequences and SA-generated sequences for the RRM family (PF00076). The generated ensemble faithfully reproduces the conservation pattern of the family: strongly conserved positions (e.g., the aromatic residues characteristic of the RNP1 and RNP2 motifs) retain high frequency in the generated output, while variable positions display a similar breadth of amino acid usage. This agreement is consistent with the low KL divergences reported in Table~2 and confirms that the Boltzmann sampling procedure captures not only global amino acid composition but also the position-specific constraints encoded in the seed alignment.
+
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.9\textwidth]{figs/aa_freq_example.pdf}

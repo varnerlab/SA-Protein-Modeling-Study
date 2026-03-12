@@ -51,11 +51,14 @@
 Generating novel protein sequences that respect the statistical constraints of a family typically requires training deep generative models on thousands to millions of examples. Yet most protein families are small: the median Pfam family has fewer than 100 members, a regime where learned models overfit or collapse. We propose \emph{stochastic attention}, a training-free sampler that treats the modern Hopfield energy over a set of stored protein sequences as a Boltzmann distribution and draws samples via Langevin dynamics. The score function is given in closed form by the residual of a single softmax attention operation, eliminating the need for a trained score network. Each iteration costs $\mathcal{O}(dK)$ (two matrix-vector products) and requires no GPU or backpropagation. Across seven Pfam families ($K{=}37$--$420$ sequences, $L{=}23$--$262$ residues), stochastic attention generates sequences with low amino acid composition divergence (KL${}<0.06$), substantial novelty ($0.42$--$0.65$ in PCA space), and structural plausibility confirmed by ESMFold (mean pLDDT~$70$--$91$; TM-scores matching natural family members). A scaling study shows stable performance down to $K{=}20$ sequences. Head-to-head comparison with profile HMMs, EvoDiff, and the MSA Transformer reveals that stochastic attention uniquely balances compositional fidelity, sequence novelty, and structural viability without external training data. The critical temperature governing the generation--retrieval transition is predicted from PCA dimensionality alone ($R^2{=}0.97$), enabling fully automatic operation from a seed alignment.
 \end{abstract}
 
+\begin{figure}[!t]
+\small
+\noindent\textbf{Significance Statement.}
+Most protein families have fewer than 100 known members, too few to train a deep generative model. We show that a single attention operation over a family alignment defines an energy landscape whose Boltzmann distribution can be sampled exactly via Langevin dynamics, with no training, no GPU, and no external data. The resulting method, stochastic attention, generates novel protein sequences that preserve family-level amino acid statistics and fold into the correct three-dimensional structure across seven diverse Pfam families. A simple linear relationship between PCA dimensionality and the critical sampling temperature enables fully automatic operation from a seed alignment, opening training-free sequence generation to the vast majority of protein families that are too small for conventional deep learning.
+\end{figure}
+
 \section{Introduction}
 \input{sections/introduction.tex}
-
-\section{Related Work}
-\input{sections/relatedwork.tex}
 
 \section{Theory}
 \input{sections/theory.tex}
@@ -70,7 +73,13 @@ Generating novel protein sequences that respect the statistical constraints of a
 \input{sections/discussion.tex}
 
 \section*{Acknowledgments}
-% TODO: Add acknowledgments
+We thank the Pfam/InterPro consortium for maintaining publicly available seed alignments. Structure predictions were performed using ESMFold and AlphaFold2 (via ColabFold). Computations were performed on resources at Cornell University.
+
+\paragraph{Author contributions.} J.D.V.\ designed research, performed research, analyzed data, and wrote the paper.
+
+\paragraph{Competing interests.} The author declares no competing interest.
+
+\paragraph{Data availability.} All code, data, and analysis scripts are available at \url{https://github.com/varnerlab/SA-Protein-Modeling-Study}. Pfam seed alignments were obtained from InterPro~\cite{mistryPfamProteinFamilies2021}. Reference structures were obtained from the RCSB Protein Data Bank.
 
 \bibliographystyle{unsrtnat}
 \bibliography{References_v1}
@@ -196,6 +205,13 @@ Family & Method & KL$_{\mathrm{AA}}$ $(\downarrow)$ & Novelty $(\uparrow)$ & Seq
 \label{fig:structure-validation}
 \end{figure}
 
+\begin{figure}[p]
+\centering
+\includegraphics[width=\textwidth]{figs/structure_gallery.pdf}
+\caption{AlphaFold2 predicted structures for representative SA-generated sequences (colored by per-residue pLDDT confidence) superimposed on the experimentally determined reference structure for each family (gray, semi-transparent). For each family, the SA-generated sequence with the highest mean pLDDT was selected and aligned to the reference using PyMOL. The close structural agreement (sub-angstrom RMSD) and uniformly high pLDDT scores confirm that SA-generated sequences, despite substantial sequence-level novelty, encode three-dimensional folds that faithfully recapitulate the canonical architecture of their target family.}
+\label{fig:structure-gallery}
+\end{figure}
+
 % ══════════════════════════════════════════════════════════════════════════════
 % SI Appendix
 % ══════════════════════════════════════════════════════════════════════════════
@@ -206,8 +222,10 @@ Family & Method & KL$_{\mathrm{AA}}$ $(\downarrow)$ & Novelty $(\uparrow)$ & Seq
 \renewcommand{\thetable}{S\arabic{table}}
 \setcounter{section}{0}
 \renewcommand{\thesection}{S\arabic{section}}
+\renewcommand{\thesubsection}{S\arabic{section}.\arabic{subsection}}
 
 \section*{SI Appendix}
+\addtocounter{section}{1} % set section counter to 1 so subsections number as S1.x
 \input{sections/appendix.tex}
 
 \end{document}

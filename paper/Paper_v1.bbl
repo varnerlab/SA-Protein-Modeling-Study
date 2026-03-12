@@ -1,4 +1,4 @@
-\begin{thebibliography}{36}
+\begin{thebibliography}{37}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -309,5 +309,13 @@ Anton Bovier, Michael Eckhoff, V{\'e}ronique Gayrard, and Markus Klein.
 \newblock \emph{Journal of the European Mathematical Society}, 6\penalty0
   (4):\penalty0 399--424, 2004.
 \newblock \doi{10.4171/JEMS/14}.
+
+\bibitem[Mirdita et~al.(2022)Mirdita, Sch{\"u}tze, Moriwaki, Heo, Ovchinnikov,
+  and Steinegger]{mirdita2022colabfold}
+Milot Mirdita, Konstantin Sch{\"u}tze, Yoshitaka Moriwaki, Lim Heo, Sergey
+  Ovchinnikov, and Martin Steinegger.
+\newblock {ColabFold}: Making protein folding accessible to all.
+\newblock \emph{Nature Methods}, 19:\penalty0 679--682, 2022.
+\newblock \doi{10.1038/s41592-022-01488-1}.
 
 \end{thebibliography}

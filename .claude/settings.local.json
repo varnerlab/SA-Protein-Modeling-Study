@@ -24,7 +24,19 @@
       "Bash(cd /Users/jdv27/Desktop/julia_work/SA-Protein-Modeling-Study/paper && pdflatex -interaction=nonstopmode Paper_v1.tex 2>&1 | tail -30)",
       "Bash(pdflatex -interaction=nonstopmode Paper_v1.tex 2>&1 | grep -i \"undefined\\\\|error\" | head -10)",
       "Bash(pdflatex -interaction=nonstopmode Paper_v1.tex 2>&1 | grep -i \"error\" | head -5)",
-      "Bash(pdflatex -interaction=nonstopmode Paper_v1.tex 2>&1 | grep -i \"error\\\\|undefined\\\\|multiply\" | head -10)"
+      "Bash(pdflatex -interaction=nonstopmode Paper_v1.tex 2>&1 | grep -i \"error\\\\|undefined\\\\|multiply\" | head -10)",
+      "Bash(cd /Users/jdv27/Desktop/julia_work/SA-Protein-Modeling-Study/code/structure-validation && unzip -o /Users/jdv27/Downloads/backup-1.zip -d colabfold_output_backup 2>&1 | tail -5)",
+      "Bash(echo \"=== PF00096 sa_generation ===\" && ls PF00096/sa_generation/*rank_001*.pdb 2>/dev/null | wc -l && echo \"=== PF00096 stored ===\" && ls PF00096/stored/*rank_001*.pdb 2>/dev/null | wc -l)",
+      "Bash(cd /Users/jdv27/Desktop/julia_work/SA-Protein-Modeling-Study/code/structure-validation && mv colabfold_output_backup/colabfold_output colabfold_output && rmdir colabfold_output_backup)",
+      "Bash(which pymol:*)",
+      "Bash(python3 -c \"from Bio.PDB import PDBParser; print\\('BioPython OK'\\)\" 2>&1; pip3 list 2>/dev/null | grep -i -E \"pymol|chimera|ngl|py3d|biotite\" 2>&1)",
+      "Bash(pip3 install:*)",
+      "Bash(conda install:*)",
+      "Bash(python3 -c \"import pymol; print\\('PyMOL OK'\\)\" 2>&1)",
+      "Bash(conda run:*)",
+      "Bash(ls /Users/jdv27/Desktop/julia_work/SA-Protein-Modeling-Study/code/structure-validation/data/*/reference/*.pdb 2>/dev/null)",
+      "Bash(cd /Users/jdv27/Desktop/julia_work/SA-Protein-Modeling-Study/code/structure-validation/colabfold_output/PF00397/sa_generation && ls *rank_001*.pdb | head -5 && echo \"---\" && ls *rank_001*.pdb | wc -l)",
+      "Bash(kill 4456 41896)"
     ]
   }
 }
