@@ -13,7 +13,17 @@
       "Bash(chmod +x /Users/jdv27/Desktop/julia_work/SA-Protein-Modeling-Study/paper/Build.sh)",
       "Bash(sleep 45 && ps -p 8470 -o pid,rss,vsz,command | head -3 && echo \"---\" && tail -5 /tmp/msat_run.log 2>&1)",
       "Bash(git commit:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(cd /Users/jdv27/Desktop/julia_work/SA-Protein-Modeling-Study/paper && pdflatex -interaction=nonstopmode Paper_v1.tex 2>&1 | tail -5 && bibtex Paper_v1 2>&1 | tail -10 && pdflatex -interaction=nonstopmode Paper_v1.tex 2>&1 | tail -5 && pdflatex -interaction=nonstopmode Paper_v1.tex 2>&1 | grep -c \"Warning.*undefined\" || true)",
+      "Bash(pdflatex -interaction=nonstopmode Paper_v1.tex 2>&1 | tail -3 && bibtex Paper_v1 2>&1 | tail -5 && pdflatex -interaction=nonstopmode Paper_v1.tex 2>&1 | tail -3 && pdflatex -interaction=nonstopmode Paper_v1.tex 2>&1 | grep -c \"Warning.*undefined\" || true)",
+      "Bash(cd /Users/jdv27/Desktop/julia_work/SA-Protein-Modeling-Study/code/structure-validation && julia prepare_colabfold_input.jl 2>&1)",
+      "Bash(open https://colab.research.google.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(cd /Users/jdv27/Desktop/julia_work/SA-Protein-Modeling-Study/code/beta-prediction && julia investigate_bifurcation.jl 2>&12)",
+      "Bash(julia analytical_beta_star.jl 2>&1)",
+      "Bash(cd /Users/jdv27/Desktop/julia_work/SA-Protein-Modeling-Study/paper && pdflatex -interaction=nonstopmode Paper_v1.tex 2>&1 | tail -30)",
+      "Bash(pdflatex -interaction=nonstopmode Paper_v1.tex 2>&1 | grep -i \"undefined\\\\|error\" | head -10)",
+      "Bash(pdflatex -interaction=nonstopmode Paper_v1.tex 2>&1 | grep -i \"error\" | head -5)"
     ]
   }
 }

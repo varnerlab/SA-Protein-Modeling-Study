@@ -1,29 +1,61 @@
-\begin{thebibliography}{27}
+\begin{thebibliography}{36}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
 
-\bibitem[Wu et~al.(2019)Wu, Kan, Lewis, Wittmann, and
-  Arnold]{wuMachineLearningAidedProtein2019}
-Zachary Wu, S.~B.~Jennifer Kan, Russell~D. Lewis, Bruce~J. Wittmann, and
-  Frances~H. Arnold.
-\newblock Machine-learning-guided directed evolution for protein engineering.
-\newblock \emph{Nature Methods}, 16:\penalty0 687--694, 2019.
-\newblock \doi{10.1038/s41592-019-0496-6}.
+\bibitem[Jumper et~al.(2021)Jumper, Evans, Pritzel, Green, Figurnov,
+  Ronneberger, Tunyasuvunakool, Bates, {\v{Z}}{\'i}dek, Potapenko,
+  et~al.]{jumperHighlyAccurateProtein2021}
+John Jumper, Richard Evans, Alexander Pritzel, Tim Green, Michael Figurnov,
+  Olaf Ronneberger, Kathryn Tunyasuvunakool, Russ Bates, Augustin
+  {\v{Z}}{\'i}dek, Anna Potapenko, et~al.
+\newblock Highly accurate protein structure prediction with {AlphaFold}.
+\newblock \emph{Nature}, 596:\penalty0 583--589, 2021.
+\newblock \doi{10.1038/s41586-021-03819-2}.
 
-\bibitem[Kingma and Welling(2014)]{kingmaWellingAutoEncoding2014}
-Diederik~P. Kingma and Max Welling.
-\newblock Auto-encoding variational {Bayes}.
-\newblock In \emph{International Conference on Learning Representations
-  (ICLR)}, 2014.
+\bibitem[Baek et~al.(2021)Baek, DiMaio, Anishchenko, Dauparas, Ovchinnikov,
+  Lee, Wang, Cong, Kinch, Schaeffer, et~al.]{baekRoseTTAFold2021}
+Minkyung Baek, Frank DiMaio, Ivan Anishchenko, Justas Dauparas, Sergey
+  Ovchinnikov, Gyu~Rie Lee, Jue Wang, Qian Cong, Lisa~N. Kinch, R.~Dustin
+  Schaeffer, et~al.
+\newblock Accurate prediction of protein structures and interactions using a
+  three-track neural network.
+\newblock \emph{Science}, 373\penalty0 (6557):\penalty0 871--876, 2021.
+\newblock \doi{10.1126/science.abj8754}.
 
-\bibitem[Sinai et~al.(2017)Sinai, Kelsic, Church, and
-  Nowak]{sinaiVariationalAutoEncoding2017}
-Sam Sinai, Eric Kelsic, George~M. Church, and Martin~A. Nowak.
-\newblock Variational auto-encoding of protein sequences.
-\newblock \emph{arXiv preprint arXiv:1712.03346}, 2017.
+\bibitem[Kuhlman and Bradley(2019)]{kuhlmanBradleyAdvances2019}
+Brian Kuhlman and Philip Bradley.
+\newblock Advances in protein structure prediction and design.
+\newblock \emph{Nature Reviews Molecular Cell Biology}, 20:\penalty0 681--697,
+  2019.
+\newblock \doi{10.1038/s41580-019-0163-x}.
+
+\bibitem[Huang et~al.(2016)Huang, Boyken, and Baker]{huangComingAgeDeNovo2016}
+Po-Ssu Huang, Scott~E. Boyken, and David Baker.
+\newblock The coming of age of de novo protein design.
+\newblock \emph{Nature}, 537\penalty0 (7620):\penalty0 320--327, 2016.
+\newblock \doi{10.1038/nature19946}.
+
+\bibitem[Dauparas et~al.(2022)Dauparas, Anishchenko, Bennett, Bai, Ragotte,
+  Milles, Wicky, Courbet, de~Haas, Bethel, et~al.]{dauparasProteinMPNN2022}
+Justas Dauparas, Ivan Anishchenko, Nathaniel Bennett, Hua Bai, Robert~J.
+  Ragotte, Lukas~F. Milles, Basile~I.M. Wicky, Alexis Courbet, Rob~J. de~Haas,
+  Neville Bethel, et~al.
+\newblock Robust deep learning--based protein sequence design using
+  {ProteinMPNN}.
+\newblock \emph{Science}, 378\penalty0 (6615):\penalty0 49--56, 2022.
+\newblock \doi{10.1126/science.add2187}.
+
+\bibitem[Watson et~al.(2023)Watson, Juergens, Bennett, Trippe, Yim, Eisenach,
+  Ahern, Borst, Ragotte, Milles, et~al.]{watsonRFdiffusion2023}
+Joseph~L. Watson, David Juergens, Nathaniel~R. Bennett, Brian~L. Trippe, Jason
+  Yim, Helen~E. Eisenach, Woody Ahern, Andrew~J. Borst, Robert~J. Ragotte,
+  Lukas~F. Milles, et~al.
+\newblock De novo design of protein structure and function with {RFdiffusion}.
+\newblock \emph{Nature}, 620\penalty0 (7976):\penalty0 1089--1100, 2023.
+\newblock \doi{10.1038/s41586-023-06415-8}.
 
 \bibitem[Madani et~al.(2023)Madani, Krause, Greene, Subramanian, Mohr, Holton,
   Olmos, Xiong, Sun, Socher, Fraser, and
@@ -43,6 +75,14 @@ Noelia Ferruz, Steffen Schmidt, and Birte H{\"o}cker.
 \newblock \emph{Nature Communications}, 13:\penalty0 4348, 2022.
 \newblock \doi{10.1038/s41467-022-32007-7}.
 
+\bibitem[Rao et~al.(2021)Rao, Liu, Verkuil, Meier, Canny, Abbeel, Sercu, and
+  Rives]{raoMSATransformer2021}
+Roshan Rao, Jason Liu, Robert Verkuil, Joshua Meier, John~F. Canny, Pieter
+  Abbeel, Tom Sercu, and Alexander Rives.
+\newblock {MSA} transformer.
+\newblock In \emph{Proceedings of the 38th International Conference on Machine
+  Learning (ICML)}, pages 8844--8856, 2021.
+
 \bibitem[Alamdari et~al.(2023)Alamdari, Thakur, van~den Berg, Lu, Fusi,
   Trember, and Wang]{alamdariProteinGeneration2023}
 Sarah Alamdari, Nitya Thakur, Rianne van~den Berg, Alex~X. Lu, Nicolo Fusi,
@@ -51,14 +91,6 @@ Sarah Alamdari, Nitya Thakur, Rianne van~den Berg, Alex~X. Lu, Nicolo Fusi,
   need.
 \newblock \emph{bioRxiv}, 2023.
 \newblock \doi{10.1101/2023.09.11.556673}.
-
-\bibitem[Rao et~al.(2021)Rao, Liu, Verkuil, Meier, Canny, Abbeel, Sercu, and
-  Rives]{raoMSATransformer2021}
-Roshan Rao, Jason Liu, Robert Verkuil, Joshua Meier, John~F. Canny, Pieter
-  Abbeel, Tom Sercu, and Alexander Rives.
-\newblock {MSA} transformer.
-\newblock In \emph{Proceedings of the 38th International Conference on Machine
-  Learning (ICML)}, pages 8844--8856, 2021.
 
 \bibitem[Mistry et~al.(2021)Mistry, Chuguransky, Williams, Qureshi, Salazar,
   Sonnhammer, Tosatto, Paladin, Raj, Richardson, Finn, and
@@ -71,6 +103,14 @@ Jaina Mistry, Sara Chuguransky, Lowri Williams, Matloob Qureshi, Gustavo~A
   2021.
 \newblock \doi{10.1093/nar/gkaa913}.
 
+\bibitem[Wu et~al.(2019)Wu, Kan, Lewis, Wittmann, and
+  Arnold]{wuMachineLearningAidedProtein2019}
+Zachary Wu, S.~B.~Jennifer Kan, Russell~D. Lewis, Bruce~J. Wittmann, and
+  Frances~H. Arnold.
+\newblock Machine-learning-guided directed evolution for protein engineering.
+\newblock \emph{Nature Methods}, 16:\penalty0 687--694, 2019.
+\newblock \doi{10.1038/s41592-019-0496-6}.
+
 \bibitem[Ramsauer et~al.(2021)Ramsauer, Sch{\"a}fl, Lehner, Seidl, Widrich,
   Adler, Gruber, Holzleitner, Pavlovi{\'c}, Sandve, Greiff, Kreil, Kopp,
   Klambauer, Brandstetter, and Hochreiter]{ramsauerHopfieldNetworksAll2021}
@@ -82,23 +122,23 @@ Hubert Ramsauer, Bernhard Sch{\"a}fl, Johannes Lehner, Philipp Seidl, Michael
 \newblock In \emph{International Conference on Learning Representations
   (ICLR)}, 2021.
 
-\bibitem[Jumper et~al.(2021)Jumper, Evans, Pritzel, Green, Figurnov,
-  Ronneberger, Tunyasuvunakool, Bates, {\v{Z}}{\'i}dek, Potapenko,
-  et~al.]{jumperHighlyAccurateProtein2021}
-John Jumper, Richard Evans, Alexander Pritzel, Tim Green, Michael Figurnov,
-  Olaf Ronneberger, Kathryn Tunyasuvunakool, Russ Bates, Augustin
-  {\v{Z}}{\'i}dek, Anna Potapenko, et~al.
-\newblock Highly accurate protein structure prediction with {AlphaFold}.
-\newblock \emph{Nature}, 596:\penalty0 583--589, 2021.
-\newblock \doi{10.1038/s41586-021-03819-2}.
+\bibitem[Lin et~al.(2023)Lin, Akin, Rao, Hie, Zhu, Lu, Smestad, Costa,
+  Fazel-Zarandi, Sercu, Candido, and Rives]{linEvolutionaryScaleModeling2023}
+Zeming Lin, Halil Akin, Roshan Rao, Brian Hie, Zhongkai Zhu, Wenting Lu, Nikita
+  Smestad, Allan Costa, Maryam Fazel-Zarandi, Tom Sercu, Sal Candido, and
+  Alexander Rives.
+\newblock Evolutionary-scale prediction of atomic-level protein structure with
+  a language model.
+\newblock \emph{Science}, 379\penalty0 (6637):\penalty0 1123--1130, 2023.
+\newblock \doi{10.1126/science.ade2574}.
 
-\bibitem[Riesselman et~al.(2018)Riesselman, Ingraham, and
-  Marks]{riesselman2018deep}
-Adam~J. Riesselman, John~B. Ingraham, and Debora~S. Marks.
-\newblock Deep generative models of genetic variation capture the effects of
-  mutations.
-\newblock \emph{Nature Methods}, 15:\penalty0 816--822, 2018.
-\newblock \doi{10.1038/s41592-018-0138-4}.
+\bibitem[Zhang and Skolnick(2005)]{zhangTMalign2005}
+Yang Zhang and Jeffrey Skolnick.
+\newblock {TM-align}: a protein structure alignment algorithm based on the
+  {TM-score}.
+\newblock \emph{Nucleic Acids Research}, 33\penalty0 (7):\penalty0 2302--2309,
+  2005.
+\newblock \doi{10.1093/nar/gki524}.
 
 \bibitem[Potter et~al.(2018)Potter, Luciani, Eddy, Park, Lopez, and
   Finn]{hmmer3}
@@ -134,15 +174,67 @@ Magnus Ekeberg, Cecilia L{\"o}vkvist, Yueheng Lan, Martin Weigt, and Erik
 \newblock \emph{Physical Review E}, 87\penalty0 (1):\penalty0 012707, 2013.
 \newblock \doi{10.1103/PhysRevE.87.012707}.
 
-\bibitem[Lin et~al.(2023)Lin, Akin, Rao, Hie, Zhu, Lu, Smestad, Costa,
-  Fazel-Zarandi, Sercu, Candido, and Rives]{linEvolutionaryScaleModeling2023}
-Zeming Lin, Halil Akin, Roshan Rao, Brian Hie, Zhongkai Zhu, Wenting Lu, Nikita
-  Smestad, Allan Costa, Maryam Fazel-Zarandi, Tom Sercu, Sal Candido, and
-  Alexander Rives.
-\newblock Evolutionary-scale prediction of atomic-level protein structure with
-  a language model.
-\newblock \emph{Science}, 379\penalty0 (6637):\penalty0 1123--1130, 2023.
-\newblock \doi{10.1126/science.ade2574}.
+\bibitem[Trinquier et~al.(2021)Trinquier, Uguzzoni, Pagnani, Zamponi, and
+  Weigt]{trinquierEfficientGenerativeModeling2021}
+Jeanne Trinquier, Guido Uguzzoni, Andrea Pagnani, Francesco Zamponi, and Martin
+  Weigt.
+\newblock Efficient generative modeling of protein sequences using simple
+  autoregressive models.
+\newblock \emph{Nature Communications}, 12:\penalty0 5800, 2021.
+\newblock \doi{10.1038/s41467-021-25756-4}.
+
+\bibitem[Riesselman et~al.(2018)Riesselman, Ingraham, and
+  Marks]{riesselman2018deep}
+Adam~J. Riesselman, John~B. Ingraham, and Debora~S. Marks.
+\newblock Deep generative models of genetic variation capture the effects of
+  mutations.
+\newblock \emph{Nature Methods}, 15:\penalty0 816--822, 2018.
+\newblock \doi{10.1038/s41592-018-0138-4}.
+
+\bibitem[Notin et~al.(2022)Notin, Dias, Frazer, Marchena-Hurtado, Gomez, Marks,
+  and Gal]{notinTranception2022}
+Pascal Notin, Mafalda Dias, Jonathan Frazer, Javier Marchena-Hurtado, Aidan~N.
+  Gomez, Debora Marks, and Yarin Gal.
+\newblock Tranception: Protein fitness prediction with autoregressive
+  transformers and inference-time retrieval.
+\newblock In \emph{Proceedings of the 39th International Conference on Machine
+  Learning (ICML)}, pages 16990--17017, 2022.
+
+\bibitem[Leaver-Fay et~al.(2011)Leaver-Fay, Tyka, Lewis, Lange, Thompson,
+  Jacak, Kaufman, Renfrew, Smith, Sheffler,
+  et~al.]{leaverfayRosetta3ObjectOriented2011}
+Andrew Leaver-Fay, Michael Tyka, Steven~M. Lewis, Oliver~F. Lange, James
+  Thompson, Ron Jacak, Kristian Kaufman, P.~Douglas Renfrew, Colin~A. Smith,
+  Will Sheffler, et~al.
+\newblock {ROSETTA3}: An object-oriented software suite for the simulation and
+  design of macromolecules.
+\newblock \emph{Methods in Enzymology}, 487:\penalty0 545--574, 2011.
+\newblock \doi{10.1016/B978-0-12-381270-4.00019-6}.
+
+\bibitem[Ingraham et~al.(2019)Ingraham, Garg, Barzilay, and
+  Jaakkola]{ingrahamGenerativeModelsGraph2019}
+John Ingraham, Vikas~K. Garg, Regina Barzilay, and Tommi Jaakkola.
+\newblock Generative models for graph-based protein design.
+\newblock In \emph{Advances in Neural Information Processing Systems},
+  volume~32, 2019.
+
+\bibitem[Anishchenko et~al.(2021)Anishchenko, Pellock, Chidyausiku, Ramelot,
+  Ovchinnikov, Hao, Bafna, Norn, Kang, Bera,
+  et~al.]{anishchenkoDenovoHallucination2021}
+Ivan Anishchenko, Samuel~J. Pellock, Tamuka~M. Chidyausiku, Theresa~A. Ramelot,
+  Sergey Ovchinnikov, Jingzhou Hao, Khushboo Bafna, Christoffer Norn, Alex
+  Kang, Asim~K. Bera, et~al.
+\newblock De novo protein design by deep network hallucination.
+\newblock \emph{Nature}, 600\penalty0 (7889):\penalty0 547--552, 2021.
+\newblock \doi{10.1038/s41586-021-04184-w}.
+
+\bibitem[Hsu et~al.(2022)Hsu, Verkuil, Liu, Lin, Hie, Sercu, Lerer, and
+  Rives]{hsuInverseFolding2022}
+Chloe Hsu, Robert Verkuil, Jason Liu, Zeming Lin, Brian Hie, Tom Sercu, Adam
+  Lerer, and Alexander Rives.
+\newblock Learning inverse folding from millions of predicted structures.
+\newblock In \emph{Proceedings of the 39th International Conference on Machine
+  Learning (ICML)}, pages 8946--8970, 2022.
 
 \bibitem[Krotov and Hopfield(2016)]{krotovDenseAssociativeMemory2016}
 Dmitry Krotov and John~J. Hopfield.
@@ -217,13 +309,5 @@ Anton Bovier, Michael Eckhoff, V{\'e}ronique Gayrard, and Markus Klein.
 \newblock \emph{Journal of the European Mathematical Society}, 6\penalty0
   (4):\penalty0 399--424, 2004.
 \newblock \doi{10.4171/JEMS/14}.
-
-\bibitem[Zhang and Skolnick(2005)]{zhangTMalign2005}
-Yang Zhang and Jeffrey Skolnick.
-\newblock {TM-align}: a protein structure alignment algorithm based on the
-  {TM-score}.
-\newblock \emph{Nucleic Acids Research}, 33\penalty0 (7):\penalty0 2302--2309,
-  2005.
-\newblock \doi{10.1093/nar/gki524}.
 
 \end{thebibliography}
