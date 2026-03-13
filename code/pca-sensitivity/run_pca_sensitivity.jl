@@ -61,7 +61,7 @@ families = [
     ("PF00711", "Defensin_beta"),
 ]
 
-pratios = [0.80, 0.85, 0.90, 0.95, 0.99]
+pratios = [0.50, 0.55, 0.60, 0.65, 0.70, 0.75, 0.80, 0.85, 0.90, 0.95, 0.99]  # extended range
 α_step = 0.01
 
 data_dir = joinpath(_EXPERIMENT_ROOT, "..", "pfam-families", "data")
@@ -124,7 +124,7 @@ end
 # ── Write CSV ─────────────────────────────────────────────────────────────────
 
 df = DataFrame(results)
-csv_path = joinpath(output_dir, "pca_sensitivity_results.csv")
+csv_path = joinpath(output_dir, "pca_sensitivity_results_extended.csv")
 CSV.write(csv_path, df)
 @info "Results saved to $csv_path"
 
