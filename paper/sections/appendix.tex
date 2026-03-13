@@ -142,6 +142,34 @@ SH3 & Faure et al.\ 2022      & 2{,}396 & 90.4\% & 67.5\% & $1.34\times$ & $<10^
 \end{tabular}
 \end{table}
 
+\section{Potts Model (plmDCA) Baseline}\label{si:potts}
+
+To assess whether pairwise coevolutionary models provide a stronger baseline than profile HMMs, we fitted a Potts model via pseudo-likelihood maximization (plmDCA)~\cite{ekeberg2013improved} to the SH3 and Kunitz seed alignments and generated 150 sequences per family by Gibbs sampling (500 sweeps per chain, initialized from random stored sequences). The Potts model captures pairwise couplings $J_{ij}(a,b)$ between all position pairs in addition to single-site fields $h_i(a)$, giving it substantially more parameters than a profile HMM. For SH3 ($K{=}55$, $L{=}48$), the model has approximately $498{,}000$ parameters for 55 training sequences (data-to-parameter ratio $\approx 10^{-4}$); for Kunitz ($K{=}99$, $L{=}53$), approximately $609{,}000$ parameters for 99 sequences. Despite this extreme over-parameterization, L2 regularization ($\lambda_J{=}\lambda_h{=}0.01$) yielded well-behaved generation (Table~\ref{tab:potts}).
+
+The Potts model achieved comparable or slightly better amino acid composition fidelity than SA (KL divergence $0.025$ vs.\ $0.036$ for SH3; $0.010$ vs.\ $0.013$ for Kunitz) while producing sequences with modestly lower novelty ($0.37$ vs.\ $0.47$ for SH3; $0.54$ vs.\ $0.56$ for Kunitz) and lower nearest sequence identity ($0.54$ vs.\ $0.59$ for SH3; $0.55$ vs.\ $0.61$ for Kunitz). Both methods occupy the same intermediate regime between profile HMMs (which drift far from the family at $23$--$29\%$ identity) and bootstrap resampling (which has zero novelty). The critical distinction is computational: the Potts model required fitting ${\sim}500{,}000$ parameters via L-BFGS-B optimization at each of $L$ positions, followed by $500$ Gibbs sweeps per sample (total wall time: ${\sim}100$~s per family), while SA required no fitting and generated sequences in seconds. The similar output quality supports the conclusion that the information captured by pairwise couplings is also present in the Hopfield energy landscape, which implicitly encodes all-order correlations through the softmax attention operation.
+
+\begin{table}[ht]
+\centering
+\caption{Potts model (plmDCA) baseline comparison for two Pfam families. Metrics are computed identically to the main baseline analysis (30 chains $\times$ 5 samples). KL: amino acid composition KL divergence ($\downarrow$). Novelty: PCA-space cosine distance ($\uparrow$). SeqID: nearest sequence identity to a stored pattern. Data/param: ratio of training sequences to model parameters.}
+\label{tab:potts}
+\small
+\begin{tabular}{@{}llcccc@{}}
+\toprule
+Family & Method & KL$_{\mathrm{AA}}$ $(\downarrow)$ & Novelty $(\uparrow)$ & SeqID & Data/param \\
+\midrule
+\multirow{3}{*}{SH3}
+ & SA generation & $0.036 \pm 0.026$ & $0.471 \pm 0.012$ & $0.593 \pm 0.007$ & --- \\
+ & Potts (plmDCA) & $0.025 \pm 0.019$ & $0.374 \pm 0.011$ & $0.539 \pm 0.009$ & $1.1 \times 10^{-4}$ \\
+ & HMM emit & $0.009 \pm 0.017$ & $0.614 \pm 0.004$ & $0.290 \pm 0.006$ & --- \\
+\midrule
+\multirow{3}{*}{Kunitz}
+ & SA generation & $0.013 \pm 0.022$ & $0.557 \pm 0.009$ & $0.607 \pm 0.004$ & --- \\
+ & Potts (plmDCA) & $0.010 \pm 0.017$ & $0.540 \pm 0.010$ & $0.548 \pm 0.010$ & $1.6 \times 10^{-4}$ \\
+ & HMM emit & $0.030 \pm 0.011$ & $0.666 \pm 0.004$ & $0.229 \pm 0.007$ & --- \\
+\bottomrule
+\end{tabular}
+\end{table}
+
 \section{Sequence Encoding, PCA Projection, and Decoding}\label{app:pca}
 
 Stochastic attention operates on continuous vectors on the unit sphere $\mathbb{S}^{d-1}$, while protein sequences are discrete objects over a 20-letter amino acid alphabet. Bridging the two requires three transformations: one-hot encoding, PCA dimensionality reduction, and unit-norm projection. Each step serves a specific purpose in the pipeline, and the reverse path (inverse PCA followed by argmax decoding) recovers discrete sequences from continuous samples. We describe each step in detail, state the mathematical formulation, and explain why PCA is the appropriate choice for this framework.
