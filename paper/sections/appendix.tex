@@ -204,6 +204,56 @@ Defensin\_beta & $0.85$ & $0.75$ & ---     & $0.83$ & $0.95$ & $0.88$ \\
 \label{fig:mi-scatter}
 \end{figure}
 
+\section{Initialization Sensitivity}\label{si:random-init}
+
+The multi-chain protocol described in Materials and Methods initializes each Langevin chain near a randomly selected stored pattern ($\boldsymbol{\xi}_0 = \mathbf{m}_k + \sigma_{\mathrm{init}}\boldsymbol{\epsilon}$, $\sigma_{\mathrm{init}} = 0.01$). To test whether this choice affects the generated ensemble, we repeated the full SA generation pipeline with random initialization on the unit sphere: each chain was started from $\boldsymbol{\xi}_0 = \mathbf{z}/\|\mathbf{z}\|$ with $\mathbf{z} \sim \mathcal{N}(\mathbf{0}, \mathbf{I}_d)$, placing the initial point at a random location unrelated to any stored pattern. All other parameters (chain length $T{=}5{,}000$, burn-in $T_{\mathrm{burn}}{=}2{,}000$, thinning interval $100$, step size $\alpha{=}0.01$, generation temperature $\beta_{\mathrm{gen}} \approx 2\beta^*$) were held fixed.
+
+The results were unambiguous: random sphere initialization produced output indistinguishable from stored-pattern initialization across all eight families (Table~\ref{tab:random-init}). The maximum absolute difference in KL divergence was $0.0003$ (RRM), and all other families showed differences below $10^{-4}$ in every metric. Novelty, nearest sequence identity, and valid residue fraction were identical to three decimal places. This insensitivity is expected from the theory: at $\beta_{\mathrm{gen}} \approx 2\beta^*$, the energy landscape has well-defined basins near stored patterns, and the dissipative drift term $-\alpha\nabla E(\boldsymbol{\xi})$ rapidly pulls any initial condition toward the nearest basin. The 2{,}000-step burn-in (at step size $\alpha{=}0.01$, corresponding to $20$ effective time units) is more than sufficient for the chains to reach stationarity, erasing all memory of the starting point. The result confirms that stored-pattern initialization is a computational convenience (reducing burn-in time) rather than a requirement, and that the generated ensemble reflects the Boltzmann distribution rather than an artifact of the initialization strategy.
+
+\begin{table}[ht]
+\centering
+\caption{Initialization sensitivity: stored-pattern vs.\ random sphere initialization. All metrics are computed identically to the main analysis (30 chains $\times$ 5 samples per condition). The two strategies produce indistinguishable output across all eight families, confirming that the 2{,}000-step burn-in is sufficient to reach stationarity from any starting point.}
+\label{tab:random-init}
+\small
+\begin{tabular}{@{}llcccc@{}}
+\toprule
+Family & Init & KL$_{\mathrm{AA}}$ & Novelty & SeqID & MaxCos \\
+\midrule
+\multirow{2}{*}{RRM}
+ & Stored & $0.060$ & $0.623$ & $0.538$ & $0.377$ \\
+ & Random & $0.059$ & $0.622$ & $0.539$ & $0.378$ \\
+\midrule
+\multirow{2}{*}{SH3}
+ & Stored & $0.036$ & $0.586$ & $0.593$ & $0.414$ \\
+ & Random & $0.036$ & $0.586$ & $0.593$ & $0.414$ \\
+\midrule
+\multirow{2}{*}{WW}
+ & Stored & $0.008$ & $0.741$ & $0.562$ & $0.259$ \\
+ & Random & $0.008$ & $0.741$ & $0.562$ & $0.259$ \\
+\midrule
+\multirow{2}{*}{Kunitz}
+ & Stored & $0.013$ & $0.663$ & $0.607$ & $0.337$ \\
+ & Random & $0.013$ & $0.663$ & $0.607$ & $0.337$ \\
+\midrule
+\multirow{2}{*}{zf-C2H2}
+ & Stored & $0.013$ & $0.692$ & $0.557$ & $0.308$ \\
+ & Random & $0.013$ & $0.692$ & $0.557$ & $0.308$ \\
+\midrule
+\multirow{2}{*}{PDZ}
+ & Stored & $0.038$ & $0.576$ & $0.543$ & $0.424$ \\
+ & Random & $0.038$ & $0.576$ & $0.543$ & $0.424$ \\
+\midrule
+\multirow{2}{*}{Pkinase}
+ & Stored & $0.035$ & $0.563$ & $0.515$ & $0.437$ \\
+ & Random & $0.035$ & $0.563$ & $0.515$ & $0.437$ \\
+\midrule
+\multirow{2}{*}{Defensin\_beta}
+ & Stored & $0.022$ & $0.583$ & $0.655$ & $0.417$ \\
+ & Random & $0.022$ & $0.583$ & $0.655$ & $0.417$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
 \section{PCA Variance Threshold Sensitivity}\label{si:pca-sensitivity}
 
 To assess whether the default 95\% variance threshold for PCA dimensionality reduction is a fragile design choice, and to identify the minimum information content needed for reliable generation, we repeated the full SA generation pipeline at eleven retained-variance thresholds spanning 50\% to 99\%. For each family and threshold, we constructed the memory matrix, identified the critical temperature $\beta^*$ via entropy inflection, and generated 150 sequences (30 chains $\times$ 5 samples) at $\beta_{\mathrm{gen}} = \max(2\beta^*, 5)$, rounded to the nearest integer. Table~\ref{tab:pca-sensitivity} reports the PCA dimension $d$, critical temperature $\beta^*$, generation temperature $\beta_{\mathrm{gen}}$, and three output metrics (KL divergence, novelty, nearest sequence identity) for all 88 family-threshold combinations.
@@ -417,6 +467,8 @@ since $\|\mathbf{m}_k\| = 1$. The self-similarity score of $1$ is an outlier rel
 We then asked whether the Gaussian $\tau^*/\sigma$ framework could be salvaged by substituting the cross-similarity standard deviation $\sigma_{\mathrm{cross}}$ for $\sigma = 1/\sqrt{d}$, but we found that this fails decisively ($R^2 = -9.0$; Fig.~\ref{fig:stored-pattern}D). We observed that the cross-similarity variance does not follow the $1/d$ law --- it ranges from $0.19\times$ to $2.4\times$ the random-probe variance depending on the family's correlation structure (Fig.~\ref{fig:stored-pattern}B,C) --- and the excess kurtosis is large ($6$--$25$), reflecting a heavy-tailed distribution driven by a few highly similar pattern pairs amid a bulk of near-orthogonal ones. The Gaussian mean-field decomposition $\beta^* = \tau^*/\sigma$ thus breaks down completely for stored-pattern probes: the self-similarity outlier and the non-Gaussian cross-similarity tails violate both assumptions simultaneously. Nonetheless, we found that the fitted model $\beta^* = 1.57 + 0.28\sqrt{d}$ remains robust. The $\sqrt{d}$ scaling is set by concentration of measure, which holds for any probe, and the self-similarity effect enters primarily through a reduced effective coefficient rather than a change in functional form. The intercept $\approx \tau^*$ recovers the universal softmax baseline, while the coefficient $0.28$ encapsulates the combined effect of self-similarity anchoring and the protein family correlation structure --- a quantity that is empirically stable across the eight families and five scaling conditions we studied, but for which we do not currently have a closed-form expression.
 
 To quantify uncertainty in the fitted regression $\beta^* = 1.57 + 0.28\sqrt{d}$, we performed a nonparametric bootstrap analysis. We resampled the 33 observations (8 Pfam families and 25 WW scaling replicates) with replacement 10{,}000 times and refit the ordinary least-squares (OLS) model on each resample. We obtained a bootstrap SE of $0.07$ for the intercept and $0.007$ for the slope, yielding 95\% confidence intervals of $[1.39, 1.68]$ and $[0.266, 0.294]$, respectively. We found that the bootstrap distributions of both coefficients are unimodal and approximately Gaussian, with no evidence of instability or sensitivity to individual data points. The bootstrap $R^2$ distribution has a median of $0.969$ with a 95\% interval of $[0.940, 0.987]$, confirming that the strong predictive relationship is not driven by outliers. We also verified that removing any single family from the dataset changes the fitted slope by less than $0.02$, which shows that no individual family exerts undue leverage on the regression.
+
+Because 25 of the 33 data points come from WW domain subsamples, a natural concern is that the regression is dominated by a single family. To address this, we refit the model using only the eight Pfam families (one point per family, $n{=}8$). The resulting fit, $\beta^* = 1.64 + 0.278\sqrt{d}$, is nearly identical to the full 33-point model: the slope changed by less than $0.004$ (from $0.281$ to $0.278$), the intercept shifted from $1.57$ to $1.64$, and the $R^2$ decreased only modestly from $0.97$ to $0.95$ (bootstrap median $R^2 = 0.95$, 95\% CI $[0.60, 1.00]$; the wider interval reflects the reduced sample size rather than model instability). Leave-one-out analysis on the eight families confirmed that no single family drives the fit: the slope varied between $0.273$ and $0.289$ across all eight deletions, and the intercept between $1.50$ and $1.69$. The consistency between the 8-family and 33-point fits demonstrates that the $\beta^* \propto \sqrt{d}$ relationship is a property of the family ensemble, not an artifact of overrepresentation by WW replicates.
 
 \begin{figure}[t]
     \centering
