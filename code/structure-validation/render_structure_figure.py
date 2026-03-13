@@ -27,6 +27,7 @@ FAMILIES = [
     ("PF00096", "zf-C2H2", "1ZAA_C"),
     ("PF00595", "PDZ",     "1BE9_A"),
     ("PF00069", "Pkinase", "1ATP_E"),
+    ("PF00711", "Defensin_beta", "1E4S_A"),
 ]
 
 

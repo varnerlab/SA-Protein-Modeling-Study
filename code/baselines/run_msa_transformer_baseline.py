@@ -34,6 +34,7 @@ FAMILIES = [
     ("PF00096", "zf-C2H2"),
     ("PF00595", "PDZ"),
     ("PF00069", "Pkinase"),
+    ("PF00711", "Defensin_beta"),
 ]
 
 N_SEQUENCES = 150

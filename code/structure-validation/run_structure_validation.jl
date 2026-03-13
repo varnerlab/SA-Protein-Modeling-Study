@@ -33,6 +33,7 @@ const FAMILIES = [
     (id="PF00096", name="zf-C2H2", pdb="1ZAA", chain="C"),
     (id="PF00595", name="PDZ",     pdb="1BE9", chain="A"),
     (id="PF00069", name="Pkinase", pdb="1ATP", chain="E"),
+    (id="PF00711", name="Defensin_beta", pdb="1E4S", chain="A"),
 ]
 
 const ESMFOLD_URL = "https://api.esmatlas.com/foldSequence/v1/pdb/"

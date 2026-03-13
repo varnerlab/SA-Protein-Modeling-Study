@@ -1,4 +1,4 @@
-\begin{thebibliography}{35}
+\begin{thebibliography}{36}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -272,6 +272,13 @@ Yang Zhang and Jeffrey Skolnick.
 \newblock \emph{Nucleic Acids Research}, 33\penalty0 (7):\penalty0 2302--2309,
   2005.
 \newblock \doi{10.1093/nar/gki524}.
+
+\bibitem[Lazzaro et~al.(2020)Lazzaro, Zasloff, and
+  Rolff]{lazzaroAntimicrobialPeptides2020}
+Brian~P. Lazzaro, Michael Zasloff, and Jens Rolff.
+\newblock Antimicrobial peptides: Application informed by evolution.
+\newblock \emph{Science}, 368\penalty0 (6490):\penalty0 eaau5480, 2020.
+\newblock \doi{10.1126/science.aau5480}.
 
 \bibitem[Roberts and Tweedie(1996)]{robertsTweedieExponentialConvergence1996}
 Gareth~O. Roberts and Richard~L. Tweedie.

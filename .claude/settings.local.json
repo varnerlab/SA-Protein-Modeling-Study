@@ -41,7 +41,13 @@
       "Bash(mkdir -p \"$DEST/PF00096/sa_generation\" \"$DEST/PF00096/stored\")",
       "Bash(cp /tmp/backup2/colabfold_output/PF00096/sa_generation/*_unrelaxed_rank_001*.pdb \"$DEST/PF00096/sa_generation/\")",
       "Read(//Users/jdv27/Desktop/julia_work/SA-Protein-Modeling-Study/$DEST/PF00096/sa_generation/**)",
-      "Bash(echo \"$DEST\")"
+      "Bash(echo \"$DEST\")",
+      "Bash(cd /Users/jdv27/Desktop/julia_work/SA-Protein-Modeling-Study/code/baselines && julia evaluate_baselines.jl 2>&1 | tail -30)",
+      "Bash(cd /Users/jdv27/Desktop/julia_work/SA-Protein-Modeling-Study/code && julia --project=. -e 'import Pkg; Pkg.instantiate\\(\\)' 2>&1 | tail -10)",
+      "Bash(cd /Users/jdv27/Desktop/julia_work/SA-Protein-Modeling-Study/code/baselines && julia --project=.. evaluate_baselines.jl 2>&1 | tail -40)",
+      "Bash(julia --project=.. analyze_baselines_stats.jl 2>&1 | tail -30)",
+      "Bash(pdflatex -interaction=nonstopmode Paper_v1.tex 2>&1 | grep -E \"Output written|Error|undefined\" | head -5 && pdflatex -interaction=nonstopmode Paper_v1.tex 2>&1 | grep -E \"Output written|Error|undefined\" | head -5)",
+      "Bash(cd /Users/jdv27/Desktop/julia_work/SA-Protein-Modeling-Study/paper && pdflatex -interaction=nonstopmode Paper_v1.tex 2>&1 | tail -20)"
     ]
   }
 }

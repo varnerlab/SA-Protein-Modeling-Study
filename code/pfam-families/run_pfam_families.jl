@@ -30,6 +30,7 @@ const FAMILIES = [
     (id="PF00096", name="zf-C2H2", desc="Zinc finger C2H2"),
     (id="PF00595", name="PDZ",     desc="PDZ domain"),
     (id="PF00069", name="Pkinase", desc="Protein kinase domain"),
+    (id="PF00711", name="Defensin_beta", desc="Beta defensin"),
 ]
 
 # ══════════════════════════════════════════════════════════════════════════════
