@@ -274,7 +274,7 @@ Despite the strong correlation, we found that the Gaussian prediction systematic
 \begin{equation}
     \beta^* = 1.565 + 0.281/\sigma = 1.565 + 0.281\sqrt{d}
 \end{equation}
-and obtained $R^2 = 0.962$, with an intercept that matches $\tau^*$ to within numerical precision but a slope of $0.28$, roughly $6\times$ smaller than $\tau^* \approx 1.6$. To understand this gap, we examined how $\beta^*$ is actually computed. We evaluate the empirical inflection by probing at \emph{stored patterns} $\mathbf{m}_k$, not at random queries on $\mathbb{S}^{d-1}$. When $\boldsymbol{\xi} = \mathbf{m}_k$, the similarity vector acquires a distinctive structure:
+and obtained an OLS $R^2 = 0.962$ (bootstrap median $R^2 = 0.969$; rounded to $0.97$ in the main text). The intercept matches $\tau^*$ to within numerical precision, but the slope of $0.28$ is roughly $6\times$ smaller than $\tau^* \approx 1.6$. To understand this gap, we examined how $\beta^*$ is actually computed. We evaluate the empirical inflection by probing at \emph{stored patterns} $\mathbf{m}_k$, not at random queries on $\mathbb{S}^{d-1}$. When $\boldsymbol{\xi} = \mathbf{m}_k$, the similarity vector acquires a distinctive structure:
 \begin{equation}
     e_j = \mathbf{m}_j^\top\mathbf{m}_k = \begin{cases} 1 & j = k \\ \text{cross-similarity} & j \neq k, \end{cases}
 \end{equation}
