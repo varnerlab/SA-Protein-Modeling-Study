@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  13 MAR 2026 13:18
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  13 MAR 2026 13:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -702,45 +702,40 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 [13])
 
 [14]
-<figs/cross_family_composite.pdf, id=264, 702.625pt x 903.375pt>
+<figs/cross_family_composite.pdf, id=266, 702.625pt x 903.375pt>
 File: figs/cross_family_composite.pdf Graphic file (type pdf)
 <use figs/cross_family_composite.pdf>
 Package pdftex.def Info: figs/cross_family_composite.pdf  used on input line 11
 3.
 (pdftex.def)             Requested size: 397.48499pt x 511.06949pt.
-<figs/scaling_composite.pdf, id=265, 903.375pt x 702.625pt>
-File: figs/scaling_composite.pdf Graphic file (type pdf)
-<use figs/scaling_composite.pdf>
-Package pdftex.def Info: figs/scaling_composite.pdf  used on input line 120.
-(pdftex.def)             Requested size: 397.48499pt x 309.15594pt.
-<figs/beta_prediction_composite.pdf, id=266, 1104.125pt x 381.425pt>
+<figs/beta_prediction_composite.pdf, id=267, 1104.125pt x 381.425pt>
 File: figs/beta_prediction_composite.pdf Graphic file (type pdf)
 <use figs/beta_prediction_composite.pdf>
 Package pdftex.def Info: figs/beta_prediction_composite.pdf  used on input line
- 127.
+ 120.
 (pdftex.def)             Requested size: 397.48499pt x 137.31288pt.
-<figs/baseline_comparison_composite.pdf, id=267, 803.0pt x 1053.9375pt>
+<figs/baseline_comparison_composite.pdf, id=268, 803.0pt x 1053.9375pt>
 File: figs/baseline_comparison_composite.pdf Graphic file (type pdf)
 <use figs/baseline_comparison_composite.pdf>
 Package pdftex.def Info: figs/baseline_comparison_composite.pdf  used on input 
-line 134.
+line 127.
 (pdftex.def)             Requested size: 397.48499pt x 521.70872pt.
-<figs/structure_validation_composite.pdf, id=268, 1104.125pt x 421.575pt>
+<figs/structure_validation_composite.pdf, id=269, 1104.125pt x 421.575pt>
 File: figs/structure_validation_composite.pdf Graphic file (type pdf)
 <use figs/structure_validation_composite.pdf>
 Package pdftex.def Info: figs/structure_validation_composite.pdf  used on input
- line 141.
+ line 134.
 (pdftex.def)             Requested size: 397.48499pt x 151.76688pt.
-<figs/structure_gallery.pdf, id=269, 902.50775pt x 278.39963pt>
+<figs/structure_gallery.pdf, id=270, 902.50775pt x 278.39963pt>
 File: figs/structure_gallery.pdf Graphic file (type pdf)
 <use figs/structure_gallery.pdf>
-Package pdftex.def Info: figs/structure_gallery.pdf  used on input line 148.
+Package pdftex.def Info: figs/structure_gallery.pdf  used on input line 141.
 (pdftex.def)             Requested size: 397.48499pt x 122.6109pt.
-<figs/sequence_analysis_kunitz.pdf, id=270, 990.91335pt x 543.4108pt>
+<figs/sequence_analysis_kunitz.pdf, id=271, 990.91335pt x 543.4108pt>
 File: figs/sequence_analysis_kunitz.pdf Graphic file (type pdf)
 <use figs/sequence_analysis_kunitz.pdf>
 Package pdftex.def Info: figs/sequence_analysis_kunitz.pdf  used on input line 
-155.
+148.
 (pdftex.def)             Requested size: 397.48499pt x 217.97406pt.
 
 
@@ -748,7 +743,7 @@ Package pdftex.def Info: figs/sequence_analysis_kunitz.pdf  used on input line
 
 [16 <./figs/cross_family_composite.pdf>]
 
-[17 <./figs/scaling_composite.pdf> <./figs/beta_prediction_composite.pdf>]
+[17 <./figs/beta_prediction_composite.pdf>]
 
 [18 <./figs/baseline_comparison_composite.pdf>]
 
@@ -756,11 +751,19 @@ Package pdftex.def Info: figs/sequence_analysis_kunitz.pdf  used on input line
 
 
 [20 <./figs/sequence_analysis_kunitz.pdf>] (./sections/appendix.tex
-<figs/aa_freq_example.pdf, id=550, 702.625pt x 501.875pt>
+<figs/aa_freq_example.pdf, id=548, 702.625pt x 501.875pt>
 File: figs/aa_freq_example.pdf Graphic file (type pdf)
 <use figs/aa_freq_example.pdf>
 Package pdftex.def Info: figs/aa_freq_example.pdf  used on input line 9.
 (pdftex.def)             Requested size: 357.73405pt x 255.53166pt.
+<figs/scaling_composite.pdf, id=550, 903.375pt x 702.625pt>
+File: figs/scaling_composite.pdf Graphic file (type pdf)
+<use figs/scaling_composite.pdf>
+Package pdftex.def Info: figs/scaling_composite.pdf  used on input line 20.
+(pdftex.def)             Requested size: 397.48499pt x 309.15594pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
 
 
 [21
@@ -771,40 +774,44 @@ Package pdftex.def Info: figs/aa_freq_example.pdf  used on input line 9.
 [22]
 
 [23]
-<figs/analytical_beta_star.pdf, id=598, 1505.625pt x 903.375pt>
+
+[24]
+<figs/analytical_beta_star.pdf, id=605, 1505.625pt x 903.375pt>
 File: figs/analytical_beta_star.pdf Graphic file (type pdf)
 <use figs/analytical_beta_star.pdf>
-Package pdftex.def Info: figs/analytical_beta_star.pdf  used on input line 166.
+Package pdftex.def Info: figs/analytical_beta_star.pdf  used on input line 177.
 
 (pdftex.def)             Requested size: 397.48499pt x 238.48346pt.
-<figs/stored_pattern_analysis.pdf, id=599, 1505.625pt x 903.375pt>
+<figs/stored_pattern_analysis.pdf, id=606, 1505.625pt x 903.375pt>
 File: figs/stored_pattern_analysis.pdf Graphic file (type pdf)
 <use figs/stored_pattern_analysis.pdf>
 Package pdftex.def Info: figs/stored_pattern_analysis.pdf  used on input line 1
-79.
+90.
 (pdftex.def)             Requested size: 397.48499pt x 238.48346pt.
 )
 
-[24]
-
 [25]
 
-[26 <./figs/analytical_beta_star.pdf>]
+[26 <./figs/scaling_composite.pdf>]
 
-[27 <./figs/stored_pattern_analysis.pdf>] (./Paper_v1.aux)
+[27]
+
+[28 <./figs/analytical_beta_star.pdf>]
+
+[29 <./figs/stored_pattern_analysis.pdf>] (./Paper_v1.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
 Package rerunfilecheck Info: File `Paper_v1.out' has not changed.
-(rerunfilecheck)             Checksum: C6443BBB1DD702FB8D8563B35A998A2A;2045.
+(rerunfilecheck)             Checksum: FD89AA35A7F38C43E1B2E088767F9BB6;2158.
  ) 
 Here is how much of TeX's memory you used:
- 16054 strings out of 473190
- 257031 string characters out of 5715801
- 723183 words of memory out of 5000000
- 38648 multiletter control sequences out of 15000+600000
- 606948 words of font info for 272 fonts, out of 8000000 for 9000
+ 16056 strings out of 473190
+ 257049 string characters out of 5715801
+ 724156 words of memory out of 5000000
+ 38650 multiletter control sequences out of 15000+600000
+ 606821 words of font info for 270 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,11n,79p,3503b,634s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
@@ -830,10 +837,10 @@ mf-dist/fonts/type1/public/cm-super/sftt1000.pfb></usr/local/texlive/2025/texmf
 -dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2025/texmf-dist/font
 s/type1/urw/times/utmr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/ur
 w/times/utmri8a.pfb>
-Output written on Paper_v1.pdf (27 pages, 1217308 bytes).
+Output written on Paper_v1.pdf (29 pages, 1219642 bytes).
 PDF statistics:
- 749 PDF objects out of 1000 (max. 8388607)
- 460 compressed objects within 5 object streams
- 122 named destinations out of 1000 (max. 500000)
- 42635 words of extra memory for PDF output out of 42996 (max. 10000000)
+ 760 PDF objects out of 1000 (max. 8388607)
+ 469 compressed objects within 5 object streams
+ 125 named destinations out of 1000 (max. 500000)
+ 42643 words of extra memory for PDF output out of 42996 (max. 10000000)
 

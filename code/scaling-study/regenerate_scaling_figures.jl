@@ -163,7 +163,7 @@ p_beta = plot(sa_gen_agg.K, sa_gen_agg.β_star_mean;
     ribbon      = sa_gen_agg.β_star_se,
     fillalpha   = PNAS_ALPHA,
     xlabel      = "Family size (K)",
-    ylabel      = "β*",
+    ylabel      = "beta*",
     title       = "(D)  Critical temperature",
     xscale      = :log10,
     xticks      = K_ticks,
@@ -172,7 +172,7 @@ p_beta = plot(sa_gen_agg.K, sa_gen_agg.β_star_mean;
     markershape = :circle,
     markersize  = PNAS_MS,
     markercolor = method_colors["SA (generation)"],
-    label       = "β* (empirical)",
+    label       = "beta* (empirical)",
     legend      = :topleft,
     panel_defaults...
 )

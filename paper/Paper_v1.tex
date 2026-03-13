@@ -117,13 +117,6 @@ Defensin\_beta & PF00711 &  45 &  36 &  37 & 1.65 &  45 & 3.23 & 0.53 \\
 
 \begin{figure}[p]
 \centering
-\includegraphics[width=\textwidth]{figs/scaling_composite.pdf}
-\caption{Scaling study: WW domain subsampled at $K \in \{20, 50, 100, 200, 400\}$ with five independent replicates. \textbf{(A)}~KL divergence (log--log scale). SA generation maintains low KL across the entire range; convex combination degrades catastrophically. \textbf{(B)}~Novelty increases with $K$ for SA methods; baselines remain near zero. \textbf{(C)}~Nearest sequence identity decreases with $K$, indicating the sampler explores further from stored patterns as more patterns shape the energy landscape. \textbf{(D)}~The empirical critical temperature $\beta^*$ increases with family size. Shaded regions and error bars show $\pm 1$ SE.}
-\label{fig:scaling}
-\end{figure}
-
-\begin{figure}[p]
-\centering
 \includegraphics[width=\textwidth]{figs/beta_prediction_composite.pdf}
 \caption{Predicting the critical temperature from MSA statistics. \textbf{(A)}~Predicted vs.\ empirical $\beta^*$ for the simple linear model $\beta^* \approx 1.52 + 0.28\sqrt{d}$ ($R^2{=}0.97$, $n{=}33$). Blue circles: eight Pfam families; gold diamonds: WW scaling replicates ($K \in \{20,\ldots,400\}$, five repeats each). \textbf{(B)}~$\beta^*$ as a function of $\sqrt{d}$, with the fitted regression (dashed) and the random-pattern prediction $\beta^* = \sqrt{d}$ (dotted red). The intercept offset and reduced slope reflect structured correlations in real protein families. \textbf{(C)}~Model comparison (log-scale RMSE). The simple $\sqrt{d}$ model (RMSE${=}0.16$) is $33\times$ more accurate than the naive random-pattern prediction $\beta^* = \sqrt{d}$ (RMSE${=}5.29$); adding MSA features provides negligible improvement.}
 \label{fig:beta-prediction}
