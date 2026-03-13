@@ -211,9 +211,6 @@ INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/times/ptmr8t.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/times/ptmb8t.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/times/ptmri8t.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/times/ptmb8t.tfm
-INPUT ./sections/introduction.tex
-INPUT ./sections/introduction.tex
-INPUT sections/introduction.tex
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/adobe/times/ptmb8t.vf
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/times/ptmb8r.tfm
 INPUT /usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map
@@ -231,6 +228,9 @@ INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/adobe/times/ptmb8t.vf
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/times/ptmb8r.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/adobe/times/ptmr8t.vf
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/times/ptmr8r.tfm
+INPUT ./sections/introduction.tex
+INPUT ./sections/introduction.tex
+INPUT sections/introduction.tex
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmbx7.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmbx5.tfm

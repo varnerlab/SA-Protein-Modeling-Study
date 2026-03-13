@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex Paper_v1"] 1773417324.04982 "Paper_v1.aux" "Paper_v1.bbl" "Paper_v1" 1773417324.98731 0
+["bibtex Paper_v1"] 1773418092.14114 "Paper_v1.aux" "Paper_v1.bbl" "Paper_v1" 1773418887.12435 0
   "./References_v1.bib" 1773415938.66841 17310 fc75a936f591e6dfc29bc30a68ff972b ""
   "/usr/local/texlive/2025/texmf-dist/bibtex/bst/natbib/unsrtnat.bst" 1233624470 24550 a41a6405f4de768c43e871d9fbce2bc8 ""
-  "Paper_v1.aux" 1773417324.72534 27067 177ae0670155e090e5fbc8376362c7d1 "pdflatex"
+  "Paper_v1.aux" 1773418886.83307 27173 111d3d411a79baf8368ae7bc239ca1cc "pdflatex"
   (generated)
   "Paper_v1.bbl"
   "Paper_v1.blg"
   (rewritten before read)
-["pdflatex"] 1773417324.14715 "Paper_v1.tex" "Paper_v1.pdf" "Paper_v1" 1773417324.98746 0
+["pdflatex"] 1773418886.22884 "Paper_v1.tex" "Paper_v1.pdf" "Paper_v1" 1773418887.12457 0
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -152,25 +152,25 @@
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1747946047 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1741450574 3345740 46b66fdb0378f7bf5921b5eabf1762b8 ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "Paper_v1.aux" 1773417324.72534 27067 177ae0670155e090e5fbc8376362c7d1 "pdflatex"
-  "Paper_v1.bbl" 1773417324.14502 14540 7a205bcf8e97cda741d4bb884264e350 "bibtex Paper_v1"
-  "Paper_v1.out" 1773417324.72674 1907 9bb9cd83cf514710fb9b9fe3bc60e05e "pdflatex"
-  "Paper_v1.tex" 1773412692.21729 17169 43ab2646e958d8143b916980b47d7208 ""
+  "Paper_v1.aux" 1773418886.83307 27173 111d3d411a79baf8368ae7bc239ca1cc "pdflatex"
+  "Paper_v1.bbl" 1773418559.49771 14540 7a205bcf8e97cda741d4bb884264e350 "bibtex Paper_v1"
+  "Paper_v1.out" 1773418886.83453 1907 9bb9cd83cf514710fb9b9fe3bc60e05e "pdflatex"
+  "Paper_v1.tex" 1773418133.98715 17879 f33ff0d94774f50eb805b15105aea563 ""
   "figs/aa_freq_example.pdf" 1773269478.21888 30369 1735974b70f0de0f3078fd60b3dc71cd ""
   "figs/analytical_beta_star.pdf" 1773337697.33603 85572 6ff0e047b519b4ab50b48cf6fb6b959e ""
   "figs/baseline_comparison_composite.pdf" 1773415542.38285 24257 9989c8931f4b93f92dd0eefdb61ecf1a ""
-  "figs/beta_prediction_composite.pdf" 1773272911.67688 29335 3722df8ad3bfb2ad98c9207beddb230b ""
-  "figs/cross_family_composite.pdf" 1773271611.834 8444 f703cd46972e91d2151e53210ac48031 ""
+  "figs/beta_prediction_composite.pdf" 1773418106.83884 29364 ddf870894727c568c252ecfc6dc70b62 ""
+  "figs/cross_family_composite.pdf" 1773418876.74158 9298 c68ac1f77bdf0c9a3a84bdcbd30868c7 ""
   "figs/scaling_composite.pdf" 1773271611.84146 10169 8c6356d3a7c72d060aaf840da62f5147 ""
   "figs/stored_pattern_analysis.pdf" 1773337699.80595 77665 c8f3aead5bac5654dfd059cda03e4753 ""
   "figs/structure_gallery.pdf" 1773416358.60416 344097 03cb2bcf808f725bfa76261fd1de6214 ""
   "figs/structure_validation_composite.pdf" 1773327194.16623 45738 e28a1e4f9305650c2444b4cde43da0fb ""
   "neurips_2026.sty" 1773266735.77391 13023 2817c1b954c70ec3156371423da6545c ""
-  "sections/appendix.tex" 1773417311.12326 19757 dd17fa1fcc908aae03642277990b2613 ""
+  "sections/appendix.tex" 1773418415.68766 19757 3cc05f2ac68298c8d0a52e29e0cef349 ""
   "sections/discussion.tex" 1773416652.27219 10647 08497592727e55e2f2664fe7118908d1 ""
   "sections/experiments.tex" 1773415970.9044 8824 6cde4a9782a72c2efe6a2e34f3bfbca9 ""
   "sections/introduction.tex" 1773415752.15886 9678 6f022a17ad784ee04caab2cf76637ef1 ""
-  "sections/results.tex" 1773416638.1267 15288 061b404994e23c91b1e45156ed873f21 ""
+  "sections/results.tex" 1773418409.54645 15288 17a22008d3eab3a960c7ea877323e305 ""
   "sections/theory.tex" 1773415779.98441 6753 0064fe94daa08185f8c8beedd4fb60c4 ""
   (generated)
   "Paper_v1.aux"

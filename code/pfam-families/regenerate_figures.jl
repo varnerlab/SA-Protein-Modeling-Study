@@ -1,7 +1,9 @@
 #!/usr/bin/env julia
 # ──────────────────────────────────────────────────────────────────────────────
-# Regenerate cross-family figures — PNAS quality with per-chain SE error bars
-# Uses per-chain bootstrap: 30 chains × 5 samples → SE over chain-level metrics
+# Regenerate cross-family figures — PNAS quality
+# KL: pooled over all sequences (matching Table 2), SE via 1000-fold bootstrap
+# Novelty: PCA-space cosine novelty = 1 - max_k cos(xi, m_k) (matching Table 2)
+# SeqID: per-chain means, SE over 30 chains
 # ──────────────────────────────────────────────────────────────────────────────
 
 @info "Loading environment …"
@@ -19,13 +21,37 @@ const FAMILIES = [
     (id="PF00096", name="zf-C2H2"),
     (id="PF00595", name="PDZ"),
     (id="PF00069", name="Pkinase"),
+    (id="PF00711", name="Defensin_beta"),
 ]
 
 const n_chains = 30
 const samples_per_chain = 5
+const n_bootstrap_kl = 1000
 const R_pca = 0.95
 
-@info "Computing per-chain error bars …"
+"""
+    project_to_pca(seq::String, pca_model, L::Int) -> Vector{Float64}
+
+One-hot encode a single sequence, project into PCA space, and unit-normalize.
+"""
+function project_to_pca(seq::String, pca_model, L::Int)
+    AA_ALPHABET = collect("ACDEFGHIKLMNPQRSTVWY")
+    n_aa = length(AA_ALPHABET)
+    aa_to_idx = Dict(aa => i for (i, aa) in enumerate(AA_ALPHABET))
+
+    oh = zeros(Float64, n_aa * L)
+    for (pos, ch) in enumerate(seq)
+        pos > L && break
+        idx = get(aa_to_idx, ch, 0)
+        idx > 0 && (oh[(pos-1)*n_aa + idx] = 1.0)
+    end
+
+    v = MultivariateStats.transform(pca_model, oh)
+    nv = norm(v)
+    nv > 1e-12 ? v ./ nv : v
+end
+
+@info "Computing metrics …"
 
 # collect per-family, per-method results with SE
 rows = Vector{NamedTuple}()
@@ -38,6 +64,12 @@ for fam in FAMILIES
     stored_data = parse_fasta(joinpath(fam_dir, "stored_sequences.fasta"))
     stored_seqs = [s[2] for s in stored_data]
 
+    # rebuild memory matrix for PCA-space novelty (matching Table 2)
+    char_mat = permutedims(hcat([collect(s) for s in stored_seqs]...))
+    X̂, pca_model, L_out, d_full = build_memory_matrix(char_mat; pratio=R_pca)
+    L = size(char_mat, 2)
+    d, K = size(X̂)
+
     # load SA retrieval and generation sequences
     for (label, method_name) in [("sa_retrieval", "SA retrieval"),
                                   ("sa_generation", "SA generation")]
@@ -46,30 +78,39 @@ for fam in FAMILIES
         gen_data = parse_fasta(fasta_file)
         gen_seqs = [s[2] for s in gen_data]
 
-        # split into 30 chains of 5 samples
+        # ── KL: pooled over ALL sequences, SE via bootstrap ──
+        kl_pooled = aa_composition_kl(gen_seqs, stored_seqs)
+        n_gen = length(gen_seqs)
+        boot_kls = Float64[]
+        for _ in 1:n_bootstrap_kl
+            idx = rand(1:n_gen, n_gen)
+            push!(boot_kls, aa_composition_kl(gen_seqs[idx], stored_seqs))
+        end
+        kl_se = std(boot_kls)
+
+        # ── PCA-space novelty and AA-space SeqID: per-chain means ──
+        gen_pca = [project_to_pca(s, pca_model, L) for s in gen_seqs]
         n_total = length(gen_seqs)
         spc = min(samples_per_chain, n_total ÷ n_chains)
-        chain_kls = Float64[]
         chain_novelties = Float64[]
         chain_seqids = Float64[]
 
         for c in 1:n_chains
-            start_idx = (c - 1) * spc + 1
-            end_idx = c * spc
-            end_idx > n_total && break
-            chain_seqs = gen_seqs[start_idx:end_idx]
-
-            push!(chain_kls, aa_composition_kl(chain_seqs, stored_seqs))
-            push!(chain_seqids, mean(nearest_sequence_identity(s, stored_seqs) for s in chain_seqs))
-            push!(chain_novelties, mean(1.0 - nearest_sequence_identity(s, stored_seqs) for s in chain_seqs))
+            si = (c - 1) * spc + 1
+            ei = c * spc
+            ei > n_total && break
+            # novelty: 1 - max cosine similarity in PCA space
+            push!(chain_novelties, mean(1.0 - nearest_cosine_similarity(gen_pca[j], X̂) for j in si:ei))
+            # seqid: nearest sequence identity in AA space
+            push!(chain_seqids, mean(nearest_sequence_identity(gen_seqs[j], stored_seqs) for j in si:ei))
         end
 
-        n_ch = length(chain_kls)
+        n_ch = length(chain_novelties)
         push!(rows, (
             Family     = fam.name,
             Method     = method_name,
-            KL_mean    = mean(chain_kls),
-            KL_se      = std(chain_kls) / sqrt(n_ch),
+            KL_mean    = kl_pooled,
+            KL_se      = kl_se,
             Nov_mean   = mean(chain_novelties),
             Nov_se     = std(chain_novelties) / sqrt(n_ch),
             SID_mean   = mean(chain_seqids),
@@ -77,31 +118,39 @@ for fam in FAMILIES
         ))
     end
 
-    # Bootstrap baseline: resample stored sequences into 30 groups of 5
-    gen_seqs = begin
-        Random.seed!(12345)
-        [stored_seqs[rand(1:length(stored_seqs))] for _ in 1:150]
+    # Bootstrap baseline: resample stored patterns in PCA space
+    Random.seed!(12345)
+    bs_pca = [copy(X̂[:, rand(1:K)]) for _ in 1:150]
+    bs_seqs = [decode_sample(ξ, pca_model, L) for ξ in bs_pca]
+
+    # ── KL: pooled, SE via bootstrap ──
+    kl_pooled = aa_composition_kl(bs_seqs, stored_seqs)
+    n_gen = length(bs_seqs)
+    boot_kls = Float64[]
+    for _ in 1:n_bootstrap_kl
+        idx = rand(1:n_gen, n_gen)
+        push!(boot_kls, aa_composition_kl(bs_seqs[idx], stored_seqs))
     end
-    chain_kls = Float64[]
-    chain_seqids = Float64[]
+    kl_se = std(boot_kls)
+
+    # ── PCA-space novelty and AA-space SeqID: per-chain ──
     chain_novelties = Float64[]
+    chain_seqids = Float64[]
     spc = 5
-
     for c in 1:n_chains
-        start_idx = (c - 1) * spc + 1
-        end_idx = c * spc
-        chain_seqs = gen_seqs[start_idx:end_idx]
-        push!(chain_kls, aa_composition_kl(chain_seqs, stored_seqs))
-        push!(chain_seqids, mean(nearest_sequence_identity(s, stored_seqs) for s in chain_seqs))
-        push!(chain_novelties, mean(1.0 - nearest_sequence_identity(s, stored_seqs) for s in chain_seqs))
+        si = (c - 1) * spc + 1
+        ei = c * spc
+        ei > length(bs_pca) && break
+        push!(chain_novelties, mean(1.0 - nearest_cosine_similarity(bs_pca[j], X̂) for j in si:ei))
+        push!(chain_seqids, mean(nearest_sequence_identity(bs_seqs[j], stored_seqs) for j in si:ei))
     end
 
-    n_ch = length(chain_kls)
+    n_ch = length(chain_novelties)
     push!(rows, (
         Family     = fam.name,
         Method     = "Bootstrap",
-        KL_mean    = mean(chain_kls),
-        KL_se      = std(chain_kls) / sqrt(n_ch),
+        KL_mean    = kl_pooled,
+        KL_se      = kl_se,
         Nov_mean   = mean(chain_novelties),
         Nov_se     = std(chain_novelties) / sqrt(n_ch),
         SID_mean   = mean(chain_seqids),
@@ -180,7 +229,7 @@ p_kl = make_bar_panel(df, family_names, method_order, method_colors, offsets, ba
 
 p_nov = make_bar_panel(df, family_names, method_order, method_colors, offsets, bar_width;
     val_col=:Nov_mean, err_col=:Nov_se,
-    ylabel="Novelty (1 − max seq. identity)", title="(B)  Sample novelty",
+    ylabel="Novelty (1 - max cosine sim.)", title="(B)  Sample novelty",
     legend=:none, panel_defaults...)
 
 p_sid = make_bar_panel(df, family_names, method_order, method_colors, offsets, bar_width;

@@ -25,6 +25,7 @@ const FAMILIES = [
     (id="PF00096", name="zf-C2H2"),
     (id="PF00595", name="PDZ"),
     (id="PF00069", name="Pkinase"),
+    (id="PF00711", name="Defensin_beta"),
 ]
 
 const n_chains = 30
