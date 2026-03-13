@@ -24,6 +24,8 @@ To characterize how generation quality degrades with decreasing family size, we 
 
 \section{Generation Metrics}\label{si:generation-metrics}
 
+Table~\ref{tab:results} reports the full generation metrics for all eight Pfam families across five sampling conditions: SA generation ($\beta \approx 2\beta^*$), SA retrieval ($\beta \approx 20\beta^*$), bootstrap resampling, Gaussian perturbation, and convex combination. For each condition, we report the KL divergence of amino acid composition, PCA-space cosine novelty, and nearest sequence identity to a stored pattern. Standard errors are computed over 30 independent Langevin chains of 5 samples each; KL standard errors are obtained via 1{,}000-fold bootstrap resampling. Bold entries indicate the best-performing method for each family and metric.
+
 \begin{table}[ht]
 \centering
 \caption{Generation metrics across eight Pfam families (mean $\pm$ SE). SA gen: stochastic attention generation regime ($\beta \approx 2\beta^*$). SA ret: retrieval regime ($\beta \approx 20\beta^*$). BS: bootstrap. GP: Gaussian perturbation. CC: convex combination. KL: KL divergence of amino acid composition ($\downarrow$ lower is better; SE via 1{,}000-fold bootstrap). Novelty: $1 - \max_k\cos(\hat{\boldsymbol{\xi}}, \mathbf{m}_k)$ in PCA space ($\uparrow$ higher is better). SeqID: nearest sequence identity to a stored pattern after decoding ($\downarrow$ lower is better, indicating greater novelty). Standard errors for novelty and SeqID are computed over 30 independent chains of 5 samples each.}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  13 MAR 2026 13:29
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  13 MAR 2026 13:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -762,39 +762,40 @@ File: figs/scaling_composite.pdf Graphic file (type pdf)
 Package pdftex.def Info: figs/scaling_composite.pdf  used on input line 20.
 (pdftex.def)             Requested size: 397.48499pt x 309.15594pt.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 
 [21
 
 
  <./figs/aa_freq_example.pdf>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
 
 [22]
 
 [23]
 
 [24]
-<figs/analytical_beta_star.pdf, id=605, 1505.625pt x 903.375pt>
+<figs/analytical_beta_star.pdf, id=603, 1505.625pt x 903.375pt>
 File: figs/analytical_beta_star.pdf Graphic file (type pdf)
 <use figs/analytical_beta_star.pdf>
-Package pdftex.def Info: figs/analytical_beta_star.pdf  used on input line 177.
+Package pdftex.def Info: figs/analytical_beta_star.pdf  used on input line 179.
 
 (pdftex.def)             Requested size: 397.48499pt x 238.48346pt.
-<figs/stored_pattern_analysis.pdf, id=606, 1505.625pt x 903.375pt>
+
+
+[25]
+<figs/stored_pattern_analysis.pdf, id=613, 1505.625pt x 903.375pt>
 File: figs/stored_pattern_analysis.pdf Graphic file (type pdf)
 <use figs/stored_pattern_analysis.pdf>
 Package pdftex.def Info: figs/stored_pattern_analysis.pdf  used on input line 1
-90.
+92.
 (pdftex.def)             Requested size: 397.48499pt x 238.48346pt.
 )
 
-[25]
+[26]
 
-[26 <./figs/scaling_composite.pdf>]
-
-[27]
+[27 <./figs/scaling_composite.pdf>]
 
 [28 <./figs/analytical_beta_star.pdf>]
 
@@ -809,7 +810,7 @@ Package rerunfilecheck Info: File `Paper_v1.out' has not changed.
 Here is how much of TeX's memory you used:
  16056 strings out of 473190
  257049 string characters out of 5715801
- 724156 words of memory out of 5000000
+ 720156 words of memory out of 5000000
  38650 multiletter control sequences out of 15000+600000
  606821 words of font info for 270 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -837,10 +838,10 @@ mf-dist/fonts/type1/public/cm-super/sftt1000.pfb></usr/local/texlive/2025/texmf
 -dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2025/texmf-dist/font
 s/type1/urw/times/utmr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/ur
 w/times/utmri8a.pfb>
-Output written on Paper_v1.pdf (29 pages, 1219642 bytes).
+Output written on Paper_v1.pdf (29 pages, 1219959 bytes).
 PDF statistics:
- 760 PDF objects out of 1000 (max. 8388607)
- 469 compressed objects within 5 object streams
+ 761 PDF objects out of 1000 (max. 8388607)
+ 470 compressed objects within 5 object streams
  125 named destinations out of 1000 (max. 500000)
  42643 words of extra memory for PDF output out of 42996 (max. 10000000)
 
