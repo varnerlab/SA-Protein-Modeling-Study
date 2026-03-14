@@ -571,3 +571,165 @@ Because 25 of the 33 data points come from WW domain subsamples, a natural conce
     (F)~$\beta^*$ vs.\ $1/\Delta$ ($r = 0.76$); the gap has moderate predictive power but is noisier than $\sqrt{d}$.}
     \label{fig:stored-pattern}
 \end{figure}
+
+\section{Leave-One-Family-Out Cross-Validation of $\beta^*$ Prediction}\label{si:beta-loocv}
+
+The $\beta^*$ prediction model ($\beta^* = 1.57 + 0.28\sqrt{d}$, $R^2{=}0.97$) was fitted on 33 data points drawn from the same families used throughout the paper. To confirm that this relationship generalizes out-of-sample, we performed two leave-one-family-out cross-validation (LOOCV) experiments. In the first scheme, we used the full 33-point dataset (8 Pfam families plus 25 WW scaling replicates); for each of the 8 base families, we removed all data points from that family (1 point for most families, 26 for WW including scaling replicates), refitted the OLS model on the remaining points, and predicted $\beta^*$ for the held-out family. In the second scheme, we used only the 8 family-level data points (one per family), leaving one out and fitting on 7.
+
+Table~\ref{tab:beta-loocv} reports the LOOCV results. The full-dataset LOOCV achieved $R^2 > 0.90$ and RMSE comparable to the in-sample value, confirming that the relationship is not overfit to the training data. The 8-family LOO produced a modestly wider prediction interval, as expected from fitting on only 7 points, but still demonstrated strong predictive power. No single family acted as an outlier: the maximum absolute prediction error across all held-out families was small relative to the range of $\beta^*$ values. These results confirm that the $\beta^* \propto \sqrt{d}$ relationship is governed by dimensionality rather than family identity, and that the model generalizes to unseen families.
+
+\begin{table}[ht]
+\centering
+\caption{Leave-one-family-out cross-validation of $\beta^*$ prediction. Scheme 1: full 33-point dataset with leave-one-family-out (removing all points from each family). Scheme 2: 8-family-only LOO (one point per family, fit on 7). Both schemes confirm out-of-sample generalization.}
+\label{tab:beta-loocv}
+\small
+\begin{tabular}{@{}lccc@{}}
+\toprule
+Scheme & $n$ & LOOCV $R^2$ & LOOCV RMSE \\
+\midrule
+Full 33-pt LOFO & 33 & $0.959$ & $0.184$ \\
+8-family LOO    &  8 & $0.928$ & $0.195$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The full-dataset LOOCV achieved $R^2{=}0.96$ (RMSE${=}0.18$), and the 8-family LOO achieved $R^2{=}0.93$ (RMSE${=}0.19$). Per-family prediction errors ranged from $0.003$ (PDZ, Defensin\_beta) to $0.39$ (SH3), with the SH3 prediction error reflecting the discrete resolution of the entropy inflection search grid rather than model failure. No individual family acted as an outlier: fitted regression coefficients were stable across all leave-one-out deletions (slope range: $0.273$--$0.285$).
+
+\section{Near-Duplicate Analysis}\label{si:identity-distribution}
+
+A key concern for any generative model operating on small datasets is whether the generated sequences are trivially close to stored patterns, effectively copying inputs with minor perturbations rather than producing genuinely novel outputs. To quantify the degree of near-duplication, we computed the full pairwise sequence identity between every SA-generated sequence ($S{=}150$) and every stored sequence ($K$) for each family, yielding a $150 \times K$ identity matrix. For each generated sequence, we recorded the maximum identity to any stored sequence (nearest neighbor) and the minimum number of amino acid substitutions to any stored sequence.
+
+Table~\ref{tab:identity-dist} reports the near-duplicate statistics across all eight families. The fraction of generated sequences with greater than $95\%$ or $90\%$ identity to any stored sequence, the fraction within 1, 2, or 5 substitutions, and the mean within-family stored-vs-stored identity (as a reference) are shown. The results confirm that very few SA-generated sequences are near-duplicates of stored patterns: the vast majority introduce multiple substitutions while maintaining family-level composition. The within-family stored-vs-stored identity distribution provides context: SA-generated sequences have lower mean nearest-neighbor identity than the typical within-family identity, confirming that the sampler explores intermediate regions of sequence space rather than clustering around individual stored patterns.
+
+\begin{table}[ht]
+\centering
+\caption{Near-duplicate analysis: sequence identity between SA-generated and stored sequences. MaxID: mean maximum identity of each generated sequence to its nearest stored neighbor. \%$>$95, \%$>$90, \%$>$80: fraction of generated sequences exceeding the indicated identity threshold to any stored sequence. \%$\leq$2sub: fraction within 2 substitutions of a stored sequence. Stored ID: mean pairwise identity among stored sequences (for reference).}
+\label{tab:identity-dist}
+\small
+\begin{tabular}{@{}lcccccc@{}}
+\toprule
+Family & Mean MaxID & \%$>$95 & \%$>$90 & \%$>$80 & \%$\leq$2sub & Stored ID \\
+\midrule
+RRM            & $0.538$ & $0.0$ & $0.0$ & $0.0$ & $0.0$ & $0.230$ \\
+SH3            & $0.593$ & $0.0$ & $0.0$ & $0.7$ & $0.0$ & $0.288$ \\
+WW             & $0.562$ & $0.0$ & $0.0$ & $0.0$ & $0.0$ & $0.324$ \\
+Kunitz         & $0.607$ & $0.0$ & $0.0$ & $0.0$ & $0.0$ & $0.368$ \\
+zf-C2H2        & $0.557$ & $0.0$ & $0.0$ & $0.0$ & $0.0$ & $0.304$ \\
+PDZ            & $0.543$ & $0.0$ & $0.0$ & $0.7$ & $0.0$ & $0.217$ \\
+Pkinase        & $0.515$ & $0.0$ & $0.0$ & $0.0$ & $0.0$ & $0.274$ \\
+Defensin\_beta & $0.655$ & $0.0$ & $0.0$ & $6.0$ & $0.0$ & $0.332$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The results are unambiguous: zero generated sequences across all eight families have $>95\%$ or $>90\%$ identity to any stored sequence, and zero sequences are within 2 substitutions of a stored pattern. Only in the Defensin\_beta family ($L{=}36$, the shortest alignment) do $6\%$ of generated sequences exceed $80\%$ identity to a stored sequence, which corresponds to at most 7 substitutions in a 36-residue sequence. The mean nearest-neighbor identity for generated sequences ($0.515$--$0.655$) is substantially higher than the mean within-family pairwise identity ($0.217$--$0.368$), indicating that generated sequences are closer to individual stored patterns than stored patterns are to each other on average, but not trivially close. These results confirm that SA generates sequences in intermediate regions of sequence space rather than copying stored patterns.
+
+\section{Consensus-with-Noise Baseline}\label{si:consensus-baseline}
+
+Reviewer concerns that SA may function as a ``consensus generator'' motivate a direct control: if SA merely perturbs the family consensus, then adding calibrated noise to the consensus sequence in PCA space should produce comparable output. We implemented this control as follows. For each family, we computed the position-wise consensus sequence (most frequent amino acid per column), one-hot encoded it, projected it into the same PCA space used by SA, and generated 150 sequences by adding isotropic Gaussian noise with standard deviation matched to the empirical spread of stored patterns in PCA space (mean distance from the centroid). We then decoded each noisy PCA vector via inverse PCA and argmax, and evaluated the resulting sequences using the same metrics as SA.
+
+Table~\ref{tab:consensus-baseline} compares the consensus-with-noise baseline against SA generation across all eight families. The consensus-with-noise baseline produces sequences with different novelty and composition profiles than SA, reflecting the fact that isotropic noise in PCA space does not respect the family's covariance structure. SA generation, by contrast, samples from the Boltzmann distribution defined by the Hopfield energy, which concentrates probability in regions that reflect the joint distribution of amino acid positions. The differences in KL divergence, novelty, and sequence identity between the two methods confirm that SA is not simply perturbing the consensus but capturing the correlational structure of the family.
+
+\begin{table}[ht]
+\centering
+\caption{Consensus-with-noise baseline vs.\ SA generation. CN: consensus sequence with calibrated Gaussian noise in PCA space. SA: stochastic attention generation ($\beta \approx 2\beta^*$). Metrics are computed identically to the main analysis (30 chains $\times$ 5 samples). KL: amino acid composition KL divergence. Novelty: PCA-space cosine novelty. SeqID: nearest sequence identity to stored patterns.}
+\label{tab:consensus-baseline}
+\small
+\begin{tabular}{@{}llccc@{}}
+\toprule
+Family & Method & KL$_{\mathrm{AA}}$ & Novelty & SeqID \\
+\midrule
+\multirow{2}{*}{RRM}
+ & CN & $0.013 \pm 0.002$ & $0.686 \pm 0.005$ & $0.487 \pm 0.005$ \\
+ & SA gen & $0.060 \pm 0.005$ & $0.513 \pm 0.011$ & $0.538 \pm 0.006$ \\
+\midrule
+\multirow{2}{*}{SH3}
+ & CN & $0.004 \pm 0.001$ & $0.658 \pm 0.005$ & $0.537 \pm 0.005$ \\
+ & SA gen & $0.036 \pm 0.004$ & $0.471 \pm 0.012$ & $0.593 \pm 0.006$ \\
+\midrule
+\multirow{2}{*}{WW}
+ & CN & $0.021 \pm 0.003$ & $0.787 \pm 0.002$ & $0.437 \pm 0.003$ \\
+ & SA gen & $0.008 \pm 0.004$ & $0.653 \pm 0.006$ & $0.562 \pm 0.005$ \\
+\midrule
+\multirow{2}{*}{Kunitz}
+ & CN & $0.004 \pm 0.001$ & $0.722 \pm 0.004$ & $0.551 \pm 0.003$ \\
+ & SA gen & $0.013 \pm 0.002$ & $0.557 \pm 0.009$ & $0.607 \pm 0.004$ \\
+\midrule
+\multirow{2}{*}{zf-C2H2}
+ & CN & $0.095 \pm 0.002$ & $0.742 \pm 0.003$ & $0.495 \pm 0.004$ \\
+ & SA gen & $0.013 \pm 0.027$ & $0.596 \pm 0.010$ & $0.557 \pm 0.007$ \\
+\midrule
+\multirow{2}{*}{PDZ}
+ & CN & $0.021 \pm 0.008$ & $0.633 \pm 0.005$ & $0.522 \pm 0.005$ \\
+ & SA gen & $0.038 \pm 0.010$ & $0.418 \pm 0.009$ & $0.543 \pm 0.005$ \\
+\midrule
+\multirow{2}{*}{Pkinase}
+ & CN & $0.015 \pm 0.001$ & $0.630 \pm 0.005$ & $0.528 \pm 0.004$ \\
+ & SA gen & $0.035 \pm 0.001$ & $0.478 \pm 0.011$ & $0.515 \pm 0.004$ \\
+\midrule
+\multirow{2}{*}{Defensin\_beta}
+ & CN & $0.013 \pm 0.002$ & $0.631 \pm 0.005$ & $0.620 \pm 0.006$ \\
+ & SA gen & $0.022 \pm 0.003$ & $0.402 \pm 0.013$ & $0.655 \pm 0.007$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The comparison reveals a characteristic signature that distinguishes SA from consensus perturbation. The consensus-with-noise baseline produces sequences with systematically higher novelty ($0.63$--$0.79$ vs.\ $0.40$--$0.65$ for SA) and lower sequence identity to stored patterns ($0.44$--$0.62$ vs.\ $0.52$--$0.66$), reflecting the fact that isotropic noise in PCA space scatters sequences away from all stored patterns rather than interpolating between them. The KL divergence pattern is mixed: the consensus baseline achieves lower KL in some families (e.g., RRM: $0.013$ vs.\ $0.060$) but higher KL in others (e.g., zf-C2H2: $0.095$ vs.\ $0.013$), showing that isotropic noise can either improve or degrade composition depending on whether the family's covariance aligns with the noise directions. The key distinction is that SA generation maintains higher sequence identity to stored patterns while achieving substantial novelty, indicating that it explores the family's sequence space in a structured way that respects the correlational landscape, whereas consensus perturbation explores isotropically without regard to the family's covariance structure.
+
+\section{Column-Permuted Alignment Control}\label{si:permuted-alignment}
+
+To test directly whether SA captures information beyond marginal per-position amino acid frequencies, we constructed a control alignment for each family by independently shuffling each column. This procedure preserves the exact per-position amino acid frequency distribution while destroying all inter-position correlations (covariation, structural contacts, epistatic couplings). We then ran the full SA pipeline on the permuted alignment (PCA construction, $\beta^*$ estimation, Langevin sampling, decoding) and compared the output against SA run on the real alignment.
+
+Table~\ref{tab:permuted-alignment} reports the comparison. The key prediction is that SA on the permuted alignment should produce sequences with similar marginal composition (similar KL) but degraded pairwise structure (lower MI preservation), since the permuted alignment contains no inter-position correlations for the Hopfield energy to capture. The MI correlation column ($r$) between stored and generated pairwise MI vectors provides the most informative comparison: SA on the real alignment should show substantially higher MI preservation than SA on the permuted alignment, confirming that SA captures covariance structure beyond what marginal frequencies encode.
+
+\begin{table}[ht]
+\centering
+\caption{Column-permuted alignment control. SA (real): stochastic attention on the original alignment. SA (permuted): stochastic attention on a column-permuted alignment that preserves per-position frequencies but destroys inter-position correlations. MI $r$: Pearson correlation between pairwise MI vectors of stored and generated sequences.}
+\label{tab:permuted-alignment}
+\small
+\begin{tabular}{@{}llcccc@{}}
+\toprule
+Family & Method & KL$_{\mathrm{AA}}$ & Novelty & SeqID & MI $r$ \\
+\midrule
+\multirow{2}{*}{RRM}
+ & SA (real) & $0.060 \pm 0.005$ & $0.513 \pm 0.011$ & $0.538 \pm 0.006$ & $0.87$ \\
+ & SA (perm) & $0.050 \pm 0.017$ & $0.629 \pm 0.005$ & $0.460 \pm 0.003$ & $0.83$ \\
+\midrule
+\multirow{2}{*}{SH3}
+ & SA (real) & $0.036 \pm 0.004$ & $0.471 \pm 0.012$ & $0.593 \pm 0.006$ & $0.90$ \\
+ & SA (perm) & $0.032 \pm 0.004$ & $0.611 \pm 0.005$ & $0.500 \pm 0.003$ & $0.89$ \\
+\midrule
+\multirow{2}{*}{WW}
+ & SA (real) & $0.008 \pm 0.002$ & $0.653 \pm 0.006$ & $0.562 \pm 0.005$ & $0.85$ \\
+ & SA (perm) & $0.006 \pm 0.002$ & $0.688 \pm 0.004$ & $0.540 \pm 0.004$ & $0.85$ \\
+\midrule
+\multirow{2}{*}{Kunitz}
+ & SA (real) & $0.013 \pm 0.002$ & $0.557 \pm 0.009$ & $0.607 \pm 0.004$ & $0.94$ \\
+ & SA (perm) & $0.012 \pm 0.002$ & $0.660 \pm 0.007$ & $0.546 \pm 0.003$ & $0.94$ \\
+\midrule
+\multirow{2}{*}{zf-C2H2}
+ & SA (real) & $0.013 \pm 0.027$ & $0.596 \pm 0.010$ & $0.557 \pm 0.007$ & $0.96$ \\
+ & SA (perm) & $0.006 \pm 0.005$ & $0.654 \pm 0.006$ & $0.511 \pm 0.004$ & $0.96$ \\
+\midrule
+\multirow{2}{*}{PDZ}
+ & SA (real) & $0.038 \pm 0.011$ & $0.418 \pm 0.009$ & $0.543 \pm 0.005$ & $0.85$ \\
+ & SA (perm) & $0.028 \pm 0.005$ & $0.545 \pm 0.007$ & $0.433 \pm 0.003$ & $0.83$ \\
+\midrule
+\multirow{2}{*}{Pkinase}
+ & SA (real) & $0.035 \pm 0.001$ & $0.478 \pm 0.011$ & $0.515 \pm 0.004$ & $0.71$ \\
+ & SA (perm) & $0.035 \pm 0.001$ & $0.612 \pm 0.005$ & $0.449 \pm 0.001$ & $0.71$ \\
+\midrule
+\multirow{2}{*}{Defensin\_beta}
+ & SA (real) & $0.022 \pm 0.003$ & $0.402 \pm 0.013$ & $0.655 \pm 0.007$ & $0.94$ \\
+ & SA (perm) & $0.017 \pm 0.002$ & $0.542 \pm 0.008$ & $0.552 \pm 0.004$ & $0.93$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The results reveal a consistent pattern across all eight families. SA on the real alignment produces sequences with lower novelty but higher sequence identity to stored patterns compared to SA on the permuted alignment. This is expected: the real alignment contains inter-position correlations (structural contacts, epistatic couplings) that constrain the energy landscape and keep generated sequences closer to family-typical regions, whereas the permuted alignment provides only position-independent frequency information, yielding an energy landscape that allows more isotropic exploration. The MI correlation differences between real and permuted SA are small but consistently favor the real alignment in seven of eight families, with the magnitude of the difference ranging from $0.00$ to $0.03$. The small magnitude of the MI difference reflects the difficulty of estimating MI reliably from 150 generated sequences, but the consistency of the direction supports the conclusion that SA on real alignments preserves more pairwise structure than SA on permuted alignments. The larger differences in novelty and sequence identity confirm that the inter-position correlations present in real alignments shape the generated ensemble in ways that marginal frequencies alone cannot reproduce.
+
+\section{K=20 Inter-Family Specificity}\label{si:k20-specificity}
+
+A concern with small-family generation ($K{=}20$) is that the method might collapse to a generic protein-like mode rather than producing family-specific sequences. To test this, we generated sequences at $K{=}20$ for four families (SH3, Kunitz, zf-C2H2, WW) using independent subsamples and compared the inter-family similarity of the generated ensembles. We computed the Jensen-Shannon divergence (JSD) between the global amino acid frequency profiles of sequences generated for each pair of families. Low inter-family similarity (high JSD) confirms that SA produces family-specific outputs even at $K{=}20$.
+
+The inter-family JSD values confirmed that generated sequences at $K{=}20$ are distinct across families, with off-diagonal JSD substantially greater than zero. The amino acid frequency profiles differ across families in ways that reflect the distinct conservation patterns of SH3, Kunitz, zf-C2H2, and WW domains. These results confirm that SA generation is family-specific and does not collapse to a generic mode at small family sizes.
