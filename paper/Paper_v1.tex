@@ -82,31 +82,9 @@ The idea for stochastic attention arose while developing a lecture on energy-bas
 \bibliography{References_v1}
 
 % ══════════════════════════════════════════════════════════════════════════════
-% Main Figures and Tables (after references, per PNAS submission format)
+% Main Figures and Table (after references, per PNAS submission format)
 % ══════════════════════════════════════════════════════════════════════════════
 \clearpage
-
-\begin{table}[p]
-\centering
-\caption{Properties of the eight Pfam families used in this study. $K$: number of seed sequences after cleaning. $L$: alignment length (columns retained). $d$: PCA dimension (95\% variance). $\bar{H}_{\mathrm{col}}$: mean per-column Shannon entropy (nats). $K_{\mathrm{eff}}$: effective number of sequences at 80\% identity threshold. $\beta^*$: empirical entropy inflection point. $\beta^*/\!\sqrt{d}$: ratio to the random-pattern prediction.}
-\label{tab:families}
-\small
-\begin{tabular}{@{}lrrrrrrrr@{}}
-\toprule
-Family & Pfam ID & $K$ & $L$ & $d$ & $\bar{H}_{\mathrm{col}}$ & $K_{\mathrm{eff}}$ & $\beta^*$ & $\beta^*/\!\sqrt{d}$ \\
-\midrule
-RRM     & PF00076 &  68 &  71 &  59 & 1.92 &  68 & 3.85 & 0.50 \\
-SH3     & PF00018 &  55 &  48 &  46 & 1.68 &  55 & 3.85 & 0.57 \\
-WW      & PF00397 & 420 &  31 & 186 & 1.74 & 419 & 5.45 & 0.40 \\
-Kunitz  & PF00014 &  99 &  53 &  80 & 1.61 &  99 & 3.85 & 0.43 \\
-zf-C2H2 & PF00096 & 151 &  23 & 106 & 1.91 & 151 & 4.58 & 0.44 \\
-PDZ     & PF00595 &  44 &  83 &  37 & 1.88 &  43 & 3.23 & 0.53 \\
-Pkinase & PF00069 &  37 & 262 &  34 & 1.72 &  37 & 3.23 & 0.55 \\
-Defensin\_beta & PF00711 &  45 &  36 &  37 & 1.65 &  45 & 3.23 & 0.53 \\
-\bottomrule
-\end{tabular}
-\end{table}
-
 
 \begin{figure}[p]
 \centering
@@ -149,6 +127,34 @@ Defensin\_beta & PF00711 &  45 &  36 &  37 & 1.65 &  45 & 3.23 & 0.53 \\
 \caption{Sequence-level analysis of SA-generated Kunitz domain sequences. \textbf{(A)}~Alignment of the family consensus with the five highest-confidence SA-generated sequences (ranked by AlphaFold2 pLDDT). Positions are colored by conservation in the stored MSA: highly conserved ($>90\%$, red), conserved ($70$--$90\%$, orange), moderate ($50$--$70\%$, yellow), and variable ($<50\%$, blue). Cysteines forming the three disulfide bonds are highlighted in gold. Dots indicate matches to the consensus; letters indicate substitutions. All five sequences preserve every highly conserved position ($11/11$) and all six cysteines ($6/6$), while introducing $17$--$25$ substitutions concentrated at variable sites. \textbf{(B)}~Per-position Shannon entropy for the stored MSA (gray) and SA-generated sequences (blue). The strong correlation ($r{=}0.968$) indicates that SA recapitulates the position-specific conservation pattern of the family: structurally critical positions remain invariant, while evolutionarily permissive positions exhibit comparable diversity.}
 \label{fig:sequence-analysis}
 \end{figure}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=\textwidth]{figs/defensin_biophysics.pdf}
+\caption{Biophysical properties of beta defensin sequences (PF00711). \textbf{(A)}~Net charge at pH~7 vs.\ hydrophobic residue fraction. SA-generated sequences (blue) overlap the stored natural sequences (gray), while HMM emit (green) and MSA Transformer (purple) drift to lower charge. Dashed lines indicate the antimicrobial plausibility thresholds (charge $\geq +2$, hydrophobic fraction $0.3$--$0.7$). \textbf{(B)}~Cysteine count distribution. SA generation preserves the six-cysteine disulfide scaffold (red dashed line) with the same fidelity as the stored alignment. \textbf{(C)}~Net charge distribution. SA generation produces a charge profile closely matching stored sequences. \textbf{(D)}~Fraction of sequences passing a minimal biophysical plausibility filter (charge $\geq +2$, hydrophobic fraction $\in [0.3, 0.7]$, $\geq 4$ cysteines).}
+\label{fig:defensin-biophysics}
+\end{figure}
+
+\begin{table}[p]
+\centering
+\caption{Properties of the eight Pfam families used in this study. $K$: number of seed sequences after cleaning. $L$: alignment length (columns retained). $d$: PCA dimension (95\% variance). $\bar{H}_{\mathrm{col}}$: mean per-column Shannon entropy (nats). $K_{\mathrm{eff}}$: effective number of sequences at 80\% identity threshold. $\beta^*$: empirical entropy inflection point. $\beta^*/\!\sqrt{d}$: ratio to the random-pattern prediction.}
+\label{tab:families}
+\small
+\begin{tabular}{@{}lrrrrrrrr@{}}
+\toprule
+Family & Pfam ID & $K$ & $L$ & $d$ & $\bar{H}_{\mathrm{col}}$ & $K_{\mathrm{eff}}$ & $\beta^*$ & $\beta^*/\!\sqrt{d}$ \\
+\midrule
+RRM     & PF00076 &  68 &  71 &  59 & 1.92 &  68 & 3.85 & 0.50 \\
+SH3     & PF00018 &  55 &  48 &  46 & 1.68 &  55 & 3.85 & 0.57 \\
+WW      & PF00397 & 420 &  31 & 186 & 1.74 & 419 & 5.45 & 0.40 \\
+Kunitz  & PF00014 &  99 &  53 &  80 & 1.61 &  99 & 3.85 & 0.43 \\
+zf-C2H2 & PF00096 & 151 &  23 & 106 & 1.91 & 151 & 4.58 & 0.44 \\
+PDZ     & PF00595 &  44 &  83 &  37 & 1.88 &  43 & 3.23 & 0.53 \\
+Pkinase & PF00069 &  37 & 262 &  34 & 1.72 &  37 & 3.23 & 0.55 \\
+Defensin\_beta & PF00711 &  45 &  36 &  37 & 1.65 &  45 & 3.23 & 0.53 \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 % ══════════════════════════════════════════════════════════════════════════════
 % SI Appendix
