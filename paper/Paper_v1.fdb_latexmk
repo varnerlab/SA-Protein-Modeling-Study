@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex Paper_v1"] 1773448890.4317 "Paper_v1.aux" "Paper_v1.bbl" "Paper_v1" 1773448891.42737 0
+["bibtex Paper_v1"] 1773449627.76029 "Paper_v1.aux" "Paper_v1.bbl" "Paper_v1" 1773449628.77128 0
   "./References_v1.bib" 1773428286.40328 18075 65faf9d8acf15b8c2a788566b0e558b2 ""
   "/usr/local/texlive/2025/texmf-dist/bibtex/bst/natbib/unsrtnat.bst" 1233624470 24550 a41a6405f4de768c43e871d9fbce2bc8 ""
-  "Paper_v1.aux" 1773448891.1633 42919 cb5bde319058c0527cd871d2c0406b93 "pdflatex"
+  "Paper_v1.aux" 1773449628.5033 42919 4fb020743ac2a3963f285d9b5202dcd8 "pdflatex"
   (generated)
   "Paper_v1.bbl"
   "Paper_v1.blg"
   (rewritten before read)
-["pdflatex"] 1773448890.52583 "Paper_v1.tex" "Paper_v1.pdf" "Paper_v1" 1773448891.42755 0
+["pdflatex"] 1773449627.85571 "Paper_v1.tex" "Paper_v1.pdf" "Paper_v1" 1773449628.77146 0
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -164,10 +164,10 @@
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1747946047 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1741450574 3345740 46b66fdb0378f7bf5921b5eabf1762b8 ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "Paper_v1.aux" 1773448891.1633 42919 cb5bde319058c0527cd871d2c0406b93 "pdflatex"
-  "Paper_v1.bbl" 1773448890.52356 14275 a77e60d17418c4e68a35ad54ffc767ac "bibtex Paper_v1"
-  "Paper_v1.out" 1773448891.16493 4093 6e0de2e6a1605abfcfb9c2e5ba6c6306 "pdflatex"
-  "Paper_v1.tex" 1773448191.41429 14678 4a38bd3c509bb0f4d8aa1e1c2fef707b ""
+  "Paper_v1.aux" 1773449628.5033 42919 4fb020743ac2a3963f285d9b5202dcd8 "pdflatex"
+  "Paper_v1.bbl" 1773449627.85352 14275 a77e60d17418c4e68a35ad54ffc767ac "bibtex Paper_v1"
+  "Paper_v1.out" 1773449628.50526 4093 6e0de2e6a1605abfcfb9c2e5ba6c6306 "pdflatex"
+  "Paper_v1.tex" 1773449622.14015 14925 8dbb8bb087a460a7b3decefa8eab878a ""
   "figs/aa_freq_example.pdf" 1773269478.21888 30369 1735974b70f0de0f3078fd60b3dc71cd ""
   "figs/analytical_beta_star.pdf" 1773337697.33603 85572 6ff0e047b519b4ab50b48cf6fb6b959e ""
   "figs/baseline_comparison_composite.pdf" 1773448125.51455 20911 21ba9ded44427fb2c3b2890e3d613d09 ""
