@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  14 MAR 2026 14:55
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  14 MAR 2026 14:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -762,13 +762,15 @@ Package pdftex.def Info: figs/defensin_biophysics.pdf  used on input line 133.
 
 [21 <./figs/sequence_analysis_kunitz.pdf>]
 
-[22 <./figs/defensin_biophysics.pdf>] (./sections/appendix.tex
-<figs/aa_freq_example.pdf, id=686, 702.625pt x 501.875pt>
+[22 <./figs/defensin_biophysics.pdf>]
+
+[23] (./sections/appendix.tex
+<figs/aa_freq_example.pdf, id=690, 702.625pt x 501.875pt>
 File: figs/aa_freq_example.pdf Graphic file (type pdf)
 <use figs/aa_freq_example.pdf>
 Package pdftex.def Info: figs/aa_freq_example.pdf  used on input line 9.
 (pdftex.def)             Requested size: 357.73405pt x 255.53166pt.
-<figs/scaling_composite.pdf, id=688, 903.375pt x 702.625pt>
+<figs/scaling_composite.pdf, id=692, 903.375pt x 702.625pt>
 File: figs/scaling_composite.pdf Graphic file (type pdf)
 <use figs/scaling_composite.pdf>
 Package pdftex.def Info: figs/scaling_composite.pdf  used on input line 20.
@@ -784,15 +786,16 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 
 
-[23
+[24
+
 
 
  <./figs/aa_freq_example.pdf>]
 
-[24]
-
 [25]
-<figs/mi_covariation_scatter.pdf, id=724, 903.375pt x 301.125pt>
+
+[26]
+<figs/mi_covariation_scatter.pdf, id=728, 903.375pt x 301.125pt>
 File: figs/mi_covariation_scatter.pdf Graphic file (type pdf)
 <use figs/mi_covariation_scatter.pdf>
 Package pdftex.def Info: figs/mi_covariation_scatter.pdf  used on input line 22
@@ -803,15 +806,15 @@ Underfull \vbox (badness 2980) has occurred while \output is active []
 
 
 
-[26]
+[27]
 
 LaTeX Warning: Float too large for page by 11.5437pt on input line 426.
 
 
 
-[27]
-
 [28]
+
+[29]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
 put line 486.
 
@@ -820,16 +823,16 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 
-[29]
-
 [30]
-<figs/analytical_beta_star.pdf, id=784, 1505.625pt x 903.375pt>
+
+[31]
+<figs/analytical_beta_star.pdf, id=789, 1505.625pt x 903.375pt>
 File: figs/analytical_beta_star.pdf Graphic file (type pdf)
 <use figs/analytical_beta_star.pdf>
 Package pdftex.def Info: figs/analytical_beta_star.pdf  used on input line 551.
 
 (pdftex.def)             Requested size: 397.48499pt x 238.48346pt.
-<figs/stored_pattern_analysis.pdf, id=785, 1505.625pt x 903.375pt>
+<figs/stored_pattern_analysis.pdf, id=790, 1505.625pt x 903.375pt>
 File: figs/stored_pattern_analysis.pdf Graphic file (type pdf)
 <use figs/stored_pattern_analysis.pdf>
 Package pdftex.def Info: figs/stored_pattern_analysis.pdf  used on input line 5
@@ -857,15 +860,13 @@ Underfull \vbox (badness 2608) has occurred while \output is active []
 
 
 
-[31]
+[32]
 
-[32])
+[33])
 
-[33]
+[34]
 
-[34 <./figs/scaling_composite.pdf> <./figs/mi_covariation_scatter.pdf>]
-
-[35]
+[35 <./figs/scaling_composite.pdf> <./figs/mi_covariation_scatter.pdf>]
 
 [36]
 
@@ -875,11 +876,13 @@ Underfull \vbox (badness 2608) has occurred while \output is active []
 
 [39]
 
-[40 <./figs/analytical_beta_star.pdf>]
+[40]
 
-[41 <./figs/stored_pattern_analysis.pdf>]
+[41 <./figs/analytical_beta_star.pdf>]
 
-[42] (./Paper_v1.aux)
+[42 <./figs/stored_pattern_analysis.pdf>]
+
+[43] (./Paper_v1.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -888,8 +891,8 @@ Package rerunfilecheck Info: File `Paper_v1.out' has not changed.
 (rerunfilecheck)             Checksum: BDB2ABF1427E90711902F578AB549026;5188.
  ) 
 Here is how much of TeX's memory you used:
- 16279 strings out of 473190
- 260281 string characters out of 5715801
+ 16280 strings out of 473190
+ 260288 string characters out of 5715801
  820751 words of memory out of 5000000
  38779 multiletter control sequences out of 15000+600000
  611261 words of font info for 294 fonts, out of 8000000 for 9000
@@ -921,10 +924,10 @@ st/fonts/type1/public/cm-super/sftt1000.pfb></usr/local/texlive/2025/texmf-dist
 /fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/typ
 e1/urw/times/utmr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/tim
 es/utmri8a.pfb>
-Output written on Paper_v1.pdf (42 pages, 2106162 bytes).
+Output written on Paper_v1.pdf (43 pages, 2106530 bytes).
 PDF statistics:
- 1056 PDF objects out of 1200 (max. 8388607)
- 710 compressed objects within 8 object streams
- 196 named destinations out of 1000 (max. 500000)
+ 1061 PDF objects out of 1200 (max. 8388607)
+ 714 compressed objects within 8 object streams
+ 197 named destinations out of 1000 (max. 500000)
  44813 words of extra memory for PDF output out of 51595 (max. 10000000)
 
