@@ -430,7 +430,7 @@ Family & Threshold & $d$ & $\beta^*$ & $\beta_{\mathrm{gen}}$ & KL$_{\mathrm{AA}
 Stochastic attention operates on continuous vectors on the unit sphere $\mathbb{S}^{d-1}$, while protein sequences are discrete objects over a 20-letter amino acid alphabet. Bridging the two requires three transformations: one-hot encoding, PCA dimensionality reduction, and unit-norm projection. Each step serves a specific purpose in the pipeline, and the reverse path (inverse PCA followed by argmax decoding) recovers discrete sequences from continuous samples. We describe each step in detail, state the mathematical formulation, and explain why PCA is the appropriate choice for this framework.
 
 \paragraph{One-hot encoding.}
-Given a cleaned alignment of $K$ sequences, each of length $L$ amino acids over the standard 20-letter alphabet $\mathcal{A} = \{\text{A}, \text{R}, \text{N}, \ldots, \text{V}\}$, we encode each sequence as a binary vector in $\mathbb{R}^{20L}$ by concatenating per-position indicator vectors. Specifically, for sequence $k$ with amino acid $a_\ell^{(k)}$ at position $\ell$, the one-hot representation is
+Given a cleaned alignment of $K$ sequences, each of length $L$ amino acids over the standard 20-letter alphabet $\mathcal{A} = \{\text{A}, \text{R}, \text{N}, \ldots, \text{V}\}$, we encode each sequence as a binary vector in $\mathbb{R}^{20L}$ by concatenating per-position indicator vectors. Specifically, for sequence $k$ with amino acid $a_\ell^{(k)}$ at position $\ell$, the one-hot representation is given by:
 \begin{equation}
     \mathbf{x}_k = \bigl[\mathbf{e}_{a_1^{(k)}},\; \mathbf{e}_{a_2^{(k)}},\; \ldots,\; \mathbf{e}_{a_L^{(k)}}\bigr]^\top \in \{0,1\}^{20L},
 \end{equation}
@@ -444,15 +444,15 @@ We compute PCA from the one-hot encoded alignment. Let $\mathbf{X} = [\mathbf{x}
 \begin{equation}
     \bar{\mathbf{x}} = \frac{1}{K}\sum_{k=1}^K \mathbf{x}_k, \qquad \tilde{\mathbf{X}} = \mathbf{X} - \bar{\mathbf{x}}\mathbf{1}_K^\top,
 \end{equation}
-where $\bar{\mathbf{x}} \in \mathbb{R}^{20L}$ is the column mean (i.e., the family's position-specific amino acid frequency profile) and $\mathbf{1}_K$ is the $K$-vector of ones. We then compute the economy singular value decomposition (SVD)
+where $\bar{\mathbf{x}} \in \mathbb{R}^{20L}$ is the column mean (i.e., the family's position-specific amino acid frequency profile) and $\mathbf{1}_K$ is the $K$-vector of ones. We then compute the economy singular value decomposition (SVD):
 \begin{equation}
     \tilde{\mathbf{X}} = \mathbf{U}\boldsymbol{\Sigma}\mathbf{V}^\top,
 \end{equation}
-where $\mathbf{U} \in \mathbb{R}^{20L \times r}$ contains the left singular vectors (principal directions), $\boldsymbol{\Sigma} = \mathrm{diag}(\sigma_1, \ldots, \sigma_r)$ with $\sigma_1 \geq \cdots \geq \sigma_r > 0$ are the singular values, $\mathbf{V} \in \mathbb{R}^{K \times r}$ contains the right singular vectors, and $r = \mathrm{rank}(\tilde{\mathbf{X}}) \leq \min(20L, K) - 1$. The variance captured by the $j$-th principal component is $\sigma_j^2/K$, and the fraction of total variance explained by the first $p$ components is
+where $\mathbf{U} \in \mathbb{R}^{20L \times r}$ contains the left singular vectors (principal directions), $\boldsymbol{\Sigma} = \mathrm{diag}(\sigma_1, \ldots, \sigma_r)$ with $\sigma_1 \geq \cdots \geq \sigma_r > 0$ are the singular values, $\mathbf{V} \in \mathbb{R}^{K \times r}$ contains the right singular vectors, and $r = \mathrm{rank}(\tilde{\mathbf{X}}) \leq \min(20L, K) - 1$. The variance captured by the $j$-th principal component is $\sigma_j^2/K$, and the fraction of total variance explained by the first $p$ components is:
 \begin{equation}
     \rho(p) = \frac{\sum_{j=1}^p \sigma_j^2}{\sum_{j=1}^r \sigma_j^2}.
 \end{equation}
-We select $p$ as the smallest integer such that $\rho(p) \geq 0.95$, retaining 95\% of the variance. The projection matrix is $\mathbf{W}_p = \mathbf{U}_{:,1:p} \in \mathbb{R}^{20L \times p}$ (the first $p$ columns of $\mathbf{U}$), and the projected representation of each sequence is
+We select $p$ as the smallest integer such that $\rho(p) \geq 0.95$, retaining 95\% of the variance. The projection matrix is $\mathbf{W}_p = \mathbf{U}_{:,1:p} \in \mathbb{R}^{20L \times p}$ (the first $p$ columns of $\mathbf{U}$), and the projected representation of each sequence is:
 \begin{equation}
     \mathbf{z}_k = \mathbf{W}_p^\top(\mathbf{x}_k - \bar{\mathbf{x}}) \in \mathbb{R}^p.
 \end{equation}
@@ -479,6 +479,45 @@ This decoding is deterministic and produces a valid amino acid at every position
 \paragraph{Why PCA rather than other representations?}
 Several properties make PCA particularly well suited for use with the modern Hopfield energy. First, PCA is \emph{linear}: both the forward projection $\mathbf{z} = \mathbf{W}_p^\top(\mathbf{x} - \bar{\mathbf{x}})$ and the inverse $\hat{\mathbf{x}} = \bar{\mathbf{x}} + \mathbf{W}_p\mathbf{z}$ are matrix multiplications, which means the score function $\nabla \log p_\beta(\boldsymbol{\xi}) = \beta(\mathbf{T}(\boldsymbol{\xi}) - \boldsymbol{\xi})$ remains an exact closed-form expression over the continuous PCA space with no approximation error from the representation itself. Nonlinear embeddings (e.g., autoencoders, UMAP) would break this property because the Hopfield energy would be defined over the latent space while the score function in the ambient space would require backpropagation through the decoder, reintroducing the training dependence that stochastic attention is designed to avoid. Second, PCA is \emph{variance-optimal}: it captures the maximum amount of family-level variation in the fewest dimensions, which concentrates the discriminative structure of the family into a compact space where the Boltzmann distribution is well-conditioned. Third, PCA is \emph{deterministic and parameter-free}: given the alignment, the projection is uniquely defined by the SVD and the variance threshold, with no hyperparameters to tune or training procedures that could overfit. This aligns with the training-free philosophy of the method. Finally, the resulting representation on $\mathbb{S}^{d-1}$ satisfies the concentration-of-measure properties (variance $1/d$, sub-Gaussian tails) that underpin the analytical framework for the critical temperature (Appendix~\ref{app:beta-star-analysis}).
 
+\paragraph{End-to-end pseudocode.}
+Algorithm~\ref{alg:sa-pipeline} summarizes the complete stochastic attention pipeline for protein sequence generation, from a seed alignment to decoded amino acid sequences. The algorithm has no learnable parameters and requires only the seed alignment and a variance retention threshold $\rho_{\min}$ (default $0.95$) as input.
+
+\begin{algorithm}[h]
+\caption{Stochastic Attention Protein Sequence Generation}\label{alg:sa-pipeline}
+\begin{algorithmic}[1]
+\REQUIRE Seed alignment $\mathbf{S} \in \mathcal{A}^{K \times L}$ ($K$ sequences of length $L$ over amino acid alphabet $\mathcal{A}$), variance threshold $\rho_{\min} = 0.95$, step size $\alpha = 0.01$, number of chains $N_c = 30$, iterations $T = 5000$, burn-in $T_b = 2000$, thinning interval $\Delta t = 100$, samples per chain $s = 5$
+\ENSURE Generated amino acid sequences $\{\mathbf{g}_1, \ldots, \mathbf{g}_S\} \subset \mathcal{A}^L$, \; $S = N_c \cdot s$
+\STATE \textbf{--- Encoding ---}
+\STATE One-hot encode: $\mathbf{X} \leftarrow [\mathrm{onehot}(\mathbf{S}_{1,:}), \ldots, \mathrm{onehot}(\mathbf{S}_{K,:})] \in \{0,1\}^{20L \times K}$
+\STATE Center: $\bar{\mathbf{x}} \leftarrow \frac{1}{K}\sum_k \mathbf{X}_{:,k}$; \; $\tilde{\mathbf{X}} \leftarrow \mathbf{X} - \bar{\mathbf{x}}\mathbf{1}_K^\top$
+\STATE SVD: $\tilde{\mathbf{X}} = \mathbf{U}\boldsymbol{\Sigma}\mathbf{V}^\top$
+\STATE Select $d$: smallest $p$ such that $\sum_{j=1}^{p}\sigma_j^2 / \sum_j \sigma_j^2 \geq \rho_{\min}$
+\STATE Project and normalize: $\mathbf{m}_k \leftarrow \mathbf{W}_d^\top(\mathbf{X}_{:,k} - \bar{\mathbf{x}}) / \|\mathbf{W}_d^\top(\mathbf{X}_{:,k} - \bar{\mathbf{x}})\|$ \; for $k = 1,\ldots,K$
+\STATE Assemble memory matrix: $\hat{\mathbf{X}} \leftarrow [\mathbf{m}_1, \ldots, \mathbf{m}_K] \in \mathbb{R}^{d \times K}$
+\STATE \textbf{--- Temperature selection ---}
+\STATE Find $\beta^*$: entropy inflection of $H(\beta) = -\sum_k p_k \log p_k$ with $p_k = \mathrm{softmax}(\beta\,\hat{\mathbf{X}}^\top\mathbf{m}_k)_k$
+\STATE Set generation temperature: $\beta_{\mathrm{gen}} \leftarrow \max\!\bigl(\lceil 2\beta^* \rceil,\; 5\bigr)$
+\STATE \textbf{--- Multi-chain Langevin sampling ---}
+\STATE $\mathcal{G} \leftarrow \emptyset$ \hfill $\triangleright$ collected samples
+\FOR{$c = 1, \ldots, N_c$}
+    \STATE Draw $k_c \sim \mathrm{Uniform}\{1,\ldots,K\}$
+    \STATE $\boldsymbol{\xi}_0 \leftarrow \mathbf{m}_{k_c} + 0.01\,\boldsymbol{\eta}$, \; $\boldsymbol{\eta} \sim \mathcal{N}(\mathbf{0}, \mathbf{I}_d)$ \hfill $\triangleright$ initialize near stored pattern
+    \FOR{$t = 0, \ldots, T-1$}
+        \STATE $\mathbf{a}_t \leftarrow \operatorname{softmax}(\beta_{\mathrm{gen}}\,\hat{\mathbf{X}}^\top\boldsymbol{\xi}_t)$ \hfill $\triangleright$ attention weights
+        \STATE $\boldsymbol{\epsilon}_t \sim \mathcal{N}(\mathbf{0}, \mathbf{I}_d)$
+        \STATE $\boldsymbol{\xi}_{t+1} \leftarrow (1-\alpha)\,\boldsymbol{\xi}_t + \alpha\,\hat{\mathbf{X}}\,\mathbf{a}_t + \sqrt{2\alpha/\beta_{\mathrm{gen}}}\;\boldsymbol{\epsilon}_t$
+    \ENDFOR
+    \STATE Collect $s$ evenly spaced samples from $\{\boldsymbol{\xi}_{T_b+1}, \boldsymbol{\xi}_{T_b+\Delta t+1}, \ldots, \boldsymbol{\xi}_T\}$ into $\mathcal{G}$
+\ENDFOR
+\STATE \textbf{--- Decoding ---}
+\FOR{each $\boldsymbol{\xi} \in \mathcal{G}$}
+    \STATE Inverse PCA: $\hat{\mathbf{x}} \leftarrow \bar{\mathbf{x}} + \mathbf{W}_d\,\boldsymbol{\xi} \in \mathbb{R}^{20L}$
+    \STATE Argmax decode: $g_\ell \leftarrow \arg\max_{a \in \mathcal{A}}\; \hat{x}_{20(\ell-1)+a}$ \; for $\ell = 1,\ldots,L$
+\ENDFOR
+\RETURN $\{\mathbf{g}_1, \ldots, \mathbf{g}_S\}$
+\end{algorithmic}
+\end{algorithm}
+
 \section{Analysis of the Critical Temperature}\label{app:beta-star-analysis}\label{app:concentration}\label{app:tau-star}\label{app:stored-probes}\label{app:comparison}
 
 We developed an analytical framework to understand the empirical relationship $\beta^* \approx 1.57 + 0.28\sqrt{d}$ reported in Materials and Methods, starting from exact results on similarity variance, building a Gaussian mean-field prediction, and then diagnosing why the mean-field coefficient overshoots and how stored-pattern self-similarity resolves the discrepancy.
@@ -491,7 +530,7 @@ We verified this numerically for all eight protein families using 1{,}000 random
 
 In these units the softmax entropy $H(\tau) = -\sum_k p_k \log p_k$ with $p_k \propto \exp(\tau z_k)$ undergoes a transition from $H = \log K$ (uniform, $\tau = 0$) to $H \to 0$ ($\tau \to \infty$). We defined the \emph{dimensionless inflection} $\tau^*$ as the $\tau$ that maximizes $|d^2H/d(\log\tau)^2|$ and computed it numerically by averaging over 500 Gaussian realizations for each $K \in \{10, 20, \ldots, 1000\}$. We found that $\tau^*$ is nearly constant at $\approx 1.6$ for $K \geq 30$, with only weak logarithmic growth (Fig.~\ref{fig:analytical-beta}A). Translating back to physical units, the Gaussian prediction for the entropy inflection is $\beta^* = \tau^*/\sigma = \tau^*\sqrt{d} \approx 1.6\sqrt{d}$, which has the correct $\sqrt{d}$ scaling and achieves a Pearson correlation of $r = 0.98$ with the empirical values across all families and subsamples (Fig.~\ref{fig:analytical-beta}C).
 
-Despite the strong correlation, we found that the Gaussian prediction systematically overpredicts $\beta^*$ by a factor of $\approx 4$ ($R^2 = -180$), making it useless as an absolute predictor. We fitted the relationship
+Despite the strong correlation, we found that the Gaussian prediction systematically overpredicts $\beta^*$ by a factor of $\approx 4$ ($R^2 = -180$), making it useless as an absolute predictor. We fitted the relationship:
 \begin{equation}
     \beta^* = 1.565 + 0.281/\sigma = 1.565 + 0.281\sqrt{d}
 \end{equation}
