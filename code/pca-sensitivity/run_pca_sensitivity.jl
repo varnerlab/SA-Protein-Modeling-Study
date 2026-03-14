@@ -14,7 +14,27 @@ using Pkg
 Pkg.activate(joinpath(_EXPERIMENT_ROOT, ".."))
 include(joinpath(_EXPERIMENT_ROOT, "..", "Include.jl"))
 
-using Printf
+using Printf, LinearAlgebra, MultivariateStats
+
+"""
+    project_to_pca(seq::String, pca_model, L::Int) -> Vector{Float64}
+
+One-hot encode a single sequence, project into PCA space, and unit-normalize.
+"""
+function project_to_pca(seq::String, pca_model, L::Int)
+    AA_ALPHABET = collect("ACDEFGHIKLMNPQRSTVWY")
+    n_aa = length(AA_ALPHABET)
+    aa_to_idx = Dict(aa => i for (i, aa) in enumerate(AA_ALPHABET))
+    oh = zeros(Float64, n_aa * L)
+    for (pos, ch) in enumerate(seq)
+        pos > L && break
+        idx = get(aa_to_idx, ch, 0)
+        idx > 0 && (oh[(pos-1)*n_aa + idx] = 1.0)
+    end
+    v = MultivariateStats.transform(pca_model, oh)
+    nv = norm(v)
+    nv > 1e-12 ? v ./ nv : v
+end
 
 # ── SA chain runner (from run_pfam_families.jl) ───────────────────────────────
 
@@ -102,7 +122,9 @@ for (pfam_id, family_name) in families
 
         # compute metrics
         kl = aa_composition_kl(seqs, stored_seqs)
-        novelty_vals = [1.0 - maximum(X̂' * (s ./ (norm(s) + 1e-12))) for s in samps]
+        # novelty: re-encode decoded sequences to PCA space (round-trip consistent with tab:results)
+        gen_pca = [project_to_pca(s, pca_model, L) for s in seqs]
+        novelty_vals = [1.0 - nearest_cosine_similarity(g, X̂) for g in gen_pca]
         mean_novelty = mean(novelty_vals)
         seqid_vals = [nearest_sequence_identity(s, stored_seqs) for s in seqs]
         mean_seqid = mean(seqid_vals)

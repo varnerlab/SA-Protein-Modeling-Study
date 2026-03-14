@@ -270,36 +270,36 @@ The results were unambiguous: random sphere initialization produced output indis
 Family & Init & KL$_{\mathrm{AA}}$ & Novelty & SeqID & MaxCos \\
 \midrule
 \multirow{2}{*}{RRM}
- & Stored & $0.060$ & $0.623$ & $0.538$ & $0.377$ \\
- & Random & $0.059$ & $0.622$ & $0.539$ & $0.378$ \\
+ & Stored & $0.060$ & $0.513$ & $0.538$ & $0.487$ \\
+ & Random & $0.059$ & $0.511$ & $0.539$ & $0.489$ \\
 \midrule
 \multirow{2}{*}{SH3}
- & Stored & $0.036$ & $0.586$ & $0.593$ & $0.414$ \\
- & Random & $0.036$ & $0.586$ & $0.593$ & $0.414$ \\
+ & Stored & $0.036$ & $0.471$ & $0.593$ & $0.529$ \\
+ & Random & $0.036$ & $0.471$ & $0.593$ & $0.529$ \\
 \midrule
 \multirow{2}{*}{WW}
- & Stored & $0.008$ & $0.741$ & $0.562$ & $0.259$ \\
- & Random & $0.008$ & $0.741$ & $0.562$ & $0.259$ \\
+ & Stored & $0.008$ & $0.653$ & $0.562$ & $0.347$ \\
+ & Random & $0.008$ & $0.653$ & $0.562$ & $0.347$ \\
 \midrule
 \multirow{2}{*}{Kunitz}
- & Stored & $0.013$ & $0.663$ & $0.607$ & $0.337$ \\
- & Random & $0.013$ & $0.663$ & $0.607$ & $0.337$ \\
+ & Stored & $0.013$ & $0.557$ & $0.607$ & $0.443$ \\
+ & Random & $0.013$ & $0.557$ & $0.607$ & $0.443$ \\
 \midrule
 \multirow{2}{*}{zf-C2H2}
- & Stored & $0.013$ & $0.692$ & $0.557$ & $0.308$ \\
- & Random & $0.013$ & $0.692$ & $0.557$ & $0.308$ \\
+ & Stored & $0.013$ & $0.596$ & $0.557$ & $0.404$ \\
+ & Random & $0.013$ & $0.596$ & $0.557$ & $0.404$ \\
 \midrule
 \multirow{2}{*}{PDZ}
- & Stored & $0.038$ & $0.576$ & $0.543$ & $0.424$ \\
- & Random & $0.038$ & $0.576$ & $0.543$ & $0.424$ \\
+ & Stored & $0.038$ & $0.418$ & $0.543$ & $0.582$ \\
+ & Random & $0.038$ & $0.418$ & $0.543$ & $0.582$ \\
 \midrule
 \multirow{2}{*}{Pkinase}
- & Stored & $0.035$ & $0.563$ & $0.515$ & $0.437$ \\
- & Random & $0.035$ & $0.563$ & $0.515$ & $0.437$ \\
+ & Stored & $0.035$ & $0.478$ & $0.515$ & $0.522$ \\
+ & Random & $0.035$ & $0.478$ & $0.515$ & $0.522$ \\
 \midrule
 \multirow{2}{*}{Defensin\_beta}
- & Stored & $0.022$ & $0.583$ & $0.655$ & $0.417$ \\
- & Random & $0.022$ & $0.583$ & $0.655$ & $0.417$ \\
+ & Stored & $0.022$ & $0.402$ & $0.655$ & $0.598$ \\
+ & Random & $0.022$ & $0.402$ & $0.655$ & $0.598$ \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -335,9 +335,9 @@ Defensin\_beta & 36  & 45  & 0.3  & 0.03 & ${\sim}2$   & ${\sim}1$   & --- \\
 
 To assess whether the default 95\% variance threshold for PCA dimensionality reduction is a fragile design choice, and to identify the minimum information content needed for reliable generation, we repeated the full SA generation pipeline at eleven retained-variance thresholds spanning 50\% to 99\%. For each family and threshold, we constructed the memory matrix, identified the critical temperature $\beta^*$ via entropy inflection, and generated 150 sequences (30 chains $\times$ 5 samples) at $\beta_{\mathrm{gen}} = \max(2\beta^*, 5)$, rounded to the nearest integer. Table~\ref{tab:pca-sensitivity} reports six representative thresholds (50\%, 60\%, 70\%, 80\%, 90\%, 95\%) for all eight families; intermediate and extreme thresholds are omitted for brevity but show consistent interpolation.
 
-The results reveal two regimes separated by a transition near 70--75\% retained variance. Above this threshold, generation quality is robust: KL divergence remained below 0.09 in every condition, novelty increased monotonically with the variance threshold (higher $d$ provides more dimensions for exploration), and nearest sequence identity was essentially constant within each family (range $<0.08$). The critical temperature $\beta^*$ was largely insensitive to the threshold: in six of eight families, $\beta^*$ was identical across all eleven thresholds, reflecting the discrete resolution of the entropy inflection search grid. All decoded residues were valid amino acids at every threshold.
+The results reveal two regimes separated by a transition near 70--75\% retained variance. Above this threshold, generation quality is robust: KL divergence remained below 0.09 in every condition, novelty broadly increased with the variance threshold (higher $d$ provides more dimensions for exploration), and nearest sequence identity was essentially constant within each family (range $<0.10$). The critical temperature $\beta^*$ was largely insensitive to the threshold: in six of eight families, $\beta^*$ was identical across all eleven thresholds, reflecting the discrete resolution of the entropy inflection search grid. All decoded residues were valid amino acids at every threshold.
 
-Below 70\% retained variance, compositional fidelity began to degrade in the more diverse families. The clearest example was the WW domain ($K{=}420$), where KL divergence was $0.03$ at 80\% but rose to $0.15$ at 50\%, a five-fold increase indicating that discarded principal components encoded position-specific conservation patterns needed for faithful generation. The RRM family showed a similar pattern (KL $= 0.06$ at 80\% rising to $0.19$ at 50\%). By contrast, families with lower intrinsic diversity or fewer sequences (PDZ, Pkinase, Defensin\_beta) were nearly flat across the entire range because their first few principal components already captured the relevant variation: at 50\% retained variance, all three maintained KL $< 0.04$. The transition is thus family-dependent, governed by the alignment's spectral structure: families whose eigenvalue spectrum decays slowly (indicating many independent modes of variation) require more principal components to preserve compositional fidelity, while compact families tolerate aggressive compression. Novelty degraded gracefully everywhere, dropping from ${\sim}0.6$ at 95\% to ${\sim}0.4$ at 50\% without any cliff, and sequence identity remained nearly constant (within 0.04 for most families), indicating that the sampler finds a similar distance from stored patterns regardless of the projection dimension.
+Below 70\% retained variance, compositional fidelity began to degrade in the more diverse families. The clearest example was the WW domain ($K{=}420$), where KL divergence was $0.03$ at 80\% but rose to $0.15$ at 50\%, a five-fold increase indicating that discarded principal components encoded position-specific conservation patterns needed for faithful generation. The RRM family showed a similar pattern (KL $= 0.06$ at 80\% rising to $0.19$ at 50\%). By contrast, families with lower intrinsic diversity or fewer sequences (PDZ, Pkinase, Defensin\_beta) were nearly flat across the entire range because their first few principal components already captured the relevant variation: at 50\% retained variance, all three maintained KL $< 0.04$. The transition is thus family-dependent, governed by the alignment's spectral structure: families whose eigenvalue spectrum decays slowly (indicating many independent modes of variation) require more principal components to preserve compositional fidelity, while compact families tolerate aggressive compression. Novelty degraded gracefully everywhere, dropping from ${\sim}0.5$ at 95\% to ${\sim}0.35$ at 50\% without any cliff, and sequence identity remained nearly constant (within 0.04 for most families), indicating that the sampler finds a similar distance from stored patterns regardless of the projection dimension.
 
 These findings establish that the 95\% default lies well within the robust regime and that practitioners can safely vary the threshold between 75\% and 99\% without substantially affecting output quality. The practical floor of ${\sim}70$\% retained variance provides a useful guideline for applications where computational cost motivates aggressive dimensionality reduction.
 
@@ -351,76 +351,76 @@ These findings establish that the 95\% default lies well within the robust regim
 Family & Threshold & $d$ & $\beta^*$ & $\beta_{\mathrm{gen}}$ & KL$_{\mathrm{AA}}$ & Novelty & SeqID \\
 \midrule
 \multirow{6}{*}{RRM}
- & 50\% &  21 & 3.85 &  8 & 0.186 & 0.428 & 0.539 \\
- & 60\% &  27 & 3.85 &  8 & 0.111 & 0.470 & 0.546 \\
- & 70\% &  34 & 3.85 &  8 & 0.135 & 0.516 & 0.539 \\
+ & 50\% &  21 & 3.85 &  8 & 0.186 & 0.392 & 0.539 \\
+ & 60\% &  27 & 3.85 &  8 & 0.111 & 0.426 & 0.546 \\
+ & 70\% &  34 & 3.85 &  8 & 0.135 & 0.463 & 0.539 \\
 \cmidrule{2-8}
- & 80\% &  43 & 3.85 &  8 & 0.085 & 0.567 & 0.535 \\
- & 90\% &  53 & 3.85 &  8 & 0.067 & 0.605 & 0.540 \\
- & 95\% &  59 & 3.85 &  8 & 0.060 & 0.623 & 0.538 \\
+ & 80\% &  43 & 3.85 &  8 & 0.085 & 0.497 & 0.535 \\
+ & 90\% &  53 & 3.85 &  8 & 0.067 & 0.508 & 0.540 \\
+ & 95\% &  59 & 3.85 &  8 & 0.060 & 0.513 & 0.538 \\
 \midrule
 \multirow{6}{*}{SH3}
- & 50\% &  15 & 3.23 &  6 & 0.087 & 0.393 & 0.601 \\
- & 60\% &  19 & 3.23 &  6 & 0.072 & 0.440 & 0.593 \\
- & 70\% &  25 & 3.23 &  6 & 0.039 & 0.493 & 0.592 \\
+ & 50\% &  15 & 3.23 &  6 & 0.087 & 0.312 & 0.601 \\
+ & 60\% &  19 & 3.23 &  6 & 0.072 & 0.372 & 0.593 \\
+ & 70\% &  25 & 3.23 &  6 & 0.039 & 0.402 & 0.592 \\
 \cmidrule{2-8}
- & 80\% &  32 & 3.23 &  6 & 0.038 & 0.550 & 0.587 \\
- & 90\% &  41 & 3.85 &  8 & 0.032 & 0.560 & 0.596 \\
- & 95\% &  46 & 3.85 &  8 & 0.036 & 0.586 & 0.593 \\
+ & 80\% &  32 & 3.23 &  6 & 0.038 & 0.447 & 0.587 \\
+ & 90\% &  41 & 3.85 &  8 & 0.032 & 0.444 & 0.596 \\
+ & 95\% &  46 & 3.85 &  8 & 0.036 & 0.471 & 0.593 \\
 \midrule
 \multirow{6}{*}{WW}
- & 50\% &  33 & 5.45 & 11 & 0.152 & 0.451 & 0.646 \\
- & 60\% &  47 & 5.45 & 11 & 0.133 & 0.521 & 0.631 \\
- & 70\% &  67 & 5.45 & 11 & 0.125 & 0.590 & 0.624 \\
+ & 50\% &  33 & 5.45 & 11 & 0.152 & 0.410 & 0.646 \\
+ & 60\% &  47 & 5.45 & 11 & 0.133 & 0.476 & 0.631 \\
+ & 70\% &  67 & 5.45 & 11 & 0.125 & 0.530 & 0.624 \\
 \cmidrule{2-8}
- & 80\% &  95 & 5.45 & 11 & 0.028 & 0.650 & 0.600 \\
- & 90\% & 142 & 5.45 & 11 & 0.020 & 0.710 & 0.576 \\
- & 95\% & 186 & 5.45 & 11 & 0.008 & 0.741 & 0.562 \\
+ & 80\% &  95 & 5.45 & 11 & 0.028 & 0.588 & 0.600 \\
+ & 90\% & 142 & 5.45 & 11 & 0.020 & 0.636 & 0.576 \\
+ & 95\% & 186 & 5.45 & 11 & 0.008 & 0.653 & 0.562 \\
 \midrule
 \multirow{6}{*}{Kunitz}
- & 50\% &  23 & 3.85 &  8 & 0.053 & 0.436 & 0.638 \\
- & 60\% &  31 & 3.85 &  8 & 0.047 & 0.513 & 0.636 \\
- & 70\% &  40 & 3.85 &  8 & 0.031 & 0.543 & 0.628 \\
+ & 50\% &  23 & 3.85 &  8 & 0.053 & 0.387 & 0.638 \\
+ & 60\% &  31 & 3.85 &  8 & 0.047 & 0.433 & 0.636 \\
+ & 70\% &  40 & 3.85 &  8 & 0.031 & 0.469 & 0.628 \\
 \cmidrule{2-8}
- & 80\% &  53 & 3.85 &  8 & 0.022 & 0.594 & 0.619 \\
- & 90\% &  69 & 3.85 &  8 & 0.023 & 0.639 & 0.616 \\
- & 95\% &  80 & 3.85 &  8 & 0.013 & 0.663 & 0.607 \\
+ & 80\% &  53 & 3.85 &  8 & 0.022 & 0.500 & 0.619 \\
+ & 90\% &  69 & 3.85 &  8 & 0.023 & 0.535 & 0.616 \\
+ & 95\% &  80 & 3.85 &  8 & 0.013 & 0.557 & 0.607 \\
 \midrule
 \multirow{6}{*}{zf-C2H2}
- & 50\% &  28 & 4.58 &  9 & 0.112 & 0.450 & 0.610 \\
- & 60\% &  38 & 4.58 &  9 & 0.037 & 0.520 & 0.599 \\
- & 70\% &  49 & 4.58 &  9 & 0.106 & 0.560 & 0.595 \\
+ & 50\% &  28 & 4.58 &  9 & 0.112 & 0.397 & 0.610 \\
+ & 60\% &  38 & 4.58 &  9 & 0.037 & 0.458 & 0.599 \\
+ & 70\% &  49 & 4.58 &  9 & 0.106 & 0.483 & 0.595 \\
 \cmidrule{2-8}
- & 80\% &  65 & 4.58 &  9 & 0.017 & 0.620 & 0.583 \\
- & 90\% &  88 & 4.58 &  9 & 0.010 & 0.661 & 0.572 \\
- & 95\% & 106 & 4.58 &  9 & 0.013 & 0.692 & 0.557 \\
+ & 80\% &  65 & 4.58 &  9 & 0.017 & 0.528 & 0.583 \\
+ & 90\% &  88 & 4.58 &  9 & 0.010 & 0.565 & 0.572 \\
+ & 95\% & 106 & 4.58 &  9 & 0.013 & 0.596 & 0.557 \\
 \midrule
 \multirow{6}{*}{PDZ}
- & 50\% &  12 & 2.70 &  5 & 0.038 & 0.341 & 0.558 \\
- & 60\% &  16 & 3.23 &  6 & 0.035 & 0.415 & 0.564 \\
- & 70\% &  20 & 3.23 &  6 & 0.042 & 0.464 & 0.553 \\
+ & 50\% &  12 & 2.70 &  5 & 0.038 & 0.269 & 0.558 \\
+ & 60\% &  16 & 3.23 &  6 & 0.035 & 0.305 & 0.564 \\
+ & 70\% &  20 & 3.23 &  6 & 0.042 & 0.337 & 0.553 \\
 \cmidrule{2-8}
- & 80\% &  25 & 3.23 &  6 & 0.035 & 0.497 & 0.549 \\
- & 90\% &  32 & 3.23 &  6 & 0.046 & 0.554 & 0.544 \\
- & 95\% &  37 & 3.23 &  6 & 0.038 & 0.576 & 0.543 \\
+ & 80\% &  25 & 3.23 &  6 & 0.035 & 0.359 & 0.549 \\
+ & 90\% &  32 & 3.23 &  6 & 0.046 & 0.400 & 0.544 \\
+ & 95\% &  37 & 3.23 &  6 & 0.038 & 0.418 & 0.543 \\
 \midrule
 \multirow{6}{*}{Pkinase}
- & 50\% &  15 & 3.23 &  6 & 0.041 & 0.386 & 0.501 \\
- & 60\% &  18 & 3.23 &  6 & 0.041 & 0.426 & 0.500 \\
- & 70\% &  22 & 3.23 &  6 & 0.038 & 0.488 & 0.506 \\
+ & 50\% &  15 & 3.23 &  6 & 0.041 & 0.356 & 0.501 \\
+ & 60\% &  18 & 3.23 &  6 & 0.041 & 0.390 & 0.500 \\
+ & 70\% &  22 & 3.23 &  6 & 0.038 & 0.426 & 0.506 \\
 \cmidrule{2-8}
- & 80\% &  27 & 3.23 &  6 & 0.035 & 0.537 & 0.506 \\
- & 90\% &  31 & 3.23 &  6 & 0.035 & 0.556 & 0.509 \\
- & 95\% &  34 & 3.23 &  6 & 0.035 & 0.563 & 0.515 \\
+ & 80\% &  27 & 3.23 &  6 & 0.035 & 0.463 & 0.506 \\
+ & 90\% &  31 & 3.23 &  6 & 0.035 & 0.480 & 0.509 \\
+ & 95\% &  34 & 3.23 &  6 & 0.035 & 0.478 & 0.515 \\
 \midrule
 \multirow{6}{*}{Defensin\_beta}
- & 50\% &  11 & 2.70 &  5 & 0.036 & 0.334 & 0.679 \\
- & 60\% &  15 & 3.23 &  6 & 0.035 & 0.390 & 0.678 \\
- & 70\% &  19 & 3.23 &  6 & 0.030 & 0.443 & 0.668 \\
+ & 50\% &  11 & 2.70 &  5 & 0.036 & 0.223 & 0.679 \\
+ & 60\% &  15 & 3.23 &  6 & 0.035 & 0.262 & 0.678 \\
+ & 70\% &  19 & 3.23 &  6 & 0.030 & 0.307 & 0.668 \\
 \cmidrule{2-8}
- & 80\% &  25 & 3.23 &  6 & 0.029 & 0.495 & 0.680 \\
- & 90\% &  32 & 3.23 &  6 & 0.020 & 0.547 & 0.657 \\
- & 95\% &  37 & 3.23 &  6 & 0.022 & 0.583 & 0.655 \\
+ & 80\% &  25 & 3.23 &  6 & 0.029 & 0.312 & 0.680 \\
+ & 90\% &  32 & 3.23 &  6 & 0.020 & 0.381 & 0.657 \\
+ & 95\% &  37 & 3.23 &  6 & 0.022 & 0.402 & 0.655 \\
 \bottomrule
 \end{tabular}
 \end{table}
