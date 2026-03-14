@@ -1,4 +1,4 @@
-\begin{thebibliography}{35}
+\begin{thebibliography}{43}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -86,6 +86,12 @@ Jeanne Trinquier, Guido Uguzzoni, Andrea Pagnani, Francesco Zamponi, and Martin
 \newblock \emph{Nature Communications}, 12:\penalty0 5800, 2021.
 \newblock \doi{10.1038/s41467-021-25756-4}.
 
+\bibitem[Kingma and Welling(2014)]{kingmaWellingAutoEncoding2014}
+Diederik~P. Kingma and Max Welling.
+\newblock Auto-encoding variational {Bayes}.
+\newblock In \emph{International Conference on Learning Representations
+  (ICLR)}, 2014.
+
 \bibitem[Riesselman et~al.(2018)Riesselman, Ingraham, and
   Marks]{riesselman2018deep}
 Adam~J. Riesselman, John~B. Ingraham, and Debora~S. Marks.
@@ -93,6 +99,12 @@ Adam~J. Riesselman, John~B. Ingraham, and Debora~S. Marks.
   mutations.
 \newblock \emph{Nature Methods}, 15:\penalty0 816--822, 2018.
 \newblock \doi{10.1038/s41592-018-0138-4}.
+
+\bibitem[Sinai et~al.(2017)Sinai, Kelsic, Church, and
+  Nowak]{sinaiVariationalAutoEncoding2017}
+Sam Sinai, Eric Kelsic, George~M. Church, and Martin~A. Nowak.
+\newblock Variational auto-encoding of protein sequences.
+\newblock \emph{arXiv preprint arXiv:1712.03346}, 2017.
 
 \bibitem[Ferruz et~al.(2022)Ferruz, Schmidt, and
   H{\"o}cker]{ferruzProtGPT2DeepUnsupervised2022}
@@ -175,6 +187,14 @@ Kevin~K. Yang, Zachary Wu, and Frances~H. Arnold.
 \newblock \emph{Nature Methods}, 16:\penalty0 687--694, 2019.
 \newblock \doi{10.1038/s41592-019-0496-6}.
 
+\bibitem[Vaswani et~al.(2017)Vaswani, Shazeer, Parmar, Uszkoreit, Jones, Gomez,
+  Kaiser, and Polosukhin]{vaswaniAttentionAllYou2017}
+Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones,
+  Aidan~N. Gomez, {\L}ukasz Kaiser, and Illia Polosukhin.
+\newblock Attention is all you need.
+\newblock In \emph{Advances in Neural Information Processing Systems},
+  volume~30, pages 5998--6008, 2017.
+
 \bibitem[Ramsauer et~al.(2021)Ramsauer, Sch{\"a}fl, Lehner, Seidl, Widrich,
   Adler, Gruber, Holzleitner, Pavlovi{\'c}, Sandve, Greiff, Kreil, Kopp,
   Klambauer, Brandstetter, and Hochreiter]{ramsauerHopfieldNetworksAll2021}
@@ -191,6 +211,23 @@ Dmitry Krotov and John~J. Hopfield.
 \newblock Dense associative memory for pattern recognition.
 \newblock In \emph{Advances in Neural Information Processing Systems},
   volume~29, 2016.
+
+\bibitem[Hopfield(1982)]{hopfieldNeuralNetworksPhysical1982}
+John~J. Hopfield.
+\newblock Neural networks and physical systems with emergent collective
+  computational abilities.
+\newblock \emph{Proceedings of the National Academy of Sciences}, 79\penalty0
+  (8):\penalty0 2554--2558, 1982.
+\newblock \doi{10.1073/pnas.79.8.2554}.
+
+\bibitem[Amit et~al.(1985)Amit, Gutfreund, and
+  Sompolinsky]{amitStoringInfiniteNumbers1985}
+Daniel~J. Amit, Hanoch Gutfreund, and Haim Sompolinsky.
+\newblock Storing infinite numbers of patterns in a spin-glass model of neural
+  networks.
+\newblock \emph{Physical Review Letters}, 55\penalty0 (14):\penalty0
+  1530--1533, 1985.
+\newblock \doi{10.1103/PhysRevLett.55.1530}.
 
 \bibitem[Song and Ermon(2019)]{songGenerativeModelingEstimating2019}
 Yang Song and Stefano Ermon.
@@ -214,6 +251,12 @@ Jonathan Ho, Ajay Jain, and Pieter Abbeel.
 \newblock In \emph{Advances in Neural Information Processing Systems},
   volume~33, pages 6840--6851, 2020.
 
+\bibitem[Welling and Teh(2011)]{wellingBayesianLearningStochastic2011}
+Max Welling and Yee~Whye Teh.
+\newblock Bayesian learning via stochastic gradient {Langevin} dynamics.
+\newblock In \emph{Proceedings of the 28th International Conference on Machine
+  Learning (ICML)}, pages 681--688, 2011.
+
 \bibitem[Hoover et~al.(2023)Hoover, Liang, Pham, Panda, Strobelt, Chau, Zaki,
   and Krotov]{hooverEnergyTransformer2023}
 Benjamin Hoover, Yuchen Liang, Bao Pham, Rameswar Panda, Hendrik Strobelt,
@@ -232,8 +275,8 @@ Alain Durmus and {\'E}ric Moulines.
 
 \bibitem[Dalalyan(2017)]{dalalyanTheoreticalGuaranteesApproximate2017}
 Arnak~S. Dalalyan.
-\newblock Theoretical guarantees for approximate sampling from a smooth and
-  log-concave density.
+\newblock Theoretical guarantees for approximate sampling from smooth and
+  log-concave densities.
 \newblock \emph{Journal of the Royal Statistical Society: Series B},
   79\penalty0 (3):\penalty0 651--676, 2017.
 \newblock \doi{10.1111/rssb.12183}.
@@ -245,11 +288,12 @@ Abdulrahman Alswaidan and Jeffrey~D. Varner.
 \newblock \emph{arXiv preprint arXiv:2603.06875}, 2026.
 \newblock \doi{10.48550/arXiv.2603.06875}.
 
-\bibitem[Lin et~al.(2023)Lin, Akin, Rao, Hie, Zhu, Lu, Smestad, Costa,
-  Fazel-Zarandi, Sercu, Candido, and Rives]{linEvolutionaryScaleModeling2023}
+\bibitem[Lin et~al.(2023)Lin, Akin, Rao, Hie, Zhu, Lu, Smetanin, Verkuil,
+  Kabeli, Shmueli, Costa, Fazel-Zarandi, Sercu, Candido, and
+  Rives]{linEvolutionaryScaleModeling2023}
 Zeming Lin, Halil Akin, Roshan Rao, Brian Hie, Zhongkai Zhu, Wenting Lu, Nikita
-  Smestad, Allan Costa, Maryam Fazel-Zarandi, Tom Sercu, Sal Candido, and
-  Alexander Rives.
+  Smetanin, Robert Verkuil, Ori Kabeli, Yaniv Shmueli, Allan Costa, Maryam
+  Fazel-Zarandi, Tom Sercu, Sal Candido, and Alexander Rives.
 \newblock Evolutionary-scale prediction of atomic-level protein structure with
   a language model.
 \newblock \emph{Science}, 379\penalty0 (6637):\penalty0 1123--1130, 2023.
@@ -279,6 +323,20 @@ Andr{\'e}~J. Faure, Javier Domingo, Joern~M. Schmiedel, Cristina
   domains.
 \newblock \emph{Nature}, 604:\penalty0 175--183, 2022.
 \newblock \doi{10.1038/s41586-022-04586-4}.
+
+\bibitem[Lazzaro et~al.(2020)Lazzaro, Zasloff, and
+  Rolff]{lazzaroAntimicrobialPeptides2020}
+Brian~P. Lazzaro, Michael Zasloff, and Jens Rolff.
+\newblock Antimicrobial peptides: Application informed by evolution.
+\newblock \emph{Science}, 368\penalty0 (6490):\penalty0 eaau5480, 2020.
+\newblock \doi{10.1126/science.aau5480}.
+
+\bibitem[Ackley et~al.(1985)Ackley, Hinton, and
+  Sejnowski]{ackeleyLearningAlgorithmBoltzmann1985}
+David~H. Ackley, Geoffrey~E. Hinton, and Terrence~J. Sejnowski.
+\newblock A learning algorithm for {Boltzmann} machines.
+\newblock \emph{Cognitive Science}, 9\penalty0 (1):\penalty0 147--169, 1985.
+\newblock \doi{10.1207/s15516709cog0901\_7}.
 
 \bibitem[Roberts and Tweedie(1996)]{robertsTweedieExponentialConvergence1996}
 Gareth~O. Roberts and Richard~L. Tweedie.

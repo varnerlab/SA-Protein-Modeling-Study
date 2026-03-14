@@ -341,11 +341,13 @@ Below 70\% retained variance, compositional fidelity began to degrade in the mor
 
 These findings establish that the 95\% default lies well within the robust regime and that practitioners can safely vary the threshold between 75\% and 99\% without substantially affecting output quality. The practical floor of ${\sim}70$\% retained variance provides a useful guideline for applications where computational cost motivates aggressive dimensionality reduction.
 
-\begin{table}[ht]
+\begin{table}[p]
 \centering
 \caption{PCA variance threshold sensitivity study. For each family and retained-variance threshold, the table reports the PCA dimension $d$, empirical critical temperature $\beta^*$, generation temperature $\beta_{\mathrm{gen}}$, amino acid composition KL divergence, PCA-space cosine novelty, and nearest sequence identity to a stored pattern. All conditions produced 100\% valid amino acid residues. The horizontal rule within each family separates the degraded regime ($\leq 70\%$) from the robust regime ($\geq 80\%$). Intermediate thresholds (55\%, 65\%, 75\%, 85\%) are omitted for brevity; the full 11-threshold data are available in the accompanying code repository.}
 \label{tab:pca-sensitivity}
-\small
+\scriptsize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{0.85}
 \begin{tabular}{@{}llrrrrcc@{}}
 \toprule
 Family & Threshold & $d$ & $\beta^*$ & $\beta_{\mathrm{gen}}$ & KL$_{\mathrm{AA}}$ & Novelty & SeqID \\
@@ -518,7 +520,7 @@ Algorithm~\ref{alg:sa-pipeline} summarizes the complete stochastic attention pip
 \end{algorithmic}
 \end{algorithm}
 
-\section{Analysis of the Critical Temperature}\label{app:beta-star-analysis}\label{app:concentration}\label{app:tau-star}\label{app:stored-probes}\label{app:comparison}
+\section{Analysis of the Critical Temperature}\label{app:beta-star-analysis}\label{app:concentration}\label{app:tau-star}\label{app:stored-probes}
 
 We developed an analytical framework to understand the empirical relationship $\beta^* \approx 1.57 + 0.28\sqrt{d}$ reported in Materials and Methods, starting from exact results on similarity variance, building a Gaussian mean-field prediction, and then diagnosing why the mean-field coefficient overshoots and how stored-pattern self-similarity resolves the discrepancy.
 

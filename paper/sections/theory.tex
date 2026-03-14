@@ -9,7 +9,7 @@ where $\beta > 0$ is an inverse temperature. The gradient is $\nabla E(\boldsymb
 \begin{equation}\label{eq:retrieval-map}
     \mathbf{T}(\boldsymbol{\xi}) := \mathbf{X}\,\operatorname{softmax}\!\bigl(\beta\,\mathbf{X}^\top\boldsymbol{\xi}\bigr)
 \end{equation}
-is the softmax attention retrieval map~\cite{ramsauerHopfieldNetworksAll2021}. The Boltzmann distribution $p_\beta(\boldsymbol{\xi}) \propto \exp(-\beta\,E(\boldsymbol{\xi}))$ has score function given by:
+is the softmax attention retrieval map~\cite{ramsauerHopfieldNetworksAll2021}. The Boltzmann distribution~\cite{ackeleyLearningAlgorithmBoltzmann1985} $p_\beta(\boldsymbol{\xi}) \propto \exp(-\beta\,E(\boldsymbol{\xi}))$ has score function given by:
 \begin{equation}\label{eq:score}
     \nabla \log p_\beta(\boldsymbol{\xi}) = -\beta\,\nabla E(\boldsymbol{\xi}) = \beta\bigl(\mathbf{T}(\boldsymbol{\xi}) - \boldsymbol{\xi}\bigr).
 \end{equation}
