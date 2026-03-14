@@ -22,7 +22,7 @@ The manuscript source is in `paper/`. The main file `Paper_v1.tex` inputs sectio
 
 ## Getting started
 
-The Julia experiments were developed and tested with [Julia](https://julialang.org/downloads/) 1.11. On macOS the simplest installation route is Homebrew (`brew install julia`); on Linux and Windows, download the official binaries from the Julia website. On the first run, `Include.jl` will download and precompile all Julia dependencies automatically. The notebooks and scripts can be opened directly in Visual Studio Code with the Julia and Jupyter extensions, which is the workflow used during development.
+The Julia experiments were developed and tested with [Julia](https://julialang.org/downloads/) 1.11. The simplest installation route on all platforms is [juliaup](https://github.com/JuliaLang/juliaup) (`curl -fsSL https://install.julialang.org | sh` on macOS/Linux, or `winget install Julia` on Windows). On the first run, `Include.jl` will download and precompile all Julia dependencies automatically. The notebooks and scripts can be opened directly in Visual Studio Code with the Julia and Jupyter extensions, which is the workflow used during development.
 
 Several baseline and validation scripts are written in Python (3.9+) and depend on specific packages. Each script prints its own install command if a required package is missing, but the complete list is:
 
