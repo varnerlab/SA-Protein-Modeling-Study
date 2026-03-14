@@ -125,9 +125,28 @@ end
 # Main: collect chain-level metrics for all methods
 # ══════════════════════════════════════════════════════════════════════════════
 
+"""
+    bootstrap_kl(gen_seqs, stored_seqs; n_boot=1000) -> (kl_pooled, kl_se)
+
+Compute pooled KL from all sequences and bootstrap SE.
+"""
+function bootstrap_kl(gen_seqs::Vector{String}, stored_seqs::Vector{String}; n_boot::Int=1000)
+    kl_pooled = aa_composition_kl(gen_seqs, stored_seqs)
+    n = length(gen_seqs)
+    kl_boots = Float64[]
+    for _ in 1:n_boot
+        boot_idx = rand(1:n, n)
+        boot_seqs = gen_seqs[boot_idx]
+        push!(kl_boots, aa_composition_kl(boot_seqs, stored_seqs))
+    end
+    return (kl_pooled, std(kl_boots))
+end
+
 function collect_all_chain_metrics()
     # family → method → (chain_kls, chain_novs, chain_sids)
     all_chains = Dict{String, Dict{String, Tuple{Vector{Float64}, Vector{Float64}, Vector{Float64}}}}()
+    # family → method → (pooled_kl, kl_se) — correct KL from all sequences
+    pooled_kls = Dict{String, Dict{String, Tuple{Float64, Float64}}}()
 
     for fam in FAMILIES
         @info "════════════════════════════════════════════════════════════"
@@ -135,6 +154,7 @@ function collect_all_chain_metrics()
         @info "════════════════════════════════════════════════════════════"
 
         all_chains[fam.name] = Dict{String, Tuple{Vector{Float64}, Vector{Float64}, Vector{Float64}}}()
+        pooled_kls[fam.name] = Dict{String, Tuple{Float64, Float64}}()
 
         stored_fasta = joinpath(PFAM_DATA_DIR, fam.id, "stored_sequences.fasta")
         if !isfile(stored_fasta); @warn "Missing stored — skipping"; continue; end
@@ -147,22 +167,27 @@ function collect_all_chain_metrics()
         K, L = size(char_mat)
         X̂, pca_model, L, _ = build_memory_matrix(char_mat; pratio=0.95)
 
+        # helper to process a set of sequences
+        function process_method(gen_seqs, method_name)
+            chains = compute_chain_metrics(gen_seqs, stored_seqs, X̂, pca_model, L)
+            all_chains[fam.name][method_name] = chains
+            pooled_kls[fam.name][method_name] = bootstrap_kl(gen_seqs, stored_seqs)
+            @info "  $method_name: $(length(chains[1])) chains, pooled KL=$(round(pooled_kls[fam.name][method_name][1], digits=4))"
+        end
+
         # SA methods
         for (fname, method_name) in SA_FILES
             fpath = joinpath(PFAM_DATA_DIR, fam.id, fname)
             if !isfile(fpath); continue; end
             sa_data = parse_fasta(fpath)
             sa_seqs = [s[2] for s in sa_data]
-            chains = compute_chain_metrics(sa_seqs, stored_seqs, X̂, pca_model, L)
-            all_chains[fam.name][method_name] = chains
-            @info "  $method_name: $(length(chains[1])) chains"
+            process_method(sa_seqs, method_name)
         end
 
         # Bootstrap
         Random.seed!(12345)
         bs_seqs = [stored_seqs[rand(1:length(stored_seqs))] for _ in 1:150]
-        chains = compute_chain_metrics(bs_seqs, stored_seqs, X̂, pca_model, L)
-        all_chains[fam.name]["Bootstrap"] = chains
+        process_method(bs_seqs, "Bootstrap")
 
         # Learned baselines
         for (fname, method_name) in BASELINE_FILES
@@ -170,13 +195,11 @@ function collect_all_chain_metrics()
             if !isfile(fpath); @info "  $method_name: not found"; continue; end
             gen_seqs = load_and_clean_seqs(fpath, L)
             if isempty(gen_seqs); continue; end
-            chains = compute_chain_metrics(gen_seqs, stored_seqs, X̂, pca_model, L)
-            all_chains[fam.name][method_name] = chains
-            @info "  $method_name: $(length(chains[1])) chains"
+            process_method(gen_seqs, method_name)
         end
     end
 
-    return all_chains
+    return all_chains, pooled_kls
 end
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -247,7 +270,7 @@ function draw_bracket!(p, x1, x2, y, dy, label; color=:black, fontsize=6)
     annotate!(p, [(mean([x1, x2]), y + dy + 0.4*dy, text(label, fontsize, :center, color))])
 end
 
-function generate_figures_with_brackets(all_chains, df_tests)
+function generate_figures_with_brackets(all_chains, df_tests, pooled_kls)
     family_names = [f.name for f in FAMILIES]
 
     # Determine which methods are available
@@ -258,17 +281,17 @@ function generate_figures_with_brackets(all_chains, df_tests)
         end
     end
 
-    method_order_full = ["SA generation", "SA retrieval", "HMM emit",
-                         "EvoDiff", "MSA Transformer", "Bootstrap"]
+    # Show only the four generative methods (SA gen + 3 learned baselines).
+    # Simple baselines (bootstrap, Gaussian perturbation, convex combination)
+    # and SA retrieval are reported in SI Table S2.
+    method_order_full = ["SA generation", "HMM emit", "EvoDiff", "MSA Transformer"]
     method_order = [m for m in method_order_full if m in all_methods_seen]
 
     method_colors = Dict(
         "SA generation"    => RGB(0.20, 0.47, 0.69),
-        "SA retrieval"     => RGB(0.89, 0.44, 0.32),
         "HMM emit"         => RGB(0.30, 0.69, 0.29),
         "EvoDiff"          => RGB(0.93, 0.68, 0.20),
         "MSA Transformer"  => RGB(0.58, 0.32, 0.68),
-        "Bootstrap"        => RGB(0.50, 0.50, 0.50),
     )
 
     n_methods = length(method_order)
@@ -291,8 +314,17 @@ function generate_figures_with_brackets(all_chains, df_tests)
         left_margin    = 4Plots.mm,
     )
 
-    # Helper to get mean/se from chain data
+    # Helper to get mean/se from chain data (for novelty and SID)
+    # For KL (metric_idx=1), use pooled values instead of per-chain means
     function get_mean_se(fam_name, method, metric_idx)
+        if metric_idx == 1
+            # Use pooled KL (computed from all 150 sequences) with bootstrap SE
+            fam_kls = get(pooled_kls, fam_name, nothing)
+            fam_kls === nothing && return (NaN, 0.0)
+            kl_data = get(fam_kls, method, nothing)
+            kl_data === nothing && return (NaN, 0.0)
+            return kl_data  # (pooled_kl, bootstrap_se)
+        end
         fam_chains = get(all_chains, fam_name, nothing)
         fam_chains === nothing && return (NaN, 0.0)
         chains = get(fam_chains, method, nothing)
@@ -389,8 +421,8 @@ end
 # Run
 # ══════════════════════════════════════════════════════════════════════════════
 
-all_chains = collect_all_chain_metrics()
+(all_chains, pooled_kls) = collect_all_chain_metrics()
 df_tests = run_baseline_stats(all_chains)
-generate_figures_with_brackets(all_chains, df_tests)
+generate_figures_with_brackets(all_chains, df_tests, pooled_kls)
 
 @info "\nDone."

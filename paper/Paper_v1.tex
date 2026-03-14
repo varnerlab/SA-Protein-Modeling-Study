@@ -125,7 +125,7 @@ Defensin\_beta & PF00711 &  45 &  36 &  37 & 1.65 &  45 & 3.23 & 0.53 \\
 \begin{figure}[p]
 \centering
 \includegraphics[width=\textwidth]{figs/baseline_comparison_composite.pdf}
-\caption{Head-to-head comparison of SA generation against learned baselines across all eight Pfam families. \textbf{(A)}~KL divergence of amino acid composition. \textbf{(B)}~Novelty in PCA space. \textbf{(C)}~Nearest sequence identity. Significance brackets show Wilcoxon rank-sum tests comparing SA generation to HMM emit (the most direct comparison, as both use only the seed alignment): $^{***}p < 0.001$, $^{**}p < 0.01$, $^{*}p < 0.05$, n.s.\ = not significant. Error bars show $\pm 1$ SE (30 chains $\times$ 5 samples).}
+\caption{Head-to-head comparison of SA generation against three learned baselines (profile HMM emit, EvoDiff, MSA Transformer) across all eight Pfam families. \textbf{(A)}~KL divergence of amino acid composition (pooled over all 150 generated sequences, with bootstrap SE; $n_{\mathrm{boot}}{=}1000$). \textbf{(B)}~Novelty in PCA space. \textbf{(C)}~Nearest sequence identity. Panels (B) and (C) report per-chain means $\pm 1$ SE (30 chains $\times$ 5 samples). Simple reference baselines (Gaussian perturbation, convex combination, stored-pattern retrieval) are omitted from this figure because their design precludes meaningful comparison: retrieval returns memorized sequences (novelty ${\approx}0$, identity ${\approx}1$) and the perturbation baselines do not attempt to model the family distribution. Their metrics are reported in SI Appendix, Table~\ref{tab:results} for completeness.}
 \label{fig:baseline-comparison}
 \end{figure}
 
