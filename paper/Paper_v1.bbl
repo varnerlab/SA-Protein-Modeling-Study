@@ -57,11 +57,16 @@ Anders Krogh, Michael Brown, I.~Saira Mian, Kimmen Sj{\"o}lander, and David
   1501--1531, 1994.
 \newblock \doi{10.1006/jmbi.1994.1104}.
 
-\bibitem[Monaco et~al.(2014)Monaco, De~Rinaldis, and
-  Bhargava]{monacoProteinsMutualInformation2014}
-Alfonso Monaco, Enza De~Rinaldis, and Rohit Bhargava.
-\newblock Proteins mutual information and residue co-evolution.
-\newblock \emph{PLoS ONE}, 9\penalty0 (1):\penalty0 e87932, 2014.
+\bibitem[Morcos et~al.(2011)Morcos, Pagnani, Lunt, Bertolino, Marks, Sander,
+  Zecchina, Onuchic, Hwa, and Weigt]{morcosDirectCouplingAnalysis2011}
+Faruck Morcos, Andrea Pagnani, Bryan Lunt, Arianna Bertolino, Debora~S. Marks,
+  Chris Sander, Riccardo Zecchina, Jos{\'e}~N. Onuchic, Terence Hwa, and Martin
+  Weigt.
+\newblock Direct-coupling analysis of residue coevolution captures native
+  contacts across many protein families.
+\newblock \emph{Proceedings of the National Academy of Sciences}, 108\penalty0
+  (49):\penalty0 E1293--E1301, 2011.
+\newblock \doi{10.1073/pnas.1111471108}.
 
 \bibitem[Ekeberg et~al.(2013)Ekeberg, L{\"o}vkvist, Lan, Weigt, and
   Aurell]{ekeberg2013improved}
@@ -124,10 +129,11 @@ Roshan Rao, Jason Liu, Robert Verkuil, Joshua Meier, John~F. Canny, Pieter
 \newblock In \emph{Proceedings of the 38th International Conference on Machine
   Learning (ICML)}, pages 8844--8856, 2021.
 
-\bibitem[Alamdari et~al.(2023)Alamdari, Thakur, van~den Berg, Lu, Fusi,
-  Trember, and Wang]{alamdariProteinGeneration2023}
-Sarah Alamdari, Nitya Thakur, Rianne van~den Berg, Alex~X. Lu, Nicolo Fusi,
-  Ava~P. Trember, and Kevin~K. Wang.
+\bibitem[Alamdari et~al.(2023)Alamdari, Thakkar, van~den Berg, Tenenholtz,
+  Strome, Moses, Lu, Fusi, Amini, and Yang]{alamdariProteinGeneration2023}
+Sarah Alamdari, Nitya Thakkar, Rianne van~den Berg, Neil Tenenholtz, Robert
+  Strome, Alan~M. Moses, Alex~X. Lu, Nicol\`{o} Fusi, Ava~P. Amini, and
+  Kevin~K. Yang.
 \newblock Protein generation with evolutionary diffusion: Sequence is all you
   need.
 \newblock \emph{bioRxiv}, 2023.
@@ -159,14 +165,12 @@ Jaina Mistry, Sara Chuguransky, Lowri Williams, Matloob Qureshi, Gustavo~A
   Salazar, Erik L~L Sonnhammer, Silvio C~E Tosatto, Lisanna Paladin, Shriya
   Raj, Lorna~J Richardson, Robert~D Finn, and Alex Bateman.
 \newblock Pfam: The protein families database in 2021.
-\newblock \emph{Nucleic Acids Research}, 49\penalty0 (D1):\penalty0 D99--D106,
+\newblock \emph{Nucleic Acids Research}, 49\penalty0 (D1):\penalty0 D412--D419,
   2021.
 \newblock \doi{10.1093/nar/gkaa913}.
 
-\bibitem[Wu et~al.(2019)Wu, Kan, Lewis, Wittmann, and
-  Arnold]{wuMachineLearningAidedProtein2019}
-Zachary Wu, S.~B.~Jennifer Kan, Russell~D. Lewis, Bruce~J. Wittmann, and
-  Frances~H. Arnold.
+\bibitem[Yang et~al.(2019)Yang, Wu, and Arnold]{yangMachineLearningGuided2019}
+Kevin~K. Yang, Zachary Wu, and Frances~H. Arnold.
 \newblock Machine-learning-guided directed evolution for protein engineering.
 \newblock \emph{Nature Methods}, 16:\penalty0 687--694, 2019.
 \newblock \doi{10.1038/s41592-019-0496-6}.
@@ -210,13 +214,13 @@ Jonathan Ho, Ajay Jain, and Pieter Abbeel.
 \newblock In \emph{Advances in Neural Information Processing Systems},
   volume~33, pages 6840--6851, 2020.
 
-\bibitem[Hoover et~al.(2024)Hoover, Liang, Pham, Panda, Strobelt, Chau, Zaki,
-  and Krotov]{hooverEnergyTransformer2024}
+\bibitem[Hoover et~al.(2023)Hoover, Liang, Pham, Panda, Strobelt, Chau, Zaki,
+  and Krotov]{hooverEnergyTransformer2023}
 Benjamin Hoover, Yuchen Liang, Bao Pham, Rameswar Panda, Hendrik Strobelt,
   Duen~Horng Chau, Mohammed~J. Zaki, and Dmitry Krotov.
 \newblock Energy transformer.
 \newblock In \emph{Advances in Neural Information Processing Systems},
-  volume~36, 2024.
+  volume~36, 2023.
 
 \bibitem[Durmus and Moulines(2017)]{durmusNonasymptoticAnalysisUnadjusted2017}
 Alain Durmus and {\'E}ric Moulines.
@@ -234,11 +238,12 @@ Arnak~S. Dalalyan.
   79\penalty0 (3):\penalty0 651--676, 2017.
 \newblock \doi{10.1111/rssb.12183}.
 
-\bibitem[Alswaidan and Varner(2025)]{alswaidanVarnerStochasticAttention2025}
+\bibitem[Alswaidan and Varner(2026)]{alswaidanVarnerStochasticAttention2026}
 Abdulrahman Alswaidan and Jeffrey~D. Varner.
 \newblock Stochastic attention via {Langevin} dynamics on the modern {Hopfield}
   energy.
-\newblock \emph{arXiv preprint arXiv:XXXX.XXXXX}, 2025.
+\newblock \emph{arXiv preprint arXiv:2603.06875}, 2026.
+\newblock \doi{10.48550/arXiv.2603.06875}.
 
 \bibitem[Lin et~al.(2023)Lin, Akin, Rao, Hie, Zhu, Lu, Smestad, Costa,
   Fazel-Zarandi, Sercu, Candido, and Rives]{linEvolutionaryScaleModeling2023}
