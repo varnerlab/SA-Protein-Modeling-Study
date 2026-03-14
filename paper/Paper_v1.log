@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  13 MAR 2026 22:22
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  14 MAR 2026 10:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -699,6 +699,9 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 [10]) (./sections/experiments.tex
 
 [11]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
 
 [12])
 
@@ -733,11 +736,11 @@ File: figs/structure_validation_composite.pdf Graphic file (type pdf)
 Package pdftex.def Info: figs/structure_validation_composite.pdf  used on input
  line 134.
 (pdftex.def)             Requested size: 397.48499pt x 151.76688pt.
-<figs/structure_gallery.pdf, id=344, 680.49434pt x 524.93092pt>
+<figs/structure_gallery.pdf, id=344, 902.50775pt x 524.37857pt>
 File: figs/structure_gallery.pdf Graphic file (type pdf)
 <use figs/structure_gallery.pdf>
 Package pdftex.def Info: figs/structure_gallery.pdf  used on input line 141.
-(pdftex.def)             Requested size: 397.48499pt x 306.62279pt.
+(pdftex.def)             Requested size: 397.48499pt x 230.94331pt.
 <figs/sequence_analysis_kunitz.pdf, id=345, 990.91335pt x 543.4108pt>
 File: figs/sequence_analysis_kunitz.pdf Graphic file (type pdf)
 <use figs/sequence_analysis_kunitz.pdf>
@@ -758,12 +761,12 @@ Package pdftex.def Info: figs/sequence_analysis_kunitz.pdf  used on input line
 
 
 [22 <./figs/sequence_analysis_kunitz.pdf>] (./sections/appendix.tex
-<figs/aa_freq_example.pdf, id=637, 702.625pt x 501.875pt>
+<figs/aa_freq_example.pdf, id=655, 702.625pt x 501.875pt>
 File: figs/aa_freq_example.pdf Graphic file (type pdf)
 <use figs/aa_freq_example.pdf>
 Package pdftex.def Info: figs/aa_freq_example.pdf  used on input line 9.
 (pdftex.def)             Requested size: 357.73405pt x 255.53166pt.
-<figs/scaling_composite.pdf, id=639, 903.375pt x 702.625pt>
+<figs/scaling_composite.pdf, id=657, 903.375pt x 702.625pt>
 File: figs/scaling_composite.pdf Graphic file (type pdf)
 <use figs/scaling_composite.pdf>
 Package pdftex.def Info: figs/scaling_composite.pdf  used on input line 20.
@@ -787,7 +790,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 [24]
 
 [25]
-<figs/mi_covariation_scatter.pdf, id=675, 903.375pt x 301.125pt>
+<figs/mi_covariation_scatter.pdf, id=693, 903.375pt x 301.125pt>
 File: figs/mi_covariation_scatter.pdf Graphic file (type pdf)
 <use figs/mi_covariation_scatter.pdf>
 Package pdftex.def Info: figs/mi_covariation_scatter.pdf  used on input line 22
@@ -818,13 +821,13 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 [29]
 
 [30]
-<figs/analytical_beta_star.pdf, id=736, 1505.625pt x 903.375pt>
+<figs/analytical_beta_star.pdf, id=754, 1505.625pt x 903.375pt>
 File: figs/analytical_beta_star.pdf Graphic file (type pdf)
 <use figs/analytical_beta_star.pdf>
 Package pdftex.def Info: figs/analytical_beta_star.pdf  used on input line 551.
 
 (pdftex.def)             Requested size: 397.48499pt x 238.48346pt.
-<figs/stored_pattern_analysis.pdf, id=737, 1505.625pt x 903.375pt>
+<figs/stored_pattern_analysis.pdf, id=755, 1505.625pt x 903.375pt>
 File: figs/stored_pattern_analysis.pdf Graphic file (type pdf)
 <use figs/stored_pattern_analysis.pdf>
 Package pdftex.def Info: figs/stored_pattern_analysis.pdf  used on input line 5
@@ -889,10 +892,10 @@ dist/fonts/type1/public/cm-super/sftt1000.pfb></usr/local/texlive/2025/texmf-di
 st/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/t
 ype1/urw/times/utmr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/t
 imes/utmri8a.pfb>
-Output written on Paper_v1.pdf (39 pages, 1716904 bytes).
+Output written on Paper_v1.pdf (39 pages, 2044163 bytes).
 PDF statistics:
- 980 PDF objects out of 1000 (max. 8388607)
- 655 compressed objects within 7 object streams
+ 998 PDF objects out of 1000 (max. 8388607)
+ 659 compressed objects within 7 object streams
  183 named destinations out of 1000 (max. 500000)
  44768 words of extra memory for PDF output out of 51595 (max. 10000000)
 
