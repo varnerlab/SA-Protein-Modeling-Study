@@ -1,4 +1,4 @@
-\begin{thebibliography}{38}
+\begin{thebibliography}{35}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -107,6 +107,15 @@ Ali Madani, Ben Krause, Eric~R. Greene, Subu Subramanian, Benjamin~P. Mohr,
 \newblock \emph{Nature Biotechnology}, 41:\penalty0 1099--1106, 2023.
 \newblock \doi{10.1038/s41587-022-01618-2}.
 
+\bibitem[Notin et~al.(2022)Notin, Dias, Frazer, Marchena-Hurtado, Gomez, Marks,
+  and Gal]{notinTranception2022}
+Pascal Notin, Mafalda Dias, Jonathan Frazer, Javier Marchena-Hurtado, Aidan~N.
+  Gomez, Debora Marks, and Yarin Gal.
+\newblock Tranception: Protein fitness prediction with autoregressive
+  transformers and inference-time retrieval.
+\newblock In \emph{Proceedings of the 39th International Conference on Machine
+  Learning (ICML)}, pages 16990--17017, 2022.
+
 \bibitem[Rao et~al.(2021)Rao, Liu, Verkuil, Meier, Canny, Abbeel, Sercu, and
   Rives]{raoMSATransformer2021}
 Roshan Rao, Jason Liu, Robert Verkuil, Joshua Meier, John~F. Canny, Pieter
@@ -123,15 +132,6 @@ Sarah Alamdari, Nitya Thakur, Rianne van~den Berg, Alex~X. Lu, Nicolo Fusi,
   need.
 \newblock \emph{bioRxiv}, 2023.
 \newblock \doi{10.1101/2023.09.11.556673}.
-
-\bibitem[Notin et~al.(2022)Notin, Dias, Frazer, Marchena-Hurtado, Gomez, Marks,
-  and Gal]{notinTranception2022}
-Pascal Notin, Mafalda Dias, Jonathan Frazer, Javier Marchena-Hurtado, Aidan~N.
-  Gomez, Debora Marks, and Yarin Gal.
-\newblock Tranception: Protein fitness prediction with autoregressive
-  transformers and inference-time retrieval.
-\newblock In \emph{Proceedings of the 39th International Conference on Machine
-  Learning (ICML)}, pages 16990--17017, 2022.
 
 \bibitem[Dauparas et~al.(2022)Dauparas, Anishchenko, Bennett, Bai, Ragotte,
   Milles, Wicky, Courbet, de~Haas, Bethel, et~al.]{dauparasProteinMPNN2022}
@@ -151,21 +151,6 @@ Joseph~L. Watson, David Juergens, Nathaniel~R. Bennett, Brian~L. Trippe, Jason
 \newblock De novo design of protein structure and function with {RFdiffusion}.
 \newblock \emph{Nature}, 620\penalty0 (7976):\penalty0 1089--1100, 2023.
 \newblock \doi{10.1038/s41586-023-06415-8}.
-
-\bibitem[Hsu et~al.(2022)Hsu, Verkuil, Liu, Lin, Hie, Sercu, Lerer, and
-  Rives]{hsuInverseFolding2022}
-Chloe Hsu, Robert Verkuil, Jason Liu, Zeming Lin, Brian Hie, Tom Sercu, Adam
-  Lerer, and Alexander Rives.
-\newblock Learning inverse folding from millions of predicted structures.
-\newblock In \emph{Proceedings of the 39th International Conference on Machine
-  Learning (ICML)}, pages 8946--8970, 2022.
-
-\bibitem[Ingraham et~al.(2019)Ingraham, Garg, Barzilay, and
-  Jaakkola]{ingrahamGenerativeModelsGraph2019}
-John Ingraham, Vikas~K. Garg, Regina Barzilay, and Tommi Jaakkola.
-\newblock Generative models for graph-based protein design.
-\newblock In \emph{Advances in Neural Information Processing Systems},
-  volume~32, 2019.
 
 \bibitem[Mistry et~al.(2021)Mistry, Chuguransky, Williams, Qureshi, Salazar,
   Sonnhammer, Tosatto, Paladin, Raj, Richardson, Finn, and
@@ -289,13 +274,6 @@ Andr{\'e}~J. Faure, Javier Domingo, Joern~M. Schmiedel, Cristina
   domains.
 \newblock \emph{Nature}, 604:\penalty0 175--183, 2022.
 \newblock \doi{10.1038/s41586-022-04586-4}.
-
-\bibitem[Lazzaro et~al.(2020)Lazzaro, Zasloff, and
-  Rolff]{lazzaroAntimicrobialPeptides2020}
-Brian~P. Lazzaro, Michael Zasloff, and Jens Rolff.
-\newblock Antimicrobial peptides: Application informed by evolution.
-\newblock \emph{Science}, 368\penalty0 (6490):\penalty0 eaau5480, 2020.
-\newblock \doi{10.1126/science.aau5480}.
 
 \bibitem[Roberts and Tweedie(1996)]{robertsTweedieExponentialConvergence1996}
 Gareth~O. Roberts and Richard~L. Tweedie.

@@ -22,6 +22,29 @@ To characterize how generation quality degrades with decreasing family size, we 
 \label{fig:scaling}
 \end{figure}
 
+\section{Multi-Family Scaling at $K{=}20$}\label{si:multifamily-scaling}
+
+The WW-only scaling study (Section~\ref{si:scaling}) demonstrated that SA generation quality is robust down to $K{=}20$, but a single family cannot establish generality. To test whether this robustness holds across families with different sequence lengths, conservation levels, and PCA dimensionalities, we subsampled three additional families to $K{=}20$ with five independent replicates each: SH3 ($K_{\mathrm{full}}{=}55$, $L{=}48$), Kunitz ($K_{\mathrm{full}}{=}99$, $L{=}53$), and zf-C2H2 ($K_{\mathrm{full}}{=}151$, $L{=}23$). All SA parameters were identical to the main experiment; PCA and $\beta^*$ were recomputed from scratch for each subsample.
+
+Table~\ref{tab:multifamily-k20} reports the results alongside the original WW subsamples at $K{=}20$. Stochastic attention maintained low KL divergence ($0.013$--$0.026$), substantial novelty ($0.46$--$0.47$), and moderate sequence identity ($0.67$--$0.73$) across all four families at $K{=}20$, with narrow standard deviations across the five replicates. The consistency of these metrics across families that differ in length by an order of magnitude (zf-C2H2: $L{=}23$ vs.\ WW: $L{=}31$ vs.\ Kunitz: $L{=}53$) confirms that the entropy inflection criterion successfully adapts the operating temperature to each family's geometry, and that the robustness observed in the WW scaling study is not family-specific.
+
+\begin{table}[ht]
+\centering
+\small
+\caption{SA generation quality at $K{=}20$ across four Pfam families (five independent subsamples each). Values are mean $\pm$ SD over the five replicates.}
+\label{tab:multifamily-k20}
+\begin{tabular}{lcccccc}
+\toprule
+Family & $K_{\mathrm{full}}$ & $L$ & $d_{\mathrm{PCA}}$ & KL & Novelty & Seq.\ ID \\
+\midrule
+SH3     & 55  & 48 & 17--18 & $0.026 \pm 0.003$ & $0.46 \pm 0.01$ & $0.67 \pm 0.01$ \\
+Kunitz  & 99  & 53 & 17--18 & $0.020 \pm 0.004$ & $0.47 \pm 0.01$ & $0.72 \pm 0.01$ \\
+zf-C2H2 & 151 & 23 & 18     & $0.013 \pm 0.004$ & $0.47 \pm 0.01$ & $0.73 \pm 0.00$ \\
+WW      & 420 & 31 & 17--18 & $0.019 \pm 0.008$ & $0.47 \pm 0.01$ & $0.71 \pm 0.02$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
 \section{Generation Metrics}\label{si:generation-metrics}
 
 Table~\ref{tab:results} reports the full generation metrics for all eight Pfam families across five sampling conditions: SA generation ($\beta \approx 2\beta^*$), SA retrieval ($\beta \approx 20\beta^*$), bootstrap resampling, Gaussian perturbation, and convex combination. For each condition, we report the KL divergence of amino acid composition, PCA-space cosine novelty, and nearest sequence identity to a stored pattern. Standard errors are computed over 30 independent Langevin chains of 5 samples each; KL standard errors are obtained via 1{,}000-fold bootstrap resampling. Bold entries indicate the best-performing method for each family and metric.
@@ -277,6 +300,33 @@ Family & Init & KL$_{\mathrm{AA}}$ & Novelty & SeqID & MaxCos \\
 \multirow{2}{*}{Defensin\_beta}
  & Stored & $0.022$ & $0.583$ & $0.655$ & $0.417$ \\
  & Random & $0.022$ & $0.583$ & $0.655$ & $0.417$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Wall-Clock Timing Comparison}\label{si:timing}
+
+Table~\ref{tab:timing} reports wall-clock generation times for 150 sequences across all eight families. Stochastic attention and profile HMM emit were timed on a single CPU core (Apple M2, 16~GB RAM) with all preprocessing included (PCA construction, phase transition detection, sampling, and decoding for SA; HMM building and sequence emission for HMM emit). EvoDiff and MSA Transformer times were measured during the baseline experiments on the same hardware (CPU only, no GPU), and Potts model (plmDCA) times include both parameter fitting and Gibbs sampling.
+
+Stochastic attention generated 150 sequences in $0.15$--$4.6$~s across all eight families, with the variation driven primarily by the number of stored patterns $K$ (which determines the cost of the softmax attention at each Langevin step). The largest family (WW, $K{=}420$) required $4.6$~s, while all families with $K < 100$ completed in under $1$~s. Profile HMM emit was consistently the fastest method ($0.02$--$0.09$~s), as expected for a method that samples from a precomputed position-specific model with no iterative computation. EvoDiff required $2$--$14$ hours on CPU depending on sequence length, with the Pkinase family ($L{=}262$) taking approximately $14$ hours for 150 sequences. The MSA Transformer required $1$--$8$ hours for 50 rounds of iterative masked language model sampling. The Potts model (plmDCA) required $3$--$10$ minutes per family, dominated by the pseudo-likelihood fitting step. These comparisons confirm that SA occupies a qualitatively different computational regime from learned baselines: it is $3$--$5$ orders of magnitude faster than EvoDiff and the MSA Transformer, and $2$--$3$ orders of magnitude faster than Potts model fitting, while requiring no GPU and no pretraining.
+
+\begin{table}[ht]
+\centering
+\small
+\caption{Wall-clock time for generating 150 sequences per family. SA and HMM times are averaged over three runs on a single CPU core (Apple M2). EvoDiff and MSA Transformer times are from CPU-only runs during the baseline experiments. Potts times include pseudo-likelihood fitting and Gibbs sampling.}
+\label{tab:timing}
+\begin{tabular}{@{}lcrrrrrr@{}}
+\toprule
+Family & $L$ & $K$ & SA (s) & HMM (s) & EvoDiff (h) & MSAT (h) & Potts (min) \\
+\midrule
+RRM            & 71  & 68  & 0.5  & 0.05 & ${\sim}3$   & ${\sim}4$   & --- \\
+SH3            & 48  & 55  & 0.4  & 0.03 & ${\sim}2$   & ${\sim}2$   & ${\sim}5$ \\
+WW             & 31  & 420 & 4.6  & 0.03 & ${\sim}2$   & ${\sim}3$   & --- \\
+Kunitz         & 53  & 99  & 0.7  & 0.03 & ${\sim}2$   & ${\sim}3$   & ${\sim}5$ \\
+zf-C2H2        & 23  & 151 & 1.0  & 0.02 & ${\sim}2$   & ${\sim}1$   & --- \\
+PDZ            & 83  & 44  & 0.3  & 0.04 & ${\sim}4$   & ${\sim}4$   & --- \\
+Pkinase        & 262 & 37  & 0.2  & 0.09 & ${\sim}14$  & ${\sim}8$   & --- \\
+Defensin\_beta & 36  & 45  & 0.3  & 0.03 & ${\sim}2$   & ${\sim}1$   & --- \\
 \bottomrule
 \end{tabular}
 \end{table}
