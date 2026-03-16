@@ -124,6 +124,11 @@ function clean_alignment(raw_seqs::Vector{Tuple{String,String}};
                          max_gap_frac_col::Float64=0.5,
                          max_gap_frac_seq::Float64=0.3)
 
+    if isempty(raw_seqs)
+        @warn "clean_alignment received an empty sequence list"
+        return (Matrix{Char}(undef, 0, 0), String[])
+    end
+
     names = [s[1] for s in raw_seqs]
     seqs  = [s[2] for s in raw_seqs]
 
@@ -440,6 +445,23 @@ function msa_column_entropy(char_mat::Matrix{Char})
         end
     end
     return entropies
+end
+
+"""
+    validate_sequence(seq, alphabet=AA_ALPHABET) -> (valid::Bool, invalid_chars::Vector{Char})
+
+Check that every non-gap character in `seq` belongs to `alphabet`.
+Returns a tuple of (is_valid, vector_of_invalid_characters).
+"""
+function validate_sequence(seq::String, alphabet=AA_ALPHABET)
+    invalid = Char[]
+    for c in seq
+        c in ('-', '.', '~') && continue
+        if !(c in alphabet)
+            push!(invalid, c)
+        end
+    end
+    return (isempty(invalid), unique(invalid))
 end
 
 """

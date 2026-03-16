@@ -50,6 +50,14 @@ end
 function run_hmm_baseline()
     check_hmmer() || return
 
+    # Validate that pfam-families results exist
+    required = String[]
+    for fam in FAMILIES
+        push!(required, joinpath(PFAM_DATA_DIR, fam.id, "$(fam.id)_seed.sto"))
+        push!(required, joinpath(PFAM_DATA_DIR, fam.id, "stored_sequences.fasta"))
+    end
+    assert_inputs_exist(required; context="run_hmm_baseline — run pfam-families experiment first")
+
     rows = Vector{NamedTuple}()
 
     for fam in FAMILIES

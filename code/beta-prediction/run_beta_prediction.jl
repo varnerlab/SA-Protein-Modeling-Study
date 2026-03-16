@@ -110,8 +110,8 @@ N_REPEATS = 5
 for K_sub in K_VALUES
     for rep in 1:N_REPEATS
         rep_seed = 1000 * K_sub + rep
-        Random.seed!(rep_seed)
-        keep = StatsBase.sample(1:K_full, K_sub, replace=false) |> sort
+        rng = make_experiment_rng(rep_seed)
+        keep = StatsBase.sample(rng, 1:K_full, K_sub, replace=false) |> sort
         char_mat = char_mat_full[keep, :]
         K, L = size(char_mat)
 
@@ -170,9 +170,10 @@ se_θ1_analytic = sqrt.(diag(cov_θ1))
 
 # bootstrap SE (10,000 resamples)
 n_boot = 10_000
+rng_boot = make_experiment_rng(9999)
 θ1_boot = zeros(n_boot, p1)
 for b in 1:n_boot
-    idx = rand(1:n, n)
+    idx = rand(rng_boot, 1:n, n)
     θ1_boot[b, :] = X1[idx, :] \ β_obs[idx]
 end
 se_θ1_boot = vec(std(θ1_boot, dims=1))

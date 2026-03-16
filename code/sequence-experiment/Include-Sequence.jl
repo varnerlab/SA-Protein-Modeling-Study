@@ -32,9 +32,6 @@ using MultivariateStats
 using Downloads
 using Flux
 
-# set the random seed for reproducibility
-Random.seed!(1234);
-
 # include the source code for the project -
 include(joinpath(_PATH_TO_SRC, "Data.jl"))
 include(joinpath(_PATH_TO_SRC, "Compute.jl"))

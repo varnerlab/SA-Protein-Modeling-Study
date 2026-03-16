@@ -21,6 +21,10 @@ mkpath(BETA_FIG_DIR)
 # Load the 33-point dataset
 # ══════════════════════════════════════════════════════════════════════════════
 
+assert_inputs_exist(
+    [joinpath(BETA_DATA_DIR, "beta_prediction_data.csv")];
+    context="run_beta_loocv — run run_beta_prediction.jl first"
+)
 df = CSV.read(joinpath(BETA_DATA_DIR, "beta_prediction_data.csv"), DataFrame)
 @info "Loaded $(nrow(df)) data points"
 

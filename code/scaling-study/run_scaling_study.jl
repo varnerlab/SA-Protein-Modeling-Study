@@ -46,10 +46,12 @@ function run_sa_chains(X̂::Matrix{Float64}, β::Float64;
     d, K = size(X̂)
     all_samples = Vector{Vector{Float64}}()
 
-    pattern_indices = StatsBase.sample(1:K, n_ch, replace=(n_ch > K))
+    rng_init = make_experiment_rng(base_seed)
+    pattern_indices = StatsBase.sample(rng_init, 1:K, n_ch, replace=(n_ch > K))
     for (c, k) in enumerate(pattern_indices)
         seed_c = base_seed + c
-        ξ₀ = X̂[:, k] .+ σ0 .* randn(d)
+        rng_c = make_experiment_rng(seed_c)
+        ξ₀ = X̂[:, k] .+ σ0 .* randn(rng_c, d)
         (_, Ξ) = sample(X̂, ξ₀, T; β=β, α=α, seed=seed_c)
 
         chain_pool = Vector{Vector{Float64}}()
@@ -74,15 +76,15 @@ function run_baselines(X̂::Matrix{Float64}, β::Float64, S::Int; seed::Int=1234
     d, K = size(X̂)
     σ_noise = sqrt(2 * α_step / β)
 
-    Random.seed!(seed)
-    bs = [copy(X̂[:, rand(1:K)]) for _ in 1:S]
+    rng_bs = make_experiment_rng(seed)
+    bs = [copy(X̂[:, rand(rng_bs, 1:K)]) for _ in 1:S]
 
-    Random.seed!(seed)
-    gp = [X̂[:, rand(1:K)] .+ σ_noise .* randn(d) for _ in 1:S]
+    rng_gp = make_experiment_rng(seed)
+    gp = [X̂[:, rand(rng_gp, 1:K)] .+ σ_noise .* randn(rng_gp, d) for _ in 1:S]
 
     dirichlet = Dirichlet(K, 1.0)
-    Random.seed!(seed)
-    rc = [X̂ * rand(dirichlet) for _ in 1:S]
+    rng_rc = make_experiment_rng(seed)
+    rc = [X̂ * rand(rng_rc, dirichlet) for _ in 1:S]
 
     return Dict("Bootstrap" => bs, "Gaussian pert." => gp, "Convex comb." => rc)
 end
@@ -128,8 +130,8 @@ function run_scaling_study()
             rep_seed = 1000 * K_sub + rep
 
             # subsample
-            Random.seed!(rep_seed)
-            keep = StatsBase.sample(1:K_full, K_sub, replace=false) |> sort
+            rng_sub = make_experiment_rng(rep_seed)
+            keep = StatsBase.sample(rng_sub, 1:K_full, K_sub, replace=false) |> sort
             char_mat = char_mat_full[keep, :]
             stored_seqs = [String(char_mat[k, :]) for k in 1:K_sub]
 
@@ -143,9 +145,7 @@ function run_scaling_study()
             β_gen = Float64(max(round(Int, 2 * pt.β_star), 5))
 
             # -- SA (generation + retrieval) --
-            Random.seed!(rep_seed)
             sa_gen_samps = run_sa_chains(X̂, β_gen; base_seed=rep_seed)
-            Random.seed!(rep_seed + 10000)
             sa_ret_samps = run_sa_chains(X̂, β_ret; base_seed=rep_seed + 10000)
 
             # -- Baselines --

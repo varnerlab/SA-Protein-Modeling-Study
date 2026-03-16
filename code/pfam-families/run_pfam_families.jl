@@ -66,13 +66,13 @@ function run_sa_chains(X̂::Matrix{Float64}, β::Float64;
     d, K = size(X̂)
     all_samples = Vector{Vector{Float64}}()
 
-    Random.seed!(42)
-    pattern_indices = StatsBase.sample(1:K, n_chains, replace=(n_chains > K))
+    rng_init = make_experiment_rng(42)
+    pattern_indices = StatsBase.sample(rng_init, 1:K, n_chains, replace=(n_chains > K))
 
     for (c, k) in enumerate(pattern_indices)
         seed_c = 12345 + c
-        Random.seed!(seed_c)
-        ξ₀ = X̂[:, k] .+ σ_init .* randn(d)
+        rng_c = make_experiment_rng(seed_c)
+        ξ₀ = X̂[:, k] .+ σ_init .* randn(rng_c, d)
         (_, Ξ) = sample(X̂, ξ₀, T; β=β, α=α, seed=seed_c)
 
         # collect post-burn-in, thinned samples
@@ -107,13 +107,13 @@ function run_mala_chains(X̂::Matrix{Float64}, β::Float64;
     all_samples = Vector{Vector{Float64}}()
     accept_rates = Float64[]
 
-    Random.seed!(42)
-    pattern_indices = StatsBase.sample(1:K, n_chains, replace=(n_chains > K))
+    rng_init = make_experiment_rng(42)
+    pattern_indices = StatsBase.sample(rng_init, 1:K, n_chains, replace=(n_chains > K))
 
     for (c, k) in enumerate(pattern_indices)
         seed_c = 12345 + c
-        Random.seed!(seed_c)
-        ξ₀ = X̂[:, k] .+ σ_init .* randn(d)
+        rng_c = make_experiment_rng(seed_c)
+        ξ₀ = X̂[:, k] .+ σ_init .* randn(rng_c, d)
         (_, Ξ, ar) = mala_sample(X̂, ξ₀, T; β=β, α=α, seed=seed_c)
         push!(accept_rates, ar)
 
@@ -147,17 +147,17 @@ function run_simple_baselines(X̂::Matrix{Float64}, β::Float64, S::Int)
     σ_noise = sqrt(2 * α_step / β)
 
     # Bootstrap (replay)
-    Random.seed!(12345)
-    bs = [copy(X̂[:, rand(1:K)]) for _ in 1:S]
+    rng_bs = make_experiment_rng(12345)
+    bs = [copy(X̂[:, rand(rng_bs, 1:K)]) for _ in 1:S]
 
     # Gaussian perturbation
-    Random.seed!(12345)
-    gp = [X̂[:, rand(1:K)] .+ σ_noise .* randn(d) for _ in 1:S]
+    rng_gp = make_experiment_rng(12345)
+    gp = [X̂[:, rand(rng_gp, 1:K)] .+ σ_noise .* randn(rng_gp, d) for _ in 1:S]
 
     # Random convex combination
     dirichlet = Dirichlet(K, 1.0)
-    Random.seed!(12345)
-    rc = [X̂ * rand(dirichlet) for _ in 1:S]
+    rng_rc = make_experiment_rng(12345)
+    rc = [X̂ * rand(rng_rc, dirichlet) for _ in 1:S]
 
     return Dict("Bootstrap" => bs, "Gaussian perturbation" => gp, "Convex combination" => rc)
 end
@@ -233,8 +233,8 @@ function run_pfam_experiment()
         K_total, L = size(char_mat)
 
         if K_total > K_MAX
-            Random.seed!(42)
-            keep = StatsBase.sample(1:K_total, K_MAX, replace=false) |> sort
+            rng_sub = make_experiment_rng(42)
+            keep = StatsBase.sample(rng_sub, 1:K_total, K_MAX, replace=false) |> sort
             char_mat = char_mat[keep, :]
             seq_names = seq_names[keep]
             @info "  Subsampled to $K_MAX sequences"

@@ -83,10 +83,10 @@ end
 """
     bootstrap_kl_se(gen_seqs, stored_seqs; n_boot) -> (kl, se)
 """
-function bootstrap_kl_se(gen_seqs, stored_seqs; n_boot=n_bootstrap)
+function bootstrap_kl_se(gen_seqs, stored_seqs; n_boot=n_bootstrap, rng=make_experiment_rng(314))
     kl_point = aa_composition_kl(gen_seqs, stored_seqs)
     n = length(gen_seqs)
-    boot_kls = [aa_composition_kl(gen_seqs[rand(1:n, n)], stored_seqs) for _ in 1:n_boot]
+    boot_kls = [aa_composition_kl(gen_seqs[rand(rng, 1:n, n)], stored_seqs) for _ in 1:n_boot]
     return (kl_point, std(boot_kls))
 end
 
@@ -95,6 +95,15 @@ end
 # ══════════════════════════════════════════════════════════════════════════════
 
 @info "Running consensus-with-noise baseline ..."
+
+# Validate that pfam-families results exist
+let required = String[]
+    for fam in FAMILIES
+        push!(required, joinpath(PFAM_DATA_DIR, fam.id, "stored_sequences.fasta"))
+        push!(required, joinpath(PFAM_DATA_DIR, fam.id, "sa_generation_sequences.fasta"))
+    end
+    assert_inputs_exist(required; context="run_consensus_baseline — run pfam-families experiment first")
+end
 
 rows = Vector{NamedTuple}()
 
@@ -126,8 +135,8 @@ for fam in FAMILIES
     @info "    Empirical spread sigma = $(round(sigma_empirical, digits=4))"
 
     # generate 150 sequences by adding calibrated noise to consensus
-    Random.seed!(42)
-    consensus_noisy_pca = [consensus_pca .+ sigma_empirical .* randn(d) for _ in 1:S_total]
+    rng = make_experiment_rng(42)
+    consensus_noisy_pca = [consensus_pca .+ sigma_empirical .* randn(rng, d) for _ in 1:S_total]
 
     # decode to AA sequences
     consensus_noisy_seqs = [decode_sample(xi, pca_model, L) for xi in consensus_noisy_pca]

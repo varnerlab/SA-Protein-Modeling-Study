@@ -133,6 +133,33 @@ function find_af2_pdb(output_dir::String, seq_id::String)
 end
 
 # ══════════════════════════════════════════════════════════════════════════════
+# Load expected sequence IDs from ColabFold input FASTAs
+# ══════════════════════════════════════════════════════════════════════════════
+
+const COLABFOLD_INPUT_DIR = joinpath(_EXPERIMENT_ROOT, "colabfold_input")
+
+"""
+    load_expected_seq_ids(fam_id, category) -> Vector{String}
+
+Read FASTA headers from `colabfold_input/{fam_id}/{category}.fasta` to get
+the expected sequence IDs that were submitted for structure prediction.
+"""
+function load_expected_seq_ids(fam_id::String, category::String)
+    fasta_path = joinpath(COLABFOLD_INPUT_DIR, fam_id, "$(category).fasta")
+    if !isfile(fasta_path)
+        @warn "  Input FASTA not found: $fasta_path"
+        return String[]
+    end
+    ids = String[]
+    for line in eachline(fasta_path)
+        if startswith(line, ">")
+            push!(ids, strip(line[2:end]))
+        end
+    end
+    return ids
+end
+
+# ══════════════════════════════════════════════════════════════════════════════
 # Collect AF2 metrics
 # ══════════════════════════════════════════════════════════════════════════════
 
@@ -154,8 +181,18 @@ function collect_af2_metrics()
 
         for (category, label) in zip(CATEGORIES, CATEGORY_LABELS)
             af2_dir = joinpath(AF2_OUTPUT_DIR, fam.id, category)
+
+            # Load expected sequence IDs from input FASTA
+            expected_ids = load_expected_seq_ids(fam.id, category)
+            if isempty(expected_ids)
+                @warn "  No expected sequence IDs for $(fam.name) / $category"
+                plddt_data[fam.name][label] = Float64[]
+                tm_data[fam.name][label]    = Float64[]
+                continue
+            end
+
             if !isdir(af2_dir)
-                @warn "  Missing AF2 output dir: $af2_dir"
+                @warn "  Missing AF2 output dir: $af2_dir (expected $(length(expected_ids)) predictions)"
                 plddt_data[fam.name][label] = Float64[]
                 tm_data[fam.name][label]    = Float64[]
                 continue
@@ -163,18 +200,18 @@ function collect_af2_metrics()
 
             plddts = Float64[]
             tms = Float64[]
+            n_found = 0
+            n_missing = 0
 
-            # Find all rank_001 PDB files in the output directory
-            pdb_files = filter(readdir(af2_dir, join=true)) do f
-                endswith(f, ".pdb") && contains(basename(f), "rank_001")
-            end
+            for seq_id in expected_ids
+                pdb_file = find_af2_pdb(af2_dir, seq_id)
+                if pdb_file === nothing
+                    @warn "  Missing AF2 prediction for sequence: $seq_id"
+                    n_missing += 1
+                    continue
+                end
+                n_found += 1
 
-            # If no rank files found, try all PDB files
-            if isempty(pdb_files)
-                pdb_files = filter(f -> endswith(f, ".pdb"), readdir(af2_dir, join=true))
-            end
-
-            for pdb_file in pdb_files
                 plddt = extract_mean_plddt(pdb_file)
                 !isnan(plddt) && push!(plddts, plddt)
 
@@ -185,8 +222,8 @@ function collect_af2_metrics()
             plddt_data[fam.name][label] = plddts
             tm_data[fam.name][label]    = tms
 
-            @info @sprintf("  %s (%s): n=%d, pLDDT=%.1f±%.1f, TM=%.3f±%.3f",
-                label, category, length(plddts),
+            @info @sprintf("  %s (%s): found %d/%d predictions, pLDDT=%.1f±%.1f, TM=%.3f±%.3f",
+                label, category, n_found, length(expected_ids),
                 isempty(plddts) ? 0.0 : mean(plddts),
                 isempty(plddts) ? 0.0 : std(plddts)/sqrt(length(plddts)),
                 isempty(tms) ? 0.0 : mean(tms),
@@ -473,6 +510,21 @@ end
 # ══════════════════════════════════════════════════════════════════════════════
 
 function main()
+    # Validate required inputs exist
+    required_inputs = String[AF2_OUTPUT_DIR, COLABFOLD_INPUT_DIR]
+    for fam in FAMILIES
+        push!(required_inputs, joinpath(STRUCT_DATA_DIR, fam.id, "reference", "$(fam.pdb)_$(fam.chain).pdb"))
+        for category in CATEGORIES
+            push!(required_inputs, joinpath(COLABFOLD_INPUT_DIR, fam.id, "$(category).fasta"))
+        end
+    end
+    try
+        assert_inputs_exist(required_inputs; context="analyze_af2_results")
+    catch e
+        @error "$(e.msg)\n\nTo generate AF2 predictions:\n  1. Run: julia prepare_colabfold_input.jl\n  2. Upload colabfold_input/ to Google Colab\n  3. Run: python colabfold_predict.py\n  4. Download colabfold_output/ back here"
+        return
+    end
+
     if !isdir(AF2_OUTPUT_DIR)
         @error """
         ColabFold output directory not found: $AF2_OUTPUT_DIR

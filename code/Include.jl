@@ -30,11 +30,9 @@ using StatsBase
 using MultivariateStats
 using Downloads
 
-# set the random seed for reproducibility
-Random.seed!(1234); # set the random seed for reproducibility
-
 # include the source code for the project -
 include(joinpath(_PATH_TO_SRC, "Data.jl"))
 include(joinpath(_PATH_TO_SRC, "Compute.jl"))
 include(joinpath(_PATH_TO_SRC, "Utilities.jl"))
 include(joinpath(_PATH_TO_SRC, "Protein.jl"))
+include(joinpath(_PATH_TO_SRC, "Reproducibility.jl"))

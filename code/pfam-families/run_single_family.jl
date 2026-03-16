@@ -48,12 +48,12 @@ const R_pca         = 0.95
 function run_sa_chains_local(X̂::Matrix{Float64}, β::Float64)
     d, K = size(X̂)
     all_samples = Vector{Vector{Float64}}()
-    Random.seed!(42)
-    pattern_indices = StatsBase.sample(1:K, n_chains, replace=(n_chains > K))
+    rng_init = make_experiment_rng(42)
+    pattern_indices = StatsBase.sample(rng_init, 1:K, n_chains, replace=(n_chains > K))
     for (c, k) in enumerate(pattern_indices)
         seed_c = 12345 + c
-        Random.seed!(seed_c)
-        ξ₀ = X̂[:, k] .+ σ_init .* randn(d)
+        rng_c = make_experiment_rng(seed_c)
+        ξ₀ = X̂[:, k] .+ σ_init .* randn(rng_c, d)
         (_, Ξ) = sample(X̂, ξ₀, T_per_chain; β=β, α=α_step, seed=seed_c)
         chain_pool = Vector{Vector{Float64}}()
         for tᵢ in (T_burnin+1):thin_interval:T_per_chain
@@ -73,12 +73,12 @@ function run_mala_chains_local(X̂::Matrix{Float64}, β::Float64)
     d, K = size(X̂)
     all_samples = Vector{Vector{Float64}}()
     accept_rates = Float64[]
-    Random.seed!(42)
-    pattern_indices = StatsBase.sample(1:K, n_chains, replace=(n_chains > K))
+    rng_init = make_experiment_rng(42)
+    pattern_indices = StatsBase.sample(rng_init, 1:K, n_chains, replace=(n_chains > K))
     for (c, k) in enumerate(pattern_indices)
         seed_c = 12345 + c
-        Random.seed!(seed_c)
-        ξ₀ = X̂[:, k] .+ σ_init .* randn(d)
+        rng_c = make_experiment_rng(seed_c)
+        ξ₀ = X̂[:, k] .+ σ_init .* randn(rng_c, d)
         (_, Ξ, ar) = mala_sample(X̂, ξ₀, T_per_chain; β=β, α=α_step, seed=seed_c)
         push!(accept_rates, ar)
         chain_pool = Vector{Vector{Float64}}()
@@ -98,13 +98,13 @@ end
 function run_simple_baselines_local(X̂::Matrix{Float64}, β::Float64, S::Int)
     d, K = size(X̂)
     σ_noise = sqrt(2 * α_step / β)
-    Random.seed!(12345)
-    bs = [copy(X̂[:, rand(1:K)]) for _ in 1:S]
-    Random.seed!(12345)
-    gp = [X̂[:, rand(1:K)] .+ σ_noise .* randn(d) for _ in 1:S]
+    rng_bs = make_experiment_rng(12345)
+    bs = [copy(X̂[:, rand(rng_bs, 1:K)]) for _ in 1:S]
+    rng_gp = make_experiment_rng(12345)
+    gp = [X̂[:, rand(rng_gp, 1:K)] .+ σ_noise .* randn(rng_gp, d) for _ in 1:S]
     dirichlet = Dirichlet(K, 1.0)
-    Random.seed!(12345)
-    rc = [X̂ * rand(dirichlet) for _ in 1:S]
+    rng_rc = make_experiment_rng(12345)
+    rc = [X̂ * rand(rng_rc, dirichlet) for _ in 1:S]
     return Dict("Bootstrap" => bs, "Gaussian perturbation" => gp, "Convex combination" => rc)
 end
 
