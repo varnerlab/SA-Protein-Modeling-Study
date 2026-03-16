@@ -80,21 +80,21 @@ end
 # ══════════════════════════════════════════════════════════════════════════════
 
 """
-    compute_mi_vector(seqs, L) -> Vector{Float64}
+    compute_mi_vector(seqs, L; pseudocount=1.0) -> Vector{Float64}
 
 Compute the upper-triangle pairwise MI vector for an alignment.
+Uses additive pseudocount correction (pseudocount/N_AA per joint cell,
+pseudocount per marginal bin) to match compute_mi_matrix in run_covariation_analysis.jl.
 """
-function compute_mi_vector(seqs::Vector{String}, L::Int)
-    n_pairs = L * (L - 1) / 2
+function compute_mi_vector(seqs::Vector{String}, L::Int; pseudocount::Float64=1.0)
     mi_vec = Float64[]
 
     for i in 1:(L-1)
         for j in (i+1):L
-            # joint and marginal counts
-            joint = zeros(N_AA, N_AA)
-            marg_i = zeros(N_AA)
-            marg_j = zeros(N_AA)
-            total = 0
+            # joint and marginal counts with pseudocount
+            joint = fill(pseudocount / N_AA, N_AA, N_AA)
+            marg_i = fill(pseudocount, N_AA)
+            marg_j = fill(pseudocount, N_AA)
 
             for seq in seqs
                 length(seq) < max(i, j) && continue
@@ -104,22 +104,24 @@ function compute_mi_vector(seqs::Vector{String}, L::Int)
                 joint[ai, aj] += 1
                 marg_i[ai] += 1
                 marg_j[aj] += 1
-                total += 1
             end
 
-            total < 2 && (push!(mi_vec, 0.0); continue)
+            # normalize
+            joint_sum = sum(joint)
+            marg_i_sum = sum(marg_i)
+            marg_j_sum = sum(marg_j)
 
             # MI = sum p(x,y) log(p(x,y) / (p(x)p(y)))
             mi = 0.0
             for a in 1:N_AA, b in 1:N_AA
-                pxy = joint[a, b] / total
-                px = marg_i[a] / total
-                py = marg_j[b] / total
+                pxy = joint[a, b] / joint_sum
+                px  = marg_i[a]   / marg_i_sum
+                py  = marg_j[b]   / marg_j_sum
                 if pxy > 0 && px > 0 && py > 0
                     mi += pxy * log(pxy / (px * py))
                 end
             end
-            push!(mi_vec, mi)
+            push!(mi_vec, max(mi, 0.0))
         end
     end
     return mi_vec

@@ -47,7 +47,10 @@
       "Bash(cd /Users/jdv27/Desktop/julia_work/SA-Protein-Modeling-Study/code/baselines && julia --project=.. evaluate_baselines.jl 2>&1 | tail -40)",
       "Bash(julia --project=.. analyze_baselines_stats.jl 2>&1 | tail -30)",
       "Bash(pdflatex -interaction=nonstopmode Paper_v1.tex 2>&1 | grep -E \"Output written|Error|undefined\" | head -5 && pdflatex -interaction=nonstopmode Paper_v1.tex 2>&1 | grep -E \"Output written|Error|undefined\" | head -5)",
-      "Bash(cd /Users/jdv27/Desktop/julia_work/SA-Protein-Modeling-Study/paper && pdflatex -interaction=nonstopmode Paper_v1.tex 2>&1 | tail -20)"
+      "Bash(cd /Users/jdv27/Desktop/julia_work/SA-Protein-Modeling-Study/paper && pdflatex -interaction=nonstopmode Paper_v1.tex 2>&1 | tail -20)",
+      "Bash(grep:*)",
+      "Bash(cd:*)",
+      "Bash(julia:*)"
     ]
   }
 }
