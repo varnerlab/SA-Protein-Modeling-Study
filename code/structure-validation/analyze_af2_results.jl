@@ -313,8 +313,8 @@ function generate_combined_figure(esm_plddt, esm_tm, af2_plddt, af2_tm)
     families = [fam.name for fam in FAMILIES]
     n_fam = length(families)
 
-    colors_gen = RGB(0.122, 0.467, 0.706)   # SA gen - blue
-    colors_sto = RGB(0.173, 0.627, 0.173)   # Stored - green
+    colors_gen = RGB(0.20, 0.47, 0.69)   # SA gen - steel blue (canonical)
+    colors_sto = RGB(0.20, 0.63, 0.17)   # Stored - green (canonical)
 
     bar_width = 0.3
     offsets = [-0.5, 0.5] .* bar_width
@@ -431,7 +431,7 @@ function generate_concordance_figure(esm_plddt, esm_tm, af2_plddt, af2_tm)
     p1 = scatter(esm_plddt_means, af2_plddt_means,
                  xlabel="ESMFold pLDDT", ylabel="AlphaFold2 pLDDT",
                  title="(A) pLDDT Concordance", titlefontsize=9,
-                 legend=false, markersize=6, markercolor=RGB(0.122, 0.467, 0.706),
+                 legend=false, markersize=6, markercolor=RGB(0.20, 0.47, 0.69),
                  xlims=(40, 100), ylims=(40, 100), aspect_ratio=:equal, grid=true)
     plot!(p1, [40, 100], [40, 100], color=:gray, linestyle=:dash, linewidth=1, label=false)
 
@@ -443,7 +443,7 @@ function generate_concordance_figure(esm_plddt, esm_tm, af2_plddt, af2_tm)
     p2 = scatter(esm_tm_means, af2_tm_means,
                  xlabel="ESMFold TM-score", ylabel="AlphaFold2 TM-score",
                  title="(B) TM-score Concordance", titlefontsize=9,
-                 legend=false, markersize=6, markercolor=RGB(0.173, 0.627, 0.173),
+                 legend=false, markersize=6, markercolor=RGB(0.20, 0.63, 0.17),
                  xlims=(0.2, 1.0), ylims=(0.2, 1.0), aspect_ratio=:equal, grid=true)
     plot!(p2, [0.2, 1.0], [0.2, 1.0], color=:gray, linestyle=:dash, linewidth=1, label=false)
 

@@ -50,7 +50,13 @@
       "Bash(cd /Users/jdv27/Desktop/julia_work/SA-Protein-Modeling-Study/paper && pdflatex -interaction=nonstopmode Paper_v1.tex 2>&1 | tail -20)",
       "Bash(grep:*)",
       "Bash(cd:*)",
-      "Bash(julia:*)"
+      "Bash(julia:*)",
+      "Bash(__NEW_LINE_3afa9893f543dfca__ echo:*)",
+      "Bash(echo:*)",
+      "Bash(__NEW_LINE_bd028f1fcfb8a2e4__ echo:*)",
+      "Bash(ls:*)",
+      "Bash(/tmp/audit_results.txt:*)",
+      "Read(//tmp/**)"
     ]
   }
 }

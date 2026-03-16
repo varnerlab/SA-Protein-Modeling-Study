@@ -238,7 +238,7 @@ for (idx, (pfam_id, family_name)) in enumerate(scatter_families)
             color=(:red, 0.6), markersize=5, label="Contact (<8Å)")
     else
         scatter!(ax, v_stored, v_sa_gen,
-            color=(:steelblue, 0.15), markersize=3)
+            color=(RGBf(0.20, 0.47, 0.69), 0.15), markersize=3)
     end
 
     # identity line
@@ -262,12 +262,13 @@ save(joinpath(fig_dir, "mi_covariation_scatter.pdf"), fig)
 # Figure: Bar chart comparing methods across families
 # ══════════════════════════════════════════════════════════════════════════════
 
-fig2 = Figure(size=(900, 400), fontsize=12)
+fig2 = Figure(size=(1100, 450), fontsize=13)
 ax2 = Axis(fig2[1, 1],
     ylabel="Pearson r (MI correlation with stored)",
-    xticks=(1:8, ["RRM", "SH3", "WW", "Kunitz", "zf-C2H2", "PDZ", "Pkinase", "Def_beta"]),
+    xticks=(1:8, ["RRM", "SH3", "WW", "Kunitz", "zf-C2H2", "PDZ", "Pkinase", "Def_β"]),
     xticklabelrotation=π/6,
-    title="Pairwise MI preservation across families and methods")
+    title="Pairwise MI preservation across families and methods",
+    limits=(0.5, 8.5, -0.2, 1.05))
 
 all_families = [
     ("PF00076", "RRM"),
@@ -280,11 +281,17 @@ all_families = [
     ("PF00711", "Defensin_beta"),
 ]
 
-# recompute MI for all families and methods
-methods = ["SA gen", "HMM", "EvoDiff", "MSAT"]
-method_colors = [:steelblue, :orange, :green, :purple]
-bar_width = 0.18
-offsets = [-1.5, -0.5, 0.5, 1.5] .* bar_width
+# 5 methods: SA gen, HMM, EvoDiff, MSAT, Potts (last only where available)
+methods = ["SA gen", "HMM", "EvoDiff", "MSAT", "Potts"]
+method_colors = [
+    RGBf(0.20, 0.47, 0.69),   # SA gen - steel blue (canonical)
+    RGBf(0.30, 0.69, 0.29),   # HMM - green (canonical)
+    RGBf(0.93, 0.68, 0.20),   # EvoDiff - amber (canonical)
+    RGBf(0.58, 0.32, 0.68),   # MSAT - purple (canonical)
+    RGBf(0.84, 0.15, 0.16),   # Potts - crimson (canonical)
+]
+bar_width = 0.15
+offsets = [-2.0, -1.0, 0.0, 1.0, 2.0] .* bar_width
 
 for (fam_idx, (pfam_id, family_name)) in enumerate(all_families)
     sto_file = joinpath(data_dir, pfam_id, "$(pfam_id)_seed.sto")
@@ -314,33 +321,24 @@ for (fam_idx, (pfam_id, family_name)) in enumerate(all_families)
                 label=fam_idx == 1 ? methods[m_idx] : nothing)
         end
     end
-end
 
-# add Potts where available
-for (fam_idx, pfam_id) in [(2, "PF00018"), (4, "PF00014")]
+    # Potts as 5th bar (only where available)
     potts_file = joinpath(baselines_dir, pfam_id, "potts_sequences.fasta")
     if isfile(potts_file)
-        sto_file = joinpath(data_dir, pfam_id, "$(pfam_id)_seed.sto")
-        raw_seqs = parse_stockholm(sto_file)
-        char_mat_stored, _ = clean_alignment(raw_seqs)
-        K_stored, L = size(char_mat_stored)
-        MI_stored = compute_mi_matrix(char_mat_stored)
-        v_stored = upper_triangle(MI_stored)
-
         raw = parse_fasta(potts_file)
         seqs = [s[2] for s in raw]
         cmat = seqs_to_char_mat(seqs, L)
         mi = compute_mi_matrix(cmat)
         v = upper_triangle(mi)
         r_val = cor(v_stored, v)
-
-        scatter!(ax2, [fam_idx], [r_val], color=:red, marker=:diamond,
-            markersize=12, label=fam_idx == 2 ? "Potts" : nothing)
+        barplot!(ax2, [fam_idx + offsets[5]], [r_val],
+            color=method_colors[5], width=bar_width,
+            label=pfam_id == "PF00018" ? methods[5] : nothing)
     end
 end
 
 hlines!(ax2, [0], color=:gray, linestyle=:dash, linewidth=0.5)
-axislegend(ax2, position=:lb, framevisible=false, nbanks=2)
+Legend(fig2[1, 2], ax2, framevisible=false, labelsize=12)
 
 save(joinpath(fig_dir, "mi_covariation_barplot.pdf"), fig2)
 @info "Saved figure to $(joinpath(fig_dir, "mi_covariation_barplot.pdf"))"

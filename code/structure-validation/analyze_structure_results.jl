@@ -257,10 +257,10 @@ end
 function generate_figures_with_stats(plddt_data, tm_data)
     families = [fam.name for fam in FAMILIES]
     method_colors = [
-        RGB(0.122, 0.467, 0.706),  # SA gen - blue
-        RGB(1.0, 0.498, 0.055),    # SA ret - orange
-        RGB(0.839, 0.153, 0.157),  # Bootstrap - red
-        RGB(0.173, 0.627, 0.173),  # Stored - green
+        RGB(0.20, 0.47, 0.69),   # SA gen - steel blue (canonical)
+        RGB(0.89, 0.44, 0.32),   # SA ret - coral (canonical)
+        RGB(0.50, 0.50, 0.50),   # Bootstrap - gray (canonical)
+        RGB(0.20, 0.63, 0.17),   # Stored - green (canonical)
     ]
 
     n_fam = length(families)
