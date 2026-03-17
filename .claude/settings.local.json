@@ -75,7 +75,15 @@
       "Bash(pdftotext main.pdf -)",
       "Bash(pdflatex si-appendix.tex)",
       "Bash(pdftotext si-appendix.pdf -)",
-      "Bash(python3 run_potts_baseline.py)"
+      "Bash(python3 run_potts_baseline.py)",
+      "Bash(latexmk -pdf main.tex)",
+      "Bash(latexmk -pdf si-appendix.tex)",
+      "Bash(latexmk -pdf -g main.tex)",
+      "Bash(latexmk -pdf -g si-appendix.tex)",
+      "Bash(latexmk -C)",
+      "Bash(latexmk -pdf main.tex si-appendix.tex)",
+      "Bash(latexmk -CA)",
+      "Bash(python3:*)"
     ]
   }
 }

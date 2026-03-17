@@ -347,7 +347,7 @@ function generate_figures_with_stats(plddt_data, tm_data)
 
     # ── Composite ───────────────────────────────────────────────────────
     composite = plot(p1, p2, layout=(1, 2), size=(1100, 420),
-                     title=["(A) ESMFold Confidence (pLDDT)" "(B) Structural Similarity (TM-score)"],
+                     title=["(A) ESMFold Confidence (pLDDT, higher is better)" "(B) Structural Similarity (TM-score, higher is better)"],
                      titlefontsize=10)
 
     mkpath(FIGS_DIR)

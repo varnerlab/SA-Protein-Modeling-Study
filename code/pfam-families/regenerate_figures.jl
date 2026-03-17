@@ -224,18 +224,26 @@ end
 
 p_kl = make_bar_panel(df, family_names, method_order, method_colors, offsets, bar_width;
     val_col=:KL_mean, err_col=:KL_se,
-    ylabel="KL divergence", title="(A)  AA composition fidelity",
+    ylabel="KL divergence", title="(A)  AA composition fidelity (lower is better)",
     legend=:topright, panel_defaults...)
+hline!(p_kl, [0.05]; color=:black, linestyle=:dash, lw=1.0, label="KL = 0.05")
 
 p_nov = make_bar_panel(df, family_names, method_order, method_colors, offsets, bar_width;
     val_col=:Nov_mean, err_col=:Nov_se,
-    ylabel="Novelty (1 - max cosine sim.)", title="(B)  Sample novelty",
+    ylabel="Novelty (1 - max cosine sim.)", title="(B)  Sample novelty (higher is better)",
     legend=:none, panel_defaults...)
 
 p_sid = make_bar_panel(df, family_names, method_order, method_colors, offsets, bar_width;
     val_col=:SID_mean, err_col=:SID_se,
-    ylabel="Nearest sequence identity", title="(C)  Sequence identity",
+    ylabel="Nearest sequence identity", title="(C)  Sequence identity (within-family target: 30-70%)",
     legend=:none, ylims=(0, 1.05), panel_defaults...)
+let n_fam = length(family_names)
+    plot!(p_sid, [0.5, n_fam+0.5], [0.30, 0.30]; color=:darkgreen, linestyle=:dash, lw=1.0, label="within-family range")
+    plot!(p_sid, [0.5, n_fam+0.5], [0.70, 0.70]; color=:darkgreen, linestyle=:dash, lw=1.0, label="")
+    xs = vcat(0.5:0.01:n_fam+0.5, reverse(collect(0.5:0.01:n_fam+0.5)))
+    ys = vcat(fill(0.30, length(0.5:0.01:n_fam+0.5)), fill(0.70, length(0.5:0.01:n_fam+0.5)))
+    plot!(p_sid, xs, ys; fillrange=0.30, fillalpha=0.08, color=:darkgreen, lw=0, label="")
+end
 
 # composite: 3 rows × 1 column
 p_composite = plot(p_kl, p_nov, p_sid;
@@ -244,12 +252,23 @@ p_composite = plot(p_kl, p_nov, p_sid;
     dpi    = 300,
 )
 
-savefig(p_composite, joinpath(PFAM_FIG_DIR, "cross_family_composite.pdf"))
+function safe_savefig(plt, path)
+    # Save PNG first to warm up GR; then retry PDF
+    png_path = replace(path, r"\.pdf$" => ".png")
+    savefig(plt, png_path)
+    try
+        savefig(plt, path)
+    catch e
+        @warn "PDF save failed ($(e)); PNG saved at $png_path"
+    end
+end
+
+safe_savefig(p_composite, joinpath(PFAM_FIG_DIR, "cross_family_composite.pdf"))
 @info "  Saved cross_family_composite.pdf"
 
 # also save individual panels for flexibility
-savefig(p_kl,  joinpath(PFAM_FIG_DIR, "cross_family_kl.pdf"))
-savefig(p_nov, joinpath(PFAM_FIG_DIR, "cross_family_novelty.pdf"))
-savefig(p_sid, joinpath(PFAM_FIG_DIR, "cross_family_seqid.pdf"))
+safe_savefig(p_kl,  joinpath(PFAM_FIG_DIR, "cross_family_kl.pdf"))
+safe_savefig(p_nov, joinpath(PFAM_FIG_DIR, "cross_family_novelty.pdf"))
+safe_savefig(p_sid, joinpath(PFAM_FIG_DIR, "cross_family_seqid.pdf"))
 
 @info "Done."

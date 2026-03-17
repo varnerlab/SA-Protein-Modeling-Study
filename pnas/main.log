@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.4.15)  17 MAR 2026 10:51
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.4.15)  17 MAR 2026 19:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1139,24 +1139,24 @@ Package: multirow 2021/03/15 v2.8 Span multiple rows of a table
 (./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
 
 (/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -1180,7 +1180,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-Package hyperref Info: Link coloring ON on input line 33.
+Package hyperref Info: Link coloring ON on input line 34.
 
 (./main.out) (./main.out)
 \@outlinefile=\write4
@@ -1245,22 +1245,22 @@ Package: ragged2e 2023/06/22 v3.6 ragged2e Package
 \RaggedRightParindent=\skip162
 \JustifyingParindent=\skip163
 )
-LaTeX Info: Redefining \microtypecontext on input line 33.
-Package microtype Info: Applying patch `item' on input line 33.
-Package microtype Info: Applying patch `toc' on input line 33.
+LaTeX Info: Redefining \microtypecontext on input line 34.
+Package microtype Info: Applying patch `item' on input line 34.
+Package microtype Info: Applying patch `toc' on input line 34.
 
 
-Package microtype Warning: Unable to apply patch `eqnum' on input line 33.
+Package microtype Warning: Unable to apply patch `eqnum' on input line 34.
 
-Package microtype Info: Applying patch `footnote' on input line 33.
-Package microtype Info: Applying patch `verbatim' on input line 33.
+Package microtype Info: Applying patch `footnote' on input line 34.
+Package microtype Info: Applying patch `verbatim' on input line 34.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `alltext-nott'.
-LaTeX Info: Redefining \showhyphens on input line 33.
+LaTeX Info: Redefining \showhyphens on input line 34.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
@@ -1268,67 +1268,67 @@ Package microtype Info: No adjustment of character kerning.
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
 (RS)
 )
-LaTeX Font Info:    Trying to load font information for T1+lmss on input line 3
-9.
+LaTeX Font Info:    Trying to load font information for T1+lmss on input line 4
+0.
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/lm/t1lmss.fd
 File: t1lmss.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `T1/lmss/b/n' in size <10.95> not available
-(Font)              Font shape `T1/lmss/bx/n' tried instead on input line 39.
+(Font)              Font shape `T1/lmss/bx/n' tried instead on input line 40.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `lmss' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Font shape `T1/lmss/b/n' in size <22> not available
-(Font)              Font shape `T1/lmss/bx/n' tried instead on input line 39.
-LaTeX Font Info:    Trying to load font information for T1+phv on input line 39
+(Font)              Font shape `T1/lmss/bx/n' tried instead on input line 40.
+LaTeX Font Info:    Trying to load font information for T1+phv on input line 40
 .
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/t1phv.fd
 File: t1phv.fd 2020/03/25 scalable font definitions for T1/phv.
 )
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 10.40245pt on input line 39.
+(Font)              scaled to size 10.40245pt on input line 40.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `phv' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 10.40245pt on input line 39.
+(Font)              scaled to size 10.40245pt on input line 40.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 8.54997pt on input line 39.
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 3
-9.
+(Font)              scaled to size 8.54997pt on input line 40.
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 4
+0.
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 3
-9.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 4
+0.
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-39.
+40.
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-39.
+40.
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <9> on input line 39.
+(Font)              <9> on input line 40.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 39.
+(Font)              <6> on input line 40.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 39.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 39.
+(Font)              <5> on input line 40.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 40.
 
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
@@ -1337,7 +1337,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (/usr/local/texlive/2024/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 39.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 40.
 
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -1347,123 +1347,127 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 5.69998pt on input line 39.
+(Font)              scaled to size 5.69998pt on input line 40.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 8.54997pt on input line 39.
+(Font)              scaled to size 8.54997pt on input line 40.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 6.64998pt on input line 39.
+(Font)              scaled to size 6.64998pt on input line 40.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 39.
+(Font)              <7> on input line 40.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 4.74998pt on input line 39.
+(Font)              scaled to size 4.74998pt on input line 40.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 7.59998pt on input line 39.
+(Font)              scaled to size 7.59998pt on input line 40.
 LaTeX Font Info:    Font shape `T1/phv/b/it' in size <8> not available
-(Font)              Font shape `T1/phv/b/sl' tried instead on input line 39.
+(Font)              Font shape `T1/phv/b/sl' tried instead on input line 40.
 LaTeX Font Info:    Font shape `T1/phv/b/sl' will be
-(Font)              scaled to size 7.59998pt on input line 39.
+(Font)              scaled to size 7.59998pt on input line 40.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <8> on input line 40.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 5.69998pt on input line 39.
+(Font)              scaled to size 5.69998pt on input line 40.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 39.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 39.
+(Font)              <10.95> on input line 40.
 Package microtype Info: Character `029' is missing
 (microtype)             in font `T1/lmr/m/sc/10.95'.
 (microtype)             Ignoring protrusion settings for this character.
 LaTeX Font Info:    Font shape `T1/lmss/b/n' in size <28.35141> not available
-(Font)              Font shape `T1/lmss/bx/n' tried instead on input line 42.
+(Font)              Font shape `T1/lmss/bx/n' tried instead on input line 43.
 LaTeX Font Info:    Font shape `T1/lmss/b/n' in size <26> not available
-(Font)              Font shape `T1/lmss/bx/n' tried instead on input line 42.
+(Font)              Font shape `T1/lmss/bx/n' tried instead on input line 43.
 Package lettrine.sty Info: Targeted height = 19.3701pt
 (lettrine.sty)             (for loversize=0, accent excluded),
 (lettrine.sty)             Lettrine height = 18.05571pt ({\fontfamily {lmss}\bf
 series \fontsize {26pt}{28pt}\selectfont {W}});
-(lettrine.sty)             reported on input line 42.
+(lettrine.sty)             reported on input line 43.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 6.64998pt on input line 47.
+(Font)              scaled to size 6.64998pt on input line 48.
  [1
 
 {/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/loc
 al/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/texlive/202
 4/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/texlive/2024/texmf-dist/fo
-nts/enc/dvips/lm/lm-mathsy.enc}]
+nts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/
+lm/lm-mathsy.enc}]
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 11.39996pt on input line 48.
+(Font)              scaled to size 11.39996pt on input line 49.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 11.39996pt on input line 48.
- [2{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/l
-ocal/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}]
-Underfull \vbox (badness 6608) has occurred while \output is active []
+(Font)              scaled to size 11.39996pt on input line 49.
+ [2{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}]
+Underfull \vbox (badness 1424) has occurred while \output is active []
 
  [3]
-[4]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [4]
+[5]
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 9.49997pt on input line 96.
+(Font)              scaled to size 9.49997pt on input line 108.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 9.49997pt on input line 96.
+(Font)              scaled to size 9.49997pt on input line 108.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 96.
- [5] (./main.bbl
+(Font)              <10> on input line 108.
+ [6{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}]
+(./main.bbl
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <6> not available
 (Font)              Font shape `T1/phv/m/sl' tried instead on input line 6.
 LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
 (Font)              scaled to size 5.69998pt on input line 6.
- [6{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}]) [7]
-Package mdframed Info: mdframed works in twoside mode on input line 107.
+ [7]) [8]
+Package mdframed Info: mdframed works in twoside mode on input line 119.
 Package mdframed Info: mdframed inside float 
- mdframed uses option nobreak mdframed on input line 107.
+ mdframed uses option nobreak mdframed on input line 119.
 Package mdframed Info: mdframed inside a box 
- mdframed uses option nobreak mdframed on input line 107.
+ mdframed uses option nobreak mdframed on input line 119.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 7.59998pt on input line 107.
+(Font)              scaled to size 7.59998pt on input line 119.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 7.12497pt on input line 114.
-LaTeX Font Info:    Calculating math sizes for size <7.5> on input line 114.
+(Font)              scaled to size 7.12497pt on input line 126.
+LaTeX Font Info:    Calculating math sizes for size <7.5> on input line 126.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7.5> on input line 114.
+(Font)              <7.5> on input line 126.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5.24997> on input line 114.
+(Font)              <5.24997> on input line 126.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <3.75> on input line 114.
-<figs/cross_family_composite.pdf, id=149, 702.625pt x 903.375pt>
+(Font)              <3.75> on input line 126.
+<figs/cross_family_composite.pdf, id=157, 702.625pt x 903.375pt>
 File: figs/cross_family_composite.pdf Graphic file (type pdf)
 <use figs/cross_family_composite.pdf>
-Package pdftex.def Info: figs/cross_family_composite.pdf  used on input line 13
-2.
+Package pdftex.def Info: figs/cross_family_composite.pdf  used on input line 14
+4.
 (pdftex.def)             Requested size: 455.12128pt x 585.17429pt.
-<figs/beta_prediction_composite.pdf, id=150, 1104.125pt x 381.425pt>
+<figs/beta_prediction_composite.pdf, id=158, 1104.125pt x 381.425pt>
 File: figs/beta_prediction_composite.pdf Graphic file (type pdf)
 <use figs/beta_prediction_composite.pdf>
 Package pdftex.def Info: figs/beta_prediction_composite.pdf  used on input line
- 139.
+ 151.
 (pdftex.def)             Requested size: 505.69374pt x 174.69519pt.
-<figs/baseline_comparison_composite.pdf, id=151, 803.0pt x 1053.9375pt>
+<figs/baseline_comparison_composite.pdf, id=159, 803.0pt x 1053.9375pt>
 File: figs/baseline_comparison_composite.pdf Graphic file (type pdf)
 <use figs/baseline_comparison_composite.pdf>
 Package pdftex.def Info: figs/baseline_comparison_composite.pdf  used on input 
-line 146.
+line 158.
 (pdftex.def)             Requested size: 429.84276pt x 564.18068pt.
-<figs/structure_validation_composite.pdf, id=152, 1104.125pt x 421.575pt>
+<figs/structure_validation_composite.pdf, id=160, 1104.125pt x 421.575pt>
 File: figs/structure_validation_composite.pdf Graphic file (type pdf)
 <use figs/structure_validation_composite.pdf>
 Package pdftex.def Info: figs/structure_validation_composite.pdf  used on input
- line 153.
+ line 165.
 (pdftex.def)             Requested size: 455.12128pt x 173.77316pt.
-<figs/defensin_biophysics.pdf, id=153, 903.375pt x 702.625pt>
+<figs/defensin_biophysics.pdf, id=161, 903.375pt x 702.625pt>
 File: figs/defensin_biophysics.pdf Graphic file (type pdf)
 <use figs/defensin_biophysics.pdf>
-Package pdftex.def Info: figs/defensin_biophysics.pdf  used on input line 160.
+Package pdftex.def Info: figs/defensin_biophysics.pdf  used on input line 172.
 (pdftex.def)             Requested size: 455.12128pt x 353.99193pt.
-<figs/structure_gallery.pdf, id=154, 902.50775pt x 524.37857pt>
+<figs/structure_gallery.pdf, id=162, 902.50775pt x 524.37857pt>
 File: figs/structure_gallery.pdf Graphic file (type pdf)
 <use figs/structure_gallery.pdf>
-Package pdftex.def Info: figs/structure_gallery.pdf  used on input line 167.
+Package pdftex.def Info: figs/structure_gallery.pdf  used on input line 179.
 (pdftex.def)             Requested size: 455.12128pt x 264.43703pt.
- [8] [9 <./figs/cross_family_composite.pdf>] [10 <./figs/beta_prediction_compos
-ite.pdf>] [11 <./figs/baseline_comparison_composite.pdf>]
-[12 <./figs/structure_validation_composite.pdf> <./figs/defensin_biophysics.pdf
->] [13 <./figs/structure_gallery.pdf>]
+ [9] [10 <./figs/cross_family_composite.pdf>] [11 <./figs/beta_prediction_compo
+site.pdf>] [12 <./figs/baseline_comparison_composite.pdf>]
+[13 <./figs/structure_validation_composite.pdf> <./figs/defensin_biophysics.pdf
+>] [14 <./figs/structure_gallery.pdf>]
 
 enddocument/afterlastpage: lastpage setting LastPage.
 (./main.aux)
@@ -1475,13 +1479,13 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 18856929362DEEF56B226D9EC34423EE;165.
  ) 
 Here is how much of TeX's memory you used:
- 30918 strings out of 474116
- 568853 string characters out of 5743682
- 1955187 words of memory out of 5000000
+ 30952 strings out of 474116
+ 569172 string characters out of 5743682
+ 1953187 words of memory out of 5000000
  52097 multiletter control sequences out of 15000+600000
- 743170 words of font info for 429 fonts, out of 8000000 for 9000
+ 744499 words of font info for 448 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 117i,14n,121p,2116b,1132s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 117i,14n,121p,2772b,1132s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/lo
 cal/texlive/2024/texmf-dist/fonts/type1/public/lm/lmbx7.pfb></usr/local/texlive
 /2024/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texlive/2024/texm
@@ -1504,10 +1508,10 @@ ts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type
 1/urw/helvetic/uhvbo8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/
 helvetic/uhvr8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/helveti
 c/uhvro8a.pfb>
-Output written on main.pdf (13 pages, 1612019 bytes).
+Output written on main.pdf (14 pages, 1654525 bytes).
 PDF statistics:
- 466 PDF objects out of 1000 (max. 8388607)
- 282 compressed objects within 3 object streams
- 51 named destinations out of 1000 (max. 500000)
+ 473 PDF objects out of 1000 (max. 8388607)
+ 288 compressed objects within 3 object streams
+ 52 named destinations out of 1000 (max. 500000)
  131123 words of extra memory for PDF output out of 154059 (max. 10000000)
 

@@ -339,9 +339,9 @@ function generate_figures_with_brackets(all_chains, df_tests, pooled_kls)
     # (both use only the seed alignment)
 
     metrics = [
-        (idx=1, ylabel=L"\mathrm{KL\ divergence}",        title="(A)  AA composition fidelity",    ylims_base=(0, 0.08)),
-        (idx=2, ylabel=L"\mathrm{Novelty}",                title="(B)  Sample novelty",              ylims_base=(0, 0.85)),
-        (idx=3, ylabel=L"\mathrm{Nearest\ seq.\ identity}", title="(C)  Sequence identity",          ylims_base=(0, 1.15)),
+        (idx=1, ylabel=L"\mathrm{KL\ divergence}",        title="(A)  AA composition fidelity (lower is better)",    ylims_base=(0, 0.08)),
+        (idx=2, ylabel=L"\mathrm{Novelty}",                title="(B)  Sample novelty (higher is better)",              ylims_base=(0, 0.85)),
+        (idx=3, ylabel=L"\mathrm{Nearest\ seq.\ identity}", title="(C)  Sequence identity (within-family target: 30-70%)", ylims_base=(0, 1.15)),
     ]
 
     panels = []
@@ -356,8 +356,8 @@ function generate_figures_with_brackets(all_chains, df_tests, pooled_kls)
             end
         end
 
-        # Add headroom for brackets
-        ylim_top = max_val * 1.35
+        # Add headroom for up to 3 stacked brackets
+        ylim_top = max_val * 1.55
         ylim_top = max(ylim_top, met.ylims_base[2])
 
         p = plot(; xlabel="", ylabel=met.ylabel, title=met.title,
@@ -378,22 +378,44 @@ function generate_figures_with_brackets(all_chains, df_tests, pooled_kls)
         end
         plot!(p, xticks=(1:length(family_names), family_names), xrotation=0)
 
-        # Add significance brackets: SA gen vs HMM emit
+        # Add KL = 0.05 reference line on panel A only
+        if met.idx == 1
+            hline!(p, [0.05]; color=:black, linestyle=:dash, lw=1.0, label="KL = 0.05")
+        end
+
+        # Add within-family target band on sequence identity panel
+        if met.idx == 3
+            n_fam = length(family_names)
+            plot!(p, [0.5, n_fam + 0.5], [0.30, 0.30]; color=:darkgreen, linestyle=:dash, lw=1.0, label="within-family range")
+            plot!(p, [0.5, n_fam + 0.5], [0.70, 0.70]; color=:darkgreen, linestyle=:dash, lw=1.0, label="")
+            # shaded band
+            x_band = vcat(0.5:0.01:n_fam+0.5, reverse(0.5:0.01:n_fam+0.5))
+            y_band = vcat(fill(0.30, length(0.5:0.01:n_fam+0.5)), fill(0.70, length(0.5:0.01:n_fam+0.5)))
+            plot!(p, x_band, y_band; fillrange=0.30, fillalpha=0.08, color=:darkgreen, lw=0, label="")
+        end
+
+        # Add significance brackets: SA gen vs each baseline, stacked by height
         metric_name = ["KL", "Nov", "SID"][met.idx]
-        bracket_comp = "HMM emit"  # most direct comparison (both training-free)
-        bracket_y_offset = max_val * 0.05
+        bracket_comps = ["HMM emit", "EvoDiff", "MSA Transformer"]
+        dy = max_val * 0.02
 
         for (fi, fam_name) in enumerate(family_names)
-            row = filter(r -> r.Family == fam_name && r.Metric == metric_name &&
-                              r.Method2 == bracket_comp, df_tests)
-            if nrow(row) > 0
+            # compute the base height (top of tallest bar in this family group)
+            base_top = 0.0
+            for method in method_order
+                m, s = get_mean_se(fam_name, method, met.idx)
+                !isnan(m) && (base_top = max(base_top, m + s))
+            end
+
+            for (bi, bracket_comp) in enumerate(bracket_comps)
+                row = filter(r -> r.Family == fam_name && r.Metric == metric_name &&
+                                  r.Method2 == bracket_comp, df_tests)
+                nrow(row) == 0 && continue
                 stars = row.Stars[1]
-                m1, s1 = get_mean_se(fam_name, "SA generation", met.idx)
-                m2, s2 = get_mean_se(fam_name, bracket_comp, met.idx)
-                top_bar = max(m1 + s1, m2 + s2) + bracket_y_offset
+                stars == "n.s." && continue   # skip non-significant
                 x1 = fi + offsets["SA generation"]
                 x2 = fi + offsets[bracket_comp]
-                dy = max_val * 0.02
+                top_bar = base_top + (bi * max_val * 0.08)
                 draw_bracket!(p, x1, x2, top_bar, dy, stars)
             end
         end
@@ -403,8 +425,18 @@ function generate_figures_with_brackets(all_chains, df_tests, pooled_kls)
 
     composite = plot(panels...; layout=(3, 1), size=(800, 1050), dpi=300)
 
-    savefig(composite, joinpath(FIG_DIR, "baseline_comparison_composite.pdf"))
-    @info "Saved baseline_comparison_composite.pdf"
+    # Save as PNG first (GR PDF can timeout on complex plots), then convert
+    png_path = joinpath(FIG_DIR, "baseline_comparison_composite.png")
+    pdf_path = joinpath(FIG_DIR, "baseline_comparison_composite.pdf")
+    savefig(composite, png_path)
+    @info "Saved baseline_comparison_composite.png"
+    # Also try PDF with individual panels
+    try
+        savefig(composite, pdf_path)
+        @info "Saved baseline_comparison_composite.pdf"
+    catch e
+        @warn "PDF save failed ($(e)), using PNG. Convert manually if needed."
+    end
 
     # Copy to paper
     paper_figs = joinpath(_EXPERIMENT_ROOT, "..", "..", "paper", "figs")

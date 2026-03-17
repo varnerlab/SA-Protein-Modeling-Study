@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.4.15)  17 MAR 2026 10:51
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.4.15)  17 MAR 2026 19:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -375,45 +375,41 @@ Package caption Info: Standard document class detected.
 Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
 )
-LaTeX Font Info:    Trying to load font information for T1+phv on input line 31
+LaTeX Font Info:    Trying to load font information for T1+phv on input line 32
 .
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/t1phv.fd
 File: t1phv.fd 2020/03/25 scalable font definitions for T1/phv.
 )
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 9.49997pt on input line 31.
+(Font)              scaled to size 9.49997pt on input line 32.
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2024-02-20 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count303
 \l__pdf_internal_box=\box55
 )
-
-LaTeX Warning: Unused global option(s):
-    [9pt].
-
 (./si-appendix.aux)
 \openout1 = `si-appendix.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
 
 (/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -446,7 +442,7 @@ File: color.cfg 2016/01/02 v1.6 sample color configuration
 Package color Info: Driver file: pdftex.def on input line 149.
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/mathcolor.ltx))
-Package hyperref Info: Link coloring ON on input line 31.
+Package hyperref Info: Link coloring ON on input line 32.
 
 (./si-appendix.out) (./si-appendix.out)
 \@outlinefile=\write3
@@ -490,37 +486,37 @@ Package hyperref Info: Link coloring ON on input line 31.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 16.41594pt on input line 33.
+(Font)              scaled to size 16.41594pt on input line 34.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 11.39996pt on input line 33.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 33.
+(Font)              scaled to size 11.39996pt on input line 34.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 34.
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 33.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 34.
 
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 13.67995pt on input line 37.
+(Font)              scaled to size 13.67995pt on input line 38.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 13.67995pt on input line 37.
+(Font)              scaled to size 13.67995pt on input line 38.
 <figs/aa_freq_example.pdf, id=82, 702.625pt x 501.875pt>
 File: figs/aa_freq_example.pdf Graphic file (type pdf)
 <use figs/aa_freq_example.pdf>
-Package pdftex.def Info: figs/aa_freq_example.pdf  used on input line 43.
+Package pdftex.def Info: figs/aa_freq_example.pdf  used on input line 44.
 (pdftex.def)             Requested size: 422.77664pt x 301.99266pt.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 9.49997pt on input line 44.
+(Font)              scaled to size 9.49997pt on input line 45.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 8.54997pt on input line 59.
+(Font)              scaled to size 8.54997pt on input line 60.
 <figs/scaling_composite.pdf, id=85, 903.375pt x 702.625pt>
 File: figs/scaling_composite.pdf Graphic file (type pdf)
 <use figs/scaling_composite.pdf>
-Package pdftex.def Info: figs/scaling_composite.pdf  used on input line 132.
+Package pdftex.def Info: figs/scaling_composite.pdf  used on input line 133.
 (pdftex.def)             Requested size: 469.75502pt x 365.3671pt.
  [1
 
@@ -530,81 +526,74 @@ al/texlive/2024/texmf-dist/fonts/enc/dvips/base/8r.enc}]
 File: figs/structure_validation_esmfold_af2.pdf Graphic file (type pdf)
 <use figs/structure_validation_esmfold_af2.pdf>
 Package pdftex.def Info: figs/structure_validation_esmfold_af2.pdf  used on inp
-ut line 165.
+ut line 166.
 (pdftex.def)             Requested size: 469.75502pt x 341.6442pt.
  [2 <./figs/aa_freq_example.pdf>]
 <figs/esmfold_af2_concordance.pdf, id=117, 903.375pt x 401.5pt>
 File: figs/esmfold_af2_concordance.pdf Graphic file (type pdf)
 <use figs/esmfold_af2_concordance.pdf>
 Package pdftex.def Info: figs/esmfold_af2_concordance.pdf  used on input line 1
-72.
+73.
 (pdftex.def)             Requested size: 328.82707pt x 146.14499pt.
 <figs/sequence_analysis_kunitz.pdf, id=119, 990.91335pt x 543.4108pt>
 File: figs/sequence_analysis_kunitz.pdf Graphic file (type pdf)
 <use figs/sequence_analysis_kunitz.pdf>
 Package pdftex.def Info: figs/sequence_analysis_kunitz.pdf  used on input line 
-186.
+187.
 (pdftex.def)             Requested size: 469.75502pt x 257.60872pt.
 
 [3 <./figs/scaling_composite.pdf>] [4 <./figs/structure_validation_esmfold_af2.
 pdf>]
-
-pdfTeX warning: pdflatex (file ./figs/mi_covariation_scatter.pdf): PDF inclusio
-n: found PDF version <1.7>, but at most version <1.5> allowed
-<figs/mi_covariation_scatter.pdf, id=140, 903.375pt x 301.125pt>
+<figs/mi_covariation_scatter.pdf, id=141, 903.375pt x 301.125pt>
 File: figs/mi_covariation_scatter.pdf Graphic file (type pdf)
 <use figs/mi_covariation_scatter.pdf>
 Package pdftex.def Info: figs/mi_covariation_scatter.pdf  used on input line 22
-3.
+4.
 (pdftex.def)             Requested size: 469.75502pt x 156.58589pt.
-
-
-pdfTeX warning: pdflatex (file ./figs/mi_covariation_barplot.pdf): PDF inclusio
-n: found PDF version <1.7>, but at most version <1.5> allowed
-<figs/mi_covariation_barplot.pdf, id=141, 828.09375pt x 339.2675pt>
+<figs/mi_covariation_barplot.pdf, id=142, 828.09375pt x 339.2675pt>
 File: figs/mi_covariation_barplot.pdf Graphic file (type pdf)
 <use figs/mi_covariation_barplot.pdf>
 Package pdftex.def Info: figs/mi_covariation_barplot.pdf  used on input line 23
-0.
+1.
 (pdftex.def)             Requested size: 469.75502pt x 192.463pt.
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 242.
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 243.
 LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
-(Font)              scaled to size 9.49997pt on input line 242.
+(Font)              scaled to size 9.49997pt on input line 243.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 6.64998pt on input line 270.
+(Font)              scaled to size 6.64998pt on input line 271.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 4.74998pt on input line 270.
-[5 <./figs/esmfold_af2_concordance.pdf>] [6 <./figs/sequence_analysis_kunitz.pd
-f>] [7 <./figs/mi_covariation_scatter.pdf>] [8 <./figs/mi_covariation_barplot.p
-df>] [9] [10]
+(Font)              scaled to size 4.74998pt on input line 271.
+ [5 <./figs/esmfold_af2_concordance.pdf>] [6 <./figs/sequence_analysis_kunitz.p
+df>] [7 <./figs/mi_covariation_scatter.pdf>] [8 <./figs/mi_covariation_barplot.
+pdf>] [9] [10]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 680.
+put line 703.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 7.59998pt on input line 684.
+(Font)              scaled to size 7.59998pt on input line 707.
  [11]
-<figs/analytical_beta_star.pdf, id=414, 1505.625pt x 903.375pt>
+<figs/analytical_beta_star.pdf, id=388, 1505.625pt x 903.375pt>
 File: figs/analytical_beta_star.pdf Graphic file (type pdf)
 <use figs/analytical_beta_star.pdf>
-Package pdftex.def Info: figs/analytical_beta_star.pdf  used on input line 730.
+Package pdftex.def Info: figs/analytical_beta_star.pdf  used on input line 753.
 
 (pdftex.def)             Requested size: 328.82707pt x 197.29575pt.
-<figs/bifurcation_analysis.pdf, id=415, 1405.25pt x 803.0pt>
+<figs/bifurcation_analysis.pdf, id=389, 1405.25pt x 803.0pt>
 File: figs/bifurcation_analysis.pdf Graphic file (type pdf)
 <use figs/bifurcation_analysis.pdf>
-Package pdftex.def Info: figs/bifurcation_analysis.pdf  used on input line 743.
+Package pdftex.def Info: figs/bifurcation_analysis.pdf  used on input line 766.
 
 (pdftex.def)             Requested size: 328.82707pt x 187.89635pt.
-<figs/stored_pattern_analysis.pdf, id=416, 1505.625pt x 903.375pt>
+<figs/stored_pattern_analysis.pdf, id=390, 1505.625pt x 903.375pt>
 File: figs/stored_pattern_analysis.pdf Graphic file (type pdf)
 <use figs/stored_pattern_analysis.pdf>
 Package pdftex.def Info: figs/stored_pattern_analysis.pdf  used on input line 7
-56.
+79.
 (pdftex.def)             Requested size: 328.82707pt x 197.29575pt.
- (./si-appendix.bbl [12]) [13{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvip
+ [12] (./si-appendix.bbl) [13{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvip
 s/cm-super/cm-super-t1.enc} <./figs/analytical_beta_star.pdf>] [14 <./figs/bifu
-rcation_analysis.pdf> <./figs/stored_pattern_analysis.pdf>]
-[15] [16] [17] [18] [19] [20] (./si-appendix.aux)
+rcation_analysis.pdf> <./figs/stored_pattern_analysis.pdf>] [15] [16] [17] [18]
+ [19] [20] (./si-appendix.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
@@ -613,13 +602,13 @@ Package rerunfilecheck Info: File `si-appendix.out' has not changed.
 (rerunfilecheck)             Checksum: 6910975C0A001B64920677990465E38C;3961.
  ) 
 Here is how much of TeX's memory you used:
- 12831 strings out of 474116
- 200922 string characters out of 5743682
- 2035187 words of memory out of 5000000
- 34899 multiletter control sequences out of 15000+600000
+ 12830 strings out of 474116
+ 200916 string characters out of 5743682
+ 2043187 words of memory out of 5000000
+ 34898 multiletter control sequences out of 15000+600000
  599386 words of font info for 100 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,11n,79p,1694b,695s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,11n,79p,1744b,695s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb><
 /usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></
@@ -643,10 +632,10 @@ mf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2024/texmf
 -dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2024/texmf-dist/f
 onts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/ty
 pe1/urw/helvetic/uhvro8a.pfb>
-Output written on si-appendix.pdf (20 pages, 876433 bytes).
+Output written on si-appendix.pdf (20 pages, 877488 bytes).
 PDF statistics:
- 598 PDF objects out of 1000 (max. 8388607)
- 390 compressed objects within 4 object streams
+ 599 PDF objects out of 1000 (max. 8388607)
+ 391 compressed objects within 4 object streams
  101 named destinations out of 1000 (max. 500000)
  203 words of extra memory for PDF output out of 10000 (max. 10000000)
 
