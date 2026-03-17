@@ -34,6 +34,8 @@
 \citation{jumperHighlyAccurateProtein2021}
 \citation{mirdita2022colabfold}
 \citation{zhangTMalign2005}
+\citation{alswaidanVarnerStochasticAttention2026}
+\citation{mistryPfamProteinFamilies2021}
 \bibdata{references}
 \bibcite{jumperHighlyAccurateProtein2021}{{1}{}{{}}{{}}}
 \bibcite{baekRoseTTAFold2021}{{2}{}{{}}{{}}}
@@ -50,6 +52,8 @@
 \bibcite{madaniProGenLanguageModeling2023}{{13}{}{{}}{{}}}
 \bibcite{raoMSATransformer2021}{{14}{}{{}}{{}}}
 \bibcite{alamdariProteinGeneration2023}{{15}{}{{}}{{}}}
+\newlabel{eq:hopfield-energy}{{1}{6}{}{equation.0.1}{}}
+\newlabel{eq:sa-update}{{2}{6}{}{equation.0.2}{}}
 \bibcite{dauparasProteinMPNN2022}{{16}{}{{}}{{}}}
 \bibcite{watsonRFdiffusion2023}{{17}{}{{}}{{}}}
 \bibcite{mistryPfamProteinFamilies2021}{{18}{}{{}}{{}}}
@@ -58,14 +62,12 @@
 \bibcite{alswaidanVarnerStochasticAttention2026}{{21}{}{{}}{{}}}
 \bibcite{durmusNonasymptoticAnalysisUnadjusted2017}{{22}{}{{}}{{}}}
 \bibcite{dalalyanTheoreticalGuaranteesApproximate2017}{{23}{}{{}}{{}}}
-\newlabel{eq:hopfield-energy}{{1}{6}{}{equation.0.1}{}}
-\newlabel{eq:sa-update}{{2}{6}{}{equation.0.2}{}}
 \bibcite{robertsTweedieExponentialConvergence1996}{{24}{}{{}}{{}}}
 \bibcite{linEvolutionaryScaleModeling2023}{{25}{}{{}}{{}}}
 \bibcite{mirdita2022colabfold}{{26}{}{{}}{{}}}
 \bibcite{zhangTMalign2005}{{27}{}{{}}{{}}}
 \providecommand\NAT@force@numbers{}\NAT@force@numbers
-\zref@newlabel{mdf@pagelabel-1}{\default{\caption@xref {??}{ on input line 104}}\page{8}\abspage{8}\mdf@pagevalue{8}}
+\zref@newlabel{mdf@pagelabel-1}{\default{\caption@xref {??}{ on input line 107}}\page{8}\abspage{8}\mdf@pagevalue{8}}
 \pgfsyspdfmark {pgfid1}{3706101}{33941796}
 \@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Properties of the eight Pfam families used in this study. $K$: number of seed sequences after cleaning. $L$: alignment length. $d$: PCA dimension (95\% variance). $\bar  {H}_{\mathrm  {col}}$: mean per-column Shannon entropy (nats). $K_{\mathrm  {eff}}$: effective number of sequences at 80\% identity. $\beta ^*$: empirical entropy inflection point.}}{8}{table.caption.1}\protected@file@percent }
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
@@ -82,7 +84,7 @@
 \newlabel{fig:defensin-biophysics}{{5}{12}{Biophysical properties of beta defensin sequences (PF00711). \textbf {(A)}~Net charge at pH~7 vs.\ hydrophobic residue fraction. SA-generated sequences (blue) overlap the stored natural sequences (gray), while HMM emit (green) and MSA Transformer (purple) drift to lower charge. Dashed lines indicate the antimicrobial plausibility thresholds (charge $\geq +2$, hydrophobic fraction $0.3$--$0.7$). \textbf {(B)}~Cysteine count distribution. SA generation preserves the six-cysteine disulfide scaffold (red dashed line) with the same fidelity as the stored alignment. \textbf {(C)}~Net charge distribution. SA generation produces a charge profile closely matching stored sequences. \textbf {(D)}~Fraction of sequences passing a minimal biophysical plausibility filter (charge $\geq +2$, hydrophobic fraction $\in [0.3, 0.7]$, $\geq 4$ cysteines)}{figure.caption.6}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces AlphaFold2 predicted structures for representative SA-generated sequences (colored by per-residue pLDDT confidence) superimposed on the experimentally determined reference structure for each family (gray, semi-transparent). For each family, the SA-generated sequence with the highest mean pLDDT was selected and aligned to the reference using PyMOL. The close predicted structural agreement (sub-angstrom RMSD) and uniformly high pLDDT scores are consistent with SA-generated sequences encoding three-dimensional folds that recapitulate the canonical architecture of their target family, despite $40$--$65\%$ sequence novelty.}}{13}{figure.caption.7}\protected@file@percent }
 \newlabel{fig:structure-gallery}{{6}{13}{AlphaFold2 predicted structures for representative SA-generated sequences (colored by per-residue pLDDT confidence) superimposed on the experimentally determined reference structure for each family (gray, semi-transparent). For each family, the SA-generated sequence with the highest mean pLDDT was selected and aligned to the reference using PyMOL. The close predicted structural agreement (sub-angstrom RMSD) and uniformly high pLDDT scores are consistent with SA-generated sequences encoding three-dimensional folds that recapitulate the canonical architecture of their target family, despite $40$--$65\%$ sequence novelty}{figure.caption.7}{}}
-\newlabel{LastPage}{{1}{13}{Materials and Methods}{page.13}{}}
+\newlabel{LastPage}{{1}{13}{}{page.13}{}}
 \gdef\lastpage@lastpage{13}
 \gdef\lastpage@lastpageHy{13}
 \gdef \@abspage@last{13}

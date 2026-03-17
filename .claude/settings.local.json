@@ -70,7 +70,11 @@
       "Bash(texcount main.tex)",
       "Bash(texcount -1 -sum -)",
       "Bash(bash Build.sh)",
-      "Bash(pdflatex cover-letter.tex)"
+      "Bash(pdflatex cover-letter.tex)",
+      "Bash(pdflatex main.tex)",
+      "Bash(pdftotext main.pdf -)",
+      "Bash(pdflatex si-appendix.tex)",
+      "Bash(pdftotext si-appendix.pdf -)"
     ]
   }
 }
