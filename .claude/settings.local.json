@@ -74,7 +74,8 @@
       "Bash(pdflatex main.tex)",
       "Bash(pdftotext main.pdf -)",
       "Bash(pdflatex si-appendix.tex)",
-      "Bash(pdftotext si-appendix.pdf -)"
+      "Bash(pdftotext si-appendix.pdf -)",
+      "Bash(python3 run_potts_baseline.py)"
     ]
   }
 }

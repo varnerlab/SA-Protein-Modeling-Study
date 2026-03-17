@@ -16,8 +16,14 @@ import time
 
 # ── Configuration ──────────────────────────────────────────────────────────
 FAMILIES = [
+    {"id": "PF00076", "name": "RRM"},
     {"id": "PF00018", "name": "SH3"},
+    {"id": "PF00397", "name": "WW"},
     {"id": "PF00014", "name": "Kunitz"},
+    {"id": "PF00096", "name": "zf-C2H2"},
+    {"id": "PF00595", "name": "PDZ"},
+    {"id": "PF00069", "name": "Pkinase"},
+    {"id": "PF00711", "name": "Defensin_beta"},
 ]
 
 N_GEN = 150          # sequences to generate (match SA output)
