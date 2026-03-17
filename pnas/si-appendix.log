@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.4.15)  17 MAR 2026 06:07
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.4.15)  17 MAR 2026 07:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -327,34 +327,24 @@ Package: ifthen 2022/04/13 v1.1d Standard LaTeX ifthen package (DPC)
 \@float@every@algorithm=\toks27
 \c@algorithm=\count293
 )
-(/usr/local/texlive/2024/texmf-dist/tex/latex/algorithmicx/algpseudocode.sty
-Package: algpseudocode 
-
-(/usr/local/texlive/2024/texmf-dist/tex/latex/algorithmicx/algorithmicx.sty
-Package: algorithmicx 2005/04/27 v1.2 Algorithmicx
-
-Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
-\c@ALG@line=\count294
-\c@ALG@rem=\count295
-\c@ALG@nested=\count296
-\ALG@tlm=\skip58
-\ALG@thistlm=\skip59
-\c@ALG@Lnr=\count297
-\c@ALG@blocknr=\count298
-\c@ALG@storecount=\count299
-\c@ALG@tmpcounter=\count300
-\ALG@tmplength=\skip60
+(/usr/local/texlive/2024/texmf-dist/tex/latex/algorithms/algorithmic.sty
+Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
+\c@ALC@unique=\count294
+\c@ALC@line=\count295
+\c@ALC@rem=\count296
+\c@ALC@depth=\count297
+\ALC@tlm=\skip58
+\algorithmicindent=\skip59
 )
-Document Style - pseudocode environments for use with the `algorithmicx' style
-) (/usr/local/texlive/2024/texmf-dist/tex/latex/geometry/geometry.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2020/01/02 v5.9 Page Geometry
 
 (/usr/local/texlive/2024/texmf-dist/tex/generic/iftex/ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 )
-\Gm@cnth=\count301
-\Gm@cntv=\count302
-\c@Gm@tempcnt=\count303
+\Gm@cnth=\count298
+\Gm@cntv=\count299
+\c@Gm@tempcnt=\count300
 \Gm@bindingoffset=\dimen170
 \Gm@wd@mp=\dimen171
 \Gm@odd@mp=\dimen172
@@ -380,8 +370,8 @@ Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
 \caption@hangindent=\dimen185
 Package caption Info: Standard document class detected.
 )
-\c@caption@flags=\count304
-\c@continuedfloat=\count305
+\c@caption@flags=\count301
+\c@continuedfloat=\count302
 Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
 )
@@ -396,7 +386,7 @@ LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2024-02-20 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count306
+\l__color_backend_stack_int=\count303
 \l__pdf_internal_box=\box55
 )
 
@@ -427,16 +417,16 @@ LaTeX Font Info:    ... okay on input line 31.
 
 (/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count307
+\scratchcounter=\count304
 \scratchdimen=\dimen186
 \scratchbox=\box56
-\nofMPsegments=\count308
-\nofMParguments=\count309
+\nofMPsegments=\count305
+\nofMParguments=\count306
 \everyMPshowfont=\toks29
-\MPscratchCnt=\count310
+\MPscratchCnt=\count307
 \MPscratchDim=\dimen187
-\MPnumerator=\count311
-\makeMPintoPDFobject=\count312
+\MPnumerator=\count308
+\makeMPintoPDFobject=\count309
 \everyMPtoPDFconversion=\toks30
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -518,7 +508,7 @@ LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 (Font)              scaled to size 13.67995pt on input line 37.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 (Font)              scaled to size 13.67995pt on input line 37.
-<figs/aa_freq_example.pdf, id=57, 702.625pt x 501.875pt>
+<figs/aa_freq_example.pdf, id=82, 702.625pt x 501.875pt>
 File: figs/aa_freq_example.pdf Graphic file (type pdf)
 <use figs/aa_freq_example.pdf>
 Package pdftex.def Info: figs/aa_freq_example.pdf  used on input line 43.
@@ -527,144 +517,136 @@ LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 (Font)              scaled to size 9.49997pt on input line 44.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 (Font)              scaled to size 8.54997pt on input line 59.
- [1
-
-{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/loc
-al/texlive/2024/texmf-dist/fonts/enc/dvips/base/8r.enc} <./figs/aa_freq_example
-.pdf>]
-<figs/scaling_composite.pdf, id=75, 903.375pt x 702.625pt>
+<figs/scaling_composite.pdf, id=85, 903.375pt x 702.625pt>
 File: figs/scaling_composite.pdf Graphic file (type pdf)
 <use figs/scaling_composite.pdf>
 Package pdftex.def Info: figs/scaling_composite.pdf  used on input line 132.
 (pdftex.def)             Requested size: 469.75502pt x 365.3671pt.
+ [1
 
-[2 <./figs/scaling_composite.pdf>]
-<figs/structure_validation_esmfold_af2.pdf, id=93, 1104.125pt x 803.0pt>
+{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/loc
+al/texlive/2024/texmf-dist/fonts/enc/dvips/base/8r.enc}]
+<figs/structure_validation_esmfold_af2.pdf, id=104, 1104.125pt x 803.0pt>
 File: figs/structure_validation_esmfold_af2.pdf Graphic file (type pdf)
 <use figs/structure_validation_esmfold_af2.pdf>
 Package pdftex.def Info: figs/structure_validation_esmfold_af2.pdf  used on inp
-ut line 170.
+ut line 165.
 (pdftex.def)             Requested size: 469.75502pt x 341.6442pt.
-<figs/esmfold_af2_concordance.pdf, id=94, 903.375pt x 401.5pt>
+ [2 <./figs/aa_freq_example.pdf>]
+<figs/esmfold_af2_concordance.pdf, id=117, 903.375pt x 401.5pt>
 File: figs/esmfold_af2_concordance.pdf Graphic file (type pdf)
 <use figs/esmfold_af2_concordance.pdf>
 Package pdftex.def Info: figs/esmfold_af2_concordance.pdf  used on input line 1
-77.
+72.
 (pdftex.def)             Requested size: 328.82707pt x 146.14499pt.
-<figs/sequence_analysis_kunitz.pdf, id=96, 990.91335pt x 543.4108pt>
+<figs/sequence_analysis_kunitz.pdf, id=119, 990.91335pt x 543.4108pt>
 File: figs/sequence_analysis_kunitz.pdf Graphic file (type pdf)
 <use figs/sequence_analysis_kunitz.pdf>
 Package pdftex.def Info: figs/sequence_analysis_kunitz.pdf  used on input line 
-191.
+186.
 (pdftex.def)             Requested size: 469.75502pt x 257.60872pt.
 
+[3 <./figs/scaling_composite.pdf>] [4 <./figs/structure_validation_esmfold_af2.
+pdf>]
 
 pdfTeX warning: pdflatex (file ./figs/mi_covariation_scatter.pdf): PDF inclusio
 n: found PDF version <1.7>, but at most version <1.5> allowed
-<figs/mi_covariation_scatter.pdf, id=97, 903.375pt x 301.125pt>
+<figs/mi_covariation_scatter.pdf, id=140, 903.375pt x 301.125pt>
 File: figs/mi_covariation_scatter.pdf Graphic file (type pdf)
 <use figs/mi_covariation_scatter.pdf>
-Package pdftex.def Info: figs/mi_covariation_scatter.pdf  used on input line 20
-5.
+Package pdftex.def Info: figs/mi_covariation_scatter.pdf  used on input line 22
+3.
 (pdftex.def)             Requested size: 469.75502pt x 156.58589pt.
 
 
 pdfTeX warning: pdflatex (file ./figs/mi_covariation_barplot.pdf): PDF inclusio
 n: found PDF version <1.7>, but at most version <1.5> allowed
-<figs/mi_covariation_barplot.pdf, id=98, 828.09375pt x 339.2675pt>
+<figs/mi_covariation_barplot.pdf, id=141, 828.09375pt x 339.2675pt>
 File: figs/mi_covariation_barplot.pdf Graphic file (type pdf)
 <use figs/mi_covariation_barplot.pdf>
-Package pdftex.def Info: figs/mi_covariation_barplot.pdf  used on input line 21
-2.
+Package pdftex.def Info: figs/mi_covariation_barplot.pdf  used on input line 23
+0.
 (pdftex.def)             Requested size: 469.75502pt x 192.463pt.
-<figs/analytical_beta_star.pdf, id=99, 1505.625pt x 903.375pt>
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 242.
+LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
+(Font)              scaled to size 9.49997pt on input line 242.
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 6.64998pt on input line 270.
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 4.74998pt on input line 270.
+[5 <./figs/esmfold_af2_concordance.pdf>] [6 <./figs/sequence_analysis_kunitz.pd
+f>] [7 <./figs/mi_covariation_scatter.pdf>] [8 <./figs/mi_covariation_barplot.p
+df>] [9] [10]
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
+put line 685.
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 7.59998pt on input line 689.
+ [11]
+<figs/analytical_beta_star.pdf, id=417, 1505.625pt x 903.375pt>
 File: figs/analytical_beta_star.pdf Graphic file (type pdf)
 <use figs/analytical_beta_star.pdf>
-Package pdftex.def Info: figs/analytical_beta_star.pdf  used on input line 224.
+Package pdftex.def Info: figs/analytical_beta_star.pdf  used on input line 741.
 
 (pdftex.def)             Requested size: 328.82707pt x 197.29575pt.
-[3 <./figs/structure_validation_esmfold_af2.pdf>]
-<figs/bifurcation_analysis.pdf, id=108, 1405.25pt x 803.0pt>
+<figs/bifurcation_analysis.pdf, id=418, 1405.25pt x 803.0pt>
 File: figs/bifurcation_analysis.pdf Graphic file (type pdf)
 <use figs/bifurcation_analysis.pdf>
-Package pdftex.def Info: figs/bifurcation_analysis.pdf  used on input line 231.
+Package pdftex.def Info: figs/bifurcation_analysis.pdf  used on input line 754.
 
 (pdftex.def)             Requested size: 328.82707pt x 187.89635pt.
-<figs/stored_pattern_analysis.pdf, id=109, 1505.625pt x 903.375pt>
+<figs/stored_pattern_analysis.pdf, id=419, 1505.625pt x 903.375pt>
 File: figs/stored_pattern_analysis.pdf Graphic file (type pdf)
 <use figs/stored_pattern_analysis.pdf>
-Package pdftex.def Info: figs/stored_pattern_analysis.pdf  used on input line 2
-38.
+Package pdftex.def Info: figs/stored_pattern_analysis.pdf  used on input line 7
+67.
 (pdftex.def)             Requested size: 328.82707pt x 197.29575pt.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 262.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\beta' on input line 262.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `superscript' on input line 262.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 262.
-
-(./si-appendix.bbl
-LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 12.
-LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
-(Font)              scaled to size 9.49997pt on input line 12.
- [4 <./figs/esmfold_af2_concordance.pdf>]) [5{/usr/local/texlive/2024/texmf-dis
-t/fonts/enc/dvips/cm-super/cm-super-t1.enc} <./figs/sequence_analysis_kunitz.pd
-f>] [6 <./figs/mi_covariation_scatter.pdf> <./figs/mi_covariation_barplot.pdf
-
-pdfTeX warning: pdflatex (file ./figs/mi_covariation_barplot.pdf): PDF inclusio
-n: multiple pdfs with page group included in a single page
-> <./figs/analytical_beta_star.pdf>] [7] [8 <./figs/bifurcation_analysis.pdf> <
-./figs/stored_pattern_analysis.pdf>] (./si-appendix.aux)
+ [12] (./si-appendix.bbl) [13{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvip
+s/cm-super/cm-super-t1.enc} <./figs/analytical_beta_star.pdf>] [14 <./figs/bifu
+rcation_analysis.pdf> <./figs/stored_pattern_analysis.pdf>]
+[15] [16] [17] [18] [19] [20] (./si-appendix.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
 Package rerunfilecheck Info: File `si-appendix.out' has not changed.
-(rerunfilecheck)             Checksum: ED38D9BAD78EC9D92EA941FD5A703482;2341.
+(rerunfilecheck)             Checksum: 6910975C0A001B64920677990465E38C;3961.
  ) 
 Here is how much of TeX's memory you used:
- 13051 strings out of 474116
- 204556 string characters out of 5743682
- 1958187 words of memory out of 5000000
- 35180 multiletter control sequences out of 15000+600000
- 593722 words of font info for 102 fonts, out of 8000000 for 9000
+ 12838 strings out of 474116
+ 200999 string characters out of 5743682
+ 2034187 words of memory out of 5000000
+ 34899 multiletter control sequences out of 15000+600000
+ 599386 words of font info for 100 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,11n,79p,836b,560s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,11n,79p,1694b,695s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb><
-/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></
-usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></u
-sr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr
-/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/l
-ocal/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/l
-ocal/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/loc
-al/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local
-/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/te
-xlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texli
-ve/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/
-2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2
-024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/202
-4/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2024/
-texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2
-024/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/202
-4/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2024/texmf
--dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2024/texmf-dist/f
-onts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on si-appendix.pdf (8 pages, 759178 bytes).
+/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></
+usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></u
+sr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr
+/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/l
+ocal/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/loc
+al/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/loc
+al/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local
+/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/te
+xlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texli
+ve/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/
+2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/202
+4/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2024/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2024/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2024/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2024/texmf-d
+ist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024/tex
+mf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2024/texmf
+-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2024/texmf-dist/f
+onts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/ty
+pe1/urw/helvetic/uhvro8a.pfb>
+Output written on si-appendix.pdf (20 pages, 876924 bytes).
 PDF statistics:
- 424 PDF objects out of 1000 (max. 8388607)
- 235 compressed objects within 3 object streams
- 37 named destinations out of 1000 (max. 500000)
- 155 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 606 PDF objects out of 1000 (max. 8388607)
+ 398 compressed objects within 4 object streams
+ 108 named destinations out of 1000 (max. 500000)
+ 203 words of extra memory for PDF output out of 10000 (max. 10000000)
 

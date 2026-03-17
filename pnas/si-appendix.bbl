@@ -1,9 +1,46 @@
-\begin{thebibliography}{2}
+\begin{thebibliography}{6}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Lin et~al.(2023)Lin, Akin, Rao, Hie, Zhu, Lu, Smetanin, Verkuil,
+  Kabeli, Shmueli, Costa, Fazel-Zarandi, Sercu, Candido, and
+  Rives]{linEvolutionaryScaleModeling2023}
+Zeming Lin, Halil Akin, Roshan Rao, Brian Hie, Zhongkai Zhu, Wenting Lu, Nikita
+  Smetanin, Robert Verkuil, Ori Kabeli, Yaniv Shmueli, Allan Costa, Maryam
+  Fazel-Zarandi, Tom Sercu, Sal Candido, and Alexander Rives.
+\newblock Evolutionary-scale prediction of atomic-level protein structure with
+  a language model.
+\newblock \emph{Science}, 379\penalty0 (6637):\penalty0 1123--1130, 2023.
+\newblock \doi{10.1126/science.ade2574}.
+
+\bibitem[McLaughlin et~al.(2012)McLaughlin, Poelwijk, Raman, Gosal, and
+  Ranganathan]{mclaughlinSpatialArchitecture2012}
+Richard~N. McLaughlin, Frank~J. Poelwijk, Arjun Raman, Walraj~S. Gosal, and
+  Rama Ranganathan.
+\newblock The spatial architecture of protein function and adaptation.
+\newblock \emph{Nature}, 491:\penalty0 138--142, 2012.
+\newblock \doi{10.1038/nature11500}.
+
+\bibitem[Faure et~al.(2022)Faure, Domingo, Schmiedel, Hidalgo-Carcedo, Diss,
+  and Lehner]{faureDoubleDMS2022}
+Andr{\'e}~J. Faure, Javier Domingo, Joern~M. Schmiedel, Cristina
+  Hidalgo-Carcedo, Guillaume Diss, and Ben Lehner.
+\newblock Mapping the energetic and allosteric landscapes of protein binding
+  domains.
+\newblock \emph{Nature}, 604:\penalty0 175--183, 2022.
+\newblock \doi{10.1038/s41586-022-04586-4}.
+
+\bibitem[Ekeberg et~al.(2013)Ekeberg, L{\"o}vkvist, Lan, Weigt, and
+  Aurell]{ekeberg2013improved}
+Magnus Ekeberg, Cecilia L{\"o}vkvist, Yueheng Lan, Martin Weigt, and Erik
+  Aurell.
+\newblock Improved contact prediction in proteins: Using pseudolikelihoods to
+  infer {Potts} models.
+\newblock \emph{Physical Review E}, 87\penalty0 (1):\penalty0 012707, 2013.
+\newblock \doi{10.1103/PhysRevE.87.012707}.
 
 \bibitem[Dalalyan(2017)]{dalalyanTheoreticalGuaranteesApproximate2017}
 Arnak~S. Dalalyan.
