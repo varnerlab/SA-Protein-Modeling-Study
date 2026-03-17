@@ -1,0 +1,135 @@
+\begin{thebibliography}{10}
+
+\bibitem{jumperHighlyAccurateProtein2021}
+Jumper J, et~al. (2021) Highly accurate protein structure prediction with
+  {AlphaFold}.
+\newblock {\em Nature} 596:583--589.
+
+\bibitem{baekRoseTTAFold2021}
+Baek M, et~al. (2021) Accurate prediction of protein structures and
+  interactions using a three-track neural network.
+\newblock {\em Science} 373(6557):871--876.
+
+\bibitem{kuhlmanBradleyAdvances2019}
+Kuhlman B, Bradley P (2019) Advances in protein structure prediction and
+  design.
+\newblock {\em Nature Reviews Molecular Cell Biology} 20:681--697.
+
+\bibitem{huangComingAgeDeNovo2016}
+Huang PS, Boyken SE, Baker D (2016) The coming of age of de novo protein
+  design.
+\newblock {\em Nature} 537(7620):320--327.
+
+\bibitem{hmmer3}
+Potter SC, et~al. (2018) {HMMER} web server: 2018 update.
+\newblock {\em Nucleic Acids Research} 46(W1):W200--W204.
+
+\bibitem{kroghHiddenMarkovModels1994}
+Krogh A, Brown M, Mian IS, Sj{\"o}lander K, Haussler D (1994) Hidden {Markov}
+  models in computational biology: Applications to protein modeling.
+\newblock {\em Journal of Molecular Biology} 235(5):1501--1531.
+
+\bibitem{morcosDirectCouplingAnalysis2011}
+Morcos F, et~al. (2011) Direct-coupling analysis of residue coevolution
+  captures native contacts across many protein families.
+\newblock {\em Proceedings of the National Academy of Sciences}
+  108(49):E1293--E1301.
+
+\bibitem{ekeberg2013improved}
+Ekeberg M, L{\"o}vkvist C, Lan Y, Weigt M, Aurell E (2013) Improved contact
+  prediction in proteins: Using pseudolikelihoods to infer {Potts} models.
+\newblock {\em Physical Review E} 87(1):012707.
+
+\bibitem{trinquierEfficientGenerativeModeling2021}
+Trinquier J, Uguzzoni G, Pagnani A, Zamponi F, Weigt M (2021) Efficient
+  generative modeling of protein sequences using simple autoregressive models.
+\newblock {\em Nature Communications} 12:5800.
+
+\bibitem{kingmaWellingAutoEncoding2014}
+Kingma DP, Welling M (2014) Auto-encoding variational {Bayes} in {\em
+  International Conference on Learning Representations (ICLR)}.
+
+\bibitem{riesselman2018deep}
+Riesselman AJ, Ingraham JB, Marks DS (2018) Deep generative models of genetic
+  variation capture the effects of mutations.
+\newblock {\em Nature Methods} 15:816--822.
+
+\bibitem{ferruzProtGPT2DeepUnsupervised2022}
+Ferruz N, Schmidt S, H{\"o}cker B (2022) {ProtGPT2} is a deep unsupervised
+  language model for protein design.
+\newblock {\em Nature Communications} 13:4348.
+
+\bibitem{madaniProGenLanguageModeling2023}
+Madani A, et~al. (2023) Large language models generate functional protein
+  sequences across diverse families.
+\newblock {\em Nature Biotechnology} 41:1099--1106.
+
+\bibitem{raoMSATransformer2021}
+Rao R, et~al. (2021) {MSA} transformer in {\em Proceedings of the 38th
+  International Conference on Machine Learning (ICML)}.
+\newblock pp. 8844--8856.
+
+\bibitem{alamdariProteinGeneration2023}
+Alamdari S, et~al. (2023) Protein generation with evolutionary diffusion:
+  Sequence is all you need.
+\newblock {\em bioRxiv}.
+
+\bibitem{dauparasProteinMPNN2022}
+Dauparas J, et~al. (2022) Robust deep learning--based protein sequence design
+  using {ProteinMPNN}.
+\newblock {\em Science} 378(6615):49--56.
+
+\bibitem{watsonRFdiffusion2023}
+Watson JL, et~al. (2023) De novo design of protein structure and function with
+  {RFdiffusion}.
+\newblock {\em Nature} 620(7976):1089--1100.
+
+\bibitem{mistryPfamProteinFamilies2021}
+Mistry J, et~al. (2021) Pfam: The protein families database in 2021.
+\newblock {\em Nucleic Acids Research} 49(D1):D412--D419.
+
+\bibitem{ramsauerHopfieldNetworksAll2021}
+Ramsauer H, et~al. (2021) Hopfield networks is all you need in {\em
+  International Conference on Learning Representations (ICLR)}.
+
+\bibitem{krotovDenseAssociativeMemory2016}
+Krotov D, Hopfield JJ (2016) Dense associative memory for pattern recognition
+  in {\em Advances in Neural Information Processing Systems}.
+\newblock Vol.{}~29.
+
+\bibitem{alswaidanVarnerStochasticAttention2026}
+Alswaidan A, Varner JD (2026) Stochastic attention via {Langevin} dynamics on
+  the modern {Hopfield} energy.
+\newblock {\em arXiv preprint arXiv:2603.06875}.
+
+\bibitem{durmusNonasymptoticAnalysisUnadjusted2017}
+Durmus A, Moulines {\'E} (2017) Nonasymptotic convergence analysis for the
+  unadjusted {Langevin} algorithm.
+\newblock {\em The Annals of Applied Probability} 27(3):1551--1587.
+
+\bibitem{dalalyanTheoreticalGuaranteesApproximate2017}
+Dalalyan AS (2017) Theoretical guarantees for approximate sampling from smooth
+  and log-concave densities.
+\newblock {\em Journal of the Royal Statistical Society: Series B}
+  79(3):651--676.
+
+\bibitem{robertsTweedieExponentialConvergence1996}
+Roberts GO, Tweedie RL (1996) Exponential convergence of {Langevin}
+  distributions and their discrete approximations.
+\newblock {\em Bernoulli} 2(4):341--363.
+
+\bibitem{linEvolutionaryScaleModeling2023}
+Lin Z, et~al. (2023) Evolutionary-scale prediction of atomic-level protein
+  structure with a language model.
+\newblock {\em Science} 379(6637):1123--1130.
+
+\bibitem{mirdita2022colabfold}
+Mirdita M, et~al. (2022) {ColabFold}: Making protein folding accessible to all.
+\newblock {\em Nature Methods} 19:679--682.
+
+\bibitem{zhangTMalign2005}
+Zhang Y, Skolnick J (2005) {TM-align}: a protein structure alignment algorithm
+  based on the {TM-score}.
+\newblock {\em Nucleic Acids Research} 33(7):2302--2309.
+
+\end{thebibliography}

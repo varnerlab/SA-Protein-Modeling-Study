@@ -56,7 +56,16 @@
       "Bash(__NEW_LINE_bd028f1fcfb8a2e4__ echo:*)",
       "Bash(ls:*)",
       "Bash(/tmp/audit_results.txt:*)",
-      "Read(//tmp/**)"
+      "Read(//tmp/**)",
+      "WebFetch(domain:arxiv.org)",
+      "WebFetch(domain:www.pnas.org)",
+      "WebFetch(domain:www.overleaf.com)",
+      "Bash(ln -s ../paper/figs figs)",
+      "Bash(pdflatex -interaction=nonstopmode main.tex)",
+      "Bash(bibtex main:*)",
+      "Bash(pdflatex -interaction=nonstopmode si-appendix.tex)",
+      "Bash(bibtex si-appendix:*)",
+      "Bash(pdfinfo /Users/jeffreyvarner/Desktop/papers/SA-Protein-Modeling-Study/pnas/si-appendix.pdf)"
     ]
   }
 }
