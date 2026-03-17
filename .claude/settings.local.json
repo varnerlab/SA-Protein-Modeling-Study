@@ -65,7 +65,12 @@
       "Bash(bibtex main:*)",
       "Bash(pdflatex -interaction=nonstopmode si-appendix.tex)",
       "Bash(bibtex si-appendix:*)",
-      "Bash(pdfinfo /Users/jeffreyvarner/Desktop/papers/SA-Protein-Modeling-Study/pnas/si-appendix.pdf)"
+      "Bash(pdfinfo /Users/jeffreyvarner/Desktop/papers/SA-Protein-Modeling-Study/pnas/si-appendix.pdf)",
+      "Bash(texcount -1 -sum main.tex)",
+      "Bash(texcount main.tex)",
+      "Bash(texcount -1 -sum -)",
+      "Bash(bash Build.sh)",
+      "Bash(pdflatex cover-letter.tex)"
     ]
   }
 }

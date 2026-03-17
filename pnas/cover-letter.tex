@@ -1,0 +1,28 @@
+\documentclass[11pt]{letter}
+\usepackage[margin=1in]{geometry}
+\usepackage{url}
+
+\signature{Jeffrey D. Varner, Ph.D.\\Professor\\R.F. Smith School of Chemical and Biomolecular Engineering\\Cornell University\\Ithaca, NY 14850\\jdv27@cornell.edu\\ORCID: 0000-0002-2558-7026}
+
+\date{\today}
+
+\begin{document}
+
+\begin{letter}{Editorial Board\\Proceedings of the National Academy of Sciences}
+
+\opening{Dear Editors,}
+
+I am pleased to submit the enclosed manuscript, ``Training-Free Generation of Protein Sequences from Small Family Alignments via Stochastic Attention,'' for consideration as a Research Article in PNAS.
+
+Most protein families are too small to train a deep generative model: the median Pfam family has fewer than 100 members, and thousands have fewer than 50. This paper shows that a single attention operation over a family alignment defines an energy landscape whose Boltzmann distribution can be sampled via Langevin dynamics, producing novel protein sequences with no training, no external data, and no GPU resources. The resulting method, stochastic attention, generates sequences that preserve family-level amino acid statistics and are predicted by two independent structure predictors (ESMFold and AlphaFold2) to adopt the correct three-dimensional fold. We validate the approach across eight diverse Pfam families, establish an empirical scaling law that enables fully automatic operation from a seed alignment, and confirm biological plausibility through ESM2 pseudo-perplexity scoring and deep mutational scanning cross-referencing.
+
+We believe this work will be of broad interest to the PNAS readership for several reasons. First, it addresses a practical gap in protein engineering: the majority of protein families fall below the data threshold of current deep generative models, yet these families are precisely where generative tools are most needed. Second, the theoretical connection between attention mechanisms and Boltzmann sampling suggests a general principle that extends beyond proteins to any domain where examples are scarce but structured. Third, the method's simplicity and accessibility (it runs in seconds on a laptop) lowers the barrier to protein sequence generation for experimentalists who lack access to large-scale computing infrastructure.
+
+I suggest Professor Ken Dill (Stony Brook University) or Professor Michael Levitt (Stanford University) as potential editors, given the paper's focus on energy landscapes and computational structural biology.
+
+This manuscript has not been published and is not under consideration elsewhere. A preprint is available on arXiv (2603.14717).
+
+\closing{Sincerely,}
+
+\end{letter}
+\end{document}
