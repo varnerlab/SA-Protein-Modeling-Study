@@ -401,7 +401,7 @@ THE ABSTRACT\vskip12pt}\let\go\relax\fi
 \newcommand{\showacknow}{% Display acknowledgments section
 \@ifundefined{@acknow}{}{
 \vskip 3.25ex plus 1ex minus .2ex
-\noindent{\sffamily\normalsize\bfseries ACKNOWLEDGMENTS.\hspace{1.5ex plus .2ex}}
+\noindent{\sffamily\normalsize\bfseries Acknowledgments.\hspace{1.5ex plus .2ex}}
 \small\@acknow}
 }
 
