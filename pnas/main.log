@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.4.15)  17 MAR 2026 19:47
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.4.15)  17 MAR 2026 19:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1394,75 +1394,79 @@ LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 (Font)              scaled to size 11.39996pt on input line 49.
  [2{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}]
-Underfull \vbox (badness 1424) has occurred while \output is active []
+Underfull \vbox (badness 6608) has occurred while \output is active []
 
  [3]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 6608) has occurred while \output is active []
 
  [4]
 [5]
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 9.49997pt on input line 108.
+(Font)              scaled to size 9.49997pt on input line 106.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 9.49997pt on input line 108.
+(Font)              scaled to size 9.49997pt on input line 106.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 108.
- [6{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}]
+(Font)              <10> on input line 106.
+
+Underfull \vbox (badness 2181) has occurred while \output is active []
+
+ [6]
+[7{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}]
 (./main.bbl
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <6> not available
 (Font)              Font shape `T1/phv/m/sl' tried instead on input line 6.
 LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
 (Font)              scaled to size 5.69998pt on input line 6.
- [7]) [8]
-Package mdframed Info: mdframed works in twoside mode on input line 119.
+) [8]
+Package mdframed Info: mdframed works in twoside mode on input line 117.
 Package mdframed Info: mdframed inside float 
- mdframed uses option nobreak mdframed on input line 119.
+ mdframed uses option nobreak mdframed on input line 117.
 Package mdframed Info: mdframed inside a box 
- mdframed uses option nobreak mdframed on input line 119.
+ mdframed uses option nobreak mdframed on input line 117.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 7.59998pt on input line 119.
+(Font)              scaled to size 7.59998pt on input line 117.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 7.12497pt on input line 126.
-LaTeX Font Info:    Calculating math sizes for size <7.5> on input line 126.
+(Font)              scaled to size 7.12497pt on input line 124.
+LaTeX Font Info:    Calculating math sizes for size <7.5> on input line 124.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7.5> on input line 126.
+(Font)              <7.5> on input line 124.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5.24997> on input line 126.
+(Font)              <5.24997> on input line 124.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <3.75> on input line 126.
-<figs/cross_family_composite.pdf, id=157, 702.625pt x 903.375pt>
+(Font)              <3.75> on input line 124.
+<figs/cross_family_composite.pdf, id=158, 702.625pt x 903.375pt>
 File: figs/cross_family_composite.pdf Graphic file (type pdf)
 <use figs/cross_family_composite.pdf>
 Package pdftex.def Info: figs/cross_family_composite.pdf  used on input line 14
-4.
+2.
 (pdftex.def)             Requested size: 455.12128pt x 585.17429pt.
-<figs/beta_prediction_composite.pdf, id=158, 1104.125pt x 381.425pt>
+<figs/beta_prediction_composite.pdf, id=159, 1104.125pt x 381.425pt>
 File: figs/beta_prediction_composite.pdf Graphic file (type pdf)
 <use figs/beta_prediction_composite.pdf>
 Package pdftex.def Info: figs/beta_prediction_composite.pdf  used on input line
- 151.
+ 149.
 (pdftex.def)             Requested size: 505.69374pt x 174.69519pt.
-<figs/baseline_comparison_composite.pdf, id=159, 803.0pt x 1053.9375pt>
+<figs/baseline_comparison_composite.pdf, id=160, 803.0pt x 1053.9375pt>
 File: figs/baseline_comparison_composite.pdf Graphic file (type pdf)
 <use figs/baseline_comparison_composite.pdf>
 Package pdftex.def Info: figs/baseline_comparison_composite.pdf  used on input 
-line 158.
+line 156.
 (pdftex.def)             Requested size: 429.84276pt x 564.18068pt.
-<figs/structure_validation_composite.pdf, id=160, 1104.125pt x 421.575pt>
+<figs/structure_validation_composite.pdf, id=161, 1104.125pt x 421.575pt>
 File: figs/structure_validation_composite.pdf Graphic file (type pdf)
 <use figs/structure_validation_composite.pdf>
 Package pdftex.def Info: figs/structure_validation_composite.pdf  used on input
- line 165.
+ line 163.
 (pdftex.def)             Requested size: 455.12128pt x 173.77316pt.
-<figs/defensin_biophysics.pdf, id=161, 903.375pt x 702.625pt>
+<figs/defensin_biophysics.pdf, id=162, 903.375pt x 702.625pt>
 File: figs/defensin_biophysics.pdf Graphic file (type pdf)
 <use figs/defensin_biophysics.pdf>
-Package pdftex.def Info: figs/defensin_biophysics.pdf  used on input line 172.
+Package pdftex.def Info: figs/defensin_biophysics.pdf  used on input line 170.
 (pdftex.def)             Requested size: 455.12128pt x 353.99193pt.
-<figs/structure_gallery.pdf, id=162, 902.50775pt x 524.37857pt>
+<figs/structure_gallery.pdf, id=163, 902.50775pt x 524.37857pt>
 File: figs/structure_gallery.pdf Graphic file (type pdf)
 <use figs/structure_gallery.pdf>
-Package pdftex.def Info: figs/structure_gallery.pdf  used on input line 179.
+Package pdftex.def Info: figs/structure_gallery.pdf  used on input line 177.
 (pdftex.def)             Requested size: 455.12128pt x 264.43703pt.
  [9] [10 <./figs/cross_family_composite.pdf>] [11 <./figs/beta_prediction_compo
 site.pdf>] [12 <./figs/baseline_comparison_composite.pdf>]
@@ -1475,17 +1479,21 @@ enddocument/afterlastpage: lastpage setting LastPage.
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 18856929362DEEF56B226D9EC34423EE;165.
  ) 
 Here is how much of TeX's memory you used:
- 30952 strings out of 474116
- 569172 string characters out of 5743682
- 1953187 words of memory out of 5000000
+ 30956 strings out of 474116
+ 569212 string characters out of 5743682
+ 1951187 words of memory out of 5000000
  52097 multiletter control sequences out of 15000+600000
- 744499 words of font info for 448 fonts, out of 8000000 for 9000
+ 744674 words of font info for 450 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 117i,14n,121p,2772b,1132s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 117i,15n,121p,2772b,1132s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/lo
 cal/texlive/2024/texmf-dist/fonts/type1/public/lm/lmbx7.pfb></usr/local/texlive
 /2024/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texlive/2024/texm
@@ -1508,7 +1516,7 @@ ts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type
 1/urw/helvetic/uhvbo8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/
 helvetic/uhvr8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/helveti
 c/uhvro8a.pfb>
-Output written on main.pdf (14 pages, 1654525 bytes).
+Output written on main.pdf (14 pages, 1657215 bytes).
 PDF statistics:
  473 PDF objects out of 1000 (max. 8388607)
  288 compressed objects within 3 object streams

@@ -83,7 +83,9 @@
       "Bash(latexmk -C)",
       "Bash(latexmk -pdf main.tex si-appendix.tex)",
       "Bash(latexmk -CA)",
-      "Bash(python3:*)"
+      "Bash(python3:*)",
+      "Bash(texcount -inc -v0 main.tex)",
+      "Bash(texcount -inc -v3 main.tex)"
     ]
   }
 }
