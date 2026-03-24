@@ -19,4 +19,4 @@ si-appendix.pdf: si-appendix.tex references.bib
 	pdflatex -interaction=nonstopmode si-appendix.tex
 
 clean:
-	rm -f *.aux *.bbl *.blg *.log *.out *.synctex.gz *.fls *.fdb_latexmk
+	rm -f *.aux *.bbl *.blg *.log *.out *.synctex.gz *.fls *.fdb_latexmk main.pdf si-appendix.pdf

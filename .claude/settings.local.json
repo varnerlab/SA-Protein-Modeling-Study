@@ -86,7 +86,10 @@
       "Bash(python3:*)",
       "Bash(texcount -inc -v0 main.tex)",
       "Bash(texcount -inc -v3 main.tex)",
-      "Bash(perl -0777 -ne 'while\\(/\\\\\\\\caption\\\\{\\(\\(?:[^{}]|\\\\{\\(?:[^{}]|\\\\{[^{}]*\\\\}\\)*\\\\}\\)*\\)\\\\}/g\\){print \"\"\"\"$1\\\\n\"\"\"\"}' main.tex)"
+      "Bash(perl -0777 -ne 'while\\(/\\\\\\\\caption\\\\{\\(\\(?:[^{}]|\\\\{\\(?:[^{}]|\\\\{[^{}]*\\\\}\\)*\\\\}\\)*\\)\\\\}/g\\){print \"\"\"\"$1\\\\n\"\"\"\"}' main.tex)",
+      "Bash(git checkout:*)",
+      "Bash(make all:*)",
+      "Bash(make clean:*)"
     ]
   }
 }

@@ -117,6 +117,11 @@ Faure AJ, et~al. (2022) Mapping the energetic and allosteric landscapes of
   protein binding domains.
 \newblock {\em Nature} 604:175--183.
 
+\bibitem{varnerConditioningProtein2026}
+Varner JD (2026) Conditioning protein generation via {Hopfield} pattern
+  multiplicity.
+\newblock {\em arXiv preprint arXiv:2603.20115}.
+
 \bibitem{durmusNonasymptoticAnalysisUnadjusted2017}
 Durmus A, Moulines {\'E} (2017) Nonasymptotic convergence analysis for the
   unadjusted {Langevin} algorithm.
