@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.4.15)  23 MAR 2026 21:21
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.4.15)  23 MAR 2026 21:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1414,11 +1414,13 @@ LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 (Font)              scaled to size 9.49997pt on input line 153.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <10> on input line 153.
-
-[8]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
 put line 153.
- [9] (./main.bbl
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[8] [9] (./main.bbl
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <6> not available
 (Font)              Font shape `T1/phv/m/sl' tried instead on input line 6.
 LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
@@ -1485,7 +1487,7 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 Here is how much of TeX's memory you used:
  30998 strings out of 474116
  570226 string characters out of 5743682
- 1959187 words of memory out of 5000000
+ 1958187 words of memory out of 5000000
  52143 multiletter control sequences out of 15000+600000
  752430 words of font info for 448 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1513,7 +1515,7 @@ mbols/msbm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/helvetic/u
 hvb8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.
 pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></u
 sr/local/texlive/2024/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on main.pdf (15 pages, 1688859 bytes).
+Output written on main.pdf (15 pages, 1688979 bytes).
 PDF statistics:
  495 PDF objects out of 1000 (max. 8388607)
  304 compressed objects within 4 object streams
