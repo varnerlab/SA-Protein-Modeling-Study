@@ -85,7 +85,8 @@
       "Bash(latexmk -CA)",
       "Bash(python3:*)",
       "Bash(texcount -inc -v0 main.tex)",
-      "Bash(texcount -inc -v3 main.tex)"
+      "Bash(texcount -inc -v3 main.tex)",
+      "Bash(perl -0777 -ne 'while\\(/\\\\\\\\caption\\\\{\\(\\(?:[^{}]|\\\\{\\(?:[^{}]|\\\\{[^{}]*\\\\}\\)*\\\\}\\)*\\)\\\\}/g\\){print \"\"\"\"$1\\\\n\"\"\"\"}' main.tex)"
     ]
   }
 }

@@ -102,6 +102,21 @@ Alswaidan A, Varner JD (2026) Stochastic attention via {Langevin} dynamics on
   the modern {Hopfield} energy.
 \newblock {\em arXiv preprint arXiv:2603.06875}.
 
+\bibitem{linEvolutionaryScaleModeling2023}
+Lin Z, et~al. (2023) Evolutionary-scale prediction of atomic-level protein
+  structure with a language model.
+\newblock {\em Science} 379(6637):1123--1130.
+
+\bibitem{mclaughlinSpatialArchitecture2012}
+McLaughlin RN, Poelwijk FJ, Raman A, Gosal WS, Ranganathan R (2012) The spatial
+  architecture of protein function and adaptation.
+\newblock {\em Nature} 491:138--142.
+
+\bibitem{faureDoubleDMS2022}
+Faure AJ, et~al. (2022) Mapping the energetic and allosteric landscapes of
+  protein binding domains.
+\newblock {\em Nature} 604:175--183.
+
 \bibitem{durmusNonasymptoticAnalysisUnadjusted2017}
 Durmus A, Moulines {\'E} (2017) Nonasymptotic convergence analysis for the
   unadjusted {Langevin} algorithm.
@@ -117,11 +132,6 @@ Dalalyan AS (2017) Theoretical guarantees for approximate sampling from smooth
 Roberts GO, Tweedie RL (1996) Exponential convergence of {Langevin}
   distributions and their discrete approximations.
 \newblock {\em Bernoulli} 2(4):341--363.
-
-\bibitem{linEvolutionaryScaleModeling2023}
-Lin Z, et~al. (2023) Evolutionary-scale prediction of atomic-level protein
-  structure with a language model.
-\newblock {\em Science} 379(6637):1123--1130.
 
 \bibitem{mirdita2022colabfold}
 Mirdita M, et~al. (2022) {ColabFold}: Making protein folding accessible to all.
