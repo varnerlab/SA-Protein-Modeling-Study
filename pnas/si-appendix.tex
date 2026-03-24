@@ -824,6 +824,46 @@ Full 33-pt LOFO & 33 & $0.959$ & $0.184$ \\
 The modern Hopfield energy has Lipschitz-continuous gradient with constant $L = 1 + \beta\sigma_{\max}^2/2$, where $\sigma_{\max} = \|\mathbf{X}\|_{\mathrm{op}}$, and satisfies the dissipativity condition $\langle \nabla E(\boldsymbol{\xi}), \boldsymbol{\xi} \rangle \geq \|\boldsymbol{\xi}\|^2/2 - M^2/2$ with $M = \max_k \|\mathbf{m}_k\|$. These regularity properties determine the convergence regime of the Langevin sampler. When $\beta\sigma_{\max}^2 < 2$, the energy is strictly convex and ULA iterates converge to $p_\beta$ in Wasserstein-2 distance at a geometric rate~\cite{dalalyanTheoreticalGuaranteesApproximate2017,durmusNonasymptoticAnalysisUnadjusted2017}. In the protein setting, operating temperatures satisfy $\beta\sigma_{\max}^2 \gg 2$, placing the sampler in a non-convex regime where the energy landscape has multiple metastable basins corresponding to stored patterns or clusters thereof. Despite this non-convexity, the multi-chain protocol with long burn-in and thinning yields well-mixed chains (Section~\ref{si:sampling-diagnostics}), and the initialization sensitivity analysis (Section~\ref{si:random-init}) confirms that the sampled distribution is independent of starting conditions.
 
 %% ═══════════════════════════════════════════════════════════════════════
+%% S20. Pfam Family Size Census
+%% ═══════════════════════════════════════════════════════════════════════
+\section{Pfam Family Size Census}\label{si:pfam-census}
+
+To verify the claims about Pfam family sizes made in the main text, we performed a census of all Pfam-A families using release 36.0, the final standalone Pfam release before its integration into InterPro~\cite{paysanlafosse2023interpro}. We downloaded both the seed alignment file (\texttt{Pfam-A.seed.gz}) and the full alignment file (\texttt{Pfam-A.full.gz}) from the European Bioinformatics Institute FTP archive and parsed each Stockholm-format entry to count the number of unique sequences per family. Seed alignments are small, manually curated sets of representative sequences that Pfam curators selected to capture the diversity of each family while maintaining alignment quality. These seed alignments serve as the input to HMMER, which builds a profile HMM and searches UniProtKB to produce the full alignment. The full alignment therefore contains every protein sequence that HMMER can confidently assign to the family, making it substantially larger but also noisier: it includes automatically identified homologs, sequence fragments, and partial matches that were not subject to manual curation. Because our method and most alignment-based generative approaches operate on curated seed alignments rather than raw database hits, the seed alignment sizes are the operationally relevant quantities.
+
+Table~\ref{tab:pfam-census} summarizes the resulting distributions across all 20{,}795 Pfam-A families. The median seed alignment contains only 22 sequences (interquartile range: 7--65), and 69.2\% of families have fewer than 50 seed sequences. Nearly half (47.5\%) have fewer than 20. The full alignments are considerably larger, with a median of 841 sequences (interquartile range: 127--2{,}973), reflecting the breadth of automated homology detection across UniProtKB. Nevertheless, even at the full-alignment level, 22.7\% of families have fewer than 100 sequences, and the distribution remains heavily right-skewed: a small number of ubiquitous superfamilies (protein kinases, immunoglobulins, zinc fingers) contain hundreds of thousands of members, while the long tail of specialized families remains data-poor. Figure~\ref{fig:pfam-census} shows the empirical cumulative distribution functions for both seed and full alignment sizes on a logarithmic scale.
+
+These distributions confirm that the majority of protein families fall well below the data requirements of current deep generative architectures, whether measured by curated seed alignments or by the broader full-alignment census, motivating training-free approaches such as stochastic attention.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.85\textwidth]{figs/pfam_family_size_distribution.pdf}
+\caption{Empirical cumulative distribution functions of family size for Pfam~36.0 seed alignments (blue) and full alignments (red). Dashed vertical lines mark medians. The majority of seed alignments contain fewer than 50 sequences.}
+\label{fig:pfam-census}
+\end{figure}
+
+\begin{table}[htbp]
+\centering
+\caption{Summary statistics for Pfam 36.0 family sizes. Values report the number of sequences per family across all Pfam-A entries.}
+\label{tab:pfam-census}
+\small
+\begin{tabular}{lrr}
+\toprule
+Statistic & Seed alignments & Full alignments \\
+\midrule
+Total families      & 20{,}795           & 20{,}652           \\
+Median              & 22                 & 841                \\
+Mean                & 59.5               & 5{,}075.9          \\
+25th percentile     & 7                  & 127                \\
+75th percentile     & 65                 & 2{,}973            \\
+\midrule
+Families $< 20$     & 9{,}888 (47.5\%)   & 2{,}028 (9.8\%)    \\
+Families $< 50$     & 14{,}386 (69.2\%)  & 3{,}438 (16.6\%)   \\
+Families $< 100$    & 17{,}523 (84.3\%)  & 4{,}684 (22.7\%)   \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%% ═══════════════════════════════════════════════════════════════════════
 %% References
 %% ═══════════════════════════════════════════════════════════════════════
 \bibliographystyle{unsrtnat}

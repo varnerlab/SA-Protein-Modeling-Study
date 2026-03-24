@@ -1,22 +1,28 @@
-# TODO: Confirm Pfam seed alignment size statistics
+# DONE: Pfam seed alignment size statistics verified
 
-## Claim to verify
-The main text (Introduction, line 43) currently states:
-> "the median Pfam seed alignment contains fewer than 50 sequences"
+## Results (Pfam 36.0, 20,795 families)
+- **Median seed alignment: 22 sequences** (IQR: 7--65)
+- 47.5% of families have fewer than 20 seed sequences
+- 69.2% have fewer than 50
+- 84.3% have fewer than 100
+- Mean: 59.5, Min: 1, Max: 3,769
 
-This cites Mistry et al. 2021, but that paper does not report seed alignment size distributions. We only have seed alignments for the 8 families used in the study (K = 37, 44, 45, 55, 68, 99, 151, 420), which is insufficient to verify a claim about all ~19,000+ Pfam families.
+## What was done
+1. Downloaded `Pfam-A.seed.gz` (151 MB) and `Pfam-A.full.gz` (19.2 GB) from Pfam 36.0 release
+2. Parsed all Stockholm entries to count unique sequences per family
+3. Updated all four text locations (abstract, significance, introduction, cover letter)
+4. Added SI Appendix Section S20 with figure and table documenting the census
+5. Added InterPro citation (Paysan-Lafosse et al. 2023)
 
-## What to do
-1. Download the full Pfam seed alignment file from the EBI FTP: `https://ftp.ebi.ac.uk/pub/databases/Pfam/current_release/Pfam-A.seed.gz` (~3GB compressed)
-2. Parse Stockholm headers (`#=GF SQ` lines) to extract the number of seed sequences per family
-3. Compute: median, fraction with <50, fraction with <100, fraction with <20
-4. Update the Introduction claim with the actual numbers
+## Scripts
+- `code/pfam-census/run_pfam_census.jl` -- download + parse + save CSV
+- `code/pfam-census/plot_pfam_census.jl` -- generate distribution figure
 
-## Current text to update
-```latex
-This creates a blind spot for small families: the median Pfam seed alignment contains fewer than 50 sequences~\cite{mistryPfamProteinFamilies2021}, and thousands of families have fewer than 20, well below the minimum viable training set for any deep generative architecture.
-```
+## Updated text locations
+- Abstract (main.tex line ~37): "the median Pfam seed alignment contains only 22 sequences"
+- Significance (main.tex line ~23): "a median of only 22 sequences in their Pfam seed alignments"
+- Introduction (main.tex line ~43): "the median Pfam seed alignment contains only 22 sequences, and nearly half of all families have fewer than 20"
+- Cover letter (cover-letter.tex line ~17): matching language
 
-## Also check
-- The abstract says "the median Pfam family has fewer than 100 members" — update to match whatever the seed alignment data shows
-- The significance statement says similar — check consistency across all three locations
+## Note
+The original claim ("fewer than 50 sequences") was correct but conservative. The actual median (22) makes a stronger case for the paper's motivation.
