@@ -1,4 +1,4 @@
-\begin{thebibliography}{6}
+\begin{thebibliography}{7}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -57,5 +57,20 @@ Alain Durmus and {\'E}ric Moulines.
 \newblock \emph{The Annals of Applied Probability}, 27\penalty0 (3):\penalty0
   1551--1587, 2017.
 \newblock \doi{10.1214/16-AAP1238}.
+
+\bibitem[Paysan-Lafosse et~al.(2023)Paysan-Lafosse, Blum, Chuguransky, Grego,
+  Pinto, Salazar, Bileschi, Bork, Bridge, Colwell, Gough, Haft, Letunić,
+  Marchler-Bauer, Mi, Natale, Orengo, Pandurangan, Rivoire, Sigrist, Sillitoe,
+  Thanki, Thomas, Tosatto, Wu, and Bateman]{paysanlafosse2023interpro}
+Typhaine Paysan-Lafosse, Matthias Blum, Sara Chuguransky, Tiago Grego,
+  Beatriz~Lázaro Pinto, Gustavo~A Salazar, Maxwell~L Bileschi, Peer Bork, Alan
+  Bridge, Lucy Colwell, Julian Gough, Daniel~H Haft, Ivica Letunić, Aron
+  Marchler-Bauer, Huaiyu Mi, Darren~A Natale, Christine~A Orengo, Arun~P
+  Pandurangan, Catherine Rivoire, Christian J~A Sigrist, Ian Sillitoe, Narmada
+  Thanki, Paul~D Thomas, Silvio C~E Tosatto, Cathy~H Wu, and Alex Bateman.
+\newblock {InterPro} in 2022.
+\newblock \emph{Nucleic Acids Research}, 51\penalty0 (D1):\penalty0 D418--D427,
+  2023.
+\newblock \doi{10.1093/nar/gkac993}.
 
 \end{thebibliography}

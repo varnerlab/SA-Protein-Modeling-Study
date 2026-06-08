@@ -84,10 +84,6 @@ Watson JL, et~al. (2023) De novo design of protein structure and function with
   {RFdiffusion}.
 \newblock {\em Nature} 620(7976):1089--1100.
 
-\bibitem{mistryPfamProteinFamilies2021}
-Mistry J, et~al. (2021) Pfam: The protein families database in 2021.
-\newblock {\em Nucleic Acids Research} 49(D1):D412--D419.
-
 \bibitem{ramsauerHopfieldNetworksAll2021}
 Ramsauer H, et~al. (2021) Hopfield networks is all you need in {\em
   International Conference on Learning Representations (ICLR)}.
@@ -137,6 +133,10 @@ Dalalyan AS (2017) Theoretical guarantees for approximate sampling from smooth
 Roberts GO, Tweedie RL (1996) Exponential convergence of {Langevin}
   distributions and their discrete approximations.
 \newblock {\em Bernoulli} 2(4):341--363.
+
+\bibitem{mistryPfamProteinFamilies2021}
+Mistry J, et~al. (2021) Pfam: The protein families database in 2021.
+\newblock {\em Nucleic Acids Research} 49(D1):D412--D419.
 
 \bibitem{mirdita2022colabfold}
 Mirdita M, et~al. (2022) {ColabFold}: Making protein folding accessible to all.
