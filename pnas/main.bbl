@@ -113,6 +113,17 @@ Faure AJ, et~al. (2022) Mapping the energetic and allosteric landscapes of
   protein binding domains.
 \newblock {\em Nature} 604:175--183.
 
+\bibitem{hopfieldNeuralNetworksPhysical1982}
+Hopfield JJ (1982) Neural networks and physical systems with emergent
+  collective computational abilities.
+\newblock {\em Proceedings of the National Academy of Sciences}
+  79(8):2554--2558.
+
+\bibitem{amitStoringInfiniteNumbers1985}
+Amit DJ, Gutfreund H, Sompolinsky H (1985) Storing infinite numbers of patterns
+  in a spin-glass model of neural networks.
+\newblock {\em Physical Review Letters} 55(14):1530--1533.
+
 \bibitem{varnerConditioningProtein2026}
 Varner JD (2026) Conditioning protein generation via {Hopfield} pattern
   multiplicity.

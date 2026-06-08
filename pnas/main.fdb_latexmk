@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex main"] 1780920554.18895 "main.aux" "main.bbl" "main" 1780922955.0292 0
+["bibtex main"] 1780923826.09703 "main.aux" "main.bbl" "main" 1780924131.27902 0
   "./pnas-new.bst" 1773761542.38307 17443 f4cae81468d1d89557fc8e3d071edc7b ""
   "./references.bib" 1774355112.37256 19467 7de91fca75c5bf48a792b89bd0264556 ""
-  "main.aux" 1780922954.71198 12276 a51dd1178c14bbff2f853b2d2b54d1a6 "pdflatex"
+  "main.aux" 1780924130.95915 12471 bfb9ddceacf5c8e1def40cdade9330f1 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1780922953.87779 "main.tex" "main.pdf" "main" 1780922955.02936 0
+["pdflatex"] 1780924130.10387 "main.tex" "main.pdf" "main" 1780924131.27916 0
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc" 1254269338 2375 baa924870cfb487815765f9094cf3728 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc" 1202520719 3486 c7eadf5dcc57b3b2d11736679f6636ba ""
@@ -297,10 +297,10 @@
   "figs/cross_family_composite.pdf" 1774000911.16624 19500 730cf38b295f0363d2f77930801eed07 ""
   "figs/structure_gallery.pdf" 1773500267.61739 1120562 1fde08a4d3bb018b04fb608405691fc4 ""
   "figs/structure_validation_composite.pdf" 1773690416.65244 51449 23bd2ab689a23e39a77c4adbbcbe767e ""
-  "main.aux" 1780922954.71198 12276 a51dd1178c14bbff2f853b2d2b54d1a6 "pdflatex"
-  "main.bbl" 1780920554.30634 5936 aa4d03c6d6bc87d7cbf52c042f8ac8ee "bibtex main"
-  "main.out" 1780922954.71318 165 18856929362deef56b226d9ec34423ee "pdflatex"
-  "main.tex" 1780922943.38751 54524 3d751ae4e97aac28f5fce81821b0270c ""
+  "main.aux" 1780924130.95915 12471 bfb9ddceacf5c8e1def40cdade9330f1 "pdflatex"
+  "main.bbl" 1780923826.18677 6399 f0e3525afccfef3d1dec9c91aa6a6e5f "bibtex main"
+  "main.out" 1780924130.96063 165 18856929362deef56b226d9ec34423ee "pdflatex"
+  "main.tex" 1780924121.86252 53908 58bfadd3715224913808614883ed78c5 ""
   "pnas-new.bst" 1773761542.38307 17443 f4cae81468d1d89557fc8e3d071edc7b ""
   "pnas-new.cls" 1773761542.38333 14749 8fab5a4a144c59b0d43b75f5eeb36df2 ""
   "pnasresearcharticle.sty" 1773761542.3837 1293 99b2c23e22c84fc5c3010048b0c4aefe ""

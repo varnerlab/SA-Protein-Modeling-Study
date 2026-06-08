@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  8 JUN 2026 08:49
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  8 JUN 2026 09:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1428,7 +1428,7 @@ Underfull \vbox (badness 2790) has occurred while \output is active []
 
 
 [3]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 6608) has occurred while \output is active []
 
 
 
@@ -1446,13 +1446,13 @@ Underfull \vbox (badness 6608) has occurred while \output is active []
 
 [7]
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 9.49997pt on input line 151.
+(Font)              scaled to size 9.49997pt on input line 149.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 9.49997pt on input line 151.
+(Font)              scaled to size 9.49997pt on input line 149.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 151.
+(Font)              <10> on input line 149.
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 151.
+put line 149.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -1460,6 +1460,9 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 [8]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
 
 [9] (./main.bbl
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <6> not available
@@ -1470,42 +1473,42 @@ LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
 
 [10]
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 7.12497pt on input line 169.
-LaTeX Font Info:    Calculating math sizes for size <7.5> on input line 169.
+(Font)              scaled to size 7.12497pt on input line 167.
+LaTeX Font Info:    Calculating math sizes for size <7.5> on input line 167.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7.5> on input line 169.
+(Font)              <7.5> on input line 167.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5.24997> on input line 169.
+(Font)              <5.24997> on input line 167.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <3.75> on input line 169.
-<figs/cross_family_composite.pdf, id=176, 702.625pt x 903.375pt>
+(Font)              <3.75> on input line 167.
+<figs/cross_family_composite.pdf, id=180, 702.625pt x 903.375pt>
 File: figs/cross_family_composite.pdf Graphic file (type pdf)
 <use figs/cross_family_composite.pdf>
 Package pdftex.def Info: figs/cross_family_composite.pdf  used on input line 18
-7.
+5.
 (pdftex.def)             Requested size: 455.12128pt x 585.17429pt.
-<figs/beta_prediction_composite.pdf, id=177, 1104.125pt x 381.425pt>
+<figs/beta_prediction_composite.pdf, id=181, 1104.125pt x 381.425pt>
 File: figs/beta_prediction_composite.pdf Graphic file (type pdf)
 <use figs/beta_prediction_composite.pdf>
 Package pdftex.def Info: figs/beta_prediction_composite.pdf  used on input line
- 194.
+ 192.
 (pdftex.def)             Requested size: 505.69374pt x 174.69519pt.
-<figs/baseline_comparison_composite.pdf, id=178, 803.0pt x 1053.9375pt>
+<figs/baseline_comparison_composite.pdf, id=182, 803.0pt x 1053.9375pt>
 File: figs/baseline_comparison_composite.pdf Graphic file (type pdf)
 <use figs/baseline_comparison_composite.pdf>
 Package pdftex.def Info: figs/baseline_comparison_composite.pdf  used on input 
-line 201.
+line 199.
 (pdftex.def)             Requested size: 429.84276pt x 564.18068pt.
-<figs/structure_validation_composite.pdf, id=179, 1104.125pt x 421.575pt>
+<figs/structure_validation_composite.pdf, id=183, 1104.125pt x 421.575pt>
 File: figs/structure_validation_composite.pdf Graphic file (type pdf)
 <use figs/structure_validation_composite.pdf>
 Package pdftex.def Info: figs/structure_validation_composite.pdf  used on input
- line 208.
+ line 206.
 (pdftex.def)             Requested size: 455.12128pt x 173.77316pt.
-<figs/structure_gallery.pdf, id=180, 902.50775pt x 524.37857pt>
+<figs/structure_gallery.pdf, id=184, 902.50775pt x 524.37857pt>
 File: figs/structure_gallery.pdf Graphic file (type pdf)
 <use figs/structure_gallery.pdf>
-Package pdftex.def Info: figs/structure_gallery.pdf  used on input line 215.
+Package pdftex.def Info: figs/structure_gallery.pdf  used on input line 213.
 (pdftex.def)             Requested size: 455.12128pt x 264.43703pt.
 
 
@@ -1529,10 +1532,10 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 18856929362DEEF56B226D9EC34423EE;165.
  ) 
 Here is how much of TeX's memory you used:
- 31405 strings out of 473190
- 578657 string characters out of 5715801
- 1016350 words of memory out of 5000000
- 53439 multiletter control sequences out of 15000+600000
+ 31413 strings out of 473190
+ 578973 string characters out of 5715801
+ 1016382 words of memory out of 5000000
+ 53445 multiletter control sequences out of 15000+600000
  753190 words of font info for 448 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  117i,14n,121p,2514b,1127s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1559,10 +1562,10 @@ mbols/msbm10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/helvetic/u
 hvb8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.
 pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></u
 sr/local/texlive/2025/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on main.pdf (15 pages, 1683763 bytes).
+Output written on main.pdf (15 pages, 1683093 bytes).
 PDF statistics:
- 494 PDF objects out of 1000 (max. 8388607)
- 303 compressed objects within 4 object streams
- 56 named destinations out of 1000 (max. 500000)
+ 498 PDF objects out of 1000 (max. 8388607)
+ 307 compressed objects within 4 object streams
+ 58 named destinations out of 1000 (max. 500000)
  135214 words of extra memory for PDF output out of 154059 (max. 10000000)
 
