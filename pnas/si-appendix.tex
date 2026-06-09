@@ -121,6 +121,60 @@ Family & Method & KL$_{\mathrm{AA}}$ $(\downarrow)$ & Novelty $(\uparrow)$ & Seq
 \end{tabular}
 \end{table}
 
+Table~\ref{tab:baseline-metrics} reports the per-family generation metrics for the three learned baselines, profile HMM emit, EvoDiff, and the MSA Transformer, that stochastic attention is compared against in the main-text head-to-head analysis. For each family and method, the amino acid composition KL divergence, the PCA-space cosine novelty, and the nearest sequence identity to a stored pattern were computed under the same 150-sequence budget and evaluation pipeline applied to SA generation, and are reported as the mean and standard error over 30 sub-blocks of the generated set, following the convention of Table~\ref{tab:potts}. The learned baselines attained low KL divergence in most families, but their nearest sequence identities fell well below the natural within-family range of 30--70\% in several families, with profile HMM emit reaching $11\%$ and the MSA Transformer $9\%$ in Pkinase, indicating compositional drift away from the stored patterns rather than family-consistent generation. EvoDiff degraded sharply in compositional fidelity on the longest family (Pkinase, KL${=}0.173$, more than an order of magnitude above its values in the other seven families), consistent with its diffusion process scaling poorly with sequence length. Together with the SA generation metrics in Table~\ref{tab:results} and the Potts comparison in Table~\ref{tab:potts}, these values constitute the complete per-family record underlying the baseline comparison.
+
+\begin{table}[ht]
+\centering
+\caption{Generation metrics for the three learned baselines (profile HMM emit, EvoDiff, and the MSA Transformer) across all eight Pfam families, computed identically to the SA generation analysis (150 sequences per family). KL: amino acid composition KL divergence ($\downarrow$ lower is better). Novelty: PCA-space cosine novelty ($\uparrow$ higher is better). SeqID: nearest sequence identity to a stored pattern. Values are mean $\pm$ SE over 30 sub-blocks of the generated set. These are the per-family values shown in the main-text baseline comparison.}
+\label{tab:baseline-metrics}
+\small
+\begin{tabular}{@{}llccc@{}}
+\toprule
+Family & Method & KL$_{\mathrm{AA}}$ $(\downarrow)$ & Novelty $(\uparrow)$ & SeqID \\
+\midrule
+\multirow{3}{*}{RRM}
+ & HMM emit        & $0.009 \pm 0.005$ & $0.647 \pm 0.005$ & $0.209 \pm 0.005$ \\
+ & EvoDiff         & $0.005 \pm 0.006$ & $0.593 \pm 0.008$ & $0.386 \pm 0.005$ \\
+ & MSA Transformer & $0.022 \pm 0.003$ & $0.572 \pm 0.008$ & $0.266 \pm 0.007$ \\
+\midrule
+\multirow{3}{*}{SH3}
+ & HMM emit        & $0.009 \pm 0.017$ & $0.614 \pm 0.004$ & $0.290 \pm 0.006$ \\
+ & EvoDiff         & $0.003 \pm 0.021$ & $0.434 \pm 0.016$ & $0.509 \pm 0.011$ \\
+ & MSA Transformer & $0.011 \pm 0.016$ & $0.544 \pm 0.011$ & $0.418 \pm 0.008$ \\
+\midrule
+\multirow{3}{*}{WW}
+ & HMM emit        & $0.007 \pm 0.020$ & $0.706 \pm 0.003$ & $0.389 \pm 0.009$ \\
+ & EvoDiff         & $0.009 \pm 0.011$ & $0.642 \pm 0.006$ & $0.509 \pm 0.004$ \\
+ & MSA Transformer & $0.043 \pm 0.011$ & $0.670 \pm 0.006$ & $0.417 \pm 0.008$ \\
+\midrule
+\multirow{3}{*}{Kunitz}
+ & HMM emit        & $0.030 \pm 0.011$ & $0.665 \pm 0.004$ & $0.229 \pm 0.006$ \\
+ & EvoDiff         & $0.011 \pm 0.012$ & $0.621 \pm 0.008$ & $0.434 \pm 0.007$ \\
+ & MSA Transformer & $0.024 \pm 0.018$ & $0.598 \pm 0.009$ & $0.338 \pm 0.013$ \\
+\midrule
+\multirow{3}{*}{zf-C2H2}
+ & HMM emit        & $0.006 \pm 0.038$ & $0.670 \pm 0.004$ & $0.415 \pm 0.008$ \\
+ & EvoDiff         & $0.003 \pm 0.053$ & $0.646 \pm 0.007$ & $0.469 \pm 0.005$ \\
+ & MSA Transformer & $0.014 \pm 0.044$ & $0.619 \pm 0.007$ & $0.477 \pm 0.007$ \\
+\midrule
+\multirow{3}{*}{PDZ}
+ & HMM emit        & $0.012 \pm 0.005$ & $0.591 \pm 0.004$ & $0.143 \pm 0.004$ \\
+ & EvoDiff         & $0.005 \pm 0.007$ & $0.344 \pm 0.020$ & $0.436 \pm 0.016$ \\
+ & MSA Transformer & $0.032 \pm 0.004$ & $0.367 \pm 0.016$ & $0.298 \pm 0.015$ \\
+\midrule
+\multirow{3}{*}{Pkinase}
+ & HMM emit        & $0.019 \pm 0.001$ & $0.561 \pm 0.006$ & $0.112 \pm 0.002$ \\
+ & EvoDiff         & $0.173 \pm 0.025$ & $0.554 \pm 0.008$ & $0.147 \pm 0.005$ \\
+ & MSA Transformer & $0.052 \pm 0.004$ & $0.535 \pm 0.006$ & $0.092 \pm 0.002$ \\
+\midrule
+\multirow{3}{*}{Defensin\_beta}
+ & HMM emit        & $0.031 \pm 0.012$ & $0.574 \pm 0.007$ & $0.362 \pm 0.007$ \\
+ & EvoDiff         & $0.009 \pm 0.035$ & $0.389 \pm 0.012$ & $0.570 \pm 0.009$ \\
+ & MSA Transformer & $0.038 \pm 0.052$ & $0.316 \pm 0.017$ & $0.590 \pm 0.015$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
 %% ═══════════════════════════════════════════════════════════════════════
 %% S3. Scaling Study and Multi-Family Generalization
 %% ═══════════════════════════════════════════════════════════════════════
