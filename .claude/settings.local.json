@@ -100,7 +100,8 @@
       "WebFetch(domain:ftp.ebi.ac.uk)",
       "Bash(curl -sL \"https://www.ebi.ac.uk/interpro/api/entry/pfam?page_size=20&format=json\")",
       "Bash(curl -sL \"https://www.ebi.ac.uk/interpro/api/entry/pfam/PF00018?format=json\")",
-      "Bash(curl -sI \"https://ftp.ebi.ac.uk/pub/databases/Pfam/current_release/database_files/pfamA.txt.gz\")"
+      "Bash(curl -sI \"https://ftp.ebi.ac.uk/pub/databases/Pfam/current_release/database_files/pfamA.txt.gz\")",
+      "Skill(style-check)"
     ]
   }
 }

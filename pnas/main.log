@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  8 JUN 2026 09:08
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  8 JUN 2026 09:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1481,31 +1481,31 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <5.24997> on input line 167.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <3.75> on input line 167.
-<figs/cross_family_composite.pdf, id=180, 702.625pt x 903.375pt>
+<figs/cross_family_composite.pdf, id=181, 702.625pt x 903.375pt>
 File: figs/cross_family_composite.pdf Graphic file (type pdf)
 <use figs/cross_family_composite.pdf>
 Package pdftex.def Info: figs/cross_family_composite.pdf  used on input line 18
 5.
 (pdftex.def)             Requested size: 455.12128pt x 585.17429pt.
-<figs/beta_prediction_composite.pdf, id=181, 1104.125pt x 381.425pt>
+<figs/beta_prediction_composite.pdf, id=182, 1104.125pt x 381.425pt>
 File: figs/beta_prediction_composite.pdf Graphic file (type pdf)
 <use figs/beta_prediction_composite.pdf>
 Package pdftex.def Info: figs/beta_prediction_composite.pdf  used on input line
  192.
 (pdftex.def)             Requested size: 505.69374pt x 174.69519pt.
-<figs/baseline_comparison_composite.pdf, id=182, 803.0pt x 1053.9375pt>
+<figs/baseline_comparison_composite.pdf, id=183, 803.0pt x 1053.9375pt>
 File: figs/baseline_comparison_composite.pdf Graphic file (type pdf)
 <use figs/baseline_comparison_composite.pdf>
 Package pdftex.def Info: figs/baseline_comparison_composite.pdf  used on input 
 line 199.
 (pdftex.def)             Requested size: 429.84276pt x 564.18068pt.
-<figs/structure_validation_composite.pdf, id=183, 1104.125pt x 421.575pt>
+<figs/structure_validation_composite.pdf, id=184, 1104.125pt x 421.575pt>
 File: figs/structure_validation_composite.pdf Graphic file (type pdf)
 <use figs/structure_validation_composite.pdf>
 Package pdftex.def Info: figs/structure_validation_composite.pdf  used on input
  line 206.
 (pdftex.def)             Requested size: 455.12128pt x 173.77316pt.
-<figs/structure_gallery.pdf, id=184, 902.50775pt x 524.37857pt>
+<figs/structure_gallery.pdf, id=185, 902.50775pt x 524.37857pt>
 File: figs/structure_gallery.pdf Graphic file (type pdf)
 <use figs/structure_gallery.pdf>
 Package pdftex.def Info: figs/structure_gallery.pdf  used on input line 213.
@@ -1562,10 +1562,10 @@ mbols/msbm10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/helvetic/u
 hvb8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.
 pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></u
 sr/local/texlive/2025/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on main.pdf (15 pages, 1683093 bytes).
+Output written on main.pdf (15 pages, 1683221 bytes).
 PDF statistics:
- 498 PDF objects out of 1000 (max. 8388607)
- 307 compressed objects within 4 object streams
+ 499 PDF objects out of 1000 (max. 8388607)
+ 308 compressed objects within 4 object streams
  58 named destinations out of 1000 (max. 500000)
  135214 words of extra memory for PDF output out of 154059 (max. 10000000)
 
