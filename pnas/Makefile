@@ -26,7 +26,12 @@ all: main.pdf si-appendix.pdf
 main: main.pdf
 si:   si-appendix.pdf
 
-main.pdf: main.tex $(BIB) $(CLASS)
+# main.tex imports si-appendix.aux via xr-hyper (\externaldocument), so the SI
+# is compiled first in this recipe; its .aux then supplies the S-numbers that
+# main.tex references. latexmk is a no-op when the SI is already current, and
+# rebuilds it when needed (e.g. after make clean removes its database).
+main.pdf: main.tex $(BIB) $(CLASS) si-appendix.tex
+	$(LATEXMK) si-appendix.tex
 	$(LATEXMK) main.tex
 
 si-appendix.pdf: si-appendix.tex $(BIB)
