@@ -4,6 +4,8 @@ INPUT /usr/local/texlive/2025/texmf-dist/web2c/texmf.cnf
 INPUT /usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt
 INPUT main.tex
 OUTPUT main.log
+INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/hyperref/xr-hyper.sty
+INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/hyperref/xr-hyper.sty
 INPUT ./pnas-new.cls
 INPUT pnas-new.cls
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/extsizes/extarticle.cls
@@ -337,6 +339,9 @@ INPUT ./pnasresearcharticle.sty
 INPUT pnasresearcharticle.sty
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/multirow/multirow.sty
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/multirow/multirow.sty
+INPUT ./si-appendix.tex
+INPUT ./si-appendix.tex
+INPUT si-appendix.aux
 INPUT ./main.aux
 INPUT ./main.aux
 INPUT main.aux
