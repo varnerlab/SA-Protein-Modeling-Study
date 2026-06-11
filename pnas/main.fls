@@ -561,11 +561,11 @@ INPUT ./figs/structure_validation_composite.pdf
 INPUT ./figs/structure_validation_composite.pdf
 INPUT ./figs/structure_validation_composite.pdf
 INPUT ./figs/structure_validation_composite.pdf
-INPUT ./figs/structure_gallery.pdf
-INPUT ./figs/structure_gallery.pdf
-INPUT ./figs/structure_gallery.pdf
-INPUT ./figs/structure_gallery.pdf
-INPUT ./figs/structure_gallery.pdf
+INPUT ./figs/structure_gallery_v2.pdf
+INPUT ./figs/structure_gallery_v2.pdf
+INPUT ./figs/structure_gallery_v2.pdf
+INPUT ./figs/structure_gallery_v2.pdf
+INPUT ./figs/structure_gallery_v2.pdf
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/adobe/helvetic/phvr8t.vf
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/helvetic/phvr8r.tfm
 INPUT main.aux
