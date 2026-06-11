@@ -30,7 +30,7 @@ const FAMILIES = [
 ]
 
 # SA parameters (identical to main experiment)
-const α_step        = 0.01
+const α_mix        = 0.01
 const n_chains      = 30
 const T_per_chain   = 5000
 const T_burnin      = 2000
@@ -48,7 +48,7 @@ function run_sa_chains_timed(X̂::Matrix{Float64}, β::Float64;
                              n_ch::Int=n_chains, T::Int=T_per_chain,
                              T_burn::Int=T_burnin, thin::Int=thin_interval,
                              spc::Int=samples_per_chain, σ0::Float64=σ_init,
-                             α::Float64=α_step, base_seed::Int=12345)
+                             α::Float64=α_mix, base_seed::Int=12345)
     d, K = size(X̂)
     all_samples = Vector{Vector{Float64}}()
 
@@ -99,7 +99,7 @@ function run_timing_benchmark()
         # ── SA timing (includes PCA + phase transition + sampling + decoding) ──
         t_sa = @elapsed begin
             X̂, pca_model, L_out, d_full = build_memory_matrix(char_mat; pratio=R_pca)
-            pt = find_entropy_inflection(X̂; α=α_step)
+            pt = find_entropy_inflection(X̂; α=α_mix)
             β_gen = Float64(max(round(Int, 2 * pt.β_star), 5))
 
             Random.seed!(42)

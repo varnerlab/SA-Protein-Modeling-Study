@@ -37,7 +37,7 @@ const FAMILIES = [
 # Experiment parameters
 # ══════════════════════════════════════════════════════════════════════════════
 
-const α_step        = 0.01       # Langevin step size
+const α_mix        = 0.01       # mixing coefficient
 const n_chains      = 30         # number of independent chains
 const T_per_chain   = 5000       # iterations per chain
 const T_burnin      = 2000       # burn-in iterations to discard
@@ -62,7 +62,7 @@ function run_sa_chains(X̂::Matrix{Float64}, β::Float64;
                        n_chains::Int=n_chains, T::Int=T_per_chain,
                        T_burn::Int=T_burnin, thin::Int=thin_interval,
                        spc::Int=samples_per_chain, σ_init::Float64=σ_init,
-                       α::Float64=α_step)
+                       α::Float64=α_mix)
     d, K = size(X̂)
     all_samples = Vector{Vector{Float64}}()
 
@@ -102,7 +102,7 @@ function run_mala_chains(X̂::Matrix{Float64}, β::Float64;
                          n_chains::Int=n_chains, T::Int=T_per_chain,
                          T_burn::Int=T_burnin, thin::Int=thin_interval,
                          spc::Int=samples_per_chain, σ_init::Float64=σ_init,
-                         α::Float64=α_step)
+                         α::Float64=α_mix)
     d, K = size(X̂)
     all_samples = Vector{Vector{Float64}}()
     accept_rates = Float64[]
@@ -144,7 +144,7 @@ Run bootstrap, Gaussian perturbation, and random convex combination baselines.
 """
 function run_simple_baselines(X̂::Matrix{Float64}, β::Float64, S::Int)
     d, K = size(X̂)
-    σ_noise = sqrt(2 * α_step / β)
+    σ_noise = sqrt(2 * α_mix / β)
 
     # Bootstrap (replay)
     rng_bs = make_experiment_rng(12345)
@@ -261,7 +261,7 @@ function run_pfam_experiment()
 
         # -- Step 5: Phase transition --
         @info "Step 5: Phase transition analysis …"
-        pt = find_entropy_inflection(X̂; α=α_step)
+        pt = find_entropy_inflection(X̂; α=α_mix)
         β_ret = round(Int, max(20 * pt.β_star, 50))   # retrieval regime
         β_gen = round(Int, max(2 * pt.β_star, 5))     # generation regime
         @info "  β* = $(round(pt.β_star, digits=2)), β_ret = $β_ret, β_gen = $β_gen"

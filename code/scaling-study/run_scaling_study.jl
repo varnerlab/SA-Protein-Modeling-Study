@@ -24,7 +24,7 @@ const K_VALUES  = [20, 50, 100, 200, 400]
 const N_REPEATS = 5            # independent subsamples per K for error bars
 
 # SA parameters
-const α_step        = 0.01
+const α_mix        = 0.01
 const n_chains      = 30
 const T_per_chain   = 5000
 const T_burnin      = 2000
@@ -42,7 +42,7 @@ function run_sa_chains(X̂::Matrix{Float64}, β::Float64;
                        n_ch::Int=n_chains, T::Int=T_per_chain,
                        T_burn::Int=T_burnin, thin::Int=thin_interval,
                        spc::Int=samples_per_chain, σ0::Float64=σ_init,
-                       α::Float64=α_step, base_seed::Int=12345)
+                       α::Float64=α_mix, base_seed::Int=12345)
     d, K = size(X̂)
     all_samples = Vector{Vector{Float64}}()
 
@@ -74,7 +74,7 @@ end
 
 function run_baselines(X̂::Matrix{Float64}, β::Float64, S::Int; seed::Int=12345)
     d, K = size(X̂)
-    σ_noise = sqrt(2 * α_step / β)
+    σ_noise = sqrt(2 * α_mix / β)
 
     rng_bs = make_experiment_rng(seed)
     bs = [copy(X̂[:, rand(rng_bs, 1:K)]) for _ in 1:S]
@@ -140,7 +140,7 @@ function run_scaling_study()
             d = size(X̂, 1)
 
             # phase transition → select β
-            pt = find_entropy_inflection(X̂; α=α_step)
+            pt = find_entropy_inflection(X̂; α=α_mix)
             β_ret = Float64(max(round(Int, 20 * pt.β_star), 50))
             β_gen = Float64(max(round(Int, 2 * pt.β_star), 5))
 

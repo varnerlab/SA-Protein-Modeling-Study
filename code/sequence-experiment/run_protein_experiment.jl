@@ -419,7 +419,7 @@ end
 # -- Experiment parameters (mirrors MNIST protocol) --
 const PFAM_ID = "PF00076"  # RRM (RNA Recognition Motif)
 const K_MAX = 100           # max number of sequences to use
-const α_step = 0.01
+const α_mix = 0.01
 const S = 150               # total samples to generate
 const n_chains = 30
 const T_per_chain = 5000
@@ -491,7 +491,7 @@ function run_protein_experiment(; pfam_id=PFAM_ID, figpath=_PATH_TO_FIG)
 
     # ── Step 6: Phase transition analysis ─────────────────────────────────────
     @info "Step 6: Phase transition analysis …"
-    pt = find_entropy_inflection(X̂; α=α_step)
+    pt = find_entropy_inflection(X̂; α=α_mix)
     β_retrieval = round(Int, 20 * pt.β_star)  # ~20× the transition for structured retrieval
     β_generation = round(Int, 2 * pt.β_star)  # ~2× the transition for generation
     @info "  Selected β_retrieval = $β_retrieval,  β_generation = $β_generation"
@@ -516,7 +516,7 @@ function run_protein_experiment(; pfam_id=PFAM_ID, figpath=_PATH_TO_FIG)
     for (c, k) in enumerate(pattern_indices)
         Random.seed!(12345 + c)
         sₒ = X̂[:, k] .+ σ_init .* randn(d)
-        (_, Ξ) = sample(X̂, sₒ, T_per_chain; β=β_inv_temp, α=α_step, seed=12345+c)
+        (_, Ξ) = sample(X̂, sₒ, T_per_chain; β=β_inv_temp, α=α_mix, seed=12345+c)
         chain_pool = Vector{Vector{Float64}}()
         for tᵢ in (T_burnin+1):thin_interval:T_per_chain
             push!(chain_pool, Ξ[tᵢ, :])
@@ -538,7 +538,7 @@ function run_protein_experiment(; pfam_id=PFAM_ID, figpath=_PATH_TO_FIG)
     for (c, k) in enumerate(pattern_indices_gen)
         Random.seed!(12345 + c)
         sₒ = X̂[:, k] .+ σ_init .* randn(d)
-        (_, Ξ) = sample(X̂, sₒ, T_per_chain; β=β_gen_temp, α=α_step, seed=12345+c)
+        (_, Ξ) = sample(X̂, sₒ, T_per_chain; β=β_gen_temp, α=α_mix, seed=12345+c)
         chain_pool = Vector{Vector{Float64}}()
         for tᵢ in (T_burnin+1):thin_interval:T_per_chain
             push!(chain_pool, Ξ[tᵢ, :])
@@ -560,7 +560,7 @@ function run_protein_experiment(; pfam_id=PFAM_ID, figpath=_PATH_TO_FIG)
     for (c, k) in enumerate(pattern_indices)
         Random.seed!(12345 + c)
         sₒ = X̂[:, k] .+ σ_init .* randn(d)
-        (_, Ξ, ar) = mala_sample(X̂, sₒ, T_per_chain; β=β_inv_temp, α=α_step, seed=12345+c)
+        (_, Ξ, ar) = mala_sample(X̂, sₒ, T_per_chain; β=β_inv_temp, α=α_mix, seed=12345+c)
         push!(mala_accept_rates, ar)
         chain_pool = Vector{Vector{Float64}}()
         for tᵢ in (T_burnin+1):thin_interval:T_per_chain
@@ -588,7 +588,7 @@ function run_protein_experiment(; pfam_id=PFAM_ID, figpath=_PATH_TO_FIG)
 
     # Gaussian perturbation
     gp_samples = Vector{Vector{Float64}}()
-    σ_noise = sqrt(2 * α_step / β_inv_temp)
+    σ_noise = sqrt(2 * α_mix / β_inv_temp)
     Random.seed!(12345)
     for _ in 1:S
         k = rand(1:K)
@@ -754,8 +754,8 @@ function run_protein_experiment(; pfam_id=PFAM_ID, figpath=_PATH_TO_FIG)
     println("\n══════════════════════════════════════════════════════")
     println("PROTEIN EXPERIMENT RESULTS — $pfam_id")
     println("Memory: K=$K sequences, L=$L positions, d_PCA=$d")
-    println("β_retrieval=$β_retrieval (SNR=$(round(sqrt(α_step*β_inv_temp/(2*d)), digits=4)))")
-    println("β_generation=$β_generation (SNR=$(round(sqrt(α_step*β_gen_temp/(2*d)), digits=4)))")
+    println("β_retrieval=$β_retrieval (SNR=$(round(sqrt(α_mix*β_inv_temp/(2*d)), digits=4)))")
+    println("β_generation=$β_generation (SNR=$(round(sqrt(α_mix*β_gen_temp/(2*d)), digits=4)))")
     println("β* (entropy inflection) = $(round(pt.β_star, digits=2))")
     println("MALA acceptance rate: $mala_mean_ar")
     println("══════════════════════════════════════════════════════")

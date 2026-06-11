@@ -33,7 +33,7 @@ const samples_per_chain = 5
 const S_total = n_chains * samples_per_chain  # 150
 const n_bootstrap = 1000
 const R_pca = 0.95
-const α_step = 0.01
+const α_mix = 0.01
 
 # load family summary for β values
 const fam_summary = CSV.read(joinpath(PFAM_DATA_DIR, "pfam_family_summary.csv"), DataFrame)
@@ -183,7 +183,7 @@ for fam in FAMILIES
     # --- Gaussian perturbation: stored pattern + matched noise ---
     fam_row = filter(r -> r.PfamID == fam.id, fam_summary)
     β_ret = Float64(fam_row.β_retrieval[1])
-    σ_noise = sqrt(2 * α_step / β_ret)
+    σ_noise = sqrt(2 * α_mix / β_ret)
     Random.seed!(12345)
     gp_pca = [X̂[:, rand(1:K)] .+ σ_noise .* randn(d) for _ in 1:S_total]
     evaluate_pca_samples(gp_pca, "GP")

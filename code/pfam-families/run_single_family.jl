@@ -32,7 +32,7 @@ isnothing(fam) && error("Family $TARGET_ID not found")
 fam = ALL_FAMILIES[fam]
 
 # Parameters (same as main experiment)
-const α_step        = 0.01
+const α_mix        = 0.01
 const n_chains      = 30
 const T_per_chain   = 5000
 const T_burnin      = 2000
@@ -54,7 +54,7 @@ function run_sa_chains_local(X̂::Matrix{Float64}, β::Float64)
         seed_c = 12345 + c
         rng_c = make_experiment_rng(seed_c)
         ξ₀ = X̂[:, k] .+ σ_init .* randn(rng_c, d)
-        (_, Ξ) = sample(X̂, ξ₀, T_per_chain; β=β, α=α_step, seed=seed_c)
+        (_, Ξ) = sample(X̂, ξ₀, T_per_chain; β=β, α=α_mix, seed=seed_c)
         chain_pool = Vector{Vector{Float64}}()
         for tᵢ in (T_burnin+1):thin_interval:T_per_chain
             push!(chain_pool, Ξ[tᵢ, :])
@@ -79,7 +79,7 @@ function run_mala_chains_local(X̂::Matrix{Float64}, β::Float64)
         seed_c = 12345 + c
         rng_c = make_experiment_rng(seed_c)
         ξ₀ = X̂[:, k] .+ σ_init .* randn(rng_c, d)
-        (_, Ξ, ar) = mala_sample(X̂, ξ₀, T_per_chain; β=β, α=α_step, seed=seed_c)
+        (_, Ξ, ar) = mala_sample(X̂, ξ₀, T_per_chain; β=β, α=α_mix, seed=seed_c)
         push!(accept_rates, ar)
         chain_pool = Vector{Vector{Float64}}()
         for tᵢ in (T_burnin+1):thin_interval:T_per_chain
@@ -97,7 +97,7 @@ end
 
 function run_simple_baselines_local(X̂::Matrix{Float64}, β::Float64, S::Int)
     d, K = size(X̂)
-    σ_noise = sqrt(2 * α_step / β)
+    σ_noise = sqrt(2 * α_mix / β)
     rng_bs = make_experiment_rng(12345)
     bs = [copy(X̂[:, rand(rng_bs, 1:K)]) for _ in 1:S]
     rng_gp = make_experiment_rng(12345)
@@ -165,7 +165,7 @@ eigvals_C = sort(eigvals(C_mat), rev=true)
 
 # Step 5: Phase transition
 @info "Step 5: Phase transition analysis …"
-pt = find_entropy_inflection(X̂; α=α_step)
+pt = find_entropy_inflection(X̂; α=α_mix)
 β_ret = round(Int, max(20 * pt.β_star, 50))
 β_gen = round(Int, max(2 * pt.β_star, 5))
 @info "  β* = $(round(pt.β_star, digits=2)), β_ret = $β_ret, β_gen = $β_gen"

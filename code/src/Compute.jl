@@ -32,7 +32,7 @@ At each step the algorithm performs three operations:
 - `β::Float64=1.0`: Inverse temperature. Controls the sharpness of the Boltzmann 
   distribution: large `β` concentrates mass on energy minima (retrieval), small `β` 
   flattens the distribution (diffuse generation).
-- `α::Float64=0.1`: Step size (learning rate) in `(0, 1)`. Smaller values reduce 
+- `α::Float64=0.1`: Mixing coefficient in `(0, 1)`; the corresponding ULA step size is `α/β`. Smaller values reduce
   ULA discretization bias at the cost of slower mixing.
 - `seed::Union{Int, Nothing}=nothing`: Optional random seed for the noise sequence. 
   If `nothing`, the global RNG state is used unchanged.
@@ -153,7 +153,7 @@ If rejected, the chain stays at ``\\boldsymbol{\\xi}_t``.
 
 # Keyword Arguments
 - `β::Float64=1.0`: Inverse temperature.
-- `α::Float64=0.1`: Step size (learning rate) in `(0, 1)`.
+- `α::Float64=0.1`: Mixing coefficient in `(0, 1)`; the corresponding ULA step size is `α/β`.
 - `seed::Union{Int, Nothing}=nothing`: Optional random seed.
 
 # Returns

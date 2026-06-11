@@ -489,7 +489,7 @@ end
 
 const PFAM_ID = "PF00076"
 const K_MAX = 100
-const α_step = 0.01
+const α_mix = 0.01
 const S = 150
 const n_chains = 30
 const T_per_chain = 5000
@@ -543,7 +543,7 @@ function main()
 
     # ── Step 3: Phase transition ───────────────────────────────────────────────
     @info "Step 3: Phase transition analysis …"
-    pt = find_entropy_inflection(X̂; α=α_step)
+    pt = find_entropy_inflection(X̂; α=α_mix)
     β_ret = Float64(round(Int, 20 * pt.β_star))
     β_gen = Float64(round(Int, 2 * pt.β_star))
     @info "  β_ret=$β_ret, β_gen=$β_gen"
@@ -560,10 +560,10 @@ function main()
             d_loc = size(X̂, 1)
             sₒ = X̂[:, k] .+ σ_init .* randn(d_loc)
             if use_mala
-                (_, Ξ, ar) = mala_sample(X̂, sₒ, T_per_chain; β=β, α=α_step, seed=12345+c)
+                (_, Ξ, ar) = mala_sample(X̂, sₒ, T_per_chain; β=β, α=α_mix, seed=12345+c)
                 push!(accept_rates, ar)
             else
-                (_, Ξ) = sample(X̂, sₒ, T_per_chain; β=β, α=α_step, seed=12345+c)
+                (_, Ξ) = sample(X̂, sₒ, T_per_chain; β=β, α=α_mix, seed=12345+c)
             end
             chain_pool = Vector{Vector{Float64}}()
             for tᵢ in (T_burnin+1):thin_interval:T_per_chain
@@ -596,7 +596,7 @@ function main()
     bs_samps = [copy(X̂[:, rand(1:K)]) for _ in 1:S]
     Random.seed!(12345)
 
-    σ_noise = sqrt(2 * α_step / β_ret)
+    σ_noise = sqrt(2 * α_mix / β_ret)
     gp_samps = [X̂[:, rand(1:K)] .+ σ_noise .* randn(d) for _ in 1:S]
 
     dirichlet_dist = Dirichlet(K, 1.0)

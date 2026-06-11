@@ -29,7 +29,7 @@ const K_TARGET  = 20
 const N_REPEATS = 5
 
 # SA parameters (identical to main experiment)
-const α_step        = 0.01
+const α_mix        = 0.01
 const n_chains      = 30
 const T_per_chain   = 5000
 const T_burnin      = 2000
@@ -47,7 +47,7 @@ function run_sa_chains(X̂::Matrix{Float64}, β::Float64;
                        n_ch::Int=n_chains, T::Int=T_per_chain,
                        T_burn::Int=T_burnin, thin::Int=thin_interval,
                        spc::Int=samples_per_chain, σ0::Float64=σ_init,
-                       α::Float64=α_step, base_seed::Int=12345)
+                       α::Float64=α_mix, base_seed::Int=12345)
     d, K = size(X̂)
     all_samples = Vector{Vector{Float64}}()
 
@@ -118,7 +118,7 @@ function run_multifamily_scaling()
             d = size(X̂, 1)
 
             # phase transition
-            pt = find_entropy_inflection(X̂; α=α_step)
+            pt = find_entropy_inflection(X̂; α=α_mix)
             β_gen = Float64(max(round(Int, 2 * pt.β_star), 5))
 
             # SA generation

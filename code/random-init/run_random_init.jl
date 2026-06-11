@@ -112,7 +112,7 @@ families = [
     ("PF00711", "Defensin_beta"),
 ]
 
-α_step = 0.01
+α_mix = 0.01
 data_dir = joinpath(_EXPERIMENT_ROOT, "..", "pfam-families", "data")
 output_dir = joinpath(_EXPERIMENT_ROOT, "results")
 mkpath(output_dir)
@@ -136,7 +136,7 @@ for (pfam_id, family_name) in families
     d = size(X̂, 1)
 
     # find β*
-    pt = find_entropy_inflection(X̂; α=α_step)
+    pt = find_entropy_inflection(X̂; α=α_mix)
     β_star = pt.β_star
     β_gen = Float64(round(Int, max(2 * β_star, 5)))
 
@@ -145,7 +145,7 @@ for (pfam_id, family_name) in families
     for (init_name, runner) in [("stored", run_sa_chains_stored), ("random", run_sa_chains_random)]
         @info "  init=$init_name"
 
-        samps = runner(X̂, β_gen; α=α_step)
+        samps = runner(X̂, β_gen; α=α_mix)
         seqs = [decode_sample(ξ, pca_model, L) for ξ in samps]
 
         # compute metrics

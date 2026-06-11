@@ -99,7 +99,7 @@ Let $\mathbf{X} = [\mathbf{m}_1, \dots, \mathbf{m}_K] \in \mathbb{R}^{d \times K
 \begin{equation}\label{eq:hopfield-energy}
     E(\boldsymbol{\xi}) = \tfrac{1}{2}\|\boldsymbol{\xi}\|^2 - \tfrac{1}{\beta}\log\sum_{k=1}^{K} \exp\!\bigl(\beta\,\mathbf{m}_k^\top \boldsymbol{\xi}\bigr),
 \end{equation}
-where $\beta > 0$ is an inverse temperature. The Boltzmann distribution $p_\beta(\boldsymbol{\xi}) \propto \exp(-\beta\,E(\boldsymbol{\xi}))$ has score function $\nabla \log p_\beta(\boldsymbol{\xi}) = \beta(\mathbf{T}(\boldsymbol{\xi}) - \boldsymbol{\xi})$, where $\mathbf{T}(\boldsymbol{\xi}) := \mathbf{X}\,\operatorname{softmax}(\beta\,\mathbf{X}^\top\boldsymbol{\xi})$ is the softmax attention retrieval map. This score is \emph{exact} and computed by a single attention operation; no score network or training is required. Applying the unadjusted Langevin algorithm (ULA)~\cite{robertsTweedieExponentialConvergence1996} to the potential $U = \beta E$ yields the SA update with step size $\alpha$:
+where $\beta > 0$ is an inverse temperature. The Boltzmann distribution $p_\beta(\boldsymbol{\xi}) \propto \exp(-\beta\,E(\boldsymbol{\xi}))$ has score function $\nabla \log p_\beta(\boldsymbol{\xi}) = \beta(\mathbf{T}(\boldsymbol{\xi}) - \boldsymbol{\xi})$, where $\mathbf{T}(\boldsymbol{\xi}) := \mathbf{X}\,\operatorname{softmax}(\beta\,\mathbf{X}^\top\boldsymbol{\xi})$ is the softmax attention retrieval map. This score is \emph{exact} and computed by a single attention operation; no score network or training is required. Applying the unadjusted Langevin algorithm (ULA)~\cite{robertsTweedieExponentialConvergence1996} to the potential $U = \beta E$ with step size $\alpha/\beta$, where $\alpha \in (0,1)$ is the mixing coefficient, yields the SA update:
 \begin{equation}\label{eq:sa-update}
     \boldsymbol{\xi}_{t+1} = (1 - \alpha)\,\boldsymbol{\xi}_t + \alpha\,\mathbf{X}\,\operatorname{softmax}\!\bigl(\beta\,\mathbf{X}^\top\boldsymbol{\xi}_t\bigr) + \sqrt{\tfrac{2\alpha}{\beta}}\;\boldsymbol{\epsilon}_t, \quad \boldsymbol{\epsilon}_t \sim \mathcal{N}(\mathbf{0}, \mathbf{I}).
 \end{equation}
@@ -109,17 +109,17 @@ Each step performs contraction toward the origin, a softmax-weighted pull toward
 \begin{algorithm}[h!]
 \caption{Stochastic Attention Protein Sequence Generation}\label{alg:sa-pipeline}
 \begin{algorithmic}[1]
-\Require Seed alignment $\mathbf{S} \in \mathcal{A}^{K \times L}$, variance threshold $\rho_{\min} = 0.95$, step size $\alpha = 0.01$, chains $N_c = 30$, iterations $T = 5000$, burn-in $T_b = 2000$, thinning $\Delta t = 100$, samples/chain $s = 5$
+\Require Seed alignment $\mathbf{S} \in \mathcal{A}^{K \times L}$, variance threshold $\rho_{\min} = 0.95$, mixing coefficient $\alpha = 0.01$, chains $N_c = 30$, iterations $T = 5000$, burn-in $T_b = 2000$, thinning $\Delta t = 100$, samples/chain $s = 5$
 \Ensure Generated sequences $\{\mathbf{g}_1, \ldots, \mathbf{g}_S\} \subset \mathcal{A}^L$, \; $S = N_c \cdot s$
 \State \textbf{Encoding:}
-\State One-hot encode: $\mathbf{X} \leftarrow [\mathrm{onehot}(\mathbf{S}_{1,:}), \ldots, \mathrm{onehot}(\mathbf{S}_{K,:})] \in \{0,1\}^{20L \times K}$
-\State Center: $\bar{\mathbf{x}} \leftarrow \frac{1}{K}\sum_k \mathbf{X}_{:,k}$; \; $\tilde{\mathbf{X}} \leftarrow \mathbf{X} - \bar{\mathbf{x}}\mathbf{1}_K^\top$
-\State SVD: $\tilde{\mathbf{X}} = \mathbf{U}\boldsymbol{\Sigma}\mathbf{V}^\top$
-\State Select $d$: smallest $p$ such that $\sum_{j=1}^{p}\sigma_j^2 / \sum_j \sigma_j^2 \geq \rho_{\min}$
-\State Project and normalize: $\mathbf{m}_k \leftarrow \mathbf{W}_d^\top(\mathbf{X}_{:,k} - \bar{\mathbf{x}}) / \|\mathbf{W}_d^\top(\mathbf{X}_{:,k} - \bar{\mathbf{x}})\|$ \; for $k = 1,\ldots,K$
-\State Assemble memory: $\hat{\mathbf{X}} \leftarrow [\mathbf{m}_1, \ldots, \mathbf{m}_K] \in \mathbb{R}^{d \times K}$
+\State One-hot encode: $\mathbf{B} \leftarrow [\mathrm{onehot}(\mathbf{S}_{1,:}), \ldots, \mathrm{onehot}(\mathbf{S}_{K,:})] \in \{0,1\}^{20L \times K}$
+\State Center: $\bar{\mathbf{x}} \leftarrow \frac{1}{K}\sum_k \mathbf{B}_{:,k}$; \; $\tilde{\mathbf{B}} \leftarrow \mathbf{B} - \bar{\mathbf{x}}\mathbf{1}_K^\top$
+\State SVD: $\tilde{\mathbf{B}} = \mathbf{U}\boldsymbol{\Sigma}\mathbf{V}^\top$
+\State Select $d$: smallest $p$ such that $\sum_{j=1}^{p}\sigma_j^2 / \sum_j \sigma_j^2 \geq \rho_{\min}$; set $\mathbf{W}_d \leftarrow \mathbf{U}_{:,1:d}$
+\State Project and normalize: $\mathbf{m}_k \leftarrow \mathbf{W}_d^\top(\mathbf{B}_{:,k} - \bar{\mathbf{x}}) / \|\mathbf{W}_d^\top(\mathbf{B}_{:,k} - \bar{\mathbf{x}})\|$ \; for $k = 1,\ldots,K$
+\State Assemble memory: $\mathbf{X} \leftarrow [\mathbf{m}_1, \ldots, \mathbf{m}_K] \in \mathbb{R}^{d \times K}$
 \State \textbf{Temperature selection:}
-\State Find $\beta^*$: entropy inflection of $H(\beta) = -\sum_k p_k \log p_k$ with $p_k = \mathrm{softmax}(\beta\,\hat{\mathbf{X}}^\top\mathbf{m}_k)_k$
+\State Find $\beta^*$: entropy inflection of $H(\beta) = -\sum_k p_k \log p_k$ with $p_k = \mathrm{softmax}(\beta\,\mathbf{X}^\top\mathbf{m}_k)_k$
 \State Set $\beta_{\mathrm{gen}} \leftarrow \max\!\bigl(\lceil 2\beta^* \rceil,\; 5\bigr)$
 \State \textbf{Multi-chain Langevin sampling:}
 \State $\mathcal{G} \leftarrow \emptyset$
@@ -127,9 +127,9 @@ Each step performs contraction toward the origin, a softmax-weighted pull toward
     \State Draw $k_c \sim \mathrm{Uniform}\{1,\ldots,K\}$
     \State $\boldsymbol{\xi}_0 \leftarrow \mathbf{m}_{k_c} + 0.01\,\boldsymbol{\eta}$, \; $\boldsymbol{\eta} \sim \mathcal{N}(\mathbf{0}, \mathbf{I}_d)$
     \For{$t = 0, \ldots, T-1$}
-        \State $\mathbf{a}_t \leftarrow \operatorname{softmax}(\beta_{\mathrm{gen}}\,\hat{\mathbf{X}}^\top\boldsymbol{\xi}_t)$
+        \State $\mathbf{a}_t \leftarrow \operatorname{softmax}(\beta_{\mathrm{gen}}\,\mathbf{X}^\top\boldsymbol{\xi}_t)$
         \State $\boldsymbol{\epsilon}_t \sim \mathcal{N}(\mathbf{0}, \mathbf{I}_d)$
-        \State $\boldsymbol{\xi}_{t+1} \leftarrow (1-\alpha)\,\boldsymbol{\xi}_t + \alpha\,\hat{\mathbf{X}}\,\mathbf{a}_t + \sqrt{2\alpha/\beta_{\mathrm{gen}}}\;\boldsymbol{\epsilon}_t$
+        \State $\boldsymbol{\xi}_{t+1} \leftarrow (1-\alpha)\,\boldsymbol{\xi}_t + \alpha\,\mathbf{X}\,\mathbf{a}_t + \sqrt{2\alpha/\beta_{\mathrm{gen}}}\;\boldsymbol{\epsilon}_t$
     \EndFor
     \State Collect $s$ evenly spaced samples from $\{\boldsymbol{\xi}_{T_b+1}, \boldsymbol{\xi}_{T_b+\Delta t+1}, \ldots, \boldsymbol{\xi}_T\}$ into $\mathcal{G}$
 \EndFor

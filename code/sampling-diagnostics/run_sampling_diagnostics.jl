@@ -78,7 +78,7 @@ families = [
     ("PF00711", "Defensin_beta"),
 ]
 
-α_step = 0.01
+α_mix = 0.01
 T_chain = 5000
 T_burn = 2000
 thin = 100
@@ -107,7 +107,7 @@ for (pfam_id, family_name) in families
     d = size(X̂, 1)
 
     # find β*
-    pt = find_entropy_inflection(X̂; α=α_step)
+    pt = find_entropy_inflection(X̂; α=α_mix)
     β_star = pt.β_star
     β_gen = Float64(round(Int, max(2 * β_star, 5)))
 
@@ -130,12 +130,12 @@ for (pfam_id, family_name) in families
         ξ₀ = X̂[:, k] .+ σ_init .* randn(d)
 
         # ULA chain
-        (_, Ξ_ula) = sample(X̂, ξ₀, T_chain; β=β_gen, α=α_step, seed=seed_c)
+        (_, Ξ_ula) = sample(X̂, ξ₀, T_chain; β=β_gen, α=α_mix, seed=seed_c)
 
         # MALA chain
         Random.seed!(seed_c)
         ξ₀_mala = X̂[:, k] .+ σ_init .* randn(d)
-        (_, Ξ_mala, ar) = mala_sample(X̂, ξ₀_mala, T_chain; β=β_gen, α=α_step, seed=seed_c)
+        (_, Ξ_mala, ar) = mala_sample(X̂, ξ₀_mala, T_chain; β=β_gen, α=α_mix, seed=seed_c)
         push!(chain_ar_mala, ar)
 
         # compute energy traces

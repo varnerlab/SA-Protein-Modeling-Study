@@ -82,7 +82,7 @@ families = [
 ]
 
 pratios = [0.50, 0.55, 0.60, 0.65, 0.70, 0.75, 0.80, 0.85, 0.90, 0.95, 0.99]  # extended range
-α_step = 0.01
+α_mix = 0.01
 
 data_dir = joinpath(_EXPERIMENT_ROOT, "..", "pfam-families", "data")
 output_dir = joinpath(_EXPERIMENT_ROOT, "results")
@@ -110,14 +110,14 @@ for (pfam_id, family_name) in families
         d = size(X̂, 1)
 
         # find β*
-        pt = find_entropy_inflection(X̂; α=α_step)
+        pt = find_entropy_inflection(X̂; α=α_mix)
         β_star = pt.β_star
         β_gen = Float64(round(Int, max(2 * β_star, 5)))
 
         @info "    d=$d, β*=$(round(β_star, digits=2)), β_gen=$β_gen"
 
         # run SA generation
-        samps = run_sa_chains(X̂, β_gen; α=α_step)
+        samps = run_sa_chains(X̂, β_gen; α=α_mix)
         seqs = [decode_sample(ξ, pca_model, L) for ξ in samps]
 
         # compute metrics

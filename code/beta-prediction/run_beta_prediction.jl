@@ -40,7 +40,7 @@ const FAMILIES = [
 ]
 
 const R_pca = 0.95
-const α_step = 0.01
+const α_mix = 0.01
 
 # ══════════════════════════════════════════════════════════════════════════════
 # Step 1: Collect (features, β*) from the 7 Pfam families
@@ -73,7 +73,7 @@ for fam in FAMILIES
     λ1_ratio = eigenvalues[1] / sum(eigenvalues)
 
     # empirical β*
-    pt = find_entropy_inflection(X̂; α=α_step)
+    pt = find_entropy_inflection(X̂; α=α_mix)
 
     push!(rows, (
         Source   = "Pfam",
@@ -125,7 +125,7 @@ for K_sub in K_VALUES
         eigenvalues = principalvars(pca_model)
         λ1_ratio = eigenvalues[1] / sum(eigenvalues)
 
-        pt = find_entropy_inflection(X̂; α=α_step)
+        pt = find_entropy_inflection(X̂; α=α_mix)
 
         push!(rows, (
             Source   = "Scaling",
