@@ -9,7 +9,7 @@
 - [ ] Data availability statement (required by PNAS)
 - [ ] Code availability statement
 - [ ] ORCID for corresponding author
-- [ ] Cover letter
+- [x] Cover letter (drafted; includes editor suggestions and six suggested reviewers)
 
 ## Content Quality
 - [ ] Full proofread of main text
