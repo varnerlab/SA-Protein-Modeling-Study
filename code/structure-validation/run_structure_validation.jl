@@ -38,7 +38,7 @@ const FAMILIES = [
 
 const ESMFOLD_URL = "https://api.esmatlas.com/foldSequence/v1/pdb/"
 const RATE_LIMIT_SLEEP = 1.0  # seconds between API calls
-const MAX_SEQ_FOR_STRUCTURE = 50  # predict structures for top-N per method (saves time)
+const MAX_SEQ_FOR_STRUCTURE = 50  # predict structures for first N per method (file order; no fold-quality selection)
 
 # ══════════════════════════════════════════════════════════════════════════════
 # ESMFold API

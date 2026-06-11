@@ -203,7 +203,7 @@ for row_idx, label in enumerate(row_labels):
             # Show conservation percentage for highly conserved
             if conservation[pos] >= 0.90 or is_cys:
                 ax_aln.text(pos, row_idx, f"{conservation[pos]:.0%}",
-                           ha="center", va="center", fontsize=5,
+                           ha="center", va="center", fontsize=6.5,
                            color=get_text_color(conservation[pos], is_cys),
                            fontfamily="monospace", fontweight="bold")
     elif row_idx == 1:
@@ -216,7 +216,7 @@ for row_idx, label in enumerate(row_labels):
                                  edgecolor="white", linewidth=0.3)
             ax_aln.add_patch(rect)
             ax_aln.text(pos, row_idx, consensus[pos],
-                       ha="center", va="center", fontsize=7.5,
+                       ha="center", va="center", fontsize=9.5,
                        color=get_text_color(conservation[pos], is_cys),
                        fontfamily="monospace", fontweight="bold")
     else:
@@ -235,7 +235,7 @@ for row_idx, label in enumerate(row_labels):
                                      edgecolor="white", linewidth=0.3)
                 ax_aln.add_patch(rect)
                 ax_aln.text(pos, row_idx, "\u00B7",
-                           ha="center", va="center", fontsize=9,
+                           ha="center", va="center", fontsize=11,
                            color="#999999", fontfamily="monospace")
             else:
                 # Substitution: colored by conservation of that position
@@ -252,7 +252,7 @@ for row_idx, label in enumerate(row_labels):
                                      edgecolor="white", linewidth=0.3)
                 ax_aln.add_patch(rect)
                 ax_aln.text(pos, row_idx, aa,
-                           ha="center", va="center", fontsize=7.5,
+                           ha="center", va="center", fontsize=9.5,
                            color="black", fontfamily="monospace",
                            fontweight="bold")
 
@@ -260,11 +260,11 @@ for row_idx, label in enumerate(row_labels):
 for pos in range(L):
     if (pos + 1) % 5 == 0:
         ax_aln.text(pos, -0.45, str(pos + 1), ha="center", va="bottom",
-                   fontsize=6, color="gray")
+                   fontsize=9, color="gray")
 
 # Row labels
 for row_idx, label in enumerate(row_labels):
-    ax_aln.text(-1, row_idx, label, ha="right", va="center", fontsize=7.5,
+    ax_aln.text(-1, row_idx, label, ha="right", va="center", fontsize=11,
                fontfamily="sans-serif",
                fontweight="bold" if row_idx <= 1 else "normal")
 
@@ -279,7 +279,7 @@ for p1, p2 in disulfide_pairs:
                                    lw=1.5, connectionstyle="arc3,rad=-0.15"))
     mid = (p1 + p2) / 2
     ax_aln.text(mid, y_bot + 0.25, "S-S", ha="center", va="top",
-               fontsize=5.5, color="#B8860B", fontweight="bold")
+               fontsize=8, color="#B8860B", fontweight="bold")
 
 ax_aln.set_yticks([])
 ax_aln.set_xticks([])
@@ -288,7 +288,7 @@ ax_aln.spines["right"].set_visible(False)
 ax_aln.spines["bottom"].set_visible(False)
 ax_aln.spines["left"].set_visible(False)
 ax_aln.set_title("(A)  Kunitz domain: consensus vs. top SA-generated sequences",
-                 fontsize=11, fontweight="bold", loc="left", pad=12)
+                 fontsize=14, fontweight="bold", loc="left", pad=12)
 
 # Legend
 legend_elements = [
@@ -299,7 +299,7 @@ legend_elements = [
     mpatches.Patch(facecolor="#FFD700", label="Cysteine (disulfide)"),
     mpatches.Patch(facecolor="#bbdefb", label="SA substitution (variable site)"),
 ]
-ax_aln.legend(handles=legend_elements, loc="upper right", fontsize=6,
+ax_aln.legend(handles=legend_elements, loc="upper right", fontsize=8.5,
              ncol=2, framealpha=0.9, bbox_to_anchor=(1.0, 1.15))
 
 # ── Panel B: Per-position entropy ────────────────────────────────────────
@@ -319,17 +319,17 @@ for cp in cys_positions:
 # Correlation annotation
 r = np.corrcoef(stored_entropy, gen_entropy)[0, 1]
 ax_ent.text(0.98, 0.95, f"r = {r:.3f}", transform=ax_ent.transAxes,
-           ha="right", va="top", fontsize=9,
+           ha="right", va="top", fontsize=12,
            bbox=dict(boxstyle="round,pad=0.3", facecolor="white", alpha=0.8))
 
-ax_ent.set_xlabel("Position", fontsize=9)
-ax_ent.set_ylabel("Shannon entropy (bits)", fontsize=9)
+ax_ent.set_xlabel("Position", fontsize=12)
+ax_ent.set_ylabel("Shannon entropy (bits)", fontsize=12)
 ax_ent.set_title("(B)  Per-position entropy: stored MSA vs. SA-generated sequences",
-                fontsize=11, fontweight="bold", loc="left")
+                fontsize=14, fontweight="bold", loc="left")
 ax_ent.set_xlim(-1, L)
 ax_ent.set_ylim(0, max(max(stored_entropy), max(gen_entropy)) * 1.15)
-ax_ent.legend(fontsize=8, loc="upper left")
-ax_ent.tick_params(labelsize=8)
+ax_ent.legend(fontsize=11, loc="upper left")
+ax_ent.tick_params(labelsize=11)
 
 # Position ticks every 5
 ax_ent.set_xticks([i for i in range(L) if (i + 1) % 5 == 0])
@@ -339,14 +339,14 @@ ax_ent.spines["right"].set_visible(False)
 
 # ── Save ──────────────────────────────────────────────────────────────────
 os.makedirs(FIG_DIR, exist_ok=True)
-out_path = os.path.join(FIG_DIR, "sequence_analysis_kunitz.pdf")
+out_path = os.path.join(FIG_DIR, "sequence_analysis_kunitz_v2.pdf")
 fig.savefig(out_path, dpi=300, bbox_inches="tight", facecolor="white")
 print(f"Saved: {out_path}")
 
 # Copy to paper
 os.makedirs(PAPER_FIG_DIR, exist_ok=True)
 import shutil
-paper_path = os.path.join(PAPER_FIG_DIR, "sequence_analysis_kunitz.pdf")
+paper_path = os.path.join(PAPER_FIG_DIR, "sequence_analysis_kunitz_v2.pdf")
 shutil.copy2(out_path, paper_path)
 print(f"Copied to: {paper_path}")
 
