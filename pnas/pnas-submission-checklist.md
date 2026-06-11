@@ -14,7 +14,7 @@
 ## Content Quality
 - [ ] Full proofread of main text
 - [ ] Full proofread of SI appendix
-- [ ] Verify all SI cross-references match (we just did this, but re-verify after any edits)
+- [x] Verify all SI cross-references match (re-verified after the reviewer-response edits; both PDFs build with 0 undefined references and no `??` in the output)
 - [ ] Check all equations render correctly in PDF
 - [ ] Verify figure quality/readability at print size
 - [ ] Confirm all citations resolve (no `?` in PDF)
