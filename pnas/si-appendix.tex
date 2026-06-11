@@ -55,7 +55,7 @@ Table~\ref{tab:results} reports the full generation metrics for all eight Pfam f
 
 \begin{table}[ht]
 \centering
-\caption{Generation metrics across eight Pfam families (mean $\pm$ SE). The label SA gen denotes the generation regime ($\beta \approx 2\beta^*$), and SA ret denotes the retrieval regime ($\beta \approx 20\beta^*$). Baseline abbreviations are BS, bootstrap; GP, Gaussian perturbation; and CC, convex combination. The KL column reports amino acid composition KL divergence ($\downarrow$ lower is better; SE via 1{,}000-fold bootstrap). Novelty is $1 - \max_k\cos(\hat{\boldsymbol{\xi}}, \mathbf{m}_k)$ in PCA space ($\uparrow$ higher is better). SeqID is nearest sequence identity to a stored pattern after decoding ($\downarrow$ lower is better). Bold indicates the best method per family and metric.}
+\caption{Generation metrics across eight Pfam families (mean $\pm$ SE). The label SA gen denotes the generation regime ($\beta \approx 2\beta^*$), and SA ret denotes the retrieval regime ($\beta \approx 20\beta^*$). Baseline abbreviations are BS, bootstrap; GP, Gaussian perturbation; and CC, convex combination. The KL column reports amino acid composition KL divergence ($\downarrow$ lower is better; SE via 1{,}000-fold bootstrap). Novelty is $1 - \max_k\cos(\hat{\boldsymbol{\xi}}, \mathbf{m}_k)$ in PCA space ($\uparrow$ higher is better). SeqID is nearest sequence identity to a stored pattern after decoding ($\downarrow$ lower is better). Bold indicates the best method per family and metric. The KL SE here is the $1{,}000$-fold bootstrap SE; because KL divergence is non-negative and near zero for several families, this bootstrap distribution is right-skewed, so the symmetric SE can exceed the point estimate (e.g., zf-C2H2, where a percentile interval would be more appropriate). The per-family comparison tables (Tables~\ref{tab:baseline-metrics} and~\ref{tab:potts}) instead report the SE across $30$ sub-blocks of five sequences; the SA-generation KL point estimates are identical across tables, and only the SE estimator differs.}
 \label{tab:results}
 \small
 \begin{tabular}{@{}llccc@{}}
@@ -121,7 +121,7 @@ Family & Method & KL$_{\mathrm{AA}}$ $(\downarrow)$ & Novelty $(\uparrow)$ & Seq
 \end{tabular}
 \end{table}
 
-Table~\ref{tab:baseline-metrics} reports the per-family generation metrics for the three learned baselines, profile HMM emit, EvoDiff, and the MSA Transformer, that stochastic attention is compared against in the main-text head-to-head analysis. For each family and method, the amino acid composition KL divergence, the PCA-space cosine novelty, and the nearest sequence identity to a stored pattern were computed under the same 150-sequence budget and evaluation pipeline applied to SA generation, and are reported as the mean and standard error over 30 sub-blocks of the generated set, following the convention of Table~\ref{tab:potts}. The learned baselines attained low KL divergence in most families, but their nearest sequence identities fell well below the natural within-family range of 30--70\% in several families, with profile HMM emit reaching $11\%$ and the MSA Transformer $9\%$ in Pkinase, indicating compositional drift away from the stored patterns rather than family-consistent generation. EvoDiff degraded sharply in compositional fidelity on the longest family (Pkinase, KL${=}0.173$, more than an order of magnitude above its values in the other seven families), consistent with its diffusion process scaling poorly with sequence length. Together with the SA generation metrics in Table~\ref{tab:results} and the Potts comparison in Table~\ref{tab:potts}, these values constitute the complete per-family record underlying the baseline comparison.
+Table~\ref{tab:baseline-metrics} reports the per-family generation metrics for the three learned baselines, profile HMM emit, EvoDiff, and the MSA Transformer, that stochastic attention is compared against in the main-text head-to-head analysis. For each family and method, the amino acid composition KL divergence, the PCA-space cosine novelty, and the nearest sequence identity to a stored pattern were computed under the same 150-sequence budget and evaluation pipeline applied to SA generation, and are reported as the mean and standard error over 30 sub-blocks of the generated set, following the convention of Table~\ref{tab:potts}. The learned baselines attained low KL divergence in most families, but their nearest sequence identities fell below the empirical within-family nearest-neighbor identity envelope (Table~\ref{tab:nn-band}) in several families, with profile HMM emit reaching $11\%$ and the MSA Transformer $9\%$ in Pkinase, below the minimum nearest-neighbor identity of any natural sequence in that family ($28\%$), indicating compositional drift away from the stored patterns rather than family-consistent generation. EvoDiff showed elevated composition divergence on the longest family (Pkinase, KL${=}0.173$, more than an order of magnitude above its values in the other seven families); this largely reflects EvoDiff generating sequences well short of the alignment length (${\approx}199$ residues vs.\ $L{=}262$), which the length-normalization step pads with alanine, inflating the apparent alanine frequency, rather than an intrinsic compositional failure of the model. Together with the SA generation metrics in Table~\ref{tab:results} and the Potts comparison in Table~\ref{tab:potts}, these values constitute the complete per-family record underlying the baseline comparison.
 
 \begin{table}[ht]
 \centering
@@ -228,6 +228,62 @@ Figure~\ref{fig:structure-esmfold-af2} shows predicted local distance difference
 \caption{Concordance between ESMFold and AlphaFold2 structure predictions for SA-generated sequences across all eight families. Each point is one family-condition pair. \textbf{(A)}~pLDDT concordance ($r{=}0.434$); AlphaFold2 pLDDT values are systematically higher, reflecting differences in confidence calibration. \textbf{(B)}~TM-score concordance ($r{=}0.999$); points lie near the identity line, indicating strong agreement in condition ranking.}
 \label{fig:esmfold-af2-concordance}
 \end{figure}
+
+\subsection*{Reference structures}
+Table~\ref{tab:pdb-refs} lists the experimentally determined structures used as TM-align references for each family. References are canonical, high-resolution structures of the cognate domain.
+
+\begin{table}[ht]
+\centering
+\caption{Experimentally determined reference structures used for TM-align scoring.}
+\label{tab:pdb-refs}
+\small
+\begin{tabular}{@{}llll@{}}
+\toprule
+Family & Pfam ID & PDB (chain) & Reference protein \\
+\midrule
+RRM            & PF00076 & 1FXL (A) & Sex-lethal RRM \\
+SH3            & PF00018 & 1SHG (A) & $\alpha$-spectrin SH3 domain \\
+WW             & PF00397 & 1PIN (A) & Pin1 WW domain \\
+Kunitz         & PF00014 & 1BPI (A) & BPTI (Kunitz domain) \\
+zf-C2H2        & PF00096 & 1ZAA (C) & Zif268 zinc fingers \\
+PDZ            & PF00595 & 1BE9 (A) & PSD-95 PDZ3 \\
+Pkinase        & PF00069 & 1ATP (E) & PKA catalytic subunit \\
+Defensin\_beta & PF00711 & 1E4S (A) & Beta-defensin \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%% ═══════════════════════════════════════════════════════════════════════
+%% Consensus proximity and predicted structural quality
+%% ═══════════════════════════════════════════════════════════════════════
+\section{Consensus Proximity and Predicted Structural Quality}\label{si:consensus-reg}
+
+Sequences generated by stochastic attention achieved template modeling (TM)-scores that, in several families, exceeded those of the stored natural sequences. Because all structure predictors are trained on evolutionary data, one explanation is predictor bias: a predictor might assign higher confidence to sequences that lie closer to the family consensus, in which case the elevated TM-scores would be an artifact of consensus proximity rather than evidence of structural quality. To test this directly, we asked whether predicted structural quality tracks consensus proximity \emph{within} each family. For every SA-generated sequence whose structure was predicted ($n{=}50$ per family), we computed its identity to the family consensus (the most frequent residue per column among stored sequences) and its mean predicted local distance difference test (pLDDT) score and reference-normalized TM-score, then computed the within-family Spearman rank correlation between consensus identity and each structural metric (Table~\ref{tab:consensus-reg}).
+
+The association is weak and inconsistent in sign. Across families, the Spearman correlation between consensus identity and TM-score ranged from $-0.13$ to $0.53$ (negative in SH3, WW, and Pkinase), and between consensus identity and pLDDT from $-0.10$ to $0.43$. Pooling the within-family-standardized values gave $\rho{=}0.17$ for TM-score ($p{=}5\times10^{-4}$, $n{=}400$) and $\rho{=}0.23$ for pLDDT ($p{=}2\times10^{-6}$); each accounts for under $4\%$ and $6\%$ of the variance, respectively. Consensus distance is therefore not the dominant determinant of predicted structural quality, which argues against the interpretation that the elevated TM-scores are primarily an artifact of consensus proximity. This analysis does not exclude an \emph{absolute} preference, shared by both the sampler and the predictor, for family-typical sequences; a complementary control that folds the consensus-with-noise ensemble (Section~\ref{si:consensus-baseline}) through the same predictors would further isolate that effect, and definitive resolution requires experimental structure determination. We also note that SA generation is most consensus-proximal in the Pkinase family (mean identity to consensus $0.73$, the highest of any family), which accounts for both its near-natural nearest-neighbor identity and its low mutual-information correlation ($r{=}0.05$; Section~\ref{si:mi}), since near-consensus sequences carry little pairwise covariation.
+
+\begin{table}[ht]
+\centering
+\caption{Within-family Spearman correlation between a generated sequence's identity to the family consensus and its predicted structural quality (ESMFold pLDDT and reference-normalized TM-score), with the mean identity to consensus. $n{=}50$ generated sequences per family.}
+\label{tab:consensus-reg}
+\small
+\begin{tabular}{@{}lccc@{}}
+\toprule
+Family & $\rho$(consID, pLDDT) & $\rho$(consID, TM) & mean consID \\
+\midrule
+RRM            & $0.21$  & $0.36$  & $0.60$ \\
+SH3            & $0.30$  & $-0.13$ & $0.58$ \\
+WW             & $0.29$  & $-0.07$ & $0.49$ \\
+Kunitz         & $0.17$  & $0.28$  & $0.56$ \\
+zf-C2H2        & $0.34$  & $0.18$  & $0.44$ \\
+PDZ            & $0.43$  & $0.53$  & $0.56$ \\
+Pkinase        & $-0.10$ & $-0.09$ & $0.73$ \\
+Defensin\_beta & $0.28$  & $0.36$  & $0.58$ \\
+\midrule
+Pooled (standardized) & $0.23$ & $0.17$ & --- \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 %% ═══════════════════════════════════════════════════════════════════════
 %% S5. Sequence-Level Analysis (Kunitz)
@@ -366,7 +422,7 @@ Across the eight families, the Potts model achieved comparable or better amino a
 
 \begin{table}[ht]
 \centering
-\caption{Potts model (plmDCA) baseline comparison across all eight Pfam families. Metrics are computed identically to the main baseline analysis (30 chains $\times$ 5 samples).}
+\caption{Potts model (plmDCA) baseline comparison across all eight Pfam families. Metrics are computed identically to the main baseline analysis (30 chains $\times$ 5 samples). Standard errors are computed over $30$ sub-blocks of five sequences (as in Table~\ref{tab:baseline-metrics}); consequently the KL SE for SA generation differs from the $1{,}000$-fold bootstrap KL SE reported in Table~\ref{tab:results}, although the SA-generation point estimates are identical between the two tables.}
 \label{tab:potts}
 \small
 \begin{tabular}{@{}llccc@{}}
@@ -517,6 +573,29 @@ zf-C2H2        & $0.557$ & $0.0$ & $0.0$ & $0.0$ & $0.0$ & $0.304$ \\
 PDZ            & $0.543$ & $0.0$ & $0.0$ & $0.7$ & $0.0$ & $0.217$ \\
 Pkinase        & $0.515$ & $0.0$ & $0.0$ & $0.0$ & $0.0$ & $0.274$ \\
 Defensin\_beta & $0.655$ & $0.0$ & $0.0$ & $6.0$ & $0.0$ & $0.332$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The nearest sequence identity reported for generated sequences (``SeqID'') is a nearest-neighbor quantity: the identity of each generated sequence to its closest stored pattern. The appropriate natural reference is therefore the within-family nearest-neighbor identity, computed by leave-one-out as each stored sequence's identity to its closest neighbor in the same family, not the mean pairwise identity (``Stored ID'' above), which averages over all distant pairs and is consequently much lower. Table~\ref{tab:nn-band} reports this nearest-neighbor envelope. Mean nearest-neighbor identity among natural sequences ranges from $0.38$ (Pkinase) to $0.60$ (WW), with $10$th--$90$th percentile envelopes spanning roughly $0.29$--$0.74$, far above the $0.22$--$0.37$ mean pairwise identity. Generated SeqID ($0.51$--$0.66$) falls within each family's full nearest-neighbor range for seven of eight families; in Pkinase, generated SeqID ($0.515$) slightly exceeds the natural maximum ($0.454$), consistent with this family's strongly consensus-proximal generation (Section~\ref{si:consensus-reg}). By contrast, profile HMM emit and the MSA Transformer reach nearest-neighbor identities of $0.09$--$0.21$ in several families, below the minimum nearest-neighbor identity of any natural sequence in those families (e.g., $0.22$--$0.28$ for Pkinase, PDZ, and RRM), supporting the conclusion that their high novelty reflects drift outside the family rather than family-consistent exploration. All $150$ generated sequences are distinct in every family, with mean pairwise sequence identity among generated sequences of $0.35$--$0.65$ (mean pairwise Hamming distance $0.36$--$0.65$), a sequence-space diversity measure that does not rely on high-dimensional cosine distance.
+
+\begin{table}[ht]
+\centering
+\caption{Empirical within-family nearest-neighbor identity envelope. For each family, $\bar{I}_{\mathrm{NN}}$ is the mean over stored sequences of each sequence's leave-one-out nearest-neighbor identity (identity to its closest neighbor in the same family), with standard deviation, $10$th/$90$th percentiles, and range. ``SA SeqID'' is the mean nearest-neighbor identity of generated sequences (from Table~\ref{tab:results}), and ``Gen.\ pair ID'' is the mean pairwise identity among the $150$ generated sequences. All $150$ generated sequences were distinct in every family.}
+\label{tab:nn-band}
+\small
+\begin{tabular}{@{}lccccccc@{}}
+\toprule
+Family & $\bar{I}_{\mathrm{NN}}$ & SD & $p_{10}$ & $p_{90}$ & [min, max] & SA SeqID & Gen.\ pair ID \\
+\midrule
+RRM            & $0.397$ & $0.099$ & $0.292$ & $0.483$ & $[0.254, 0.803]$ & $0.538$ & $0.483$ \\
+SH3            & $0.506$ & $0.099$ & $0.396$ & $0.625$ & $[0.292, 0.708]$ & $0.593$ & $0.476$ \\
+WW             & $0.601$ & $0.074$ & $0.516$ & $0.677$ & $[0.387, 0.806]$ & $0.562$ & $0.376$ \\
+Kunitz         & $0.568$ & $0.117$ & $0.449$ & $0.736$ & $[0.358, 0.792]$ & $0.607$ & $0.477$ \\
+zf-C2H2        & $0.479$ & $0.048$ & $0.435$ & $0.522$ & $[0.304, 0.565]$ & $0.557$ & $0.347$ \\
+PDZ            & $0.526$ & $0.179$ & $0.301$ & $0.711$ & $[0.217, 0.807]$ & $0.543$ & $0.445$ \\
+Pkinase        & $0.381$ & $0.046$ & $0.325$ & $0.431$ & $[0.275, 0.454]$ & $0.515$ & $0.645$ \\
+Defensin\_beta & $0.584$ & $0.122$ & $0.400$ & $0.722$ & $[0.333, 0.778]$ & $0.655$ & $0.470$ \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -761,7 +840,7 @@ Stochastic attention operates on continuous vectors on the unit sphere $\mathbb{
 \begin{equation}
     \mathbf{x}_k = \bigl[\mathbf{e}_{a_1^{(k)}},\; \mathbf{e}_{a_2^{(k)}},\; \ldots,\; \mathbf{e}_{a_L^{(k)}}\bigr]^\top \in \{0,1\}^{20L},
 \end{equation}
-where $\mathbf{e}_a \in \{0,1\}^{20}$ is the standard basis vector for amino acid $a$. The full-dimensional representation is $d_{\mathrm{full}} = 20L$, which ranges from $460$ (zf-C2H2, $L{=}23$) to $5{,}240$ (Pkinase, $L{=}262$) across the eight families studied. This encoding is lossless and treats each position-amino acid pair as an independent coordinate, making no assumptions about residue similarity or physicochemical properties.
+where $\mathbf{e}_a \in \{0,1\}^{20}$ is the standard basis vector for amino acid $a$. The full-dimensional representation is $d_{\mathrm{full}} = 20L$, which ranges from $460$ (zf-C2H2, $L{=}23$) to $5{,}240$ (Pkinase, $L{=}262$) across the eight families studied. This encoding is lossless and treats each position-amino acid pair as an independent coordinate, making no assumptions about residue similarity or physicochemical properties. Gap and non-standard-residue positions are encoded as the all-zero $20$-vector, so they contribute nothing to the inner products that drive retrieval. On decoding, a position is assigned a gap only if its reconstructed $20$-channel block is numerically zero (maximum entry below $10^{-10}$); because inverse PCA produces dense reconstructions, every decoded position resolved to a standard amino acid, and decoded sequences therefore contained no gaps, consistent with the $100\%$ valid-amino-acid rate. Sequence identity is computed over non-gap positions only.
 
 The full one-hot space is high-dimensional relative to the number of stored patterns; the ratio $d_{\mathrm{full}}/K$ ranges from $1.5$ (WW) to $142$ (Pkinase). This creates two problems for SA. First, in the modern Hopfield energy, the similarity scores $e_k = \mathbf{m}_k^\top\boldsymbol{\xi}$ have variance $1/d$ for a random query on $\mathbb{S}^{d-1}$; when $d$ is large, scores concentrate tightly around zero and high $\beta$ is required to differentiate among stored patterns, which makes the energy landscape nearly flat and renders Langevin sampling inefficient. Second, the one-hot encoding introduces substantial redundancy: at each position, only 1 of 20 coordinates is nonzero. Principal component analysis removes this redundancy by projecting onto the directions of actual variation. We compute the economy singular value decomposition of the centered data matrix $\tilde{\mathbf{X}} = \mathbf{U}\boldsymbol{\Sigma}\mathbf{V}^\top$ and select the smallest $p$ such that the retained variance fraction $\rho(p) = \sum_{j=1}^p \sigma_j^2 / \sum_j \sigma_j^2 \geq 0.95$. Among all rank-$p$ linear projections, PCA minimizes the mean squared reconstruction error, making it the optimal linear dimensionality reduction for preserving the structure of the data. Across the eight families, the retained PCA dimension $d$ ranged from $34$ (Pkinase) to $186$ (WW).
 
@@ -816,7 +895,7 @@ These observations motivated a Gaussian mean-field model: if the $K$ similarity 
 
 This overprediction arises because the empirical $\beta^*$ is computed from stored-pattern probes $\mathbf{m}_i$, not from random queries. When $\boldsymbol{\xi} = \mathbf{m}_i$, the self-similarity score $\mathbf{m}_i^\top\mathbf{m}_i = 1$ is an outlier relative to the cross-similarities $\mathbf{m}_j^\top\mathbf{m}_i$ for $j \neq i$, which have magnitudes $\mathcal{O}(1/\sqrt{d})$. The resulting gap $\Delta = 1 - \max_{j\neq i}\mathbf{m}_j^\top\mathbf{m}_i$ ranges from $0.55$ to $0.82$ across families (Fig.~\ref{fig:stored-pattern-analysis}E), meaning the softmax concentrates on the self-pattern at much lower $\beta$ than would be needed for a random query. Substituting the cross-similarity standard deviation $\sigma_{\mathrm{cross}}$ for $1/\sqrt{d}$ fails decisively ($R^2 = -9.0$; Fig.~\ref{fig:stored-pattern-analysis}D), because the cross-similarity distribution is heavy-tailed (excess kurtosis $6$--$25$) and the self-similarity outlier violates the Gaussian assumption. The fitted model $\beta^* = 1.52 + 0.28\sqrt{d}$ nonetheless remains robust: the $\sqrt{d}$ scaling is set by concentration of measure, and the reduced coefficient $0.28$ (vs.\ $\tau^* \approx 1.6$) encapsulates the combined effect of self-similarity anchoring and the protein family correlation structure.
 
-To quantify uncertainty in the fitted regression, we performed a nonparametric bootstrap analysis: resampling the 33 observations (8 families plus 25 WW scaling replicates) with replacement 10{,}000 times yielded bootstrap SE of $0.07$ for the intercept and $0.007$ for the slope, with 95\% confidence intervals of $[1.39, 1.68]$ and $[0.266, 0.294]$, respectively. The bootstrap $R^2$ distribution has a median of $0.969$ (95\% CI $[0.940, 0.987]$). Because 25 of the 33 data points come from WW subsamples, we also refit the model using only the eight Pfam families: the resulting fit, $\beta^* = 1.64 + 0.278\sqrt{d}$ ($R^2{=}0.95$), is nearly identical, indicating that the result is not driven by overrepresentation of a single family. Leave-one-family-out cross-validation achieved $R^2{=}0.96$ (root mean square error, RMSE${=}0.18$) on the full dataset and $R^2{=}0.93$ (RMSE${=}0.19$) on the 8-family subset, with no individual family acting as an outlier (Table~\ref{tab:beta-loocv}).
+To quantify uncertainty in the fitted regression, we performed a nonparametric bootstrap analysis: resampling the 33 observations (8 families plus 25 WW scaling replicates) with replacement 10{,}000 times yielded bootstrap SE of $0.07$ for the intercept and $0.007$ for the slope, with 95\% confidence intervals of $[1.39, 1.68]$ and $[0.266, 0.294]$, respectively. The bootstrap $R^2$ distribution has a median of $0.969$ (95\% CI $[0.940, 0.987]$). Because 25 of the 33 data points come from WW subsamples, we also refit the model using only the eight Pfam families: the resulting fit, $\beta^* = 1.64 + 0.278\sqrt{d}$ ($R^2{=}0.95$), is nearly identical, indicating that the result is not driven by overrepresentation of a single family. Leave-one-family-out cross-validation achieved $R^2{=}0.96$ (root mean square error, RMSE${=}0.18$) on the full dataset and $R^2{=}0.93$ (RMSE${=}0.19$) on the 8-family subset, with no individual family acting as an outlier (Table~\ref{tab:beta-loocv}). Two cautions attend the pooled fit. First, $25$ of the $33$ observations are nested WW subsamples and are therefore not independent; the eight-family-only fit above is the more conservative estimate, and the leave-one-family-out results confirm out-of-sample generalization. Second, the empirical $\beta^*$ is identified on a fixed grid of $50$ logarithmically spaced values over $[0.1, 500]$ (multiplicative spacing $\approx 1.19$); the eight family values land on consecutive grid points ($\beta^* \in \{3.23, 3.85, 4.58, 5.45\}$), so $\beta^*$ is resolved only to within ${\approx}19\%$, and the reported $R^2$ is computed against these grid-resolved targets. A finer grid would refine the point estimates but is not expected to alter the $\sqrt{d}$ scaling, which follows from concentration of measure rather than from the grid.
 
 \begin{figure}[ht]
 \centering

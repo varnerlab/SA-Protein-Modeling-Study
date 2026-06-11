@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  11 JUN 2026 10:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  11 JUN 2026 13:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -505,7 +505,7 @@ LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 (Font)              scaled to size 13.67995pt on input line 38.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 (Font)              scaled to size 13.67995pt on input line 38.
-<figs/aa_freq_example.pdf, id=90, 702.625pt x 501.875pt>
+<figs/aa_freq_example.pdf, id=94, 702.625pt x 501.875pt>
 File: figs/aa_freq_example.pdf Graphic file (type pdf)
 <use figs/aa_freq_example.pdf>
 Package pdftex.def Info: figs/aa_freq_example.pdf  used on input line 44.
@@ -520,7 +520,7 @@ LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 
 {/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/loc
 al/texlive/2025/texmf-dist/fonts/enc/dvips/base/8r.enc}]
-<figs/scaling_composite.pdf, id=112, 903.375pt x 702.625pt>
+<figs/scaling_composite.pdf, id=122, 903.375pt x 702.625pt>
 File: figs/scaling_composite.pdf Graphic file (type pdf)
 <use figs/scaling_composite.pdf>
 Package pdftex.def Info: figs/scaling_composite.pdf  used on input line 187.
@@ -528,61 +528,64 @@ Package pdftex.def Info: figs/scaling_composite.pdf  used on input line 187.
 
 
 [2 <./figs/aa_freq_example.pdf>]
-<figs/structure_validation_esmfold_af2.pdf, id=128, 1104.125pt x 803.0pt>
+<figs/structure_validation_esmfold_af2.pdf, id=138, 1104.125pt x 803.0pt>
 File: figs/structure_validation_esmfold_af2.pdf Graphic file (type pdf)
 <use figs/structure_validation_esmfold_af2.pdf>
 Package pdftex.def Info: figs/structure_validation_esmfold_af2.pdf  used on inp
 ut line 220.
 (pdftex.def)             Requested size: 469.75502pt x 341.6442pt.
-<figs/esmfold_af2_concordance.pdf, id=129, 903.375pt x 401.5pt>
+<figs/esmfold_af2_concordance.pdf, id=139, 903.375pt x 401.5pt>
 File: figs/esmfold_af2_concordance.pdf Graphic file (type pdf)
 <use figs/esmfold_af2_concordance.pdf>
 Package pdftex.def Info: figs/esmfold_af2_concordance.pdf  used on input line 2
 27.
 (pdftex.def)             Requested size: 328.82707pt x 146.14499pt.
+LaTeX Font Info:    Font shape `T1/phv/b/n' will be
+(Font)              scaled to size 11.39996pt on input line 232.
 
 
 [3 <./figs/scaling_composite.pdf>]
-<figs/sequence_analysis_kunitz.pdf, id=140, 990.91335pt x 543.4108pt>
-File: figs/sequence_analysis_kunitz.pdf Graphic file (type pdf)
-<use figs/sequence_analysis_kunitz.pdf>
-Package pdftex.def Info: figs/sequence_analysis_kunitz.pdf  used on input line 
-241.
-(pdftex.def)             Requested size: 469.75502pt x 257.60872pt.
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 261.
+LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
+(Font)              scaled to size 9.49997pt on input line 261.
 
 
 [4 <./figs/structure_validation_esmfold_af2.pdf>]
-<figs/mi_covariation_scatter.pdf, id=151, 903.375pt x 301.125pt>
-File: figs/mi_covariation_scatter.pdf Graphic file (type pdf)
-<use figs/mi_covariation_scatter.pdf>
-Package pdftex.def Info: figs/mi_covariation_scatter.pdf  used on input line 27
-8.
-(pdftex.def)             Requested size: 469.75502pt x 156.58589pt.
-<figs/mi_covariation_barplot.pdf, id=152, 828.09375pt x 339.2675pt>
-File: figs/mi_covariation_barplot.pdf Graphic file (type pdf)
-<use figs/mi_covariation_barplot.pdf>
-Package pdftex.def Info: figs/mi_covariation_barplot.pdf  used on input line 28
-5.
-(pdftex.def)             Requested size: 469.75502pt x 192.463pt.
-<figs/defensin_biophysics.pdf, id=154, 903.375pt x 702.625pt>
-File: figs/defensin_biophysics.pdf Graphic file (type pdf)
-<use figs/defensin_biophysics.pdf>
-Package pdftex.def Info: figs/defensin_biophysics.pdf  used on input line 299.
-(pdftex.def)             Requested size: 422.77664pt x 328.82932pt.
+<figs/sequence_analysis_kunitz.pdf, id=163, 990.91335pt x 543.4108pt>
+File: figs/sequence_analysis_kunitz.pdf Graphic file (type pdf)
+<use figs/sequence_analysis_kunitz.pdf>
+Package pdftex.def Info: figs/sequence_analysis_kunitz.pdf  used on input line 
+297.
+(pdftex.def)             Requested size: 469.75502pt x 257.60872pt.
 
 
 [5 <./figs/esmfold_af2_concordance.pdf>]
-LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 311.
-LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
-(Font)              scaled to size 9.49997pt on input line 311.
-LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 6.64998pt on input line 339.
-LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 4.74998pt on input line 339.
+<figs/mi_covariation_scatter.pdf, id=174, 903.375pt x 301.125pt>
+File: figs/mi_covariation_scatter.pdf Graphic file (type pdf)
+<use figs/mi_covariation_scatter.pdf>
+Package pdftex.def Info: figs/mi_covariation_scatter.pdf  used on input line 33
+4.
+(pdftex.def)             Requested size: 469.75502pt x 156.58589pt.
+<figs/mi_covariation_barplot.pdf, id=175, 828.09375pt x 339.2675pt>
+File: figs/mi_covariation_barplot.pdf Graphic file (type pdf)
+<use figs/mi_covariation_barplot.pdf>
+Package pdftex.def Info: figs/mi_covariation_barplot.pdf  used on input line 34
+1.
+(pdftex.def)             Requested size: 469.75502pt x 192.463pt.
+<figs/defensin_biophysics.pdf, id=177, 903.375pt x 702.625pt>
+File: figs/defensin_biophysics.pdf Graphic file (type pdf)
+<use figs/defensin_biophysics.pdf>
+Package pdftex.def Info: figs/defensin_biophysics.pdf  used on input line 355.
+(pdftex.def)             Requested size: 422.77664pt x 328.82932pt.
 
 
 [6 <./figs/sequence_analysis_kunitz.pdf>]
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 6.64998pt on input line 395.
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 4.74998pt on input line 395.
+
 
 [7 <./figs/mi_covariation_scatter.pdf>]
 
@@ -593,52 +596,52 @@ LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 [10]
 
 [11]
-Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 771.
-LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 7.59998pt on input line 775.
-
 
 [12]
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
+put line 850.
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 7.59998pt on input line 854.
+
 
 [13]
-<figs/analytical_beta_star.pdf, id=447, 1505.625pt x 903.375pt>
+
+[14]
+<figs/analytical_beta_star.pdf, id=477, 1505.625pt x 903.375pt>
 File: figs/analytical_beta_star.pdf Graphic file (type pdf)
 <use figs/analytical_beta_star.pdf>
-Package pdftex.def Info: figs/analytical_beta_star.pdf  used on input line 823.
+Package pdftex.def Info: figs/analytical_beta_star.pdf  used on input line 902.
 
 (pdftex.def)             Requested size: 328.82707pt x 197.29575pt.
-<figs/bifurcation_analysis.pdf, id=448, 1405.25pt x 803.0pt>
+<figs/bifurcation_analysis.pdf, id=478, 1405.25pt x 803.0pt>
 File: figs/bifurcation_analysis.pdf Graphic file (type pdf)
 <use figs/bifurcation_analysis.pdf>
-Package pdftex.def Info: figs/bifurcation_analysis.pdf  used on input line 836.
+Package pdftex.def Info: figs/bifurcation_analysis.pdf  used on input line 915.
 
 (pdftex.def)             Requested size: 328.82707pt x 187.89635pt.
-<figs/stored_pattern_analysis.pdf, id=449, 1505.625pt x 903.375pt>
+<figs/stored_pattern_analysis.pdf, id=479, 1505.625pt x 903.375pt>
 File: figs/stored_pattern_analysis.pdf Graphic file (type pdf)
 <use figs/stored_pattern_analysis.pdf>
-Package pdftex.def Info: figs/stored_pattern_analysis.pdf  used on input line 8
-49.
+Package pdftex.def Info: figs/stored_pattern_analysis.pdf  used on input line 9
+28.
 (pdftex.def)             Requested size: 328.82707pt x 197.29575pt.
 
 
-[14{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc
+[15{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc
 } <./figs/analytical_beta_star.pdf>]
-<figs/pfam_family_size_distribution.pdf, id=465, 702.625pt x 451.6875pt>
+<figs/pfam_family_size_distribution.pdf, id=494, 702.625pt x 451.6875pt>
 File: figs/pfam_family_size_distribution.pdf Graphic file (type pdf)
 <use figs/pfam_family_size_distribution.pdf>
 Package pdftex.def Info: figs/pfam_family_size_distribution.pdf  used on input 
-line 895.
+line 974.
 (pdftex.def)             Requested size: 399.29463pt x 256.69951pt.
  (./si-appendix.bbl
 
-[15 <./figs/bifurcation_analysis.pdf>])
+[16 <./figs/bifurcation_analysis.pdf>])
 
-[16 <./figs/stored_pattern_analysis.pdf>]
+[17 <./figs/stored_pattern_analysis.pdf>]
 
-[17 <./figs/pfam_family_size_distribution.pdf>]
-
-[18]
+[18 <./figs/pfam_family_size_distribution.pdf>]
 
 [19]
 
@@ -652,22 +655,26 @@ line 895.
 
 [24]
 
-[25] (./si-appendix.aux)
+[25]
+
+[26]
+
+[27] (./si-appendix.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
 Package rerunfilecheck Info: File `si-appendix.out' has not changed.
-(rerunfilecheck)             Checksum: B5BC326B4F6D837C001EA0FFCF5ECE41;4435.
+(rerunfilecheck)             Checksum: C9AFACA9DC07FC7435BFF6E582612393;4755.
  ) 
 Here is how much of TeX's memory you used:
- 12996 strings out of 473190
- 204020 string characters out of 5715801
- 734822 words of memory out of 5000000
- 35942 multiletter control sequences out of 15000+600000
- 600467 words of font info for 101 fonts, out of 8000000 for 9000
+ 13010 strings out of 473190
+ 204198 string characters out of 5715801
+ 755701 words of memory out of 5000000
+ 35948 multiletter control sequences out of 15000+600000
+ 603197 words of font info for 103 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,11n,79p,1756b,695s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,11n,79p,1864b,695s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb><
 /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></
@@ -692,10 +699,10 @@ mf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2025/texmf
 ist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2025/texmf-dist/fon
 ts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type
 1/urw/helvetic/uhvro8a.pfb>
-Output written on si-appendix.pdf (25 pages, 1070792 bytes).
+Output written on si-appendix.pdf (27 pages, 1082553 bytes).
 PDF statistics:
- 657 PDF objects out of 1000 (max. 8388607)
- 439 compressed objects within 5 object streams
- 115 named destinations out of 1000 (max. 500000)
- 229 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 691 PDF objects out of 1000 (max. 8388607)
+ 466 compressed objects within 5 object streams
+ 122 named destinations out of 1000 (max. 500000)
+ 237 words of extra memory for PDF output out of 10000 (max. 10000000)
 
