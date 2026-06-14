@@ -1,4 +1,4 @@
-\begin{thebibliography}{7}
+\begin{thebibliography}{8}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -72,5 +72,13 @@ Typhaine Paysan-Lafosse, Matthias Blum, Sara Chuguransky, Tiago Grego,
 \newblock \emph{Nucleic Acids Research}, 51\penalty0 (D1):\penalty0 D418--D427,
   2023.
 \newblock \doi{10.1093/nar/gkac993}.
+
+\bibitem[Zhang and Skolnick(2005)]{zhangTMalign2005}
+Yang Zhang and Jeffrey Skolnick.
+\newblock {TM-align}: a protein structure alignment algorithm based on the
+  {TM-score}.
+\newblock \emph{Nucleic Acids Research}, 33\penalty0 (7):\penalty0 2302--2309,
+  2005.
+\newblock \doi{10.1093/nar/gki524}.
 
 \end{thebibliography}

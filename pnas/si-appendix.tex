@@ -411,6 +411,23 @@ SH3 & Faure et al.\ 2022      & 2{,}396 & 90.4\% & 67.5\% & $1.34\times$ & $<10^
 \end{tabular}
 \end{table}
 
+A potential confound in the comparison above is that SA preferentially substitutes at variable positions, which tend to be more mutation-tolerant; the enrichment relative to the overall dataset rate could then reflect \emph{where} SA mutates rather than \emph{which} residue it selects. To separate these effects, we recomputed the enrichment against a position-matched null. For each matched substitution, the null tolerance probability is the fraction of all tested mutant amino acids at that same DMS position that are classified as tolerated; summing these per-substitution probabilities gives the number of tolerated substitutions expected if SA had chosen a random tested residue at each position it mutated, holding the position distribution fixed. The position-matched null rate is indeed higher than the overall rate in both families ($0.843$ for PDZ and $0.749$ for SH3, versus $0.775$ and $0.675$ overall), confirming that SA does target tolerant positions. Even against this stricter null, however, SA-generated substitutions remained significantly enriched for tolerated mutations: $91.7\%$ versus $84.3\%$ for PDZ ($1.09\times$; Poisson-binomial $z{=}18.6$, $p < 10^{-77}$; $p < 5\times10^{-5}$ by a $20{,}000$-draw permutation test) and $90.4\%$ versus $74.9\%$ for SH3 ($1.21\times$; $z{=}23.4$, $p < 10^{-121}$). A coarser conservation-matched null, which draws comparison substitutions from positions in the same alignment-conservation quintile, gave essentially identical null rates ($0.841$ and $0.744$) and the same conclusion (Table~\ref{tab:dms-null}). The residue choices made by SA are therefore enriched for experimentally tolerated mutations beyond what its preference for tolerant positions alone would produce, although the enrichment is more modest than the comparison against the overall dataset rate suggests.
+
+\begin{table}[ht]
+\centering
+\caption{Position-matched and conservation-matched DMS nulls. The position-matched null fixes the set of positions SA substituted and asks how often a randomly chosen \emph{tested} substitution at each such position is tolerated; the conservation-matched null draws comparison substitutions from positions in the same alignment-conservation quintile. Enrichment is the ratio of the observed SA tolerance rate to the null rate. The position-matched $p$ is from a Poisson-binomial $z$-test (one-sided, SA $>$ null) and is corroborated by a $20{,}000$-draw permutation test ($p < 5\times10^{-5}$ in both families).}
+\label{tab:dms-null}
+\small
+\begin{tabular}{@{}lccccc@{}}
+\toprule
+Family & SA tol.\ rate & Overall null & Position-matched null & Conservation-matched null & Pos.-matched $p$ \\
+\midrule
+PDZ & $0.917$ ($n{=}4{,}313$) & $0.775$ ($1.18\times$) & $0.843$ ($1.09\times$) & $0.841$ ($1.09\times$) & $<10^{-77}$ \\
+SH3 & $0.904$ ($n{=}2{,}396$) & $0.675$ ($1.34\times$) & $0.749$ ($1.21\times$) & $0.744$ ($1.22\times$) & $<10^{-121}$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
 %% ═══════════════════════════════════════════════════════════════════════
 %% S9. Potts Model Baseline
 %% ═══════════════════════════════════════════════════════════════════════
@@ -471,7 +488,7 @@ Family & Method & KL$_{\mathrm{AA}}$ $(\downarrow)$ & Novelty $(\uparrow)$ & Seq
 
 To characterize the mixing properties of the Langevin sampler and justify the burn-in and thinning parameters used throughout the paper, we computed autocorrelation functions and effective sample sizes (ESS) from the Hopfield energy trace $E(\boldsymbol{\xi}_t)$ along each chain. For each family, we ran 10 independent unadjusted Langevin algorithm (ULA) and Metropolis-adjusted Langevin algorithm (MALA) chains of $T{=}5{,}000$ steps at the generation temperature $\beta_{\mathrm{gen}} \approx 2\beta^*$, recording the full trajectory. We computed the normalized autocorrelation function of the post-burn-in energy trace (iterations $2{,}001$--$5{,}000$), estimated the integrated autocorrelation time $\tau_{\mathrm{int}}$ using the initial positive sequence estimator with a cutoff at $\rho(\tau) < 0.05$, and derived the effective sample size as $\mathrm{ESS} = n/\tau_{\mathrm{int}}$ where $n{=}3{,}000$ is the number of post-burn-in samples.
 
-Table~\ref{tab:sampling-diag} reports the results across all eight families. The integrated autocorrelation time ranged from $76$ to $122$ iterations for ULA and from $82$ to $131$ for MALA, yielding $32$--$42$ effective samples per chain (ULA) and $27$--$39$ per chain (MALA). The thinning interval of 100 is thus well matched to the autocorrelation time ($\mathrm{thin}/\tau_{\mathrm{int}} = 0.8$--$1.3$), yielding retained samples that are approximately independent. Across 30 chains, the total effective sample size is approximately $30 \times 35 \approx 1{,}050$ independent draws from the Boltzmann distribution, from which we retain 150 decoded sequences ($5$ per chain). The burn-in of $2{,}000$ iterations provides a $3.2$--$6.6\times$ margin over the empirical convergence point ($304$--$617$ iterations), supporting the use of this burn-in before sampling begins. The MALA acceptance rates ($99.6$--$99.8\%$) indicate that ULA discretization bias is small at step size $\alpha{=}0.01$: the Metropolis correction rejects fewer than $0.4\%$ of proposals, suggesting that the unadjusted and adjusted samplers explore very similar distributions.
+Table~\ref{tab:sampling-diag} reports the results across all eight families. The integrated autocorrelation time ranged from $76$ to $122$ iterations for ULA and from $82$ to $131$ for MALA, yielding $32$--$42$ effective samples per chain (ULA) and $27$--$39$ per chain (MALA). The thinning interval of 100 is thus well matched to the autocorrelation time ($\mathrm{thin}/\tau_{\mathrm{int}} = 0.8$--$1.3$), yielding retained samples that are approximately independent. Across 30 chains, the total effective sample size is approximately $30 \times 35 \approx 1{,}050$ independent draws from the Boltzmann distribution, from which we retain 150 decoded sequences ($5$ per chain). The burn-in of $2{,}000$ iterations provides a $3.2$--$6.6\times$ margin over the empirical convergence point ($304$--$617$ iterations), supporting the use of this burn-in before sampling begins. The MALA acceptance rates ($99.6$--$99.8\%$) show that the Metropolis correction rejects fewer than $0.4\%$ of proposed moves at step size $\alpha{=}0.01$, so the unadjusted and adjusted updates rarely differ in this regime. A high acceptance rate bounds rather than directly quantifies the stationary-distribution bias of ULA; we therefore report it only as evidence that the two samplers take nearly identical steps at this step size, and adopt ULA for its computational efficiency.
 
 \begin{table}[ht]
 \centering
@@ -994,6 +1011,40 @@ Mean                & 59.5               & 5{,}075.9          \\
 Families $< 20$     & 9{,}888 (47.5\%)   & 2{,}028 (9.8\%)    \\
 Families $< 50$     & 14{,}386 (69.2\%)  & 3{,}438 (16.6\%)   \\
 Families $< 100$    & 17{,}523 (84.3\%)  & 4{,}684 (22.7\%)   \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%% ═══════════════════════════════════════════════════════════════════════
+%% S21. Software Versions, Random Seeds, and Reproducibility
+%% ═══════════════════════════════════════════════════════════════════════
+\section{Software Versions, Random Seeds, and Reproducibility}\label{si:reproducibility}
+
+All experiments were run on an Apple M2 workstation (16~GB RAM). The stochastic-attention sampler, baseline evaluation, scaling study, sampling diagnostics, and all metric computations were implemented in Julia~1.12.5; the principal packages and their versions were Flux~0.16.9, NNlib~0.9.33, MultivariateStats~0.10.4 (principal component analysis), Distributions~0.25.123, StatsBase~0.34.10, Clustering~0.15.8, DataFrames~1.8.1, CSV~0.10.16, and Plots~1.41.6 with StatsPlots~0.15.8. The complete Julia environment is pinned by the \texttt{Project.toml} and \texttt{Manifest.toml} files in the repository. The deep-learning baselines and validators were run in Python~3.12 using the following published model checkpoints: ESM2-650M (\texttt{esm2\_t33\_650M\_UR50D}) for pseudo-perplexity scoring; the MSA Transformer (\texttt{esm\_msa1b\_t12\_100M\_UR50S}); EvoDiff (\texttt{MSA\_OA\_DM\_RANDSUB}); and ESMFold together with AlphaFold2 for structure prediction, the latter run through ColabFold with model type \texttt{alphafold2\_ptm}, three recycles, one model, and seed~0. Profile HMMs were built and sampled with HMMER~3.4, structural superpositions used TM-align~\cite{zhangTMalign2005}, and the Potts baseline used a custom pseudo-likelihood maximization (plmDCA) implementation included in the repository. The exact versions of the Python dependencies (PyTorch, \texttt{fair-esm}, EvoDiff, ColabFold, NumPy, SciPy, Biopython) and of the TM-align binary are recorded in the environment specification archived with the versioned software record described in the main-text Data, Materials, and Software Availability statement.
+
+Random seeds were fixed for every stochastic step so that each experiment is reproducible. Table~\ref{tab:seeds} lists the seeds used; per-chain seeds use a fixed base offset plus the chain index $c$.
+
+\begin{table}[ht]
+\centering
+\caption{Fixed random seeds by experiment.}
+\label{tab:seeds}
+\small
+\begin{tabular}{@{}lll@{}}
+\toprule
+Experiment & Implementation & Seed(s) \\
+\midrule
+Main sequence generation             & Julia  & $42$ (setup); $12345{+}c$ per chain \\
+HMM validation                       & Julia  & $42$; $12345{+}c$ per chain \\
+Sampling diagnostics (ULA/MALA)      & Julia  & $42$; $12345{+}c$ per chain \\
+Multifamily scaling                  & Julia  & per-replicate seed \\
+Baseline evaluation and bootstrap    & Julia  & $12345$ \\
+Permuted-alignment control           & Julia  & $54321$; $12345$ \\
+PCA sensitivity                      & Julia  & $42$; per-condition seed \\
+$K{=}20$ specificity                 & Julia  & $20001$ \\
+Potts (plmDCA) baseline              & Python & $42$ \\
+MSA Transformer baseline             & Python & $42$ \\
+AlphaFold2 via ColabFold             & Python & $0$ \\
+DMS position-matched null            & Python & $0$ \\
 \bottomrule
 \end{tabular}
 \end{table}

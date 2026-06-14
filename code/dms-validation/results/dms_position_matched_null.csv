@@ -1,0 +1,3 @@
+family,pfam_id,n_matched,obs_tol_rate,overall_null_rate,overall_enrichment,posmatched_null_rate,posmatched_enrichment,posmatched_z,posmatched_z_p,posmatched_perm_p,consmatched_null_rate,consmatched_enrichment,consmatched_perm_p
+PDZ,PF00595,4313,0.9168,0.7754,1.182,0.8427,1.088,18.641,7.49100413128784e-78,4.999750012499375e-05,0.8409,1.09,4.999750012499375e-05
+SH3,PF00018,2396,0.9044,0.675,1.34,0.7486,1.208,23.433,9.858376560248266e-122,4.999750012499375e-05,0.7444,1.215,4.999750012499375e-05
