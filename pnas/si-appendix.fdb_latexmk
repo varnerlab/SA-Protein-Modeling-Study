@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex si-appendix"] 1781443840.82237 "si-appendix.aux" "si-appendix.bbl" "si-appendix" 1781455265.02948 0
+["bibtex si-appendix"] 1781456064.76843 "si-appendix.aux" "si-appendix.bbl" "si-appendix" 1781456065.61879 0
   "./references.bib" 1774355112.37256 19467 7de91fca75c5bf48a792b89bd0264556 ""
   "/usr/local/texlive/2025/texmf-dist/bibtex/bst/natbib/unsrtnat.bst" 1233624470 24550 a41a6405f4de768c43e871d9fbce2bc8 ""
-  "si-appendix.aux" 1781455264.76911 40402 bb004266eff0b37bfdb839699d73da51 "pdflatex"
+  "si-appendix.aux" 1781456065.35696 40402 bb004266eff0b37bfdb839699d73da51 "pdflatex"
   (generated)
   "si-appendix.bbl"
   "si-appendix.blg"
   (rewritten before read)
-["pdflatex"] 1781455264.27077 "si-appendix.tex" "si-appendix.pdf" "si-appendix" 1781455265.02965 0
+["pdflatex"] 1781456064.8697 "si-appendix.tex" "si-appendix.pdf" "si-appendix" 1781456065.61898 0
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -150,21 +150,21 @@
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1747946047 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1741450574 3345740 46b66fdb0378f7bf5921b5eabf1762b8 ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "figs/aa_freq_example.pdf" 1773269478.21888 30369 1735974b70f0de0f3078fd60b3dc71cd ""
-  "figs/analytical_beta_star.pdf" 1773337697.33603 85572 6ff0e047b519b4ab50b48cf6fb6b959e ""
-  "figs/bifurcation_analysis.pdf" 1773336750.50588 81430 2696cb5192befc5ecf3376ff14cc743a ""
-  "figs/defensin_biophysics.pdf" 1773415543.29307 28292 e17350321fed9d6dc1a3ad0bfeca25b9 ""
-  "figs/esmfold_af2_concordance.pdf" 1773690416.65142 25749 04a7823aa6990bf0bb0552b8c4585bfe ""
-  "figs/mi_covariation_barplot.pdf" 1773690416.65172 11648 6ae60041d73a5379206c13ac21cb1939 ""
-  "figs/mi_covariation_scatter.pdf" 1773690416.65213 112573 f7ae0b9df8d2ffb4d94bcdb5cfc5a5cf ""
-  "figs/pfam_family_size_distribution.pdf" 1774357524.17569 133778 87f4316a0b18706c2be79d62c51fa7a0 ""
-  "figs/scaling_composite.pdf" 1773422640.37829 10173 8af9878c6caf534ee12f247b8344e7e9 ""
-  "figs/sequence_analysis_kunitz.pdf" 1773422211.08939 53814 70917880d9c947f4b61c33f11bb6238b ""
-  "figs/stored_pattern_analysis.pdf" 1773337699.80595 77665 c8f3aead5bac5654dfd059cda03e4753 ""
-  "figs/structure_validation_esmfold_af2.pdf" 1773690416.65276 78858 a7d8cc1b24acbd71498bb9e788a3941f ""
-  "si-appendix.aux" 1781455264.76911 40402 bb004266eff0b37bfdb839699d73da51 "pdflatex"
-  "si-appendix.bbl" 1781443840.92494 3974 b9b06f92fd7f3a7551bbfeaef841648a "bibtex si-appendix"
-  "si-appendix.out" 1781455264.77072 5075 361089de69f220721a2c3aea8365b2b8 "pdflatex"
+  "figs/aa_freq_example.pdf" 1781456050.6528 30369 1735974b70f0de0f3078fd60b3dc71cd ""
+  "figs/analytical_beta_star.pdf" 1781456050.66311 85572 6ff0e047b519b4ab50b48cf6fb6b959e ""
+  "figs/bifurcation_analysis.pdf" 1781456050.68975 81430 2696cb5192befc5ecf3376ff14cc743a ""
+  "figs/defensin_biophysics.pdf" 1781456050.7061 28292 e17350321fed9d6dc1a3ad0bfeca25b9 ""
+  "figs/esmfold_af2_concordance.pdf" 1781456050.71405 25749 04a7823aa6990bf0bb0552b8c4585bfe ""
+  "figs/mi_covariation_barplot.pdf" 1781456050.72253 11648 6ae60041d73a5379206c13ac21cb1939 ""
+  "figs/mi_covariation_scatter.pdf" 1781456050.73098 112573 f7ae0b9df8d2ffb4d94bcdb5cfc5a5cf ""
+  "figs/pfam_family_size_distribution.pdf" 1781456050.73966 133778 87f4316a0b18706c2be79d62c51fa7a0 ""
+  "figs/scaling_composite.pdf" 1781456050.74817 10173 8af9878c6caf534ee12f247b8344e7e9 ""
+  "figs/sequence_analysis_kunitz.pdf" 1781456050.75523 53814 70917880d9c947f4b61c33f11bb6238b ""
+  "figs/stored_pattern_analysis.pdf" 1781456050.76232 77665 c8f3aead5bac5654dfd059cda03e4753 ""
+  "figs/structure_validation_esmfold_af2.pdf" 1781456050.78459 78858 a7d8cc1b24acbd71498bb9e788a3941f ""
+  "si-appendix.aux" 1781456065.35696 40402 bb004266eff0b37bfdb839699d73da51 "pdflatex"
+  "si-appendix.bbl" 1781456064.8678 3974 b9b06f92fd7f3a7551bbfeaef841648a "bibtex si-appendix"
+  "si-appendix.out" 1781456065.35875 5075 361089de69f220721a2c3aea8365b2b8 "pdflatex"
   "si-appendix.tex" 1781455253.38863 111637 eb1c41dc1718042665b6e725da10208e ""
   (generated)
   "si-appendix.aux"

@@ -448,12 +448,16 @@ function generate_figures_with_brackets(all_chains, df_tests, pooled_kls)
         @warn "PDF save failed ($(e)), using PNG. Convert manually if needed."
     end
 
-    # Copy to paper
-    paper_figs = joinpath(_EXPERIMENT_ROOT, "..", "..", "paper", "figs")
-    if isdir(paper_figs)
-        cp(joinpath(FIG_DIR, "baseline_comparison_composite.pdf"),
-           joinpath(paper_figs, "baseline_comparison_composite.pdf"), force=true)
-        @info "Copied to paper/figs/"
+    # Mirror into both manuscript figure directories. pnas/figs is a real
+    # directory (no longer a symlink to paper/figs), so it must be written
+    # to explicitly in addition to paper/figs.
+    for dest in (joinpath(_EXPERIMENT_ROOT, "..", "..", "paper", "figs"),
+                 joinpath(_EXPERIMENT_ROOT, "..", "..", "pnas", "figs"))
+        if isdir(dest)
+            cp(joinpath(FIG_DIR, "baseline_comparison_composite.pdf"),
+               joinpath(dest, "baseline_comparison_composite.pdf"), force=true)
+            @info "Copied baseline_comparison_composite.pdf -> $dest"
+        end
     end
 
     return composite
