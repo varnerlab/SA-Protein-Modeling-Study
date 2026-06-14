@@ -341,7 +341,7 @@ function generate_figures_with_brackets(all_chains, df_tests, pooled_kls)
     metrics = [
         (idx=1, ylabel=L"\mathrm{KL\ divergence}",        title="(A)  AA composition fidelity (lower is better)",    ylims_base=(0, 0.08)),
         (idx=2, ylabel=L"\mathrm{Novelty}",                title="(B)  Sample novelty (higher is better)",              ylims_base=(0, 0.85)),
-        (idx=3, ylabel=L"\mathrm{Nearest\ seq.\ identity}", title="(C)  Sequence identity (within-family target: 30-70%)", ylims_base=(0, 1.15)),
+        (idx=3, ylabel=L"\mathrm{Nearest\ seq.\ identity}", title="(C)  Sequence identity vs. natural nearest-neighbor envelope", ylims_base=(0, 1.15)),
     ]
 
     panels = []
@@ -383,15 +383,25 @@ function generate_figures_with_brackets(all_chains, df_tests, pooled_kls)
             hline!(p, [0.05]; color=:black, linestyle=:dash, lw=1.0, label="KL = 0.05")
         end
 
-        # Add within-family target band on sequence identity panel
+        # Per-family natural within-family nearest-neighbor identity envelope on the
+        # SID panel, replacing the old flat 30-70% band. Dark box = p10-p90; light box
+        # = full [min, max] range. Data: analysis/data/review_identity_band.csv.
         if met.idx == 3
-            n_fam = length(family_names)
-            plot!(p, [0.5, n_fam + 0.5], [0.30, 0.30]; color=:darkgreen, linestyle=:dash, lw=1.0, label="within-family range")
-            plot!(p, [0.5, n_fam + 0.5], [0.70, 0.70]; color=:darkgreen, linestyle=:dash, lw=1.0, label="")
-            # shaded band
-            x_band = vcat(0.5:0.01:n_fam+0.5, reverse(0.5:0.01:n_fam+0.5))
-            y_band = vcat(fill(0.30, length(0.5:0.01:n_fam+0.5)), fill(0.70, length(0.5:0.01:n_fam+0.5)))
-            plot!(p, x_band, y_band; fillrange=0.30, fillalpha=0.08, color=:darkgreen, lw=0, label="")
+            env = CSV.read(joinpath(_EXPERIMENT_ROOT, "..", "analysis", "data", "review_identity_band.csv"), DataFrame)
+            env_by = Dict(String(r.Family) => r for r in eachrow(env))
+            hw = 0.46
+            firstlab = true
+            for (fi, fam_name) in enumerate(family_names)
+                haskey(env_by, fam_name) || continue
+                r = env_by[fam_name]
+                outer = Shape([fi-hw, fi+hw, fi+hw, fi-hw], [r.NN_min, r.NN_min, r.NN_max, r.NN_max])
+                inner = Shape([fi-hw, fi+hw, fi+hw, fi-hw], [r.NN_p10, r.NN_p10, r.NN_p90, r.NN_p90])
+                plot!(p, outer; fillalpha=0.06, color=:darkgreen, lw=0,
+                      label=(firstlab ? "natural NN range (min-max)" : ""))
+                plot!(p, inner; fillalpha=0.15, color=:darkgreen, lw=0,
+                      label=(firstlab ? "natural NN envelope (p10-p90)" : ""))
+                firstlab = false
+            end
         end
 
         # Add significance brackets: SA gen vs each baseline, stacked by height

@@ -235,14 +235,29 @@ p_nov = make_bar_panel(df, family_names, method_order, method_colors, offsets, b
 
 p_sid = make_bar_panel(df, family_names, method_order, method_colors, offsets, bar_width;
     val_col=:SID_mean, err_col=:SID_se,
-    ylabel="Nearest sequence identity", title="(C)  Sequence identity (within-family target: 30-70%)",
+    ylabel="Nearest sequence identity", title="(C)  Sequence identity vs. natural nearest-neighbor envelope",
     legend=:none, ylims=(0, 1.05), panel_defaults...)
-let n_fam = length(family_names)
-    plot!(p_sid, [0.5, n_fam+0.5], [0.30, 0.30]; color=:darkgreen, linestyle=:dash, lw=1.0, label="within-family range")
-    plot!(p_sid, [0.5, n_fam+0.5], [0.70, 0.70]; color=:darkgreen, linestyle=:dash, lw=1.0, label="")
-    xs = vcat(0.5:0.01:n_fam+0.5, reverse(collect(0.5:0.01:n_fam+0.5)))
-    ys = vcat(fill(0.30, length(0.5:0.01:n_fam+0.5)), fill(0.70, length(0.5:0.01:n_fam+0.5)))
-    plot!(p_sid, xs, ys; fillrange=0.30, fillalpha=0.08, color=:darkgreen, lw=0, label="")
+# Per-family natural within-family nearest-neighbor identity envelope, replacing the
+# old flat 30-70% band. Dark box = 10th-90th percentile; light box = full [min, max]
+# range of each natural family. SA bars within the envelope for seven of eight
+# families; in Pkinase the SA bar rises above the natural ceiling.
+# Data: analysis/data/review_identity_band.csv (SI Table nn-band).
+let
+    env = CSV.read(joinpath(_EXPERIMENT_ROOT, "..", "analysis", "data", "review_identity_band.csv"), DataFrame)
+    env_by = Dict(String(r.Family) => r for r in eachrow(env))
+    hw = 0.46
+    firstlab = true
+    for (i, fam) in enumerate(family_names)
+        haskey(env_by, fam) || continue
+        r = env_by[fam]
+        outer = Shape([i-hw, i+hw, i+hw, i-hw], [r.NN_min, r.NN_min, r.NN_max, r.NN_max])
+        inner = Shape([i-hw, i+hw, i+hw, i-hw], [r.NN_p10, r.NN_p10, r.NN_p90, r.NN_p90])
+        plot!(p_sid, outer; fillalpha=0.06, color=:darkgreen, lw=0,
+              label=(firstlab ? "natural NN range (min-max)" : ""))
+        plot!(p_sid, inner; fillalpha=0.15, color=:darkgreen, lw=0,
+              label=(firstlab ? "natural NN envelope (p10-p90)" : ""))
+        firstlab = false
+    end
 end
 
 # composite: 3 rows × 1 column

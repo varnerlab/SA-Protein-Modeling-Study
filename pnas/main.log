@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  14 JUN 2026 09:34
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  14 JUN 2026 12:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1550,11 +1550,11 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 18856929362DEEF56B226D9EC34423EE;165.
  ) 
 Here is how much of TeX's memory you used:
- 31597 strings out of 473190
- 582279 string characters out of 5715801
- 1036190 words of memory out of 5000000
+ 31599 strings out of 473190
+ 582294 string characters out of 5715801
+ 1036892 words of memory out of 5000000
  53598 multiletter control sequences out of 15000+600000
- 754378 words of font info for 462 fonts, out of 8000000 for 9000
+ 754455 words of font info for 463 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  117i,12n,121p,3227b,1127s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/lo
@@ -1581,7 +1581,7 @@ fb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm
 </usr/local/texlive/2025/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.pfb></usr/
 local/texlive/2025/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/t
 exlive/2025/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on main.pdf (16 pages, 3516359 bytes).
+Output written on main.pdf (16 pages, 3495768 bytes).
 PDF statistics:
  556 PDF objects out of 1000 (max. 8388607)
  355 compressed objects within 4 object streams
