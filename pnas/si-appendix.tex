@@ -33,7 +33,64 @@ R.F. Smith School of Chemical and Biomolecular Engineering, Cornell University}
 \maketitle
 
 \section{Derivation of the Stochastic Attention Model}\label{si:derivation}
-Fill me in
+Sampling from a broad class of generative diffusion models reduces to one task: draw a state vector $\boldsymbol{\xi}\in\mathbb{R}^d$ from a target density
+$p$ written in Gibbs (Boltzmann) form as:
+\[
+  p(\boldsymbol{\xi}) \;\propto\; \exp\!\bigl(-U(\boldsymbol{\xi})\bigr),
+\]
+where $U(\boldsymbol{\xi})\in\mathbb{R}$ is the \emph{potential} (negative log-density) of configuration $\boldsymbol{\xi}$ (low $U$ $=$ high probability).
+The \textit{Unadjusted Langevin Algorithm} (ULA) follows the
+potential gradient downhill while injecting noise, with step size $\tilde\alpha>0$:
+\[
+  \boldsymbol{\xi}_{t+1} \;=\;
+  \boldsymbol{\xi}_t
+  \;\underbrace{-\,\tilde\alpha\,\nabla U(\boldsymbol{\xi}_t)}_{\textstyle\text{score step}}
+  \;+\; \sqrt{2\tilde\alpha}\;\boldsymbol{\epsilon}_t,
+  \qquad \boldsymbol{\epsilon}_t\sim\mathcal{N}(\mathbf{0},\mathbf{I}_d).
+\]
+
+The ULA requires a \emph{score function} $\nabla\log p = -\nabla U$. In
+diffusion and score-based models the score is \textit{typically not known} in closed form, so a neural
+network must \emph{learn} it from a large dataset of samples. Suppose we are interested in $K$ stored patterns
+$\mathbf{m}_k\in\mathbb{R}^d$, gathered as the columns of a \emph{standardized} memory matrix:
+$\mathbf{X} = [\mathbf{m}_1,\dots,\mathbf{m}_K]\in\mathbb{R}^{d\times K}$.
+The \emph{modern Hopfield log-sum-exp (LSE) energy} (with inverse temperature $\beta>0$) defines the
+landscape:
+\[
+  E(\boldsymbol{\xi})
+  \;=\;
+  \tfrac{1}{2}\,\|\boldsymbol{\xi}\|_{2}^2
+  \;-\;
+  \tfrac{1}{\beta}\,\log\!\left(\sum_{k=1}^{K}\exp\!\bigl(\beta\,\mathbf{m}_k^{\top}\boldsymbol{\xi}\bigr)\right),
+\]
+whose Boltzmann distribution $p_\beta(\boldsymbol{\xi})\propto\exp(-\beta E(\boldsymbol{\xi}))$ is our target. For this target the score need not be learned. The
+gradient of $E$ is \emph{exactly} the attention residual (the current state minus the attention output), so:
+\[
+  \underbrace{\nabla\log p_\beta(\boldsymbol{\xi})}_{\text{score}}
+  \;=\;
+  -\beta\,\nabla E(\boldsymbol{\xi})
+  \;=\;
+  -\beta\Bigl\{\boldsymbol{\xi} \;-\;
+  \underbrace{\mathbf{X}\,\mathrm{softmax}\!\bigl(\beta\,\mathbf{X}^{\top}\boldsymbol{\xi}\bigr)}_{\textstyle\mathbf{T}(\boldsymbol{\xi})}\Bigr\}.
+\]
+Here $\mathrm{softmax}$ turns the pattern similarities $\beta\,\mathbf{X}^{\top}\boldsymbol{\xi}$ into
+nonnegative weights that sum to one, so $\mathbf{T}(\boldsymbol{\xi})$ is just a weighted average of
+the stored patterns: one attention call returns the exact score. Substitute the closed-form score into ULA with
+potential $U=\beta E$ and step size $\tilde\alpha=\alpha/\beta$, where $\alpha\in(0,1)$ sets
+how far each step moves. The score step
+$-\tilde\alpha\nabla U = \alpha\bigl(\mathbf{T}(\boldsymbol{\xi})-\boldsymbol{\xi}\bigr)$
+gives the update:
+\boxedeq{%
+\[
+  \boldsymbol{\xi}_{t+1}
+  \;=\;
+  \underbrace{(1-\alpha)\,\boldsymbol{\xi}_t}_{\text{contraction}}
+  \;+\;
+  \underbrace{\alpha\,\mathbf{X}\,\mathrm{softmax}\!\bigl(\beta\,\mathbf{X}^{\top}\boldsymbol{\xi}_t\bigr)}_{\text{attention pull to memories}}
+  \;+\;
+  \underbrace{\sqrt{\tfrac{2\alpha}{\beta}}\;\boldsymbol{\epsilon}_t}_{\text{Gaussian noise}}
+\]
+}
 
 
 %% ═══════════════════════════════════════════════════════════════════════
