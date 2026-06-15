@@ -104,7 +104,7 @@ where $\beta > 0$ is an inverse temperature. The Boltzmann distribution $p_\beta
 \begin{equation}\label{eq:sa-update}
     \boldsymbol{\xi}_{t+1} = (1 - \alpha)\,\boldsymbol{\xi}_t + \alpha\,\mathbf{X}\,\operatorname{softmax}\!\bigl(\beta\,\mathbf{X}^\top\boldsymbol{\xi}_t\bigr) + \sqrt{\tfrac{2\alpha}{\beta}}\;\boldsymbol{\epsilon}_t, \quad \boldsymbol{\epsilon}_t \sim \mathcal{N}(\mathbf{0}, \mathbf{I}).
 \end{equation}
-Each step performs contraction toward the origin, a softmax-weighted pull toward stored memories, and isotropic Gaussian noise, at a per-step cost of $\mathcal{O}(dK)$.
+Each step performs contraction toward the origin, a softmax-weighted pull toward stored memories, and isotropic Gaussian noise, at a per-step cost of $\mathcal{O}(dK)$. A complete derivation of this update, from the Gibbs form of the target density through the closed-form Hopfield score to the Langevin step, is given in SI Appendix, Section~\ref{SI-si:derivation}.
 
 
 \begin{algorithm}[h!]

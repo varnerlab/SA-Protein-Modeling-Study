@@ -39,7 +39,7 @@ $p$ written in Gibbs (Boltzmann) form as:
   p(\boldsymbol{\xi}) \;\propto\; \exp\!\bigl(-U(\boldsymbol{\xi})\bigr),
 \]
 where $U(\boldsymbol{\xi})\in\mathbb{R}$ is the \emph{potential} (negative log-density) of configuration $\boldsymbol{\xi}$ (low $U$ $=$ high probability).
-The \textit{Unadjusted Langevin Algorithm} (ULA) follows the
+The \textit{Unadjusted Langevin Algorithm} (ULA)~\cite{robertsTweedieExponentialConvergence1996} follows the
 potential gradient downhill while injecting noise, with step size $\tilde\alpha>0$:
 \[
   \boldsymbol{\xi}_{t+1} \;=\;
@@ -52,9 +52,9 @@ potential gradient downhill while injecting noise, with step size $\tilde\alpha>
 The ULA requires a \emph{score function} $\nabla\log p = -\nabla U$. In
 diffusion and score-based models the score is \textit{typically not known} in closed form, so a neural
 network must \emph{learn} it from a large dataset of samples. Suppose we are interested in $K$ stored patterns
-$\mathbf{m}_k\in\mathbb{R}^d$, gathered as the columns of a \emph{standardized} memory matrix:
+$\mathbf{m}_k\in\mathbb{R}^d$, gathered as the columns of a \emph{unit-normalized} memory matrix:
 $\mathbf{X} = [\mathbf{m}_1,\dots,\mathbf{m}_K]\in\mathbb{R}^{d\times K}$.
-The \emph{modern Hopfield log-sum-exp (LSE) energy} (with inverse temperature $\beta>0$) defines the
+The \emph{modern Hopfield log-sum-exp (LSE) energy}~\cite{ramsauerHopfieldNetworksAll2021} (with inverse temperature $\beta>0$) defines the
 landscape:
 \[
   E(\boldsymbol{\xi})
@@ -71,26 +71,26 @@ gradient of $E$ is \emph{exactly} the attention residual (the current state minu
   -\beta\,\nabla E(\boldsymbol{\xi})
   \;=\;
   -\beta\Bigl\{\boldsymbol{\xi} \;-\;
-  \underbrace{\mathbf{X}\,\mathrm{softmax}\!\bigl(\beta\,\mathbf{X}^{\top}\boldsymbol{\xi}\bigr)}_{\textstyle\mathbf{T}(\boldsymbol{\xi})}\Bigr\}.
+  \underbrace{\mathbf{X}\,\operatorname{softmax}\!\bigl(\beta\,\mathbf{X}^{\top}\boldsymbol{\xi}\bigr)}_{\textstyle\mathbf{T}(\boldsymbol{\xi})}\Bigr\}.
 \]
-Here $\mathrm{softmax}$ turns the pattern similarities $\beta\,\mathbf{X}^{\top}\boldsymbol{\xi}$ into
+Here $\operatorname{softmax}$ turns the pattern similarities $\beta\,\mathbf{X}^{\top}\boldsymbol{\xi}$ into
 nonnegative weights that sum to one, so $\mathbf{T}(\boldsymbol{\xi})$ is just a weighted average of
 the stored patterns: one attention call returns the exact score. Substitute the closed-form score into ULA with
-potential $U=\beta E$ and step size $\tilde\alpha=\alpha/\beta$, where $\alpha\in(0,1)$ sets
+potential $U=\beta E$ and step size $\tilde\alpha=\alpha/\beta$, where the mixing coefficient $\alpha\in(0,1)$ sets
 how far each step moves. The score step
 $-\tilde\alpha\nabla U = \alpha\bigl(\mathbf{T}(\boldsymbol{\xi})-\boldsymbol{\xi}\bigr)$
 gives the update:
-\boxedeq{%
 \[
+  \boxed{%
   \boldsymbol{\xi}_{t+1}
   \;=\;
   \underbrace{(1-\alpha)\,\boldsymbol{\xi}_t}_{\text{contraction}}
   \;+\;
-  \underbrace{\alpha\,\mathbf{X}\,\mathrm{softmax}\!\bigl(\beta\,\mathbf{X}^{\top}\boldsymbol{\xi}_t\bigr)}_{\text{attention pull to memories}}
+  \underbrace{\alpha\,\mathbf{X}\,\operatorname{softmax}\!\bigl(\beta\,\mathbf{X}^{\top}\boldsymbol{\xi}_t\bigr)}_{\text{attention pull to memories}}
   \;+\;
   \underbrace{\sqrt{\tfrac{2\alpha}{\beta}}\;\boldsymbol{\epsilon}_t}_{\text{Gaussian noise}}
+  }
 \]
-}
 
 
 %% ═══════════════════════════════════════════════════════════════════════
