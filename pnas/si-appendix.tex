@@ -59,7 +59,7 @@ landscape:
 \[
   E(\boldsymbol{\xi})
   \;=\;
-  \tfrac{1}{2}\,\|\boldsymbol{\xi}\|_{2}^2
+  \tfrac{1}{2}\,\|\boldsymbol{\xi}\|_2^2
   \;-\;
   \tfrac{1}{\beta}\,\log\!\left(\sum_{k=1}^{K}\exp\!\bigl(\beta\,\mathbf{m}_k^{\top}\boldsymbol{\xi}\bigr)\right),
 \]
@@ -577,7 +577,7 @@ Defensin\_beta & 122 &  32 & 124 & 29 & 0.998 &  306 & $6.5\times$ \\
 %% ═══════════════════════════════════════════════════════════════════════
 \section{Initialization Sensitivity}\label{si:random-init}
 
-The multi-chain protocol described in Materials and Methods initializes each Langevin chain near a randomly selected stored pattern ($\boldsymbol{\xi}_0 = \mathbf{m}_k + \sigma_{\mathrm{init}}\boldsymbol{\epsilon}$, $\sigma_{\mathrm{init}} = 0.01$). To test whether this choice affects the generated ensemble, we repeated the full SA generation pipeline with random initialization on the unit sphere: each chain was started from $\boldsymbol{\xi}_0 = \mathbf{z}/\|\mathbf{z}\|$ with $\mathbf{z} \sim \mathcal{N}(\mathbf{0}, \mathbf{I}_d)$, placing the initial point at a random location unrelated to any stored pattern. All other parameters were held fixed.
+The multi-chain protocol described in Materials and Methods initializes each Langevin chain near a randomly selected stored pattern ($\boldsymbol{\xi}_0 = \mathbf{m}_k + \sigma_{\mathrm{init}}\boldsymbol{\epsilon}$, $\sigma_{\mathrm{init}} = 0.01$). To test whether this choice affects the generated ensemble, we repeated the full SA generation pipeline with random initialization on the unit sphere: each chain was started from $\boldsymbol{\xi}_0 = \mathbf{z}/\|\mathbf{z}\|_2$ with $\mathbf{z} \sim \mathcal{N}(\mathbf{0}, \mathbf{I}_d)$, placing the initial point at a random location unrelated to any stored pattern. All other parameters were held fixed.
 
 The results were consistent across initialization strategies: random sphere initialization produced output indistinguishable from stored-pattern initialization across all eight families (Table~\ref{tab:random-init}). The maximum absolute difference in KL divergence was $0.0003$ (RRM), and all other families showed differences below $10^{-4}$ in every metric. This insensitivity is expected from the theory: at $\beta_{\mathrm{gen}} \approx 2\beta^*$, the energy landscape has well-defined basins near stored patterns, and the dissipative drift term $-\alpha\nabla E(\boldsymbol{\xi})$ rapidly pulls any initial condition toward the nearest basin. The 2{,}000-step burn-in (at step size $\alpha{=}0.01$, corresponding to $20$ effective time units) is long relative to the observed convergence point. The result indicates that stored-pattern initialization is a computational convenience (reducing burn-in time) rather than a requirement, and that the generated ensemble is not an artifact of the initialization strategy.
 
@@ -934,7 +934,7 @@ After PCA, we normalize each projected vector to unit $L_2$ norm: $\mathbf{m}_k 
 \STATE Center: $\bar{\mathbf{x}} \leftarrow \frac{1}{K}\sum_k \mathbf{X}_{:,k}$; \; $\tilde{\mathbf{X}} \leftarrow \mathbf{X} - \bar{\mathbf{x}}\mathbf{1}_K^\top$
 \STATE SVD: $\tilde{\mathbf{X}} = \mathbf{U}\boldsymbol{\Sigma}\mathbf{V}^\top$
 \STATE Select $d$: smallest $p$ such that $\sum_{j=1}^{p}\sigma_j^2 / \sum_j \sigma_j^2 \geq \rho_{\min}$; set $\mathbf{W}_d \leftarrow \mathbf{U}_{:,1:d}$
-\STATE Project and normalize: $\mathbf{m}_k \leftarrow \mathbf{W}_d^\top(\mathbf{X}_{:,k} - \bar{\mathbf{x}}) / \|\mathbf{W}_d^\top(\mathbf{X}_{:,k} - \bar{\mathbf{x}})\|$ \; for $k = 1,\ldots,K$
+\STATE Project and normalize: $\mathbf{m}_k \leftarrow \mathbf{W}_d^\top(\mathbf{X}_{:,k} - \bar{\mathbf{x}}) / \|\mathbf{W}_d^\top(\mathbf{X}_{:,k} - \bar{\mathbf{x}})\|_2$ \; for $k = 1,\ldots,K$
 \STATE Assemble memory: $\hat{\mathbf{X}} \leftarrow [\mathbf{m}_1, \ldots, \mathbf{m}_K] \in \mathbb{R}^{d \times K}$
 \STATE \textbf{Temperature selection:}
 \STATE Set $K_p \leftarrow \min(K,20)$ and evaluate 50 log-spaced $\beta$ values in $[0.1,500]$
@@ -1034,7 +1034,7 @@ Full 33-pt LOFO & 33 & $0.959$ & $0.184$ \\
 %% ═══════════════════════════════════════════════════════════════════════
 \section{Regularity and Convergence Properties}\label{si:convergence}
 
-The modern Hopfield energy has Lipschitz-continuous gradient with constant at most $L = 1 + \beta\sigma_{\max}^2/2$, where $\sigma_{\max} = \|\hat{\mathbf{X}}\|_{\mathrm{op}}$ for the normalized memory matrix, and satisfies the dissipativity condition $\langle \nabla E(\boldsymbol{\xi}), \boldsymbol{\xi} \rangle \geq \|\boldsymbol{\xi}\|^2/2 - M^2/2$ with $M = \max_k \|\mathbf{m}_k\|$. These regularity properties determine the convergence regime of the Langevin sampler. When $\beta\sigma_{\max}^2 < 2$, this sufficient bound implies convexity of the energy and ULA iterates converge to $p_\beta$ in Wasserstein-2 distance at a geometric rate~\cite{dalalyanTheoreticalGuaranteesApproximate2017,durmusNonasymptoticAnalysisUnadjusted2017}. In the protein setting, operating temperatures satisfy $\beta\sigma_{\max}^2 \gg 2$, placing the sampler outside this globally convex regime, where the energy landscape can have multiple metastable basins corresponding to stored patterns or clusters thereof. Despite this non-convexity, the multi-chain protocol with long burn-in and thinning yields well-mixed chains, and the initialization sensitivity analysis indicates that the sampled distribution is insensitive to starting conditions.
+The modern Hopfield energy has Lipschitz-continuous gradient with constant at most $L = 1 + \beta\sigma_{\max}^2/2$, where $\sigma_{\max} = \|\hat{\mathbf{X}}\|_{\mathrm{op}}$ for the normalized memory matrix, and satisfies the dissipativity condition $\langle \nabla E(\boldsymbol{\xi}), \boldsymbol{\xi} \rangle \geq \|\boldsymbol{\xi}\|_2^2/2 - M^2/2$ with $M = \max_k \|\mathbf{m}_k\|_2$. These regularity properties determine the convergence regime of the Langevin sampler. When $\beta\sigma_{\max}^2 < 2$, this sufficient bound implies convexity of the energy and ULA iterates converge to $p_\beta$ in Wasserstein-2 distance at a geometric rate~\cite{dalalyanTheoreticalGuaranteesApproximate2017,durmusNonasymptoticAnalysisUnadjusted2017}. In the protein setting, operating temperatures satisfy $\beta\sigma_{\max}^2 \gg 2$, placing the sampler outside this globally convex regime, where the energy landscape can have multiple metastable basins corresponding to stored patterns or clusters thereof. Despite this non-convexity, the multi-chain protocol with long burn-in and thinning yields well-mixed chains, and the initialization sensitivity analysis indicates that the sampled distribution is insensitive to starting conditions.
 
 %% ═══════════════════════════════════════════════════════════════════════
 %% S20. Pfam Family Size Census
