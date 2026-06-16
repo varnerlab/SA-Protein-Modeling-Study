@@ -2,7 +2,23 @@
   "permissions": {
     "allow": [
       "Skill(style-check)",
-      "Skill(review-section)"
+      "Skill(review-section)",
+      "Skill(update-config)"
+    ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${CLAUDE_PROJECT_DIR}/.claude/hooks/check-acronym-starts.py\"",
+            "statusMessage": "Checking for sentence-initial acronyms",
+            "timeout": 15
+          }
+        ]
+      }
     ]
   }
 }
