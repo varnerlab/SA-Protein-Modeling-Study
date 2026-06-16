@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  15 JUN 2026 20:39
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  16 JUN 2026 11:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1411,9 +1411,7 @@ LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 {/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/loc
 al/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/texlive/202
 5/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/texlive/2025/texmf-dist/fo
-nts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/2025/texmf-dist/fonts/enc/dv
-ips/lm/lm-mathit.enc}{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-
-rm.enc}{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}]
+nts/enc/dvips/lm/lm-mathsy.enc}]
 Package mdframed Info: mdframed works in twoside mode on input line 56.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 (Font)              scaled to size 11.39996pt on input line 56.
@@ -1427,7 +1425,8 @@ LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 (Font)              scaled to size 7.59998pt on input line 56.
 
 
-[2]
+[2{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/lo
+cal/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}]
 Underfull \vbox (badness 6608) has occurred while \output is active []
 
 
@@ -1461,15 +1460,12 @@ LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 (Font)              scaled to size 9.49997pt on input line 161.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <10> on input line 161.
+
+
+[9{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
 put line 161.
 
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-
-[9]
 
 [10]
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 1
@@ -1500,31 +1496,31 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <5.24997> on input line 179.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <3.75> on input line 179.
-<figs/cross_family_composite.pdf, id=227, 702.625pt x 903.375pt>
+<figs/cross_family_composite.pdf, id=228, 702.625pt x 903.375pt>
 File: figs/cross_family_composite.pdf Graphic file (type pdf)
 <use figs/cross_family_composite.pdf>
 Package pdftex.def Info: figs/cross_family_composite.pdf  used on input line 19
 7.
 (pdftex.def)             Requested size: 455.12128pt x 585.17429pt.
-<figs/beta_prediction_composite.pdf, id=230, 1104.125pt x 381.425pt>
+<figs/beta_prediction_composite.pdf, id=231, 1104.125pt x 381.425pt>
 File: figs/beta_prediction_composite.pdf Graphic file (type pdf)
 <use figs/beta_prediction_composite.pdf>
 Package pdftex.def Info: figs/beta_prediction_composite.pdf  used on input line
  204.
 (pdftex.def)             Requested size: 505.69374pt x 174.69519pt.
-<figs/baseline_comparison_composite.pdf, id=231, 803.0pt x 1053.9375pt>
+<figs/baseline_comparison_composite.pdf, id=232, 803.0pt x 1053.9375pt>
 File: figs/baseline_comparison_composite.pdf Graphic file (type pdf)
 <use figs/baseline_comparison_composite.pdf>
 Package pdftex.def Info: figs/baseline_comparison_composite.pdf  used on input 
 line 211.
 (pdftex.def)             Requested size: 429.84276pt x 564.18068pt.
-<figs/structure_validation_composite.pdf, id=238, 1104.125pt x 421.575pt>
+<figs/structure_validation_composite.pdf, id=239, 1104.125pt x 421.575pt>
 File: figs/structure_validation_composite.pdf Graphic file (type pdf)
 <use figs/structure_validation_composite.pdf>
 Package pdftex.def Info: figs/structure_validation_composite.pdf  used on input
  line 218.
 (pdftex.def)             Requested size: 455.12128pt x 173.77316pt.
-<figs/structure_gallery_v2.pdf, id=239, 1062.65807pt x 591.21873pt>
+<figs/structure_gallery_v2.pdf, id=240, 1062.65807pt x 591.21873pt>
 File: figs/structure_gallery_v2.pdf Graphic file (type pdf)
 <use figs/structure_gallery_v2.pdf>
 Package pdftex.def Info: figs/structure_gallery_v2.pdf  used on input line 225.
@@ -1552,11 +1548,11 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 18856929362DEEF56B226D9EC34423EE;165.
  ) 
 Here is how much of TeX's memory you used:
- 31601 strings out of 473190
- 582372 string characters out of 5715801
- 1036402 words of memory out of 5000000
+ 31598 strings out of 473190
+ 582335 string characters out of 5715801
+ 1032412 words of memory out of 5000000
  53601 multiletter control sequences out of 15000+600000
- 754410 words of font info for 462 fonts, out of 8000000 for 9000
+ 754233 words of font info for 461 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  117i,12n,121p,3227b,1127s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/lo
@@ -1583,10 +1579,10 @@ fb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm
 </usr/local/texlive/2025/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.pfb></usr/
 local/texlive/2025/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/t
 exlive/2025/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on main.pdf (17 pages, 3497367 bytes).
+Output written on main.pdf (17 pages, 3497833 bytes).
 PDF statistics:
- 561 PDF objects out of 1000 (max. 8388607)
- 359 compressed objects within 4 object streams
+ 562 PDF objects out of 1000 (max. 8388607)
+ 360 compressed objects within 4 object streams
  60 named destinations out of 1000 (max. 500000)
  135726 words of extra memory for PDF output out of 154059 (max. 10000000)
 
