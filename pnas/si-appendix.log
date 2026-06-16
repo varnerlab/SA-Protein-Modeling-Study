@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  15 JUN 2026 19:29
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  15 JUN 2026 20:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -505,10 +505,6 @@ LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 (Font)              scaled to size 13.67995pt on input line 35.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 (Font)              scaled to size 13.67995pt on input line 35.
-LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 41.
-LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
-(Font)              scaled to size 9.49997pt on input line 41.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 (Font)              scaled to size 6.64998pt on input line 47.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
@@ -519,7 +515,7 @@ LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 
 {/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/loc
 al/texlive/2025/texmf-dist/fonts/enc/dvips/base/8r.enc}]
-<figs/aa_freq_example.pdf, id=124, 702.625pt x 501.875pt>
+<figs/aa_freq_example.pdf, id=123, 702.625pt x 501.875pt>
 File: figs/aa_freq_example.pdf Graphic file (type pdf)
 <use figs/aa_freq_example.pdf>
 Package pdftex.def Info: figs/aa_freq_example.pdf  used on input line 105.
@@ -531,7 +527,7 @@ LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 
 
 [2 <./figs/aa_freq_example.pdf>]
-<figs/scaling_composite.pdf, id=147, 903.375pt x 702.625pt>
+<figs/scaling_composite.pdf, id=146, 903.375pt x 702.625pt>
 File: figs/scaling_composite.pdf Graphic file (type pdf)
 <use figs/scaling_composite.pdf>
 Package pdftex.def Info: figs/scaling_composite.pdf  used on input line 248.
@@ -539,13 +535,13 @@ Package pdftex.def Info: figs/scaling_composite.pdf  used on input line 248.
 
 
 [3]
-<figs/structure_validation_esmfold_af2.pdf, id=162, 1104.125pt x 803.0pt>
+<figs/structure_validation_esmfold_af2.pdf, id=161, 1104.125pt x 803.0pt>
 File: figs/structure_validation_esmfold_af2.pdf Graphic file (type pdf)
 <use figs/structure_validation_esmfold_af2.pdf>
 Package pdftex.def Info: figs/structure_validation_esmfold_af2.pdf  used on inp
 ut line 281.
 (pdftex.def)             Requested size: 469.75502pt x 341.6442pt.
-<figs/esmfold_af2_concordance.pdf, id=163, 903.375pt x 401.5pt>
+<figs/esmfold_af2_concordance.pdf, id=162, 903.375pt x 401.5pt>
 File: figs/esmfold_af2_concordance.pdf Graphic file (type pdf)
 <use figs/esmfold_af2_concordance.pdf>
 Package pdftex.def Info: figs/esmfold_af2_concordance.pdf  used on input line 2
@@ -553,12 +549,16 @@ Package pdftex.def Info: figs/esmfold_af2_concordance.pdf  used on input line 2
 (pdftex.def)             Requested size: 328.82707pt x 146.14499pt.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 (Font)              scaled to size 11.39996pt on input line 293.
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 322.
+LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
+(Font)              scaled to size 9.49997pt on input line 322.
 
 
 [4 <./figs/scaling_composite.pdf>]
 
 [5 <./figs/structure_validation_esmfold_af2.pdf>]
-<figs/sequence_analysis_kunitz.pdf, id=184, 990.91335pt x 543.4108pt>
+<figs/sequence_analysis_kunitz.pdf, id=182, 990.91335pt x 543.4108pt>
 File: figs/sequence_analysis_kunitz.pdf Graphic file (type pdf)
 <use figs/sequence_analysis_kunitz.pdf>
 Package pdftex.def Info: figs/sequence_analysis_kunitz.pdf  used on input line 
@@ -567,19 +567,19 @@ Package pdftex.def Info: figs/sequence_analysis_kunitz.pdf  used on input line
 
 
 [6 <./figs/esmfold_af2_concordance.pdf>]
-<figs/mi_covariation_scatter.pdf, id=198, 903.375pt x 301.125pt>
+<figs/mi_covariation_scatter.pdf, id=196, 903.375pt x 301.125pt>
 File: figs/mi_covariation_scatter.pdf Graphic file (type pdf)
 <use figs/mi_covariation_scatter.pdf>
 Package pdftex.def Info: figs/mi_covariation_scatter.pdf  used on input line 39
 5.
 (pdftex.def)             Requested size: 469.75502pt x 156.58589pt.
-<figs/mi_covariation_barplot.pdf, id=199, 828.09375pt x 339.2675pt>
+<figs/mi_covariation_barplot.pdf, id=197, 828.09375pt x 339.2675pt>
 File: figs/mi_covariation_barplot.pdf Graphic file (type pdf)
 <use figs/mi_covariation_barplot.pdf>
 Package pdftex.def Info: figs/mi_covariation_barplot.pdf  used on input line 40
 2.
 (pdftex.def)             Requested size: 469.75502pt x 192.463pt.
-<figs/defensin_biophysics.pdf, id=201, 903.375pt x 702.625pt>
+<figs/defensin_biophysics.pdf, id=199, 903.375pt x 702.625pt>
 File: figs/defensin_biophysics.pdf Graphic file (type pdf)
 <use figs/defensin_biophysics.pdf>
 Package pdftex.def Info: figs/defensin_biophysics.pdf  used on input line 416.
@@ -608,19 +608,19 @@ LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 [14]
 
 [15]
-<figs/analytical_beta_star.pdf, id=494, 1505.625pt x 903.375pt>
+<figs/analytical_beta_star.pdf, id=491, 1505.625pt x 903.375pt>
 File: figs/analytical_beta_star.pdf Graphic file (type pdf)
 <use figs/analytical_beta_star.pdf>
 Package pdftex.def Info: figs/analytical_beta_star.pdf  used on input line 980.
 
 (pdftex.def)             Requested size: 328.82707pt x 197.29575pt.
-<figs/bifurcation_analysis.pdf, id=495, 1405.25pt x 803.0pt>
+<figs/bifurcation_analysis.pdf, id=492, 1405.25pt x 803.0pt>
 File: figs/bifurcation_analysis.pdf Graphic file (type pdf)
 <use figs/bifurcation_analysis.pdf>
 Package pdftex.def Info: figs/bifurcation_analysis.pdf  used on input line 993.
 
 (pdftex.def)             Requested size: 328.82707pt x 187.89635pt.
-<figs/stored_pattern_analysis.pdf, id=496, 1505.625pt x 903.375pt>
+<figs/stored_pattern_analysis.pdf, id=493, 1505.625pt x 903.375pt>
 File: figs/stored_pattern_analysis.pdf Graphic file (type pdf)
 <use figs/stored_pattern_analysis.pdf>
 Package pdftex.def Info: figs/stored_pattern_analysis.pdf  used on input line 1
@@ -628,8 +628,9 @@ Package pdftex.def Info: figs/stored_pattern_analysis.pdf  used on input line 1
 (pdftex.def)             Requested size: 328.82707pt x 197.29575pt.
 
 
-[16 <./figs/analytical_beta_star.pdf>]
-<figs/pfam_family_size_distribution.pdf, id=510, 702.625pt x 451.6875pt>
+[16{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc
+} <./figs/analytical_beta_star.pdf>]
+<figs/pfam_family_size_distribution.pdf, id=509, 702.625pt x 451.6875pt>
 File: figs/pfam_family_size_distribution.pdf Graphic file (type pdf)
 <use figs/pfam_family_size_distribution.pdf>
 Package pdftex.def Info: figs/pfam_family_size_distribution.pdf  used on input 
@@ -637,8 +638,7 @@ line 1052.
 (pdftex.def)             Requested size: 399.29463pt x 256.69951pt.
 
 
-[17{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc
-} <./figs/bifurcation_analysis.pdf>] (./si-appendix.bbl
+[17 <./figs/bifurcation_analysis.pdf>] (./si-appendix.bbl
 
 [18 <./figs/stored_pattern_analysis.pdf>])
 
@@ -671,7 +671,7 @@ Package rerunfilecheck Info: File `si-appendix.out' has not changed.
 Here is how much of TeX's memory you used:
  13035 strings out of 473190
  204838 string characters out of 5715801
- 762414 words of memory out of 5000000
+ 762665 words of memory out of 5000000
  35965 multiletter control sequences out of 15000+600000
  603197 words of font info for 103 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -700,10 +700,10 @@ mf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2025/texmf
 ist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2025/texmf-dist/fon
 ts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type
 1/urw/helvetic/uhvro8a.pfb>
-Output written on si-appendix.pdf (28 pages, 1102480 bytes).
+Output written on si-appendix.pdf (28 pages, 1101281 bytes).
 PDF statistics:
- 714 PDF objects out of 1000 (max. 8388607)
- 488 compressed objects within 5 object streams
+ 711 PDF objects out of 1000 (max. 8388607)
+ 485 compressed objects within 5 object streams
  130 named destinations out of 1000 (max. 500000)
  253 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -33,14 +33,14 @@ R.F. Smith School of Chemical and Biomolecular Engineering, Cornell University}
 \maketitle
 
 \section{Derivation of the Stochastic Attention Model}\label{si:derivation}
-Sampling from a broad class of generative diffusion models reduces to one task: draw a state vector $\boldsymbol{\xi}\in\mathbb{R}^d$ from a target density
+Sampling from a broad class of generative models can be reduced to a single task: drawing a state vector $\boldsymbol{\xi}\in\mathbb{R}^d$ from a target density
 $p$ written in Gibbs (Boltzmann) form as:
 \[
   p(\boldsymbol{\xi}) \;\propto\; \exp\!\bigl(-U(\boldsymbol{\xi})\bigr),
 \]
-where $U(\boldsymbol{\xi})\in\mathbb{R}$ is the \emph{potential} (negative log-density) of configuration $\boldsymbol{\xi}$ (low $U$ $=$ high probability).
-The \textit{Unadjusted Langevin Algorithm} (ULA)~\cite{robertsTweedieExponentialConvergence1996} follows the
-potential gradient downhill while injecting noise, with step size $\tilde\alpha>0$:
+where the potential $U(\boldsymbol{\xi})\in\mathbb{R}$ is the negative log-density of configuration $\boldsymbol{\xi}$, so that low-potential states carry high probability.
+The unadjusted Langevin algorithm (ULA)~\cite{robertsTweedieExponentialConvergence1996} samples from this density by descending the
+potential gradient while adding Gaussian noise, with step size $\tilde\alpha>0$:
 \[
   \boldsymbol{\xi}_{t+1} \;=\;
   \boldsymbol{\xi}_t
@@ -49,12 +49,12 @@ potential gradient downhill while injecting noise, with step size $\tilde\alpha>
   \qquad \boldsymbol{\epsilon}_t\sim\mathcal{N}(\mathbf{0},\mathbf{I}_d).
 \]
 
-The ULA requires a \emph{score function} $\nabla\log p = -\nabla U$. In
-diffusion and score-based models the score is \textit{typically not known} in closed form, so a neural
-network must \emph{learn} it from a large dataset of samples. Suppose we are interested in $K$ stored patterns
-$\mathbf{m}_k\in\mathbb{R}^d$, gathered as the columns of a \emph{unit-normalized} memory matrix:
+The ULA requires the score function $\nabla\log p = -\nabla U$. In
+diffusion and score-based models this score is not available in closed form, so a neural
+network must learn it from a large set of samples. We represent the protein family as $K$ stored patterns
+$\mathbf{m}_k\in\mathbb{R}^d$, the columns of a unit-normalized memory matrix
 $\mathbf{X} = [\mathbf{m}_1,\dots,\mathbf{m}_K]\in\mathbb{R}^{d\times K}$.
-The \emph{modern Hopfield log-sum-exp (LSE) energy}~\cite{ramsauerHopfieldNetworksAll2021} (with inverse temperature $\beta>0$) defines the
+The modern Hopfield log-sum-exp (LSE) energy~\cite{ramsauerHopfieldNetworksAll2021} at inverse temperature $\beta>0$ defines the
 landscape:
 \[
   E(\boldsymbol{\xi})
@@ -63,8 +63,8 @@ landscape:
   \;-\;
   \tfrac{1}{\beta}\,\log\!\left(\sum_{k=1}^{K}\exp\!\bigl(\beta\,\mathbf{m}_k^{\top}\boldsymbol{\xi}\bigr)\right),
 \]
-whose Boltzmann distribution $p_\beta(\boldsymbol{\xi})\propto\exp(-\beta E(\boldsymbol{\xi}))$ is our target. For this target the score need not be learned. The
-gradient of $E$ is \emph{exactly} the attention residual (the current state minus the attention output), so:
+whose Boltzmann distribution $p_\beta(\boldsymbol{\xi})\propto\exp(-\beta E(\boldsymbol{\xi}))$ is the target density. For this target the score is available in closed form: the
+gradient of $E$ is precisely the attention residual, the current state minus the attention output, so:
 \[
   \underbrace{\nabla\log p_\beta(\boldsymbol{\xi})}_{\text{score}}
   \;=\;
@@ -73,11 +73,11 @@ gradient of $E$ is \emph{exactly} the attention residual (the current state minu
   -\beta\Bigl\{\boldsymbol{\xi} \;-\;
   \underbrace{\mathbf{X}\,\operatorname{softmax}\!\bigl(\beta\,\mathbf{X}^{\top}\boldsymbol{\xi}\bigr)}_{\textstyle\mathbf{T}(\boldsymbol{\xi})}\Bigr\}.
 \]
-Here $\operatorname{softmax}$ turns the pattern similarities $\beta\,\mathbf{X}^{\top}\boldsymbol{\xi}$ into
-nonnegative weights that sum to one, so $\mathbf{T}(\boldsymbol{\xi})$ is just a weighted average of
-the stored patterns: one attention call returns the exact score. Substitute the closed-form score into ULA with
-potential $U=\beta E$ and step size $\tilde\alpha=\alpha/\beta$, where the mixing coefficient $\alpha\in(0,1)$ sets
-how far each step moves. The score step
+The softmax converts the pattern similarities $\beta\,\mathbf{X}^{\top}\boldsymbol{\xi}$ into
+nonnegative weights that sum to one, so $\mathbf{T}(\boldsymbol{\xi})$ is a weighted average of
+the stored patterns and a single attention evaluation yields the exact score, with no network to train. With this closed-form score, the ULA update uses
+potential $U=\beta E$ and step size $\tilde\alpha=\alpha/\beta$, where the mixing coefficient $\alpha\in(0,1)$ controls
+the step length; the resulting score step
 $-\tilde\alpha\nabla U = \alpha\bigl(\mathbf{T}(\boldsymbol{\xi})-\boldsymbol{\xi}\bigr)$
 gives the update:
 \[
@@ -321,7 +321,7 @@ Defensin\_beta & PF00711 & 1E4S (A) & Beta-defensin \\
 
 Sequences generated by stochastic attention achieved template modeling (TM)-scores that, in several families, exceeded those of the stored natural sequences. Because all structure predictors are trained on evolutionary data, one explanation is predictor bias: a predictor might assign higher confidence to sequences that lie closer to the family consensus, in which case the elevated TM-scores would be an artifact of consensus proximity rather than evidence of structural quality. To test this directly, we asked whether predicted structural quality tracks consensus proximity \emph{within} each family. For every SA-generated sequence whose structure was predicted ($n{=}50$ per family), we computed its identity to the family consensus (the most frequent residue per column among stored sequences) and its mean predicted local distance difference test (pLDDT) score and reference-normalized TM-score, then computed the within-family Spearman rank correlation between consensus identity and each structural metric (Table~\ref{tab:consensus-reg}).
 
-The association is weak and inconsistent in sign. Across families, the Spearman correlation between consensus identity and TM-score ranged from $-0.13$ to $0.53$ (negative in SH3, WW, and Pkinase), and between consensus identity and pLDDT from $-0.10$ to $0.43$. Pooling the within-family-standardized values gave $\rho{=}0.17$ for TM-score ($p{=}5\times10^{-4}$, $n{=}400$) and $\rho{=}0.23$ for pLDDT ($p{=}2\times10^{-6}$); each accounts for under $4\%$ and $6\%$ of the variance, respectively. Consensus distance is therefore not the dominant determinant of predicted structural quality, which argues against the interpretation that the elevated TM-scores are primarily an artifact of consensus proximity. This analysis does not exclude an \emph{absolute} preference, shared by both the sampler and the predictor, for family-typical sequences; a complementary control that folds the consensus-with-noise ensemble (Section~\ref{si:consensus-baseline}) through the same predictors would further isolate that effect, and definitive resolution requires experimental structure determination. We also note that SA generation is most consensus-proximal in the Pkinase family (mean identity to consensus $0.73$, the highest of any family), which accounts for both its near-natural nearest-neighbor identity and its low mutual-information correlation ($r{=}0.05$; Section~\ref{si:mi}), since near-consensus sequences carry little pairwise covariation.
+The association is weak and inconsistent in sign. Across families, the Spearman correlation between consensus identity and TM-score ranged from $-0.13$ to $0.53$ (negative in SH3, WW, and Pkinase), and between consensus identity and pLDDT from $-0.10$ to $0.43$. Pooling the within-family-standardized values gave $\rho{=}0.17$ for TM-score ($p{=}5\times10^{-4}$, $n{=}400$) and $\rho{=}0.23$ for pLDDT ($p{=}2\times10^{-6}$); each accounts for under $4\%$ and $6\%$ of the variance, respectively. Consensus distance is therefore not the dominant determinant of predicted structural quality, which argues against the interpretation that the elevated TM-scores are primarily an artifact of consensus proximity. This analysis does not exclude an \emph{absolute} preference, shared by both the sampler and the predictor, for family-typical sequences; a complementary control that folds the consensus-with-noise ensemble through the same predictors would further isolate that effect, and definitive resolution requires experimental structure determination. We also note that SA generation is most consensus-proximal in the Pkinase family (mean identity to consensus $0.73$, the highest of any family), which accounts for both its near-natural nearest-neighbor identity and its low mutual-information correlation ($r{=}0.05$), since near-consensus sequences carry little pairwise covariation.
 
 \begin{table}[ht]
 \centering
@@ -655,7 +655,7 @@ Defensin\_beta & $0.655$ & $0.0$ & $0.0$ & $6.0$ & $0.0$ & $0.332$ \\
 \end{tabular}
 \end{table}
 
-The nearest sequence identity reported for generated sequences (``SeqID'') is a nearest-neighbor quantity: the identity of each generated sequence to its closest stored pattern. The appropriate natural reference is therefore the within-family nearest-neighbor identity, computed by leave-one-out as each stored sequence's identity to its closest neighbor in the same family, not the mean pairwise identity (``Stored ID'' above), which averages over all distant pairs and is consequently much lower. Table~\ref{tab:nn-band} reports this nearest-neighbor envelope. Mean nearest-neighbor identity among natural sequences ranges from $0.38$ (Pkinase) to $0.60$ (WW), with $10$th--$90$th percentile envelopes spanning roughly $0.29$--$0.74$, far above the $0.22$--$0.37$ mean pairwise identity. Generated SeqID ($0.51$--$0.66$) falls within each family's full nearest-neighbor range for seven of eight families; in Pkinase, generated SeqID ($0.515$) slightly exceeds the natural maximum ($0.454$), consistent with this family's strongly consensus-proximal generation (Section~\ref{si:consensus-reg}). By contrast, profile HMM emit and the MSA Transformer reach nearest-neighbor identities of $0.09$--$0.21$ in several families, below the minimum nearest-neighbor identity of any natural sequence in those families (e.g., $0.22$--$0.28$ for Pkinase, PDZ, and RRM), supporting the conclusion that their high novelty reflects drift outside the family rather than family-consistent exploration. All $150$ generated sequences are distinct in every family, with mean pairwise sequence identity among generated sequences of $0.35$--$0.65$ (mean pairwise Hamming distance $0.36$--$0.65$), a sequence-space diversity measure that does not rely on high-dimensional cosine distance.
+The nearest sequence identity reported for generated sequences (``SeqID'') is a nearest-neighbor quantity: the identity of each generated sequence to its closest stored pattern. The appropriate natural reference is therefore the within-family nearest-neighbor identity, computed by leave-one-out as each stored sequence's identity to its closest neighbor in the same family, not the mean pairwise identity (``Stored ID'' above), which averages over all distant pairs and is consequently much lower. Table~\ref{tab:nn-band} reports this nearest-neighbor envelope. Mean nearest-neighbor identity among natural sequences ranges from $0.38$ (Pkinase) to $0.60$ (WW), with $10$th--$90$th percentile envelopes spanning roughly $0.29$--$0.74$, far above the $0.22$--$0.37$ mean pairwise identity. Generated SeqID ($0.51$--$0.66$) falls within each family's full nearest-neighbor range for seven of eight families; in Pkinase, generated SeqID ($0.515$) slightly exceeds the natural maximum ($0.454$), consistent with this family's strongly consensus-proximal generation. By contrast, profile HMM emit and the MSA Transformer reach nearest-neighbor identities of $0.09$--$0.21$ in several families, below the minimum nearest-neighbor identity of any natural sequence in those families (e.g., $0.22$--$0.28$ for Pkinase, PDZ, and RRM), supporting the conclusion that their high novelty reflects drift outside the family rather than family-consistent exploration. All $150$ generated sequences are distinct in every family, with mean pairwise sequence identity among generated sequences of $0.35$--$0.65$ (mean pairwise Hamming distance $0.36$--$0.65$), a sequence-space diversity measure that does not rely on high-dimensional cosine distance.
 
 \begin{table}[ht]
 \centering
