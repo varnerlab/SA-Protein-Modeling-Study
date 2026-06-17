@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  16 JUN 2026 15:18
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  17 JUN 2026 14:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -671,7 +671,7 @@ Package rerunfilecheck Info: File `si-appendix.out' has not changed.
 Here is how much of TeX's memory you used:
  13035 strings out of 473190
  204838 string characters out of 5715801
- 762769 words of memory out of 5000000
+ 763986 words of memory out of 5000000
  35965 multiletter control sequences out of 15000+600000
  603197 words of font info for 103 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -700,7 +700,7 @@ mf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2025/texmf
 ist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2025/texmf-dist/fon
 ts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type
 1/urw/helvetic/uhvro8a.pfb>
-Output written on si-appendix.pdf (28 pages, 1101290 bytes).
+Output written on si-appendix.pdf (28 pages, 1101286 bytes).
 PDF statistics:
  711 PDF objects out of 1000 (max. 8388607)
  485 compressed objects within 5 object streams
