@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex si-appendix"] 1781915775.60385 "si-appendix.aux" "si-appendix.bbl" "si-appendix" 1781915776.46515 0
+["bibtex si-appendix"] 1782154124.37191 "si-appendix.aux" "si-appendix.bbl" "si-appendix" 1782154125.28584 0
   "./references.bib" 1774355112.37256 19467 7de91fca75c5bf48a792b89bd0264556 ""
   "/usr/local/texlive/2025/texmf-dist/bibtex/bst/natbib/unsrtnat.bst" 1233624470 24550 a41a6405f4de768c43e871d9fbce2bc8 ""
-  "si-appendix.aux" 1781915776.19828 41366 4d0874af8fd58abb0b079d26d71225c9 "pdflatex"
+  "si-appendix.aux" 1782154125.01597 41376 727e0fca87f0340140797716a205147a "pdflatex"
   (generated)
   "si-appendix.bbl"
   "si-appendix.blg"
   (rewritten before read)
-["pdflatex"] 1781915775.70269 "si-appendix.tex" "si-appendix.pdf" "si-appendix" 1781915776.46535 0
+["pdflatex"] 1782154124.47727 "si-appendix.tex" "si-appendix.pdf" "si-appendix" 1782154125.28602 0
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -162,10 +162,10 @@
   "figs/sequence_analysis_kunitz.pdf" 1781456050.75523 53814 70917880d9c947f4b61c33f11bb6238b ""
   "figs/stored_pattern_analysis.pdf" 1781456050.76232 77665 c8f3aead5bac5654dfd059cda03e4753 ""
   "figs/structure_validation_esmfold_af2.pdf" 1781456050.78459 78858 a7d8cc1b24acbd71498bb9e788a3941f ""
-  "si-appendix.aux" 1781915776.19828 41366 4d0874af8fd58abb0b079d26d71225c9 "pdflatex"
-  "si-appendix.bbl" 1781915775.70059 4947 1545b6e5a345e7dc0cf87c437ed3318c "bibtex si-appendix"
-  "si-appendix.out" 1781915776.20015 5355 a5b18e33a9e4acaa7016de23d202c9c2 "pdflatex"
-  "si-appendix.tex" 1781915758.13937 115449 740febec651744123c98a789bc2caa60 ""
+  "si-appendix.aux" 1782154125.01597 41376 727e0fca87f0340140797716a205147a "pdflatex"
+  "si-appendix.bbl" 1782154124.4752 4947 1545b6e5a345e7dc0cf87c437ed3318c "bibtex si-appendix"
+  "si-appendix.out" 1782154125.01798 5355 a5b18e33a9e4acaa7016de23d202c9c2 "pdflatex"
+  "si-appendix.tex" 1782154108.34256 116030 09e943578bb0b4d91d2fb183f7874e0e ""
   (generated)
   "si-appendix.aux"
   "si-appendix.log"
