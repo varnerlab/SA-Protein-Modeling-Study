@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex main"] 1782238085.32705 "main.aux" "main.bbl" "main" 1782239302.21133 0
+["bibtex main"] 1782238085.32705 "main.aux" "main.bbl" "main" 1782240790.13664 0
   "./pnas-new.bst" 1773761542.38307 17443 f4cae81468d1d89557fc8e3d071edc7b ""
   "./references.bib" 1774355112.37256 19467 7de91fca75c5bf48a792b89bd0264556 ""
-  "main.aux" 1782239301.86738 14248 55e47b0f3552113319a4e175eecd3417 "pdflatex"
+  "main.aux" 1782240789.79942 14248 55e47b0f3552113319a4e175eecd3417 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1782239300.92861 "main.tex" "main.pdf" "main" 1782239302.21146 0
+["pdflatex"] 1782240788.70963 "main.tex" "main.pdf" "main" 1782240790.1368 0
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc" 1254269338 2375 baa924870cfb487815765f9094cf3728 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc" 1202520719 3486 c7eadf5dcc57b3b2d11736679f6636ba ""
@@ -301,10 +301,10 @@
   "figs/cross_family_composite.pdf" 1781456050.69775 10409 9fa410d33c3e5453f8c2e99676c4cad4 ""
   "figs/structure_gallery_v2.pdf" 1781456050.77368 2920032 87fbb654f907bc0d6df627f38b27dbeb ""
   "figs/structure_validation_composite.pdf" 1781456050.77898 51449 23bd2ab689a23e39a77c4adbbcbe767e ""
-  "main.aux" 1782239301.86738 14248 55e47b0f3552113319a4e175eecd3417 "pdflatex"
+  "main.aux" 1782240789.79942 14248 55e47b0f3552113319a4e175eecd3417 "pdflatex"
   "main.bbl" 1782238085.4265 6586 2dcf94a3e73116dfad36b983befcdfe0 "bibtex main"
-  "main.out" 1782239301.86847 165 18856929362deef56b226d9ec34423ee "pdflatex"
-  "main.tex" 1782239291.89652 62349 582500fcb48f63fda08a79847a048d85 ""
+  "main.out" 1782240789.80048 165 18856929362deef56b226d9ec34423ee "pdflatex"
+  "main.tex" 1782240781.74832 62333 ffee695043f8a414479da1557f80d3b6 ""
   "pnas-new.bst" 1773761542.38307 17443 f4cae81468d1d89557fc8e3d071edc7b ""
   "pnas-new.cls" 1773761542.38333 14749 8fab5a4a144c59b0d43b75f5eeb36df2 ""
   "pnasresearcharticle.sty" 1773761542.3837 1293 99b2c23e22c84fc5c3010048b0c4aefe ""
