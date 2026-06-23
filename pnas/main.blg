@@ -3,44 +3,44 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: main.aux
 The style file: pnas-new.bst
 Database file #1: references.bib
-You've used 32 entries,
+You've used 33 entries,
             1837 wiz_defined-function locations,
-            695 strings with 12256 characters,
-and the built_in function-call counts, 7445 in all, are:
-= -- 656
-> -- 299
+            703 strings with 12450 characters,
+and the built_in function-call counts, 7696 in all, are:
+= -- 675
+> -- 313
 < -- 2
-+ -- 95
-- -- 63
-* -- 631
-:= -- 1108
-add.period$ -- 62
-call.type$ -- 32
-change.case$ -- 32
++ -- 99
+- -- 66
+* -- 655
+:= -- 1146
+add.period$ -- 64
+call.type$ -- 33
+change.case$ -- 33
 chr.to.int$ -- 0
-cite$ -- 32
-duplicate$ -- 349
-empty$ -- 748
-format.name$ -- 63
-if$ -- 1609
+cite$ -- 33
+duplicate$ -- 359
+empty$ -- 772
+format.name$ -- 66
+if$ -- 1663
 int.to.chr$ -- 0
-int.to.str$ -- 32
-missing$ -- 32
-newline$ -- 129
-num.names$ -- 32
-pop$ -- 69
+int.to.str$ -- 33
+missing$ -- 33
+newline$ -- 133
+num.names$ -- 33
+pop$ -- 70
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 162
+skip$ -- 168
 stack$ -- 0
-substring$ -- 698
-swap$ -- 76
+substring$ -- 722
+swap$ -- 78
 text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 0
-while$ -- 82
-width$ -- 34
-write$ -- 315
+while$ -- 84
+width$ -- 35
+write$ -- 325
