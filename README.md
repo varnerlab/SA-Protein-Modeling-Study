@@ -1,5 +1,7 @@
 # Training-Free Generation of Protein Sequences from Small Family Alignments via Stochastic Attention
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20835924.svg)](https://doi.org/10.5281/zenodo.20835924)
+
 This repository contains the code, data, and manuscript source for the paper *Training-Free Generation of Protein Sequences from Small Family Alignments via Stochastic Attention*. The method treats the energy function of a modern Hopfield network, constructed directly from a seed alignment, as a Boltzmann density and samples from it using the Unadjusted Langevin Algorithm (ULA). The resulting stochastic attention sampler generates novel, compositionally faithful protein sequences that are predicted to fold into the correct three-dimensional architecture, all without training, external data, or GPU resources. The complete pipeline, from a seed alignment to decoded amino acid sequences, is described in Algorithm S1 of the SI Appendix.
 
 ## Repository organization

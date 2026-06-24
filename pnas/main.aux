@@ -1,6 +1,6 @@
 \relax 
 \providecommand\zref@newlabel[2]{}
-\providecommand \babel@aux [2]{\global \let \babel@toc \@gobbletwo }
+\providecommand\babel@aux[2]{}
 \@nameuse{bbl@beforestart}
 \providecommand\hyper@newdestlabel[2]{}
 \providecommand\HyField@AuxAddToFields[1]{}
@@ -22,8 +22,6 @@
 \citation{watsonRFdiffusion2023}
 \citation{alswaidanVarnerStochasticAttention2026}
 \babel@aux{english}{}
-\zref@newlabel{mdf@pagelabel-1}{\default{\caption@xref {??}{ on input line 56}}\page{2}\abspage{2}\mdf@pagevalue{2}}
-\pgfsyspdfmark {pgfid1}{3706101}{7577050}
 \citation{morcosDirectCouplingAnalysis2011}
 \citation{linEvolutionaryScaleModeling2023}
 \citation{jumperHighlyAccurateProtein2021}
@@ -37,10 +35,13 @@
 \citation{durmusNonasymptoticAnalysisUnadjusted2017,dalalyanTheoreticalGuaranteesApproximate2017}
 \citation{ramsauerHopfieldNetworksAll2021}
 \citation{robertsTweedieExponentialConvergence1996}
+\@writefile{toc}{\contentsline {matmethods@section}{\numberline {1}Materials and Methods}{8}{matmethods@section.1}\protected@file@percent }
+\newlabel{eq:hopfield-energy}{{1}{8}{}{equation.0.1}{}}
+\newlabel{eq:sa-update}{{2}{9}{}{equation.0.2}{}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Stochastic Attention Protein Sequence Generation}}{9}{algorithm.1}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{alg:sa-pipeline}{{1}{9}{Stochastic Attention Protein Sequence Generation}{algorithm.1}{}}
 \citation{mistryPfamProteinFamilies2021}
-\@writefile{toc}{\contentsline {matmethods@section}{\numberline {1}Materials and Methods}{9}{matmethods@section.1}\protected@file@percent }
-\newlabel{eq:hopfield-energy}{{1}{9}{}{equation.1}{}}
-\newlabel{eq:sa-update}{{2}{9}{}{equation.2}{}}
 \citation{hmmer3}
 \citation{alamdariProteinGeneration2023}
 \citation{raoMSATransformer2021}
@@ -49,9 +50,6 @@
 \citation{jumperHighlyAccurateProtein2021}
 \citation{mirdita2022colabfold}
 \citation{zhangTMalign2005}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Stochastic Attention Protein Sequence Generation}}{10}{algorithm.1}\protected@file@percent }
-\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{alg:sa-pipeline}{{1}{10}{Stochastic Attention Protein Sequence Generation}{algorithm.1}{}}
 \citation{mistryPfamProteinFamilies2021}
 \bibdata{references}
 \bibcite{jumperHighlyAccurateProtein2021}{{1}{}{{}}{{}}}
@@ -88,6 +86,8 @@
 \bibcite{mirdita2022colabfold}{{32}{}{{}}{{}}}
 \bibcite{zhangTMalign2005}{{33}{}{{}}{{}}}
 \providecommand\NAT@force@numbers{}\NAT@force@numbers
+\zref@newlabel{mdf@pagelabel-1}{\default{\caption@xref {??}{ on input line 168}}\page{12}\abspage{12}\mdf@pagevalue{12}}
+\pgfsyspdfmark {pgfid1}{3706101}{33941796}
 \@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Properties of the eight Pfam families used in this study. $K$: number of seed sequences after cleaning. $L$: alignment length. $d$: PCA dimension (95\% variance). $\bar  {H}_{\mathrm  {col}}$: mean per-column Shannon entropy (nats). $K_{\mathrm  {eff}}$: effective number of sequences at 80\% identity. $\beta ^*$: empirical entropy inflection point.}}{12}{table.caption.1}\protected@file@percent }
 \newlabel{tab:families}{{1}{12}{Properties of the eight Pfam families used in this study. $K$: number of seed sequences after cleaning. $L$: alignment length. $d$: PCA dimension (95\% variance). $\bar {H}_{\mathrm {col}}$: mean per-column Shannon entropy (nats). $K_{\mathrm {eff}}$: effective number of sequences at 80\% identity. $\beta ^*$: empirical entropy inflection point}{table.caption.1}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Cross-family comparison of SA generation, SA retrieval, and bootstrap across eight Pfam families. \textbf  {(A)}~KL divergence of amino acid composition (lower is better); dashed line at KL${=}0.05$. \textbf  {(B)}~Novelty in PCA space ($1 - \max _k \cos (\hat  {\xi }, \mathbf  {m}_k)$; higher is better). Bootstrap samples have zero novelty by construction. \textbf  {(C)}~Nearest sequence identity to a stored pattern; the green boxes show each family's natural within-family nearest-neighbor identity envelope (dark: 10th--90th percentile; light: full min--max range; SI Appendix, Table~\ref {SI-tab:nn-band}). The SA-generated identity lies within the envelope in seven of eight families; in Pkinase it rises above the natural maximum. Error bars: $\pm 1$ SE (30 chains $\times $ 5 samples).}}{13}{figure.caption.2}\protected@file@percent }
