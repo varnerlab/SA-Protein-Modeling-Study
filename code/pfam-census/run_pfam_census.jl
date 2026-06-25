@@ -15,7 +15,7 @@ const _EXPERIMENT_ROOT = @__DIR__
 include(joinpath(_EXPERIMENT_ROOT, "..", "Include.jl"))
 
 const CENSUS_DATA_DIR = joinpath(_EXPERIMENT_ROOT, "data")
-const FIG_DIR = joinpath(dirname(_EXPERIMENT_ROOT), "..", "paper", "figs")
+const FIG_DIR = joinpath(dirname(_EXPERIMENT_ROOT), "..", "arxiv", "figs")
 mkpath(CENSUS_DATA_DIR)
 @info "Environment loaded."
 

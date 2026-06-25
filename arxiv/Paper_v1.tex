@@ -1,0 +1,164 @@
+\pdfminorversion=7
+\documentclass{article}
+
+% Pass numbered, compressed citations to natbib
+\PassOptionsToPackage{numbers, compress}{natbib}
+
+\usepackage[preprint]{neurips_2026}
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage[colorlinks=true,linkcolor={blue!70!black},citecolor={blue!70!black},urlcolor={blue!70!black},hypertexnames=false]{hyperref}
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{xcolor}         % colors
+\usepackage{graphicx}       % includegraphics
+\usepackage{subcaption}     % subfigures with (a), (b) labels
+\usepackage{amsmath,amssymb,amsthm} % math
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{multirow}
+
+\setcounter{topnumber}{1}
+\setcounter{bottomnumber}{1}
+\renewcommand{\topfraction}{0.5}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\title{Training-Free Generation of Protein Sequences from Small Family Alignments via Stochastic Attention}
+
+\author{%
+  Jeffrey D. Varner \\
+  R.F. Smith School of Chemical and Biomolecular Engineering\\
+  Cornell University, Ithaca, NY 14850 \\
+  \texttt{jdv27@cornell.edu} \\
+}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Generating novel protein sequences that respect a family's statistical constraints typically requires training deep generative models on thousands to millions of examples. Yet most protein families are small: the median Pfam seed alignment contains only 22 sequences, a regime where learned models overfit or collapse. We propose \emph{stochastic attention} (SA), a training-free sampler that treats the modern Hopfield energy over stored sequences as a Boltzmann distribution and draws samples via Langevin dynamics. The score function is the residual of a single softmax attention operation, eliminating the need for a trained score network, pretraining data, or graphics processing units (GPUs). Across eight Pfam families spanning 37 to 420 sequences and 23 to 262 residues, SA generates sequences with low composition divergence, novelty, and structural plausibility supported by ESMFold and AlphaFold2. Compared with profile hidden Markov models (HMMs), EvoDiff, and the multiple sequence alignment (MSA) Transformer, SA is the only tested method to simultaneously achieve low composition divergence, genuine novelty, and sequence identity within each family's nearest-neighbor identity range; the others drift outside this range or produce near-copies. The critical inverse temperature is predicted from principal component analysis (PCA) dimensionality alone, enabling fully automatic operation from a seed alignment. In two domains with deep mutational scanning data, SA-generated substitutions are enriched for experimentally tolerated mutations beyond a position-matched null, and an independent language model (ESM2-650M) scores them within the natural range. Stochastic attention thus opens training-free sequence generation to the long tail of protein families too small for deep learning.
+\end{abstract}
+
+\bigskip
+\noindent\fbox{\parbox{\textwidth}{\small\textbf{Significance Statement.}
+Most protein families have fewer than 100 known members, too few to train a deep generative model. We show that a single attention operation over a family alignment defines an energy landscape whose Boltzmann distribution can be sampled exactly via Langevin dynamics, with no training, no GPU, and no external data. The resulting method, stochastic attention, generates novel protein sequences that preserve family-level amino acid statistics and are predicted by independent structure predictors to adopt the correct fold across eight diverse protein families, including candidate antimicrobial peptides. A simple linear relationship between the dimensionality of the sequence representation and the critical sampling temperature enables fully automatic operation from a seed alignment, opening training-free sequence generation to most protein families that are too small for conventional deep learning.}}
+\bigskip
+
+\section{Introduction}
+\input{sections/introduction.tex}
+
+\section{Results}
+\input{sections/results.tex}
+
+\section{Discussion}
+\input{sections/discussion.tex}
+
+\section{Materials and Methods}
+\input{sections/theory.tex}
+\input{sections/experiments.tex}
+
+\section*{Acknowledgments}
+The idea for SA arose while developing a lecture on energy-based methods for eCornell, an opportunity without which this work would not have begun. I am deeply grateful to eCornell for making it possible. We thank the Pfam/InterPro consortium for maintaining publicly available seed alignments. Structure predictions were performed using ESMFold and AlphaFold2 (via ColabFold). Computations were performed on resources at Cornell University. This research received no external funding.
+
+\paragraph{Author contributions.} J.D.V.\ designed research, performed research, analyzed data, and wrote the paper.
+
+\paragraph{Competing interests.} The author declares no competing interest.
+
+\paragraph{Data availability.} All code, data, seed alignments, generated sequences, baseline outputs, structure metrics and predictions, deep mutational scanning mappings, and analysis scripts needed to regenerate every table and figure are openly available. The exact version used for this study is archived at Zenodo (DOI: \href{https://doi.org/10.5281/zenodo.20835924}{10.5281/zenodo.20835924}), with ongoing development at \url{https://github.com/varnerlab/SA-Protein-Modeling-Study}. Pfam seed alignments were obtained from InterPro~\cite{mistryPfamProteinFamilies2021}. No new experimental data were generated for this study; all validation used publicly available computational tools (ESMFold, AlphaFold2 via ColabFold, ESM2-650M, the MSA Transformer, EvoDiff, HMMER, and TM-align) and published deep mutational scanning datasets.
+
+\bibliographystyle{unsrtnat}
+\bibliography{References_v1}
+
+% ══════════════════════════════════════════════════════════════════════════════
+% Main Figures and Table (after references, per PNAS submission format)
+% ══════════════════════════════════════════════════════════════════════════════
+\clearpage
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=\textwidth]{figs/cross_family_composite.pdf}
+\caption{Cross-family comparison of SA generation, SA retrieval, and bootstrap across eight Pfam families. \textbf{(A)}~KL divergence of amino acid composition (lower is better); dashed line at KL${=}0.05$. \textbf{(B)}~Novelty in PCA space ($1 - \max_k \cos(\hat{\xi}, \mathbf{m}_k)$; higher is better). Bootstrap samples have zero novelty by construction. \textbf{(C)}~Nearest sequence identity to a stored pattern; the green boxes show each family's natural within-family nearest-neighbor identity envelope (dark: 10th--90th percentile; light: full min--max range; SI Appendix, Table~\ref{tab:nn-band}). The SA-generated identity lies within the envelope in seven of eight families; in Pkinase it rises above the natural maximum. Error bars: $\pm 1$ SE (30 chains $\times$ 5 samples).}
+\label{fig:cross-family}
+\end{figure}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=\textwidth]{figs/beta_prediction_composite.pdf}
+\caption{Predicting the critical temperature from MSA statistics. \textbf{(A)}~Predicted vs.\ empirical $\beta^*$ for the simple linear model $\beta^* \approx 1.52 + 0.28\sqrt{d}$ ($R^2{=}0.97$, $n{=}33$). Blue circles: eight Pfam families; gold diamonds: WW domain scaling replicates ($K \in \{20,\ldots,400\}$, five repeats each). \textbf{(B)}~$\beta^*$ as a function of $\sqrt{d}$, with the fitted regression (dashed) and the unit-coefficient reference $\beta^* = \sqrt{d}$ (dotted red). The fitted intercept and reduced slope reflect structured correlations in real protein families. \textbf{(C)}~Model comparison (log-scale RMSE). The fitted two-parameter model (RMSE${=}0.16$) is $33\times$ more accurate than the unit-coefficient reference $\beta^* = \sqrt{d}$ (RMSE${=}5.23$); adding MSA features provides negligible improvement.}
+\label{fig:beta-prediction}
+\end{figure}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=\textwidth]{figs/baseline_comparison_composite.pdf}
+\caption{Head-to-head comparison of SA generation against three learned baselines across all eight Pfam families. \textbf{(A)}~KL divergence of amino acid composition (bootstrap SE; $n_{\mathrm{boot}}{=}1000$); dashed line at KL${=}0.05$. \textbf{(B)}~Novelty in PCA space. \textbf{(C)}~Nearest sequence identity to a stored pattern; the green boxes show each family's natural within-family nearest-neighbor identity envelope (dark: 10th--90th percentile; light: full min--max range; SI Appendix, Table~\ref{tab:nn-band}). Panels (B) and (C): per-chain means $\pm 1$ SE. Significance brackets: Wilcoxon rank-sum tests ($^{***}p < 0.001$, $^{**}p < 0.01$, $^{*}p < 0.05$). Per-family numerical values are reported in SI Appendix for the learned baselines (Table~\ref{tab:baseline-metrics}) and for SA generation and the reference conditions (Table~\ref{tab:results}).}
+\label{fig:baseline-comparison}
+\end{figure}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=\textwidth]{figs/structure_validation_composite.pdf}
+\caption{Structure validation using ESMFold. \textbf{(A)}~Mean pLDDT across all eight families for SA generation, SA retrieval, bootstrap, and stored sequences; dashed line at pLDDT${=}70$. \textbf{(B)}~TM-score to the experimentally determined reference structure; dashed line at TM${=}0.5$. Significance: Wilcoxon rank-sum tests ($^{***}p < 0.001$, $^{**}p < 0.01$, $^{*}p < 0.05$, n.s.\ = not significant). Error bars: $\pm 1$ SE ($n{=}50$).}
+\label{fig:structure-validation}
+\end{figure}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=\textwidth]{figs/structure_gallery_v2.pdf}
+\caption{AlphaFold2 predicted structures for representative SA-generated sequences (colored by per-residue pLDDT confidence) superimposed on the experimentally determined reference structure for each family (gray, semi-transparent). For visualization, the SA-generated sequence with the highest mean pLDDT in each family was selected and aligned to the reference using PyMOL; aggregate structural statistics for the generated ensembles are reported in Fig.~\ref{fig:structure-validation} and SI Appendix, Figs.~\ref{fig:structure-esmfold-af2}--\ref{fig:esmfold-af2-concordance}. The close predicted structural agreement (sub-angstrom root-mean-square deviation (RMSD)) and uniformly high pLDDT scores are consistent with SA-generated sequences encoding three-dimensional folds that recapitulate the canonical architecture of their target family, despite $40$--$65\%$ sequence novelty.}
+\label{fig:structure-gallery}
+\end{figure}
+
+\clearpage  % flush all figures before tables
+
+\begin{table}[p]
+\centering
+\caption{Properties of the eight Pfam families used in this study. $K$: number of seed sequences after cleaning. $L$: alignment length (columns retained). $d$: PCA dimension (95\% variance). $\bar{H}_{\mathrm{col}}$: mean per-column Shannon entropy (nats). $K_{\mathrm{eff}}$: effective number of sequences at 80\% identity threshold. $\beta^*$: empirical entropy inflection point. $\beta^*/\!\sqrt{d}$: ratio to the random-pattern prediction.}
+\label{tab:families}
+\small
+\begin{tabular}{@{}lrrrrrrrr@{}}
+\toprule
+Family & Pfam ID & $K$ & $L$ & $d$ & $\bar{H}_{\mathrm{col}}$ & $K_{\mathrm{eff}}$ & $\beta^*$ & $\beta^*/\!\sqrt{d}$ \\
+\midrule
+RRM     & PF00076 &  68 &  71 &  59 & 1.92 &  68 & 3.85 & 0.50 \\
+SH3     & PF00018 &  55 &  48 &  46 & 1.68 &  55 & 3.85 & 0.57 \\
+WW      & PF00397 & 420 &  31 & 186 & 1.74 & 419 & 5.45 & 0.40 \\
+Kunitz  & PF00014 &  99 &  53 &  80 & 1.61 &  99 & 3.85 & 0.43 \\
+zf-C2H2 & PF00096 & 151 &  23 & 106 & 1.91 & 151 & 4.58 & 0.44 \\
+PDZ     & PF00595 &  44 &  83 &  37 & 1.88 &  43 & 3.23 & 0.53 \\
+Pkinase & PF00069 &  37 & 262 &  34 & 1.72 &  37 & 3.23 & 0.55 \\
+Defensin\_beta & PF00711 &  45 &  36 &  37 & 1.65 &  45 & 3.23 & 0.53 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% ══════════════════════════════════════════════════════════════════════════════
+% SI Appendix
+% ══════════════════════════════════════════════════════════════════════════════
+\clearpage
+\setcounter{figure}{0}
+\setcounter{table}{0}
+\setcounter{equation}{0}
+\renewcommand{\thefigure}{S\arabic{figure}}
+\renewcommand{\thetable}{S\arabic{table}}
+\renewcommand{\theequation}{S\arabic{equation}}
+\setcounter{section}{0}
+\renewcommand{\thesection}{S\arabic{section}}
+
+\section*{SI Appendix}
+\input{sections/appendix.tex}
+
+\end{document}

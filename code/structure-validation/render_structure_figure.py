@@ -17,7 +17,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 COLABFOLD_DIR = os.path.join(BASE_DIR, "colabfold_output")
 DATA_DIR = os.path.join(BASE_DIR, "data")
 FIG_DIR = os.path.join(BASE_DIR, "figs")
-PAPER_FIG_DIR = os.path.join(BASE_DIR, "..", "..", "paper", "figs")
+PAPER_FIG_DIR = os.path.join(BASE_DIR, "..", "..", "arxiv", "figs")
 
 FAMILIES = [
     ("PF00076", "RRM",     "1FXL_A"),

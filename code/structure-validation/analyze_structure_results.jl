@@ -355,11 +355,11 @@ function generate_figures_with_stats(plddt_data, tm_data)
     @info "Figure saved: $(joinpath(FIGS_DIR, "structure_validation_composite.pdf"))"
 
     # Copy to paper
-    paper_figs = joinpath(_EXPERIMENT_ROOT, "..", "..", "paper", "figs")
+    paper_figs = joinpath(_EXPERIMENT_ROOT, "..", "..", "arxiv", "figs")
     if isdir(paper_figs)
         cp(joinpath(FIGS_DIR, "structure_validation_composite.pdf"),
            joinpath(paper_figs, "structure_validation_composite.pdf"), force=true)
-        @info "Copied to paper/figs/"
+        @info "Copied to arxiv/figs/"
     end
 
     return composite

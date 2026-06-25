@@ -422,11 +422,11 @@ function generate_combined_figure(esm_plddt, esm_tm, af2_plddt, af2_tm)
     @info "Saved: $(joinpath(FIGS_DIR, "structure_validation_esmfold_af2.pdf"))"
 
     # Copy to paper
-    paper_figs = joinpath(_EXPERIMENT_ROOT, "..", "..", "paper", "figs")
+    paper_figs = joinpath(_EXPERIMENT_ROOT, "..", "..", "arxiv", "figs")
     if isdir(paper_figs)
         cp(joinpath(FIGS_DIR, "structure_validation_esmfold_af2.pdf"),
            joinpath(paper_figs, "structure_validation_esmfold_af2.pdf"), force=true)
-        @info "Copied to paper/figs/"
+        @info "Copied to arxiv/figs/"
     end
 
     return composite
@@ -495,11 +495,11 @@ function generate_concordance_figure(esm_plddt, esm_tm, af2_plddt, af2_tm)
     savefig(composite, joinpath(FIGS_DIR, "esmfold_af2_concordance.pdf"))
     @info "Saved: $(joinpath(FIGS_DIR, "esmfold_af2_concordance.pdf"))"
 
-    paper_figs = joinpath(_EXPERIMENT_ROOT, "..", "..", "paper", "figs")
+    paper_figs = joinpath(_EXPERIMENT_ROOT, "..", "..", "arxiv", "figs")
     if isdir(paper_figs)
         cp(joinpath(FIGS_DIR, "esmfold_af2_concordance.pdf"),
            joinpath(paper_figs, "esmfold_af2_concordance.pdf"), force=true)
-        @info "Copied to paper/figs/"
+        @info "Copied to arxiv/figs/"
     end
 
     return composite

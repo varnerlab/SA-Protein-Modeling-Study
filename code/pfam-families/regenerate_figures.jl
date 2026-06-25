@@ -283,8 +283,8 @@ safe_savefig(p_composite, joinpath(PFAM_FIG_DIR, "cross_family_composite.pdf"))
 
 # Mirror the composite into both manuscript figure directories so the paper and
 # PNAS builds pick up the regenerated figure. pnas/figs is a real directory (no
-# longer a symlink to paper/figs), so it must be written to explicitly.
-for dest in (joinpath(_EXPERIMENT_ROOT, "..", "..", "paper", "figs"),
+# longer a symlink to arxiv/figs), so it must be written to explicitly.
+for dest in (joinpath(_EXPERIMENT_ROOT, "..", "..", "arxiv", "figs"),
              joinpath(_EXPERIMENT_ROOT, "..", "..", "pnas", "figs"))
     if isdir(dest)
         cp(joinpath(PFAM_FIG_DIR, "cross_family_composite.pdf"),

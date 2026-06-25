@@ -312,11 +312,11 @@ function generate_plots(df)
     @info "Saved: $(joinpath(FIGS_DIR, "bifurcation_analysis.pdf"))"
 
     # Copy to paper figs
-    paper_figs = joinpath(_EXPERIMENT_ROOT, "..", "..", "paper", "figs")
+    paper_figs = joinpath(_EXPERIMENT_ROOT, "..", "..", "arxiv", "figs")
     if isdir(paper_figs)
         cp(joinpath(FIGS_DIR, "bifurcation_analysis.pdf"),
            joinpath(paper_figs, "bifurcation_analysis.pdf"), force=true)
-        @info "Copied to paper/figs/"
+        @info "Copied to arxiv/figs/"
     end
 end
 

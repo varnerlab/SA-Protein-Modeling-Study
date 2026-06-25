@@ -463,11 +463,11 @@ function generate_combined_figures(tau_gauss, tau_coeffs, protein_results,
     savefig(composite, joinpath(FIGS_DIR, "analytical_beta_star.pdf"))
     @info "Saved: $(joinpath(FIGS_DIR, "analytical_beta_star.pdf"))"
 
-    paper_figs = joinpath(_EXPERIMENT_ROOT, "..", "..", "paper", "figs")
+    paper_figs = joinpath(_EXPERIMENT_ROOT, "..", "..", "arxiv", "figs")
     if isdir(paper_figs)
         cp(joinpath(FIGS_DIR, "analytical_beta_star.pdf"),
            joinpath(paper_figs, "analytical_beta_star.pdf"), force=true)
-        @info "Copied to paper/figs/"
+        @info "Copied to arxiv/figs/"
     end
 end
 
@@ -817,11 +817,11 @@ function generate_part4_figures(results4, β_actual, β_direct, β_pred_stored, 
     savefig(composite, joinpath(FIGS_DIR, "stored_pattern_analysis.pdf"))
     @info "Saved: $(joinpath(FIGS_DIR, "stored_pattern_analysis.pdf"))"
 
-    paper_figs = joinpath(_EXPERIMENT_ROOT, "..", "..", "paper", "figs")
+    paper_figs = joinpath(_EXPERIMENT_ROOT, "..", "..", "arxiv", "figs")
     if isdir(paper_figs)
         cp(joinpath(FIGS_DIR, "stored_pattern_analysis.pdf"),
            joinpath(paper_figs, "stored_pattern_analysis.pdf"), force=true)
-        @info "Copied to paper/figs/"
+        @info "Copied to arxiv/figs/"
     end
 end
 

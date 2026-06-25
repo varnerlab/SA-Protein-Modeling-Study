@@ -7,7 +7,7 @@ Panel layout:
           Color-coded by per-position conservation in the stored MSA.
   Bottom: Per-position entropy comparison (stored MSA vs SA-generated)
 
-Output: figs/sequence_analysis_kunitz.pdf (also copied to paper/figs/)
+Output: figs/sequence_analysis_kunitz.pdf (also copied to arxiv/figs/)
 """
 
 import os, json, math
@@ -26,7 +26,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 PFAM_DATA = os.path.join(BASE_DIR, "..", "pfam-families", "data", "PF00014")
 AF2_DIR = os.path.join(BASE_DIR, "colabfold_output", "PF00014", "sa_generation")
 FIG_DIR = os.path.join(BASE_DIR, "figs")
-PAPER_FIG_DIR = os.path.join(BASE_DIR, "..", "..", "paper", "figs")
+PAPER_FIG_DIR = os.path.join(BASE_DIR, "..", "..", "arxiv", "figs")
 
 # ── Parse FASTA ───────────────────────────────────────────────────────────
 def parse_fasta(path):

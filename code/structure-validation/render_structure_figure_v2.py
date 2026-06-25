@@ -20,7 +20,7 @@ import numpy as np
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 FIG_DIR = os.path.join(BASE_DIR, "figs")
-PAPER_FIG_DIR = os.path.join(BASE_DIR, "..", "..", "paper", "figs")
+PAPER_FIG_DIR = os.path.join(BASE_DIR, "..", "..", "arxiv", "figs")
 
 # (family_id, label, "pLDDT=.., RMSD=.. A") -- annotation values taken
 # verbatim from the v1 figure so the science is unchanged.

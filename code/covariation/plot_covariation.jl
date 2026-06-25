@@ -138,7 +138,7 @@ base_dir = joinpath(@__DIR__, "..")
 data_dir = joinpath(base_dir, "pfam-families", "data")
 baselines_dir = joinpath(base_dir, "baselines", "data")
 structure_dir = joinpath(base_dir, "structure-validation", "data")
-fig_dir = joinpath(@__DIR__, "..", "..", "paper", "figs")
+fig_dir = joinpath(@__DIR__, "..", "..", "arxiv", "figs")
 mkpath(fig_dir)
 
 # representative families for scatter plots

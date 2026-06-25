@@ -449,9 +449,9 @@ function generate_figures_with_brackets(all_chains, df_tests, pooled_kls)
     end
 
     # Mirror into both manuscript figure directories. pnas/figs is a real
-    # directory (no longer a symlink to paper/figs), so it must be written
-    # to explicitly in addition to paper/figs.
-    for dest in (joinpath(_EXPERIMENT_ROOT, "..", "..", "paper", "figs"),
+    # directory (no longer a symlink to arxiv/figs), so it must be written
+    # to explicitly in addition to arxiv/figs.
+    for dest in (joinpath(_EXPERIMENT_ROOT, "..", "..", "arxiv", "figs"),
                  joinpath(_EXPERIMENT_ROOT, "..", "..", "pnas", "figs"))
         if isdir(dest)
             cp(joinpath(FIG_DIR, "baseline_comparison_composite.pdf"),
